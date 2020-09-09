@@ -7,24 +7,25 @@ import titleImg from '../../assets/images/chef.png'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
+import Footer from '../../components/Footer'
 
+const flex = styled.div`
+display: flex;
+`
 const MenuBody = styled.div`
   width: 900px;
   margin: 0 auto;
 `
-const RowBox = styled.div`
-  display: flex;
+const RowBox = styled(flex)`
   margin-bottom: 24px;
   flex-flow: row wrap;
 `
-const RowItem = styled.div`
-  display: flex;
+const RowItem = styled(flex)`
   width: 30%;
   position: relative;
 `
 
-const RowItemBottom = styled.div`
-  display: flex;
+const RowItemBottom = styled(flex)`
   justify-content: space-between;
   box-sizing: border-box;
   color: rgb(170, 149, 132);
@@ -52,7 +53,7 @@ export default function Menu() {
       <MenuBody>
         <RowBox>
           <RowItem>
-            <ItemWrap itemLogo='🍣' title='Sushi Party!' subTitle={['Deposit SUSHI-ETH UNI-V2 LP','Earn SUSHI']} >
+            <ItemWrap itemLogo='🍣' title='Sushi Party!' subTitle={['Deposit SUSHI-ETH UNI-V2 LP', 'Earn SUSHI']}>
               <RowItemBottom>
                 <span>APY</span>
                 <span>914.87%</span>
@@ -61,6 +62,7 @@ export default function Menu() {
           </RowItem>
         </RowBox>
       </MenuBody>
+      <Footer/>
     </MenuWrap>
   )
 }

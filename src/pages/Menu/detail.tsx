@@ -4,6 +4,7 @@ import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import Column from '../../components/Column'
 import ItemWrap from './ItemWrap'
+import Footer from '../../components/Footer'
 const Flex = styled.div`
   display: flex;
 `
@@ -31,6 +32,7 @@ export default function Menu() {
           </DetailItem>
         </DetailWarp>
       </Column>
+      <Footer/>
     </MenuWrap>
   )
 }
