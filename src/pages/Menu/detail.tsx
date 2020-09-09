@@ -16,6 +16,14 @@ const DetailItem = styled(Flex)`
   flex-direction: column;
   flex: 1 1 0%;
 `
+const Tip=styled.h3`
+color: rgb(170, 149, 133);
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 48px 0;
+    padding: 0px;
+`
 
 export default function Menu() {
   return (
@@ -32,6 +40,8 @@ export default function Menu() {
           </DetailItem>
         </DetailWarp>
       </Column>
+      <Tip>⭐️ Every time you stake and unstake LP tokens, the contract will automagically
+        harvest SUSHI rewards for you!</Tip>
       <Footer/>
     </MenuWrap>
   )
