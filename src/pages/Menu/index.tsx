@@ -3,55 +3,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 import titleImg from '../../assets/images/chef.png'
-const MenuWrap = styled.div`
-    display: flex;
-    flex-direction: column;
-`
+
+import MenuWrap from './wrapper'
+import MenuTop from './menuTop'
+
 const FlexCenter = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
 `
-const MenuTop = styled.div`
-    box-sizing: border-box;
-    max-width: 600px;
-    width: 100%;
-    margin: 0px auto;
-    padding: 0px 24px;
-`
-const MenuTopBox = styled.div`
-    align-items: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 48px;
-    padding-top: 48px;
-    margin: 0px auto;
-    h1{
-    font-family: "Kaushan Script", sans-serif;
-    color: rgb(91, 57, 38);
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0px;
-    padding: 0px;
-    }
-    h3{
-    color: rgb(170, 149, 133);
-    font-size: 18px;
-    font-weight: 400;
-    text-align: center;
-    margin: 0px;
-    padding: 0px;}
-`
-const MenuTopImgWrap = styled.div`
-   font-size: 120px;
-    height: 120px;
-    line-height: 120px;
-    text-align: center;
-    width: 120px;
-`
 const MenuBody = styled.div`
     width: 900px;
+    margin:0 auto;
 `
 const RowBox = styled.div`
     display: flex;
@@ -165,13 +128,7 @@ const RowItemButton = styled.div`
 export default function Menu() {
   return (
     <MenuWrap>
-      <MenuTop>
-        <MenuTopBox>
-          <MenuTopImgWrap><img src={titleImg} alt="" height='120'/></MenuTopImgWrap>
-          <h1>Select Your Favorite Dishes</h1>
-          <h3>Earn SUSHI tokens by staking Uniswap V2 LP Tokens.</h3>
-        </MenuTopBox>
-      </MenuTop>
+      <MenuTop imgUrl={titleImg} h1Text={'Select Your Favorite Dishes'} h3Text={'Earn SUSHI tokens by staking Uniswap V2 LP Tokens.'}/>
       <MenuBody>
         <RowBox>
           <RowItem>
