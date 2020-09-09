@@ -1,5 +1,6 @@
 import { ChainId } from '@uniswap/sdk'
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 
@@ -40,6 +41,28 @@ const HeaderFrame = styled.div`
 const HeaderElement = styled.div`
   display: flex;
   align-items: center;
+`
+const NavElements = styled.nav`
+  display: flex;
+  align-items: center;
+`
+
+const StyledNavLink = styled(NavLink)`
+    font-weight: 700;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-decoration: none;
+    color: rgb(170, 149, 133);
+    &.active {
+    color: rgb(209, 108, 0);
+}
+`
+const NavTitle=styled.a`
+   font-weight: 700;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-decoration: none;
+    color: rgb(170, 149, 133);
 `
 
 const HeaderElementWrap = styled.div`
@@ -142,7 +165,7 @@ export default function Header() {
 
   return (
     <HeaderFrame>
-      <RowBetween style={{ alignItems: 'flex-start' }} padding="1rem 1rem 0 1rem">
+      <RowBetween  padding="1rem 1rem 0 1rem">
         <HeaderElement>
           <Title href=".">
             <UniIcon>
@@ -153,6 +176,11 @@ export default function Header() {
             </TitleText>
           </Title>
         </HeaderElement>
+        <NavElements>
+          <StyledNavLink  to={'/swap'} >home</StyledNavLink>
+          <StyledNavLink to={'/menu'}>Menu</StyledNavLink>
+          <NavTitle href="https://uniswap.org/">About</NavTitle>
+        </NavElements>
         <HeaderControls>
           <HeaderElement>
             <TestnetWrapper>
