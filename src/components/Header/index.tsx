@@ -42,10 +42,6 @@ const HeaderElement = styled.div`
   display: flex;
   align-items: center;
 `
-const NavElements = styled.nav`
-  display: flex;
-  align-items: center;
-`
 
 const StyledNavLink = styled(NavLink)`
     font-weight: 700;
@@ -176,11 +172,11 @@ export default function Header() {
             </TitleText>
           </Title>
         </HeaderElement>
-        <NavElements>
+        <HeaderElement>
           <StyledNavLink  to={'/swap'} >home</StyledNavLink>
           <StyledNavLink to={'/menu'}>Menu</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>
-        </NavElements>
+        </HeaderElement>
         <HeaderControls>
           <HeaderElement>
             <TestnetWrapper>
