@@ -20,15 +20,15 @@ const DetailItem = styled(Flex)`
 export default function Menu() {
   return (
     <MenuWrap>
-      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text="Deposit USDT-ETH UNI-V2 LP  Tokens and earn SUSHI" />
+      <MenuTop textLogo="🐢"  h1Text="Tether Turtle" h3Text="Deposit USDT-ETH UNI-V2 LP  Tokens and earn SUSHI" />
       <Column>
         <DetailWarp>
           <DetailItem>
-            <ItemWrap itemLogo='🍣' title='0.000' subTitle={['SUSHI Earned']}/>
+            <ItemWrap itemLogo='🍣' showButton={true} title='0.000' subTitle={['SUSHI Earned']}/>
           </DetailItem>
           <div style={{ height: '24px', width: '24px' }}></div>
           <DetailItem>
-            <ItemWrap itemLogo='👨🏻‍🍳' title='0.000' subTitle={['USDT-ETH UNI-V2 LP Tokens Staked']}/>
+            <ItemWrap itemLogo='👨🏻‍🍳' showButton={true} title='0.000' subTitle={['USDT-ETH UNI-V2 LP Tokens Staked']}/>
           </DetailItem>
         </DetailWarp>
       </Column>
