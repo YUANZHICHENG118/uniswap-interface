@@ -4,8 +4,8 @@ import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import Column from '../../components/Column'
 import ItemWrap from './ItemWrap'
-const Flex=styled.div`
- display: flex;
+const Flex = styled.div`
+  display: flex;
 `
 const DetailWarp = styled(Flex)`
   width: 600px;
@@ -16,7 +16,6 @@ const DetailItem = styled(Flex)`
   flex: 1 1 0%;
 `
 
-
 export default function Menu() {
   return (
     <MenuWrap>
@@ -24,11 +23,11 @@ export default function Menu() {
       <Column>
         <DetailWarp>
           <DetailItem>
-            <ItemWrap/>
+            <ItemWrap itemLogo='🍣' title='0.000' subTitle={['SUSHI Earned']}/>
           </DetailItem>
-          <div style={{height:'24px',width:'24px'}}></div>
+          <div style={{ height: '24px', width: '24px' }}></div>
           <DetailItem>
-            <ItemWrap/>
+            <ItemWrap itemLogo='👨🏻‍🍳' title='0.000' subTitle={['USDT-ETH UNI-V2 LP Tokens Staked']}/>
           </DetailItem>
         </DetailWarp>
       </Column>

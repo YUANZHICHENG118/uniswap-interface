@@ -52,7 +52,7 @@ export default function Menu() {
       <MenuBody>
         <RowBox>
           <RowItem>
-            <ItemWrap>
+            <ItemWrap itemLogo='🍣' title='Sushi Party!' subTitle={['Deposit SUSHI-ETH UNI-V2 LP','Earn SUSHI']} >
               <RowItemBottom>
                 <span>APY</span>
                 <span>914.87%</span>

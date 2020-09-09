@@ -87,15 +87,25 @@ const RowItemButton = styled.div`
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
-export default function ItemWrap({ children }: { children?: React.ReactNode }) {
+export default function ItemWrap({
+  children,
+  itemLogo,
+  title='',
+  subTitle=[]
+}: {
+  children?: React.ReactNode
+  itemLogo?: string
+  title?:string
+  subTitle:Array<string>
+}) {
   return <BodyWrapper>
     <RowItemBox>
       <FlexCenter>
-        <RowItemLogo>🍣</RowItemLogo>
-        <RowItemTitle>Sushi Party!</RowItemTitle>
+        <RowItemLogo>{itemLogo}</RowItemLogo>
+        <RowItemTitle>{title}</RowItemTitle>
         <RowItemSubTitle>
-          <div className="kdcQzs">Deposit SUSHI-ETH UNI-V2 LP</div>
-          <div className="kdcQzs">Earn SUSHI</div>
+          <div className="kdcQzs">{subTitle[0]}</div>
+          {subTitle[1]&&<div className="kdcQzs">{subTitle[1]}</div>}
         </RowItemSubTitle>
         <RowItemButton color="#d16c00" font-size="16">
           <a href="#">Select</a>
