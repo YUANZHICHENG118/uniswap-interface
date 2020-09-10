@@ -61,8 +61,8 @@ export default function Menu() {
                     subTitle={['Deposit USDJ','Earn Dragon']}
                     sourceLink='111'
                   >
-                    <RowItemButton>
-                     <NavLink className="select" to={`/Farms/22`}>Select</NavLink>
+                    <RowItemButton slot='button'>
+                      <NavLink className="select" to={`/Farms/22`}>Select</NavLink>
                     </RowItemButton>
                   </ItemWrap>
                 </Col>
