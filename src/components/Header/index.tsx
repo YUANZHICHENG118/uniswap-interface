@@ -1,5 +1,5 @@
 import { ChainId } from '@uniswap/sdk'
-import React from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
@@ -7,6 +7,8 @@ import { Text } from 'rebass'
 import styled from 'styled-components'
 
 import Logo from '../../assets/images/farm/logo.png'
+import Ball from '../../assets/images/home/ball.png'
+
 import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
@@ -18,9 +20,9 @@ import Menu from '../Menu'
 
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
-
+import { Modal } from 'antd'
 const HeaderFrame = styled.div`
-  width:100%;
+  width: 100%;
   .header {
     padding: 20px 0;
     position: relative;
@@ -96,11 +98,11 @@ const Headertabs = styled.div`
     font-size: 16px;
     font-weight: 700;
     text-align: left;
-    :hover{
-    background-color: #f1dae1;
-    cursor: pointer;
-    opacity: .9;
-    color: #aa8592;
+    :hover {
+      background-color: #f1dae1;
+      cursor: pointer;
+      opacity: 0.9;
+      color: #aa8592;
     }
   }
   a.active {
@@ -118,7 +120,7 @@ const Headertabs = styled.div`
 `
 
 const Title = styled.a`
-  display:inline-block;
+  display: inline-block;
   pointer-events: auto;
   img {
     width: 50px;
@@ -186,6 +188,58 @@ const BalanceText = styled(Text)`
     display: none;
   `};
 `
+const WalletBox = styled.div`
+  text-align:center; 
+  h2 {
+    text-align: center;
+    color: #5b2639;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+  }
+  img {
+    background-color: #f0e7ea;
+    font-size: 36px;
+    height: 80px;
+    width: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    box-shadow: inset 4px 4px 8px #e2cfd5, inset -6px -6px 12px #f7f2f4;
+    border-radius: 40px;
+    margin: 70px auto 16px;
+    font-style: normal;
+  }
+  h1 {
+    color: #5b2639;
+    font-size: 36px;
+    font-weight: 700;
+    padding: 0;
+    line-height: 40px;
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+  p {
+    color: #80495d;
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .cancle {
+    margin: 60px 20px 20px;
+    align-items: center;
+    background-color: #f0e7ea;
+    box-shadow: 4px 4px 8px #e2cfd5, -8px -8px 16px #f7f2f4;
+    color: #d1004b;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    font-weight: 700;
+    height: 56px;
+    justify-content: center;
+    width: calc(100% - 40px);
+    border-radius: 12px;
+  }
+`
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.MAINNET]: null,
@@ -211,7 +265,7 @@ export default function Header() {
 
   // const tronWeb = window.tronWeb;
   //
-
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <HeaderFrame>
       <div className="header">
@@ -225,7 +279,7 @@ export default function Header() {
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
-        <div className="myWallet clickableButton">
+        <div className="myWallet clickableButton"  onClick={() =>setModalOpen(true)}>
           <span>My Wallet</span>
         </div>
         {/*先隐藏*/}
@@ -250,6 +304,18 @@ export default function Header() {
           </HeaderElementWrap>
         </HeaderControls>
       </div>
+      {
+        <Modal visible={modalOpen} footer={null} onCancel={() =>setModalOpen(false)}>
+          <WalletBox>
+            <h2>My Account</h2>
+            <img src={Ball}  alt="logo" width="80px"/>
+            <h1>0.000000</h1>
+            <p>Dragon Balance</p>
+            <div className="cancle clickableButton">Cancel</div>
+          </WalletBox>
+        </Modal>
+      }
+
     </HeaderFrame>
   )
 }

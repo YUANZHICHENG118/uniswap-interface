@@ -53,8 +53,8 @@ export default function Menu() {
         <RowBox>
           <Row gutter={{sm: 16, md: 32}} justify='center' align='middle' style={{width:'100%'}}>
             {
-              [1,1,1,1,1].map(()=>{
-                return <Col  xs={24} sm={24} md={8}>
+              [1,1,1,1,1].map((item,index)=>{
+                return <Col  xs={24} sm={24} md={8} key={index}>
                   <ItemWrap
                     itemLogo='🍣'
                     title='USDJ'
