@@ -6,10 +6,8 @@ import { Text } from 'rebass'
 
 import styled from 'styled-components'
 
-import Logo from '../../assets/svg/logo.svg'
+import Logo from '../../assets/images/farm/logo.png'
 import LogoDark from '../../assets/svg/logo_white.svg'
-import Wordmark from '../../assets/svg/wordmark.svg'
-import WordmarkDark from '../../assets/svg/wordmark_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -18,10 +16,9 @@ import { YellowCard } from '../Card'
 import Settings from '../Settings'
 import Menu from '../Menu'
 
-import Row, { RowBetween } from '../Row'
+import Row from '../Row'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
-
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -35,6 +32,23 @@ const HeaderFrame = styled.div`
     width: calc(100%);
     position: relative;
   `};
+  .myWallet {
+    display: inline-block;
+    position: absolute;
+    top: 25px;
+    right: 150px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 16px;
+    line-height: 36px;
+    height: 36px;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
+    span{
+     color: ${({ theme }) =>theme.highLignt};
+    }
+}
 `
 
 const HeaderElement = styled.div`
@@ -43,21 +57,21 @@ const HeaderElement = styled.div`
 `
 
 const StyledNavLink = styled(NavLink)`
-    font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
-    &.active {
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: rgb(170, 149, 133);
+  &.active {
     color: rgb(209, 108, 0);
-}
+  }
 `
-const NavTitle=styled.a`
-   font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
+const NavTitle = styled.a`
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: rgb(170, 149, 133);
 `
 
 const HeaderElementWrap = styled.div`
@@ -68,23 +82,37 @@ const HeaderElementWrap = styled.div`
     margin-top: 0.5rem;
 `};
 `
+const Headertabs=styled.div`
+    display: inline-block;
+    margin-left: 40px;
+    a{
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    }
+    a.active{
+    color: ${({ theme }) =>theme.highLignt};
+    }
+`
 
 const Title = styled.a`
   display: flex;
   align-items: center;
   pointer-events: auto;
-
+  img {
+    width: 50px;
+  }
+  span {
+    color: #5b2639;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 10px;
+  }
   :hover {
     cursor: pointer;
   }
-`
-
-const TitleText = styled(Row)`
-  width: fit-content;
-  white-space: nowrap;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
-  `};
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
@@ -113,18 +141,6 @@ const NetworkCard = styled(YellowCard)`
   margin-right: 10px;
   border-radius: 12px;
   padding: 8px 12px;
-`
-
-const UniIcon = styled.div`
-  transition: transform 0.3s ease;
-  :hover {
-    transform: rotate(-5deg);
-  }
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    img { 
-      width: 4.5rem;
-    }
-  `};
 `
 
 const HeaderControls = styled.div`
@@ -169,28 +185,22 @@ export default function Header() {
   // const tronWeb = window.tronWeb;
   //
 
-
-
-
   return (
     <HeaderFrame>
-      <RowBetween  padding="1rem 1rem 0 1rem">
-        <HeaderElement>
-          <Title href=".">
-            <UniIcon>
-              <img src={isDark ? LogoDark : Logo} alt="logo" />
-            </UniIcon>
-            <TitleText>
-              <img style={{ marginLeft: '4px', marginTop: '4px' }} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-            </TitleText>
-          </Title>
-        </HeaderElement>
-        <HeaderElement>
-          <StyledNavLink  to={'/'} >home</StyledNavLink>
+      <Row padding="20px 0">
+        <Title href=".">
+          <img src={isDark ? LogoDark : Logo} alt="logo" />
+          <span>Dragon Ball</span>
+        </Title>
+        <Headertabs>
+          <StyledNavLink to={'/home'}>home</StyledNavLink>
           <StyledNavLink to={'/Farms'}>Farms</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>
-        </HeaderElement>
-        <HeaderControls style={{display:'none'}}>
+        </Headertabs>
+        {/*钱包*/}
+        <div className="myWallet clickableButton"><span>My Wallet</span></div>
+        {/*先隐藏*/}
+        <HeaderControls style={{ display: 'none' }}>
           <HeaderElement>
             <TestnetWrapper>
               {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
@@ -210,7 +220,7 @@ export default function Header() {
             <Menu />
           </HeaderElementWrap>
         </HeaderControls>
-      </RowBetween>
+      </Row>
     </HeaderFrame>
   )
 }

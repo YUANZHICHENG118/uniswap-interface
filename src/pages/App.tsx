@@ -71,7 +71,7 @@ export default function App() {
             <Popups />
             <Web3ReactManager>
               <Switch>
-                <Route exact strict path="/" component={Home} />
+                <Route exact strict path="/home" component={Home} />
                 <Route exact strict path="/swap" component={Swap} />
                 <Route exact strict path="/Farms" component={Farms} />
                 <Route exact strict path="/Farms/:outputCurrency" component={Detail}/>

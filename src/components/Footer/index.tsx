@@ -11,7 +11,7 @@ export const BodyWrapper = styled.div`
     font-size: 16px;
     color: #aa8592;
     padding: 5px 15px;
-    ${({ theme }) => theme.mediaWidth.upToSmall`
+    ${({ theme }) => theme.mediaWidth.upToMiddle`
     font-size: 14px;
     padding: 5px;
   `}

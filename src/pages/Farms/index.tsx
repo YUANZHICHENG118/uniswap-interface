@@ -34,7 +34,7 @@ const RowItemButton = styled(NavLink)`
     padding-left: 16px;
     padding-right: 16px;
     width: 100%;
-    color: #d100c9;
+    color: ${({ theme }) =>theme.highLignt};
     :hover {
       background-color: #f1dae1;
     }

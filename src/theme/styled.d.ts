@@ -43,6 +43,7 @@ export interface Colors {
   green1: Color
   yellow1: Color
   yellow2: Color
+  highLignt: Color
 }
 
 export interface Grids {
@@ -64,6 +65,7 @@ declare module 'styled-components' {
       upToSmall: ThemedCssFunction<DefaultTheme>
       upToMedium: ThemedCssFunction<DefaultTheme>
       upToLarge: ThemedCssFunction<DefaultTheme>
+      upToMiddle: ThemedCssFunction<DefaultTheme>
     }
 
     // css snippets
