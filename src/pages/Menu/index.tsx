@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-
+import { Row, Col } from 'antd';
 import titleImg from '../../assets/images/farm/logo.png'
 
 import MenuWrap from './wrapper'
@@ -16,17 +16,7 @@ const RowBox = styled.div`
   margin-bottom: 24px;
   flex-flow: row wrap;
 `
-const RowItem = styled.div`
-  display: flex;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  width: 33.33333333%;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-   padding: 0;
-   width:100%
-  `};
-`
+
 
 export default function Menu() {
   return (
@@ -38,9 +28,21 @@ export default function Menu() {
       />
       <MenuBody>
         <RowBox>
-          <RowItem className='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-8'>
-            <ItemWrap itemLogo='🍣' title='USDJ' subTitle={['Deposit USDJ','Earn Dragon']} ></ItemWrap>
-          </RowItem>
+          <Row gutter={{sm: 16, md: 32}} justify='center' align='middle' style={{width:'100%'}}>
+            {
+              [1,1,1,1,1].map(()=>{
+                return <Col  xs={24} sm={24} md={8}>
+                  <ItemWrap
+                    itemLogo='🍣'
+                    title='USDJ'
+                    subTitle={['Deposit USDJ','Earn Dragon']}
+                    sourceLink='111'
+                  ></ItemWrap>
+                </Col>
+              })
+            }
+
+          </Row>
         </RowBox>
       </MenuBody>
     </MenuWrap>

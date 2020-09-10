@@ -96,12 +96,14 @@ export default function ItemWrap({
   children,
   itemLogo,
   title = '',
+  sourceLink = '',
   subTitle = [],
   showButton
 }: {
   children?: React.ReactNode
   itemLogo?: string
   title?: string
+  sourceLink?: string
   subTitle: Array<string>
   showButton?: boolean
 }) {
@@ -114,11 +116,11 @@ export default function ItemWrap({
           <div className="cardNote">
             <span>{subTitle[0]}</span>
             {subTitle[1] && <span>{subTitle[1]}</span>}
-            <span>
+            {sourceLink&&<span>
               <a href="" target="_blank" rel="noopener noreferrer">
                 Contract source code
               </a>
-            </span>
+            </span>}
           </div>
           <RowItemButton color="#d16c00" font-size="16">
             {showButton ? <div className="select">Select</div> : <NavLink className="select" to={`/menu/22`}>Select</NavLink>}
