@@ -1,8 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { FlexCenter } from '../../components/Column'
-
 export const BodyWrapper = styled.div`
   padding: 24px;
   border: 1px solid #efc6ed;
@@ -96,12 +96,14 @@ export default function ItemWrap({
   children,
   itemLogo,
   title = '',
-  subTitle = []
+  subTitle = [],
+  showButton
 }: {
   children?: React.ReactNode
   itemLogo?: string
   title?: string
   subTitle: Array<string>
+  showButton?: boolean
 }) {
   return (
     <BodyWrapper>
@@ -119,7 +121,7 @@ export default function ItemWrap({
             </span>
           </div>
           <RowItemButton color="#d16c00" font-size="16">
-            <div className="select">Select</div>
+            {showButton ? <div className="select">Select</div> : <NavLink className="select" to={`/menu/22`}>Select</NavLink>}
           </RowItemButton>
           {children}
         </FlexCenter>
