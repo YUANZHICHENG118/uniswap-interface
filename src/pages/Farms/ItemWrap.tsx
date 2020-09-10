@@ -9,13 +9,29 @@ export const BodyWrapper = styled.div`
   box-shadow: inset 1px 1px 0 #e7d7ea;
   position: relative;
   margin-bottom: 30px;
-  width:100%;
+  width: 100%;
 `
 const RowItemBox = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 0%;
   padding: 16px;
+  .apy {
+    text-align: left;
+    margin-top: 20px;
+    line-height: 35px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #444;
+    background-color: #fff;
+    border-radius: 10px;
+    width:100%;
+    span {
+      float: right;
+      color: #444;
+    }
+  }
   .cardNote {
     margin-bottom: 38px;
     margin-top: 8px;
@@ -32,27 +48,27 @@ const RowItemBox = styled.div`
     span {
       font-size: 16px;
       color: #80495d;
-      line-height:25px;
+      line-height: 25px;
     }
   }
 `
 
 const RowItemLogo = styled.div`
-    background-color: #f0e7ea;
-    font-size: 36px;
-    height: 80px;
-    width: 80px;
-    border-radius: 40px;
-    box-shadow: inset 4px 4px 8px #efc6ed, inset -6px -6px 12px #e7d7ea;
-    margin: 0 auto;
-    padding: 5px;
-    font-style: normal;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    img{
-    width:100%;
-    }
+  background-color: #f0e7ea;
+  font-size: 36px;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  box-shadow: inset 4px 4px 8px #efc6ed, inset -6px -6px 12px #e7d7ea;
+  margin: 0 auto;
+  padding: 5px;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+  }
 `
 const RowItemTitle = styled.h2`
   margin-top: 24px;
@@ -67,9 +83,9 @@ const RowItemTitle = styled.h2`
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
-export default function ItemWrap(props:any) {
-  let childrens = Array.isArray(props.children) ? props.children : [props.children];
-  const slots = childrens.reduce((slots:any,item:any)=>{
+export default function ItemWrap(props: any) {
+  let childrens = Array.isArray(props.children) ? props.children : [props.children]
+  const slots = childrens.reduce((slots: any, item: any) => {
     slots[item.props.slot] = item
     return slots
   }, {})
@@ -82,11 +98,17 @@ export default function ItemWrap(props:any) {
           <div className="cardNote">
             <span>{props.subTitle[0]}</span>
             {props.subTitle[1] && <span>{props.subTitle[1]}</span>}
-            {props.sourceLink&&<span>
-              <a href="" target="_blank" rel="noopener noreferrer">  Contract source code </a>
-            </span>}
+            {props.sourceLink && (
+              <span>
+                <a href="" target="_blank" rel="noopener noreferrer">
+                  {' '}
+                  Contract source code{' '}
+                </a>
+              </span>
+            )}
           </div>
           {slots['button']}
+          {slots['APY']}
         </FlexCenter>
       </RowItemBox>
     </BodyWrapper>

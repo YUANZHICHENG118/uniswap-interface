@@ -64,6 +64,7 @@ export default function Menu() {
                     <RowItemButton slot='button' to={`/Farms/22`}>
                       <div className="select" >Select</div>
                     </RowItemButton>
+                    <div className="apy" slot='APY'>APY<span>infinity%</span></div>
                   </ItemWrap>
                 </Col>
               })
