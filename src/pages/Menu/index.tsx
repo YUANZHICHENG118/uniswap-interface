@@ -38,7 +38,7 @@ export default function Menu() {
       />
       <MenuBody>
         <RowBox>
-          <RowItem>
+          <RowItem className='ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-8'>
             <ItemWrap itemLogo='🍣' title='USDJ' subTitle={['Deposit USDJ','Earn Dragon']} ></ItemWrap>
           </RowItem>
         </RowBox>

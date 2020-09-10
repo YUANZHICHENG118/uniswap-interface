@@ -23,14 +23,14 @@ import Swap from './Swap'
 import Detail from './Menu/detail'
 import Menu from './Menu'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
-
+import './app.css'
 const AppWrapper = styled.div`
     background-color: #f0e7ea;
     font-family: Nunito,sans-serif;
     font-weight: 400!important;
     color: #aa8592;
     padding: 0 100px;
-    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    ${({ theme }) => theme.mediaWidth.upToLarge`
     padding: 0 20px;
   `};
 `
