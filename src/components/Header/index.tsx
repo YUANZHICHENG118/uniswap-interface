@@ -16,39 +16,44 @@ import { YellowCard } from '../Card'
 import Settings from '../Settings'
 import Menu from '../Menu'
 
-import Row from '../Row'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
 
 const HeaderFrame = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 100%;
-  z-index: 2;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    padding: 12px 0 0 0;
-    width: calc(100%);
+  width:100%;
+  .header {
+    padding: 20px 0;
     position: relative;
-  `};
-  .myWallet {
-    display: inline-block;
-    position: absolute;
-    top: 25px;
-    right: 150px;
-    margin-bottom: 0;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 0 16px;
-    line-height: 36px;
-    height: 36px;
-    border-radius: 12px;
-    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
-    span{
-     color: ${({ theme }) =>theme.highLignt};
+    .myWallet {
+      display: inline-block;
+      position: absolute;
+      top: 25px;
+      right: 150px;
+      margin-bottom: 0;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 0 16px;
+      line-height: 36px;
+      height: 36px;
+      border-radius: 12px;
+      box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
+      span {
+        color: ${({ theme }) => theme.highLignt};
+      }
     }
-}
+    ${({ theme }) => theme.mediaWidth.upToMiddle`
+    padding: 10px 0;
+    height: 62px;
+    .myWallet {
+    top: 13px;
+    right: 90px;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    border-radius: 10px;
+    }
+  `};
+  }
 `
 
 const HeaderElement = styled.div`
@@ -82,24 +87,38 @@ const HeaderElementWrap = styled.div`
     margin-top: 0.5rem;
 `};
 `
-const Headertabs=styled.div`
-    display: inline-block;
-    margin-left: 40px;
-    a{
+const Headertabs = styled.div`
+  display: inline-block;
+  margin-left: 40px;
+  a {
     display: inline-block;
     padding: 0 20px;
     font-size: 16px;
     font-weight: 700;
     text-align: left;
+    :hover{
+    background-color: #f1dae1;
+    cursor: pointer;
+    opacity: .9;
+    color: #aa8592;
     }
-    a.active{
-    color: ${({ theme }) =>theme.highLignt};
+  }
+  a.active {
+    color: ${({ theme }) => theme.highLignt};
+  }
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+    margin: 10px -20px;
+    display: block;
+    text-align:center;
+    a{
+    padding: 5px 10px;
+    font-size: 14px;
     }
+  `}
 `
 
 const Title = styled.a`
-  display: flex;
-  align-items: center;
+  display:inline-block;
   pointer-events: auto;
   img {
     width: 50px;
@@ -113,6 +132,14 @@ const Title = styled.a`
   :hover {
     cursor: pointer;
   }
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+  img {
+    width: 40px;
+  }
+  span {
+    font-size: 14px;
+  }
+ `}
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
@@ -187,7 +214,7 @@ export default function Header() {
 
   return (
     <HeaderFrame>
-      <Row padding="20px 0">
+      <div className="header">
         <Title href=".">
           <img src={isDark ? LogoDark : Logo} alt="logo" />
           <span>Dragon Ball</span>
@@ -198,7 +225,9 @@ export default function Header() {
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
-        <div className="myWallet clickableButton"><span>My Wallet</span></div>
+        <div className="myWallet clickableButton">
+          <span>My Wallet</span>
+        </div>
         {/*先隐藏*/}
         <HeaderControls style={{ display: 'none' }}>
           <HeaderElement>
@@ -220,7 +249,7 @@ export default function Header() {
             <Menu />
           </HeaderElementWrap>
         </HeaderControls>
-      </Row>
+      </div>
     </HeaderFrame>
   )
 }
