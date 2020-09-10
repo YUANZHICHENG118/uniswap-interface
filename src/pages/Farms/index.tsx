@@ -16,7 +16,7 @@ const RowBox = styled.div`
   margin-bottom: 24px;
   flex-flow: row wrap;
 `
-const RowItemButton = styled.a`
+const RowItemButton = styled(NavLink)`
   width: 100%;
   .select {
     height: 56px;
@@ -61,8 +61,8 @@ export default function Menu() {
                     subTitle={['Deposit USDJ','Earn Dragon']}
                     sourceLink='111'
                   >
-                    <RowItemButton slot='button'>
-                      <NavLink className="select" to={`/Farms/22`}>Select</NavLink>
+                    <RowItemButton slot='button' to={`/Farms/22`}>
+                      <div className="select" >Select</div>
                     </RowItemButton>
                   </ItemWrap>
                 </Col>
