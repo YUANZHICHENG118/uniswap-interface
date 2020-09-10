@@ -23,6 +23,7 @@ import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redir
 import Swap from './Swap'
 import Detail from './Menu/detail'
 import Menu from './Menu'
+import Home from './Home'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import './app.css'
 const AppWrapper = styled.div`
@@ -70,6 +71,7 @@ export default function App() {
             <Popups />
             <Web3ReactManager>
               <Switch>
+                <Route exact strict path="/" component={Home} />
                 <Route exact strict path="/swap" component={Swap} />
                 <Route exact strict path="/Menu" component={Menu} />
                 <Route exact strict path="/Menu/:outputCurrency" component={Detail}/>

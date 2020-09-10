@@ -201,6 +201,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
 `
 
 export const ThemedGlobalStyle = createGlobalStyle`
