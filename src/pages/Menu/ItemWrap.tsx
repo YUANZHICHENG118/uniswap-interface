@@ -21,7 +21,6 @@ const RowItemBox = styled.div`
     margin-top: 8px;
     text-align: center;
     color: #80495d;
-    height: 66px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -33,6 +32,7 @@ const RowItemBox = styled.div`
     span {
       font-size: 16px;
       color: #80495d;
+      line-height:25px;
     }
   }
 `
