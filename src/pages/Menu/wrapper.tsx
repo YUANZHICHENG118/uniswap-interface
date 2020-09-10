@@ -7,6 +7,9 @@ export const BodyWrapper = styled.div`
   width:100%;
   min-height: calc(100vh - 144px);
   padding: 30px;
+   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+   padding: 30px 0;
+  `};
 `
 
 /**

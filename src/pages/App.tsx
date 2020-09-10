@@ -25,12 +25,15 @@ import Menu from './Menu'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 
 const AppWrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  overflow-x: hidden;
+    background-color: #f0e7ea;
+    font-family: Nunito,sans-serif;
+    font-weight: 400!important;
+    color: #aa8592;
+    padding: 0 100px;
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    padding: 0 20px;
+  `};
 `
-
 const HeaderWrapper = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   width: 100%;
@@ -46,12 +49,6 @@ const BodyWrapper = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 10;
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-      padding: 16px;
-  `};
-
-  z-index: 1;
 `
 
 const Marginer = styled.div`

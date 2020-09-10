@@ -21,14 +21,13 @@ const RowItem = styled.div`
   padding-left: 16px;
   padding-right: 16px;
   position: relative;
-  @media (min-width: 768px)
-  {
-    display: block;
-    box-sizing: border-box;
-    width: 33.33333333%;
-}
-  
+  width: 33.33333333%;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+   padding: 0;
+   width:100%
+  `};
 `
+
 export default function Menu() {
   return (
     <MenuWrap>

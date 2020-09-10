@@ -6,9 +6,10 @@ const MenuTopBox = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding-bottom: 48px;
-  padding-top: 48px;
-  margin: 0px auto;
+  margin: 0px auto 50px;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+  margin: 0px auto 30px;
+  `};
   h1 {
     font-family: 'Kaushan Script', sans-serif;
     color: rgb(91, 57, 38);

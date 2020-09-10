@@ -10,6 +10,7 @@ export const BodyWrapper = styled.div`
   box-shadow: inset 1px 1px 0 #e7d7ea;
   position: relative;
   margin-bottom: 30px;
+  width:100%;
 `
 const RowItemBox = styled.div`
   display: flex;
