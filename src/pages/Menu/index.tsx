@@ -2,15 +2,14 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import titleImg from '../../assets/images/chef.png'
+import titleImg from '../../assets/images/farm/logo.png'
 
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
 
 const MenuBody = styled.div`
-  width: 900px;
-  margin: 0 auto;
+  width: 100%;
 `
 const RowBox = styled.div`
   display: flex;
@@ -19,45 +18,29 @@ const RowBox = styled.div`
 `
 const RowItem = styled.div`
   display: flex;
-  width: 30%;
+  padding-left: 16px;
+  padding-right: 16px;
   position: relative;
-`
-
-const RowItemBottom = styled.div`
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  color: rgb(170, 149, 132);
-  width: 100%;
-  margin-top: 12px;
-  line-height: 32px;
-  font-size: 13px;
-  text-align: center;
-  border-radius: 8px;
-  background: rgb(255, 253, 250);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(230, 220, 213);
-  border-image: initial;
-  padding: 0px 12px;
+  @media (min-width: 768px)
+  {
+    display: block;
+    box-sizing: border-box;
+    width: 33.33333333%;
+}
+  
 `
 export default function Menu() {
   return (
     <MenuWrap>
       <MenuTop
         imgUrl={titleImg}
-        h1Text={'Select Your Favorite Dishes'}
-        h3Text={'Earn SUSHI tokens by staking Uniswap V2 LP Tokens.'}
+        h1Text={'Select a farm.'}
+        h3Text={'Earn Dragon tokens by providing liquidity.'}
       />
       <MenuBody>
         <RowBox>
           <RowItem>
-            <ItemWrap itemLogo='🍣' title='Sushi Party!' subTitle={['Deposit SUSHI-ETH UNI-V2 LP','Earn SUSHI']} >
-              <RowItemBottom>
-                <span>APY</span>
-                <span>914.87%</span>
-              </RowItemBottom>
-            </ItemWrap>
+            <ItemWrap itemLogo='🍣' title='USDJ' subTitle={['Deposit USDJ','Earn Dragon']} ></ItemWrap>
           </RowItem>
         </RowBox>
       </MenuBody>

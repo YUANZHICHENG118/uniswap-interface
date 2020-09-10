@@ -1,87 +1,91 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import {FlexCenter} from '../../components/Column'
+import { FlexCenter } from '../../components/Column'
 
 export const BodyWrapper = styled.div`
-    box-shadow: rgb(247, 244, 242) 1px 1px 0px inset;
-    display: flex;
-    flex-direction: column;
-    background: rgb(240, 233, 231);
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(226, 214, 207);
-    border-image: initial;
-    border-radius: 12px;
-    flex: 1 1 0%;
+  padding: 24px;
+  border: 1px solid #efc6ed;
+  border-radius: 12px;
+  box-shadow: inset 1px 1px 0 #e7d7ea;
+  position: relative;
+  margin-bottom: 30px;
 `
 const RowItemBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  padding: 16px;
+  .cardNote {
+    margin-bottom: 38px;
+    margin-top: 8px;
+    text-align: center;
+    color: #80495d;
+    height: 66px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    flex: 1 1 0%;
-    padding: 16px;
+    a {
+      text-decoration: underline;
+      font-size: 16px;
+      color: #aa8592;
+    }
+    span {
+      font-size: 16px;
+      color: #80495d;
+    }
+  }
 `
 
 const RowItemLogo = styled.div`
-  background-color: rgb(240, 233, 231);
-  font-size: 36px;
-  height: 80px;
-  width: 80px;
-  -webkit-box-align: center;
-  align-items: center;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  box-shadow: rgb(226, 214, 207) 4px 4px 8px inset, rgb(247, 244, 242) -6px -6px 12px inset;
-  border-radius: 40px;
-  margin: 0px auto 16px;
-`
-const RowItemTitle = styled.h4`
-  color: rgb(91, 57, 38);
-  font-size: 24px;
-  font-weight: 700;
-  margin: 8px 0px 0px;
-  padding: 0px;
-`
-const RowItemSubTitle = styled.div`
-  margin-top: 8px;
-  text-align: center;
-  .kdcQzs {
-    color: rgb(128, 94, 73);
-  }
-`
-const RowItemButton = styled.div`
-  align-items: center;
-  background-color: rgb(240, 233, 231);
-  box-shadow: rgb(226, 214, 207) 6px 6px 12px, rgb(247, 244, 242) -12px -12px 24px -2px;
-  color: rgb(209, 108, 0);
-  cursor: pointer;
-  display: flex;
-  font-size: 16px;
-  font-weight: 700;
-  height: 56px;
-  justify-content: center;
-  padding-left: 24px;
-  padding-right: 24px;
-  width: 100%;
-  border-width: 0px;
-  border-style: initial;
-  border-color: initial;
-  border-image: initial;
-  border-radius: 12px;
-  outline: none;
-  margin-top: 24px;
-
-  a {
-    align-items: center;
-    color: inherit;
-    display: flex;
-    height: 56px;
+    background-color: #f0e7ea;
+    font-size: 36px;
+    height: 80px;
+    width: 80px;
+    border-radius: 40px;
+    box-shadow: inset 4px 4px 8px #efc6ed, inset -6px -6px 12px #e7d7ea;
+    margin: 0 auto;
+    padding: 5px;
+    font-style: normal;
+    display:flex;
     justify-content: center;
-    flex: 1 1 0%;
-    margin: 0px -24px;
-    padding: 0px 24px;
-    text-decoration: none;
+    align-items: center;
+    img{
+    width:100%;
+    }
+`
+const RowItemTitle = styled.h2`
+  margin-top: 24px;
+  text-align: center;
+  color: #5b2639;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  display: block;
+  word-break: break-all;
+`
+const RowItemButton = styled.a`
+  width: 100%;
+  .select {
+    height: 56px;
+    font-size: 16px;
+    align-items: center;
+    background-color: #f0e7ea;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
+    cursor: pointer;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    outline: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    color: #d100c9;
+    :hover {
+      background-color: #f1dae1;
+    }
   }
 `
 /**
@@ -90,28 +94,35 @@ const RowItemButton = styled.div`
 export default function ItemWrap({
   children,
   itemLogo,
-  title='',
-  subTitle=[]
+  title = '',
+  subTitle = []
 }: {
   children?: React.ReactNode
   itemLogo?: string
-  title?:string
-  subTitle:Array<string>
+  title?: string
+  subTitle: Array<string>
 }) {
-  return <BodyWrapper>
-    <RowItemBox>
-      <FlexCenter>
-        <RowItemLogo>{itemLogo}</RowItemLogo>
-        <RowItemTitle>{title}</RowItemTitle>
-        <RowItemSubTitle>
-          <div className="kdcQzs">{subTitle[0]}</div>
-          {subTitle[1]&&<div className="kdcQzs">{subTitle[1]}</div>}
-        </RowItemSubTitle>
-        <RowItemButton color="#d16c00" font-size="16">
-          <a href="#">Select</a>
-        </RowItemButton>
-        {children}
-      </FlexCenter>
-    </RowItemBox>
+  return (
+    <BodyWrapper>
+      <RowItemBox>
+        <FlexCenter>
+          <RowItemLogo>{itemLogo}</RowItemLogo>
+          <RowItemTitle>{title}</RowItemTitle>
+          <div className="cardNote">
+            <span>{subTitle[0]}</span>
+            {subTitle[1] && <span>{subTitle[1]}</span>}
+            <span>
+              <a href="" target="_blank" rel="noopener noreferrer">
+                Contract source code
+              </a>
+            </span>
+          </div>
+          <RowItemButton color="#d16c00" font-size="16">
+            <div className="select">Select</div>
+          </RowItemButton>
+          {children}
+        </FlexCenter>
+      </RowItemBox>
     </BodyWrapper>
+  )
 }

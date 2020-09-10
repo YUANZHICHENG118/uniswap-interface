@@ -5,6 +5,8 @@ export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width:100%;
+  min-height: calc(100vh - 144px);
+  padding: 30px;
 `
 
 /**

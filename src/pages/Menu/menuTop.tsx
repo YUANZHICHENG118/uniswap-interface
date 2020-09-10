@@ -33,11 +33,8 @@ const MenuTopImgWrap = styled.div`
   text-align: center;
   width: 120px;
 `
-export const BodyWrapper = styled.div.attrs({
-  width: 600
-})`
+export const BodyWrapper = styled.div`
   box-sizing: border-box;
-  max-width: 600px;
   width: 100%;
   margin: 0px auto;
   padding: 0px 24px;
