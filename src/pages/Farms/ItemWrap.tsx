@@ -16,6 +16,14 @@ const RowItemBox = styled.div`
   flex-direction: column;
   flex: 1 1 0%;
   padding: 16px;
+  .v2tag {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    background-color: #efc6ed;
+    padding: 0 5px;
+    font-size: 16px;
+  }
   .apy {
     text-align: left;
     margin-top: 20px;
@@ -26,7 +34,7 @@ const RowItemBox = styled.div`
     color: #444;
     background-color: #fff;
     border-radius: 10px;
-    width:100%;
+    width: 100%;
     span {
       float: right;
       color: #444;
@@ -93,6 +101,7 @@ export default function ItemWrap(props: any) {
     <BodyWrapper>
       <RowItemBox>
         <FlexCenter>
+          {slots['tag']}
           <RowItemLogo>{props.itemLogo}</RowItemLogo>
           <RowItemTitle>{props.title}</RowItemTitle>
           <div className="cardNote">

@@ -61,9 +61,10 @@ export default function Menu() {
                     subTitle={['Deposit USDJ','Earn Dragon']}
                     sourceLink='111'
                   >
+                    <div className="v2tag" slot='tag'>Pool v2</div>
                     <RowItemButton slot='button' to={`/Farms/22`}>
                       <div className="select" >Select</div>
-                    </RowItemButton>
+                   </RowItemButton>
                     <div className="apy" slot='APY'>APY<span>infinity%</span></div>
                   </ItemWrap>
                 </Col>
