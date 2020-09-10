@@ -10,7 +10,7 @@ export const BodyWrapper = styled.div`
     border: 1px solid #efc6ed;
     border-radius: 12px;
     box-shadow: inset 1px 1px 0 #e7d7ea;
-    ${({ theme }) => theme.mediaWidth.upToMiddle`
+    ${({ theme }) => theme.mediaWidth.upToSmall`
     margin: 5px 0px;
    `}
     img {

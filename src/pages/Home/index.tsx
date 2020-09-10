@@ -10,7 +10,7 @@ export const BodyWrapper = styled.div`
   .greating {
     margin-bottom: 50px;
     text-align:center 
-    ${({ theme }) => theme.mediaWidth.upToMiddle`
+    ${({ theme }) => theme.mediaWidth.upToSmall`
     margin-bottom: 30px;
     img{
     width: 100px;

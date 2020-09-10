@@ -4,7 +4,7 @@ import { Row, Col } from 'antd'
 import usdjImg from '../../assets/images/home/usdj.png'
 export const BodyWrapper = styled.div`
   margin: 50px 0;
-  ${({ theme }) => theme.mediaWidth.upToMiddle`
+  ${({ theme }) => theme.mediaWidth.upToSmall`
     margin: 20px 0px;
     .statsCard{
     margin-bottom: 20px;
