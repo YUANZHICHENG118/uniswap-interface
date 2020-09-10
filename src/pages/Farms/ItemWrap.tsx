@@ -123,7 +123,7 @@ export default function ItemWrap({
             </span>}
           </div>
           <RowItemButton color="#d16c00" font-size="16">
-            {showButton ? <div className="select">Select</div> : <NavLink className="select" to={`/menu/22`}>Select</NavLink>}
+            {showButton ? <div className="select">Select</div> : <NavLink className="select" to={`/Farms/22`}>Select</NavLink>}
           </RowItemButton>
           {children}
         </FlexCenter>
