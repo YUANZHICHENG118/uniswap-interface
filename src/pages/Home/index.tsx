@@ -10,6 +10,19 @@ export const BodyWrapper = styled.div`
   .greating {
     margin-bottom: 50px;
     text-align:center 
+    ${({ theme }) => theme.mediaWidth.upToMiddle`
+    margin-bottom: 30px;
+    img{
+    width: 100px;
+    }
+    h1{
+    font-size: 30px;
+    line-height: 35px;
+    }
+    h3 {
+    font-size: 16px;
+    }
+  `}
     h1 {
       font-size: 36px;
       font-weight: 700;

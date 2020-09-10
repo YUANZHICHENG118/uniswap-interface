@@ -4,6 +4,12 @@ import { Row, Col } from 'antd'
 import usdjImg from '../../assets/images/home/usdj.png'
 export const BodyWrapper = styled.div`
   margin: 50px 0;
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+    margin: 20px 0px;
+    .statsCard{
+    margin-bottom: 20px;
+    }
+  `}
   .statsCard {
     padding: 14px 24px 24px;
     border: 1px solid #efc6ed;
