@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { FlexCenter } from '../../components/Column'
@@ -65,67 +64,29 @@ const RowItemTitle = styled.h2`
   display: block;
   word-break: break-all;
 `
-const RowItemButton = styled.a`
-  width: 100%;
-  .select {
-    height: 56px;
-    font-size: 16px;
-    align-items: center;
-    background-color: #f0e7ea;
-    border: 0;
-    border-radius: 12px;
-    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
-    cursor: pointer;
-    display: flex;
-    font-weight: 700;
-    justify-content: center;
-    outline: none;
-    padding-left: 16px;
-    padding-right: 16px;
-    width: 100%;
-    color: #d100c9;
-    :hover {
-      background-color: #f1dae1;
-    }
-  }
-`
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
-export default function ItemWrap({
-  children,
-  itemLogo,
-  title = '',
-  sourceLink = '',
-  subTitle = [],
-  showButton
-}: {
-  children?: React.ReactNode
-  itemLogo?: string
-  title?: string
-  sourceLink?: string
-  subTitle: Array<string>
-  showButton?: boolean
-}) {
+export default function ItemWrap(props:any) {
+  let childrens = Array.isArray(props.children) ? props.children : [props.children];
+  const slots = childrens.reduce((slots:any,item:any)=>{
+    slots[item.props.slot] = item
+    return slots
+  }, {})
   return (
     <BodyWrapper>
       <RowItemBox>
         <FlexCenter>
-          <RowItemLogo>{itemLogo}</RowItemLogo>
-          <RowItemTitle>{title}</RowItemTitle>
+          <RowItemLogo>{props.itemLogo}</RowItemLogo>
+          <RowItemTitle>{props.title}</RowItemTitle>
           <div className="cardNote">
-            <span>{subTitle[0]}</span>
-            {subTitle[1] && <span>{subTitle[1]}</span>}
-            {sourceLink&&<span>
-              <a href="" target="_blank" rel="noopener noreferrer">
-                Contract source code
-              </a>
+            <span>{props.subTitle[0]}</span>
+            {props.subTitle[1] && <span>{props.subTitle[1]}</span>}
+            {props.sourceLink&&<span>
+              <a href="" target="_blank" rel="noopener noreferrer">  Contract source code </a>
             </span>}
           </div>
-          <RowItemButton color="#d16c00" font-size="16">
-            {showButton ? <div className="select">Select</div> : <NavLink className="select" to={`/Farms/22`}>Select</NavLink>}
-          </RowItemButton>
-          {children}
+          {slots['button']}
         </FlexCenter>
       </RowItemBox>
     </BodyWrapper>

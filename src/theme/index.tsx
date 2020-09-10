@@ -206,6 +206,10 @@ img {
     vertical-align: middle;
     border-style: none;
 }
+.clickableButton {
+    user-select: none;
+    text-transform: capitalize;
+}
 
 `
 

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Row, Col } from 'antd';
 import titleImg from '../../assets/images/farm/logo.png'
@@ -16,7 +16,30 @@ const RowBox = styled.div`
   margin-bottom: 24px;
   flex-flow: row wrap;
 `
-
+const RowItemButton = styled.a`
+  width: 100%;
+  .select {
+    height: 56px;
+    font-size: 16px;
+    align-items: center;
+    background-color: #f0e7ea;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
+    cursor: pointer;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    outline: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    color: #d100c9;
+    :hover {
+      background-color: #f1dae1;
+    }
+  }
+`
 
 export default function Menu() {
   return (
@@ -37,7 +60,11 @@ export default function Menu() {
                     title='USDJ'
                     subTitle={['Deposit USDJ','Earn Dragon']}
                     sourceLink='111'
-                  ></ItemWrap>
+                  >
+                    <RowItemButton>
+                     <NavLink className="select" to={`/Farms/22`}>Select</NavLink>
+                    </RowItemButton>
+                  </ItemWrap>
                 </Col>
               })
             }
