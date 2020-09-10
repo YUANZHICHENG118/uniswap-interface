@@ -21,8 +21,8 @@ import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
-import Detail from './Menu/detail'
-import Menu from './Menu'
+import Detail from './Farms/detail'
+import Farms from './Farms'
 import Home from './Home'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import './app.css'
@@ -73,8 +73,8 @@ export default function App() {
               <Switch>
                 <Route exact strict path="/" component={Home} />
                 <Route exact strict path="/swap" component={Swap} />
-                <Route exact strict path="/Menu" component={Menu} />
-                <Route exact strict path="/Menu/:outputCurrency" component={Detail}/>
+                <Route exact strict path="/Farms" component={Farms} />
+                <Route exact strict path="/Farms/:outputCurrency" component={Detail}/>
                 <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
                 <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
                 <Route exact strict path="/find" component={PoolFinder} />
