@@ -69,7 +69,7 @@ export default function menuTop({
           {imgUrl ? <img src={imgUrl} alt="" height="120" /> : <TextLogo>{textLogo}</TextLogo>}
         </MenuTopImgWrap>
         <h1>{h1Text}</h1>
-        <h3>{h3Text}</h3>
+        {h3Text && <h3>{h3Text}</h3>}
       </MenuTopBox>
     </BodyWrapper>
   )

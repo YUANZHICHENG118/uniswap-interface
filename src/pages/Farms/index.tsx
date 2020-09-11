@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { Row, Col } from 'antd';
+import { Row, Col } from 'antd'
 import titleImg from '../../assets/images/farm/logo.png'
 
 import MenuWrap from './wrapper'
@@ -34,7 +34,7 @@ const RowItemButton = styled(NavLink)`
     padding-left: 16px;
     padding-right: 16px;
     width: 100%;
-    color: ${({ theme }) =>theme.highLignt};
+    color: ${({ theme }) => theme.highLignt};
     :hover {
       background-color: #f1dae1;
     }
@@ -44,33 +44,27 @@ const RowItemButton = styled(NavLink)`
 export default function Menu() {
   return (
     <MenuWrap>
-      <MenuTop
-        imgUrl={titleImg}
-        h1Text={'Select a farm.'}
-        h3Text={'Earn Dragon tokens by providing liquidity.'}
-      />
+      <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={'Earn Dragon tokens by providing liquidity.'} />
       <MenuBody>
         <RowBox>
-          <Row gutter={{sm: 16, md: 32}} justify='center' align='middle' style={{width:'100%'}}>
-            {
-              [1,1,1,1,1].map((item,index)=>{
-                return <Col  xs={24} sm={24} md={8} key={index}>
-                  <ItemWrap
-                    itemLogo='🍣'
-                    title='USDJ'
-                    subTitle={['Deposit USDJ','Earn Dragon']}
-                    sourceLink='111'
-                  >
-                    <div className="v2tag" slot='tag'>Pool v2</div>
-                    <RowItemButton slot='button' to={`/Farms/22`}>
-                      <div className="select" >Select</div>
-                   </RowItemButton>
-                    <div className="apy" slot='APY'>APY<span>infinity%</span></div>
+          <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>
+            {[1, 1, 1, 1, 1].map((item, index) => {
+              return (
+                <Col xs={24} sm={24} md={8} key={index}>
+                  <ItemWrap itemLogo="🍣" title="USDJ" subTitle={['Deposit USDJ', 'Earn Dragon']} sourceLink="111">
+                    <div className="v2tag" slot="tag">
+                      Pool v2
+                    </div>
+                    <RowItemButton slot="button" to={`/Farms/22`}>
+                      <div className="select">Select</div>
+                    </RowItemButton>
+                    <div className="apy" slot="APY">
+                      APY<span>infinity%</span>
+                    </div>
                   </ItemWrap>
                 </Col>
-              })
-            }
-
+              )
+            })}
           </Row>
         </RowBox>
       </MenuBody>
