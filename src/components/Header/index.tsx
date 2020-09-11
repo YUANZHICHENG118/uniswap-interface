@@ -1,31 +1,51 @@
 import { ChainId } from '@uniswap/sdk'
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
+//组件
 import { Text } from 'rebass'
+import { Modal, Dropdown, Menu } from 'antd'
+import Settings from '../Settings'
+import MenuList from '../Menu'
 
+// 样式
 import styled from 'styled-components'
+import { YellowCard } from '../Card'
 
+//图片
 import Logo from '../../assets/images/farm/logo.png'
 import Ball from '../../assets/images/home/ball.png'
+import EnLangImg from '../../assets/images/lang/en.png'
+import KoLangImg from '../../assets/images/lang/ko.png'
+import ZhLangImg from '../../assets/images/lang/zh.png'
 
-import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
-import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-
-import { YellowCard } from '../Card'
-import Settings from '../Settings'
-import Menu from '../Menu'
 
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
-import { Modal } from 'antd'
+
 const HeaderFrame = styled.div`
   width: 100%;
   .header {
     padding: 20px 0;
     position: relative;
+    .flag {
+      display: inline-block;
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 36px;
+      margin-bottom: 0;
+      color: #aa8592;
+      cursor: pointer;
+      .anticon {
+        font-size: 12px;
+        margin-left: 5px;
+      }
+    }
     .myWallet {
       display: inline-block;
       position: absolute;
@@ -44,15 +64,19 @@ const HeaderFrame = styled.div`
       }
     }
     ${({ theme }) => theme.mediaWidth.upToMiddle`
-    padding: 10px 0;
-    height: 62px;
+      padding: 10px 0;
+      height: 62px;
     .myWallet {
-    top: 13px;
-    right: 90px;
-    font-size: 14px;
-    line-height: 30px;
-    height: 30px;
-    border-radius: 10px;
+      top: 13px;
+      right: 90px;
+      font-size: 14px;
+      line-height: 30px;
+      height: 30px;
+      border-radius: 10px;
+    }
+    .flag {
+      top: 10px;
+      right: 0;
     }
   `};
   }
@@ -189,7 +213,7 @@ const BalanceText = styled(Text)`
   `};
 `
 const WalletBox = styled.div`
-  text-align:center; 
+  text-align: center;
   h2 {
     text-align: center;
     color: #5b2639;
@@ -253,7 +277,6 @@ export default function Header() {
   const { account, chainId } = useActiveWeb3React()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const [isDark] = useDarkModeManager()
 
   // const TronWeb = require('tronweb')
   // const HttpProvider = TronWeb.providers.HttpProvider;
@@ -264,13 +287,25 @@ export default function Header() {
   // const tronWeb = new TronWeb(fullNode,solidityNode,eventServer,privateKey);
 
   // const tronWeb = window.tronWeb;
-  //
-  const [modalOpen, setModalOpen] = useState(false);
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <span><img src={EnLangImg} alt="EnLangImg" width='25px' />&nbsp;EN</span>
+      </Menu.Item>
+      <Menu.Item>
+        <span><img src={ZhLangImg} alt="ZhLangImg" width='25px'/>&nbsp;CN</span>
+      </Menu.Item>
+      <Menu.Item>
+        <span><img src={KoLangImg} alt="KoLangImg" width='25px'/>&nbsp;KO</span>
+      </Menu.Item>
+    </Menu>
+  )
+  const [modalOpen, setModalOpen] = useState(false)
   return (
     <HeaderFrame>
       <div className="header">
         <Title href=".">
-          <img src={isDark ? LogoDark : Logo} alt="logo" />
+          <img src={Logo} alt="logo" />
           <span>Dragon Ball</span>
         </Title>
         <Headertabs>
@@ -279,9 +314,30 @@ export default function Header() {
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
-        <div className="myWallet clickableButton"  onClick={() =>setModalOpen(true)}>
+        <div className="myWallet clickableButton" onClick={() => setModalOpen(true)}>
           <span>My Wallet</span>
         </div>
+        {/*语言*/}
+        <Dropdown overlay={menu} className="flag">
+          <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+            <img src={EnLangImg} alt="" width="30px" />
+            &nbsp; EN
+            <span className="anticon">
+              <svg
+                viewBox="64 64 896 896"
+                focusable="false"
+                className=""
+                data-icon="down"
+                width="1em"
+                height="1em"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+              </svg>
+            </span>
+          </span>
+        </Dropdown>
         {/*先隐藏*/}
         <HeaderControls style={{ display: 'none' }}>
           <HeaderElement>
@@ -300,22 +356,21 @@ export default function Header() {
           <HeaderElementWrap>
             <VersionSwitch />
             <Settings />
-            <Menu />
+            <MenuList />
           </HeaderElementWrap>
         </HeaderControls>
       </div>
       {
-        <Modal visible={modalOpen} footer={null} onCancel={() =>setModalOpen(false)}>
+        <Modal visible={modalOpen} footer={null} onCancel={() => setModalOpen(false)}>
           <WalletBox>
             <h2>My Account</h2>
-            <img src={Ball}  alt="logo" width="80px"/>
+            <img src={Ball} alt="logo" width="80px" />
             <h1>0.000000</h1>
             <p>Dragon Balance</p>
             <div className="cancle clickableButton">Cancel</div>
           </WalletBox>
         </Modal>
       }
-
     </HeaderFrame>
   )
 }
