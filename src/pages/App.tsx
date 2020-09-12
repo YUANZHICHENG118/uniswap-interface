@@ -24,6 +24,7 @@ import Swap from './Swap'
 import Detail from './Farms/detail'
 import Farms from './Farms'
 import Home from './Home'
+import Rules from './rules'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 import './app.css'
 const AppWrapper = styled.div`
@@ -75,6 +76,8 @@ export default function App() {
                 <Route exact strict path="/swap" component={Swap} />
                 <Route exact strict path="/Farms" component={Farms} />
                 <Route exact strict path="/Farms/:outputCurrency" component={Detail}/>
+                {/*Rules*/}
+                <Route exact strict path="/Rules" component={Rules} />
                 <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
                 <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
                 <Route exact strict path="/find" component={PoolFinder} />

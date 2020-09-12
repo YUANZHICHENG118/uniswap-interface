@@ -311,6 +311,7 @@ export default function Header() {
         <Headertabs>
           <StyledNavLink to={'/home'}>home</StyledNavLink>
           <StyledNavLink to={'/Farms'}>Farms</StyledNavLink>
+          <StyledNavLink to={'/Rules'}>Rules</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
