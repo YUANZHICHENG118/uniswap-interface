@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
 import ImgBall from '../../assets/images/home/ball.png'
+import { balanceOf,totalSupply,mainContract } from '../../utils/tron'
 
 export const BodyWrapper = styled.div`
   .dataBox {
@@ -48,6 +49,34 @@ export const BodyWrapper = styled.div`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function DataSet() {
+  const [balance,setBalance]=useState<number>(0.000000);
+  const [supply,setSupply]=useState<number>(0.000000);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      findTotalSupply();
+      findBalance();
+    },1000)
+
+  },[])
+  const findBalance=()=>{
+    balanceOf(mainContract.address).then((data:any)=>{
+      setBalance(data/Math.pow(10,mainContract.decimals));
+    })
+  }
+
+  const findTotalSupply=()=>{
+     totalSupply(mainContract.address).then((data:any)=>{
+       setSupply(data/Math.pow(10,mainContract.decimals));
+     })
+
+   // approve("TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL","TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z")
+
+   //allowance("TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL","TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z")
+
+    //exit('TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z')
+
+  }
   return (
     <BodyWrapper>
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="center" align="middle">
@@ -55,14 +84,14 @@ export default function DataSet() {
           <div className="dataBox">
             <img src={ImgBall} alt="" />
             <div className="ballBalance">
-              <h2>0.000000</h2>
+              <h2>{balance.toFixed(6)}</h2>
               <p>Dragon Ball Balance</p>
             </div>
           </div>
         </Col>
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
-            <h2>10,000</h2>
+            <h2>{supply}</h2>
             <p>Total Supply</p>
           </div>
         </Col>

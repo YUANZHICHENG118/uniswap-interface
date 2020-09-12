@@ -1,12 +1,12 @@
 import React, { Suspense } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
+// import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Popups from '../components/Popups'
-import Web3ReactManager from '../components/Web3ReactManager'
-import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
+ // import TrcWeb3ReactManager from '../components/TrcWeb3ReactManager'
+// import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import AddLiquidity from './AddLiquidity'
 import {
   RedirectDuplicateTokenIds,
@@ -62,20 +62,20 @@ export default function App() {
   return (
     <Suspense fallback={null}>
       <HashRouter>
-        <Route component={GoogleAnalyticsReporter} />
-        <Route component={DarkModeQueryParamReader} />
+        {/*<Route component={GoogleAnalyticsReporter} />*/}
+        {/*<Route component={DarkModeQueryParamReader} />*/}
         <AppWrapper>
           <HeaderWrapper>
             <Header />
           </HeaderWrapper>
           <BodyWrapper>
             <Popups />
-            <Web3ReactManager>
+            {/*<TrcWeb3ReactManager>*/}
               <Switch>
                 <Route exact strict path="/home" component={Home} />
                 <Route exact strict path="/swap" component={Swap} />
                 <Route exact strict path="/Farms" component={Farms} />
-                <Route exact strict path="/Farms/:outputCurrency" component={Detail}/>
+                <Route exact strict path="/Farms/:symbol" component={Detail}/>
                 {/*Rules*/}
                 <Route exact strict path="/Rules" component={Rules} />
                 <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
@@ -93,7 +93,7 @@ export default function App() {
                 <Route exact strict path="/migrate/v1/:address" component={MigrateV1Exchange} />
                 <Route component={RedirectPathToSwapOnly} />
               </Switch>
-            </Web3ReactManager>
+            {/*</TrcWeb3ReactManager>*/}
             <Marginer />
           </BodyWrapper>
           <Footer/>

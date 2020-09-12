@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
@@ -7,6 +7,8 @@ import titleImg from '../../assets/images/farm/logo.png'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
+import { contractList, ITokenInfo } from '../../utils/tron'
+
 
 const MenuBody = styled.div`
   width: 100%;
@@ -42,24 +44,33 @@ const RowItemButton = styled(NavLink)`
 `
 
 export default function Menu() {
+
+
+  useEffect(()=>{
+
+
+  },[])
+
+
+
   return (
     <MenuWrap>
       <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={'Earn Dragon tokens by providing liquidity.'} />
       <MenuBody>
         <RowBox>
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>
-            {[1, 1, 1, 1, 1].map((item, index) => {
+            {contractList().map((item:ITokenInfo, index) => {
               return (
                 <Col xs={24} sm={24} md={8} key={index}>
-                  <ItemWrap itemLogo="🍣" title="USDJ" subTitle={['Deposit USDJ', 'Earn Dragon']} sourceLink="111">
-                    <div className="v2tag" slot="tag">
-                      Pool v2
-                    </div>
-                    <RowItemButton slot="button" to={`/Farms/22`}>
+                  <ItemWrap itemLogo="🍣" title={item.symbol} subTitle={[`Deposit ${item.symbol}`, 'Earn Dragon']} sourceLink="111">
+                    {/*<div className="v2tag" slot="tag">*/}
+                      {/*Pool v2*/}
+                    {/*</div>*/}
+                    <RowItemButton slot="button" to={`/Farms/${item.symbol}`}>
                       <div className="select">Select</div>
                     </RowItemButton>
                     <div className="apy" slot="APY">
-                      APY<span>infinity%</span>
+                      APY<span>{item.apy}%</span>
                     </div>
                   </ItemWrap>
                 </Col>

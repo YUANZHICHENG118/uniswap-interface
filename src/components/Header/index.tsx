@@ -1,5 +1,5 @@
 import { ChainId } from '@uniswap/sdk'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
 //组件
@@ -13,7 +13,7 @@ import styled from 'styled-components'
 import { YellowCard } from '../Card'
 
 //图片
-import Logo from '../../assets/images/farm/logo.png'
+import Logo from '../../assets/images/logo.png'
 import Ball from '../../assets/images/home/ball.png'
 import EnLangImg from '../../assets/images/lang/en.png'
 import KoLangImg from '../../assets/images/lang/ko.png'
@@ -24,6 +24,7 @@ import { useETHBalances } from '../../state/wallet/hooks'
 
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
+import { balanceOf, mainContract } from '../../utils/tron'
 
 const HeaderFrame = styled.div`
   width: 100%;
@@ -275,9 +276,18 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
 
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
+  const [balance,setBalance]=useState<number>(0.000000);
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
 
+  useEffect(()=>{
+    setTimeout(findBalance,500)
+  })
+  const findBalance=()=>{
+    balanceOf(mainContract.address).then((data:any)=>{
+      setBalance(data/Math.pow(10,mainContract.decimals));
+    })
+  }
   // const TronWeb = require('tronweb')
   // const HttpProvider = TronWeb.providers.HttpProvider;
   // const fullNode = new HttpProvider("https://api.trongrid.io");
@@ -306,7 +316,7 @@ export default function Header() {
       <div className="header">
         <Title href=".">
           <img src={Logo} alt="logo" />
-          <span>Dragon Ball</span>
+
         </Title>
         <Headertabs>
           <StyledNavLink to={'/home'}>home</StyledNavLink>
@@ -366,9 +376,9 @@ export default function Header() {
           <WalletBox>
             <h2>My Account</h2>
             <img src={Ball} alt="logo" width="80px" />
-            <h1>0.000000</h1>
-            <p>Dragon Balance</p>
-            <div className="cancle clickableButton">Cancel</div>
+            <h1>{balance.toFixed(6)}</h1>
+            <p>{mainContract.symbol} Balance</p>
+            <div className="cancle clickableButton" onClick={()=>setModalOpen(false)}>Cancel</div>
           </WalletBox>
         </Modal>
       }

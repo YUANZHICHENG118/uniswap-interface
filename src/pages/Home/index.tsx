@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import titleImg from '../../assets/images/farm/logo.png'
 import DataSet from './DataSet'
 import StatsSet from './StatsSet'
+import { mainContract } from '../../utils/tron'
+
 export const BodyWrapper = styled.div`
   padding: 30px 0;
   min-height: calc(100vh - 144px);
@@ -56,9 +58,9 @@ export default function Home() {
           .
         </h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
-          DRAGON Address:
+          {mainContract.symbol} Address:
           <span className="ellipsis" style={{ color: 'rgb(91, 38, 57)' }}>
-            TYLPtEvANesoVWEKKzbDFnfuiKdaRNkpmb
+            {mainContract.address}
           </span>
         </h3>
       </div>
