@@ -29,10 +29,7 @@ const MenuTopBox = styled.div`
 `
 const MenuTopImgWrap = styled.div`
   font-size: 120px;
-  height: 120px;
-  line-height: 120px;
   text-align: center;
-  width: 120px;
 `
 export const BodyWrapper = styled.div`
   box-sizing: border-box;
@@ -66,7 +63,7 @@ export default function menuTop({
     <BodyWrapper>
       <MenuTopBox>
         <MenuTopImgWrap>
-          {imgUrl ? <img src={imgUrl} alt="" height="120" /> : <TextLogo>{textLogo}</TextLogo>}
+          {imgUrl ? <img src={imgUrl} alt="" width="180" /> : <TextLogo>{textLogo}</TextLogo>}
         </MenuTopImgWrap>
         <h1>{h1Text}</h1>
         {h3Text && <h3>{h3Text}</h3>}

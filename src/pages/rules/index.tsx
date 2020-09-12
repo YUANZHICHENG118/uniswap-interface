@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import FarmTop from '../Farms/menuTop'
-
+import titleImg from '../../assets/images/farm/logo.png'
 export const BodyWrapper = styled.div`
   padding: 30px 200px;
   .ruleBox {
@@ -47,7 +47,7 @@ export const BodyWrapper = styled.div`
 export default function Rules() {
   return (
     <BodyWrapper>
-      <FarmTop imgUrl={''} h1Text="Rules" />
+      <FarmTop imgUrl={titleImg} h1Text="Rules" />
       <div className="ruleBox">
         <p>
           DRAGON will be distributed in the sprit of YFI: no pre-mine, no founder shares, no VC interests - simply
