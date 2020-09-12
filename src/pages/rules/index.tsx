@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import FarmTop from '../Farms/menuTop'
 import titleImg from '../../assets/images/farm/logo.png'
+
 export const BodyWrapper = styled.div`
   padding: 30px 200px;
   .ruleBox {
@@ -11,19 +12,19 @@ export const BodyWrapper = styled.div`
     padding: 24px;
     margin: 0 auto;
     h3 {
-    font-size: 18px;
-    line-height: 20px;
-    padding: 15px 0;
-    color: #000;
-    font-weight: 700;
-}
+      font-size: 18px;
+      line-height: 20px;
+      padding: 15px 0;
+      color: #000;
+      font-weight: 700;
+    }
     h2 {
-    color: #000;
-    font-size: 24px;
-    line-height: 24px;
-    font-weight: 700;
-    padding: 30px 0;
-}
+      color: #000;
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: 700;
+      padding: 30px 0;
+    }
     p {
       color: #444;
       font-size: 20px;
@@ -31,14 +32,32 @@ export const BodyWrapper = styled.div`
       font-weight: 600;
       margin: 0;
       padding: 2px 0;
-      a{
-      display:block;
+      a {
+        display: block;
       }
     }
     .address {
-    margin-bottom: 10px;
-}
+      margin-bottom: 10px;
+    }
   }
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+     padding: 30px 0;
+     .ruleBox {
+      padding: 14px;
+      .question {
+        margin-bottom: 10px;
+        }
+      h2 {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 20px 0;
+        }
+      p {
+        font-size: 14px;
+        line-height: 16px;
+        }
+    }
+  `};
 `
 
 /**
@@ -76,7 +95,9 @@ export default function Rules() {
         <h2>Address</h2>
         <div>
           <h3>DRAGON</h3>
-          <p> Token Address:
+          <p>
+            {' '}
+            Token Address:
             <a href="" target="_blank" rel="noopener noreferrer">
               TYLPtEvANesoVWEKKzbDFnfuiKdaRNkpmb
             </a>

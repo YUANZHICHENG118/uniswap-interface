@@ -6,10 +6,21 @@ import StatsSet from './StatsSet'
 export const BodyWrapper = styled.div`
   padding: 30px 0;
   min-height: calc(100vh - 144px);
-  width:100% 
-  .greating {
+  width:100% .greating {
     margin-bottom: 50px;
-    text-align:center 
+    text-align: center;
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: #5b2639;
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: #aa8592;
+    }
     ${({ theme }) => theme.mediaWidth.upToSmall`
     margin-bottom: 30px;
     img{
@@ -23,18 +34,6 @@ export const BodyWrapper = styled.div`
     font-size: 16px;
     }
   `}
-    h1 {
-      font-size: 36px;
-      font-weight: 700;
-      color: #5b2639;
-      margin-bottom: 0;
-    }
-    h3 {
-      font-size: 18px;
-      font-weight: 400;
-      margin-bottom: 10px;
-      color: #aa8592;
-    }
   }
 `
 
@@ -46,20 +45,21 @@ export default function Home() {
     <BodyWrapper>
       <div className="greating">
         <img src={titleImg} alt="ball" width="180px" />
-        <h1>Stake Anytime, Unstake Anytime, Get Rewards Instantly.</h1>
+        <h1>Stake Anytime,Unstake Anytime, Get Rewards Instantly.</h1>
         <h3>It's a great day to mine some Dragon Balls on TRON.</h3>
         <h3>
           Dragon Finance's Smart Contract has been verified TronScan. Check open source code
           <a href="" target="_blank" rel="noopener noreferrer">
+            {' '}
             here
           </a>
           .
         </h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
           DRAGON Address:
-          <span className="ellipsis" style={{ color: 'rgb(91, 38, 57)' }}>
+          <p className="ellipsis" style={{ color: 'rgb(91, 38, 57)' }}>
             TYLPtEvANesoVWEKKzbDFnfuiKdaRNkpmb
-          </span>
+          </p>
         </h3>
       </div>
       {/*account*/}

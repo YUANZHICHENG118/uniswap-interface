@@ -7,9 +7,6 @@ const MenuTopBox = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0px auto 50px;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-  margin: 0px auto 30px;
-  `};
   h1 {
     font-family: 'Kaushan Script', sans-serif;
     color: rgb(91, 57, 38);
@@ -26,10 +23,24 @@ const MenuTopBox = styled.div`
     margin: 0px;
     padding: 0px;
   }
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+  margin: 0px auto 30px;
+   h1 {
+    font-size: 30px;
+    line-height: 35px;
+  }
+  `};
 `
 const MenuTopImgWrap = styled.div`
-  font-size: 120px;
   text-align: center;
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+  img {
+    width: 100px;
+   }
+   h1 {
+    font-size: 30px;
+   }
+  `}
 `
 export const BodyWrapper = styled.div`
   box-sizing: border-box;
