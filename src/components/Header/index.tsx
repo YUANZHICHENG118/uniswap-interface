@@ -315,11 +315,11 @@ export default function Header() {
     <HeaderFrame>
       <div className="header">
         <Title href=".">
-          <img src={Logo} alt="logo" />
+          <img src={Logo} alt="logo" style={{width:'7rem'}}/>
 
         </Title>
         <Headertabs>
-          <StyledNavLink to={'/home'}>home</StyledNavLink>
+          <StyledNavLink to={'/home'}>Home</StyledNavLink>
           <StyledNavLink to={'/Farms'}>Farms</StyledNavLink>
           <StyledNavLink to={'/Rules'}>Rules</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>

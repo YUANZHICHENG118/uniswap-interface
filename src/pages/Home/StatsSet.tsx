@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Row, Col } from 'antd'
-import usdjImg from '../../assets/images/home/usdj.png'
-import { balanceOf, contractList,totalSupply ,ITokens,ITokenInfo} from '../../utils/tron'
-
+import { Row } from 'antd'
+import { contractList ,ITokens} from '../../utils/tron'
+import PoolInfo from './PoolInfo'
 export const BodyWrapper = styled.div`
   margin: 50px 0;
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -46,64 +45,12 @@ export const BodyWrapper = styled.div`
  */
 export default function StatsSet() {
 
-
-  const [data,setData]=useState<ITokenInfo[]>([]);
-
-  useEffect(()=>{
-    setTimeout(()=>{
-      findData()
-    },1000)
-
-  },[])
-
-
-
-  const  findData= ()=>{
-    let tokenInfoArr:ITokenInfo[]=[]
-     contractList().map(async (item:ITokens|any)=>{
-      let tokens:ITokenInfo={
-        symbol:'',
-        balance:0,
-        totalSupply:0
-      };
-      tokens.symbol=item.symbol
-      let balance = await balanceOf(item.poolAddress)
-      let total= await  totalSupply(item.poolAddress)
-      tokens.balance =balance/Math.pow(10,item.decimals)
-      tokens.totalSupply =total/Math.pow(10,item.decimals)
-      tokenInfoArr.push(tokens)
-       setData([...data,...tokenInfoArr])
-    })
-
-  }
-
-
   return (
     <BodyWrapper>
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="start" align="middle">
-        {data.map((item:ITokenInfo) => {
+        {contractList().map((item:ITokens) => {
           return (
-            <Col xs={24} sm={24} md={12} lg={8}>
-              <div className="statsCard">
-                <img src={usdjImg} alt="ball" width="50px"/>
-                <span>{item.symbol} Stats</span>
-                <h1>{item.balance}</h1>
-                <p>My Stake</p>
-                <br />
-                <h1>
-                  {item.totalSupply}<span>0.00%</span>
-                </h1>
-                <p>Total Staked</p>
-                <br />
-                <p>========== PRICES ==========</p>
-                <p>1 Dragon = 0.0000 $</p>
-                <p>1 {item.symbol} = 0.0000 $</p>
-                <br />
-                <p>====== Dragon REWARDS ======</p>
-                <p>Claimable Rewards : 0.0000&nbsp; Dragon = $0.0000</p>
-
-              </div>
-            </Col>
+            <PoolInfo token={item}></PoolInfo>
           )
         })}
       </Row>

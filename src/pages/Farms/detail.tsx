@@ -90,17 +90,17 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       findEarnedBalance()
 
      timer= setInterval(()=>{
-        findBalance()
+       findAllow()
+       findBalance()
         findStakeBalance()
         findEarnedBalance()
-      },3000)
+      },5000)
     },300)
 
     return componentWillUnmount;
 
   },[])
   function componentWillUnmount() {
-    // 组件销毁时你要执行的代码
     if(timer){
       clearInterval(timer);
 
@@ -199,7 +199,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   }
   return (
     <MenuWrap>
-      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${symbol}-TRX UNI-V2 LP  Tokens and earn ${symbol}`} />
+      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${symbol}-TRX UNI-V2 LP  Tokens and earn ${mainContract.symbol}`} />
       <Column>
         <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
