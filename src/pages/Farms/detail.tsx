@@ -204,7 +204,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo='🍣'  title={earnedBalance.toFixed(6)} subTitle={[`${mainContract.symbol} Earned`]}>
+              <ItemWrap itemLogo={mainContract.symbol.toLowerCase()}  title={earnedBalance.toFixed(6)} subTitle={[`${mainContract.symbol} Earned`]}>
                 <div slot="button" className="button clickableButton" onClick={()=>earnedBalance>0?handelGetReward():console.log('')} style={{color: earnedBalance>0?'':'rgba(209, 0, 75, 0.333)'}}>Harvest</div>
               </ItemWrap>
             </DetailItem>
@@ -212,7 +212,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo='🍣'  title={stakeBalance.toFixed(6)} subTitle={[`${symbol} Earned`]}>
+              <ItemWrap itemLogo={symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[`${symbol} Earned`]}>
                 <div slot="button" className="button clickableButton"  onClick={()=>allowStake?setVisibleModal(true):handelApprove()}>{allowStake?'Stake':`Approve ${symbol}`}</div>
               </ItemWrap>
             </DetailItem>

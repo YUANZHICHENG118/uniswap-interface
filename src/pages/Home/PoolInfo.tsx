@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col } from 'antd'
-import usdjImg from '../../assets/images/home/usdj.png'
-import { balanceOf, totalSupply, ITokenInfo } from '../../utils/tron'
+import { balanceOf, totalSupply, ITokenInfo, mainContract } from '../../utils/tron'
 
 
 /**
@@ -47,7 +46,7 @@ export default function PoolInfo(props: any) {
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
       <div className="statsCard">
-        <img src={usdjImg} alt="ball" width="50px"/>
+        <img src={require(`../../assets/images/token/${token.symbol.toLowerCase()}.png`)} alt={token.symbol} width="50px"/>
         <span>{data&&data.symbol} Stats</span>
         <h1>{data&&data.balance && data.balance.toFixed(6) || '0.000000'}</h1>
         <p>My Stake</p>

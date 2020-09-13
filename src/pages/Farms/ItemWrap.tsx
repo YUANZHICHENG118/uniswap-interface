@@ -102,14 +102,16 @@ export default function ItemWrap(props: any) {
       <RowItemBox>
         <FlexCenter>
           {slots['tag']}
-          <RowItemLogo>{props.itemLogo}</RowItemLogo>
+          <RowItemLogo>
+            <img src={require(`../../assets/images/token/${props.itemLogo.toLowerCase()}.png`)} alt={props.symbol} width="50px"/>
+          </RowItemLogo>
           <RowItemTitle>{props.title}</RowItemTitle>
           <div className="cardNote">
             <span>{props.subTitle[0]}</span>
             {props.subTitle[1] && <span>{props.subTitle[1]}</span>}
             {props.sourceLink && (
               <span>
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a href={`https://tronscan.org/#/contract/${props.address}`} target="_blank" rel="noopener noreferrer">
                   {' '}
                   Contract source code{' '}
                 </a>

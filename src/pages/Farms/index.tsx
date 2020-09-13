@@ -7,7 +7,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
-import { contractList, ITokenInfo } from '../../utils/tron'
+import { contractList, ITokenInfo, ITokens } from '../../utils/tron'
 
 
 const MenuBody = styled.div`
@@ -59,10 +59,10 @@ export default function Menu() {
       <MenuBody>
         <RowBox>
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>
-            {contractList().map((item:ITokenInfo, index) => {
+            {contractList().map((item:ITokens, index) => {
               return (
                 <Col xs={24} sm={24} md={8} key={index}>
-                  <ItemWrap itemLogo="🍣" title={item.symbol} subTitle={[`Deposit ${item.symbol}`, 'Earn Dragon']} sourceLink="111">
+                  <ItemWrap itemLogo={item.symbol.toLowerCase()}  title={item.symbol} address={item.address} subTitle={[`Deposit ${item.symbol}`, 'Earn Dragon']} sourceLink="111">
                     {/*<div className="v2tag" slot="tag">*/}
                       {/*Pool v2*/}
                     {/*</div>*/}

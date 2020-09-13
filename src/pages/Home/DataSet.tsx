@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import ImgBall from '../../assets/images/home/ball.png'
 import { balanceOf,totalSupply,mainContract } from '../../utils/tron'
 
 export const BodyWrapper = styled.div`
@@ -91,7 +90,7 @@ export default function DataSet() {
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="center" align="middle">
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
-            <img src={ImgBall} alt="" />
+            <img src={require(`../../assets/images/token/${mainContract.symbol.toLowerCase()}.png`)} alt="" />
             <div className="ballBalance">
               <h2>{balance.toFixed(6)}</h2>
               <p>Dragon Ball Balance</p>
