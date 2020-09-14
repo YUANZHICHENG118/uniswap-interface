@@ -21,7 +21,7 @@ export interface ITokenInfo {
   apy?:string
 }
 export const mainContract=process.env.REACT_APP_DEV==="0"?{
-  symbol: 'DRAGON',
+  symbol: 'COCK',
   decimals:18,
   address: 'TCfomXuaxYY2Hx2zmYBZhmNHt7U3hKBq5x',
   poolAddress: '',

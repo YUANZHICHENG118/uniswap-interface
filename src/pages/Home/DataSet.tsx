@@ -78,19 +78,13 @@ export default function DataSet() {
        setSupply(data/Math.pow(10,mainContract.decimals));
      })
 
-   // approve("TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL","TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z")
-
-   //allowance("TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL","TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z")
-
-    //exit('TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z')
-
   }
   return (
     <BodyWrapper>
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="center" align="middle">
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
-            <img src={require(`../../assets/images/token/${mainContract.symbol.toLowerCase()}.png`)} alt="" />
+            <img src={require(`../../assets/images/token/cock.png`)} alt="" />
             <div className="ballBalance">
               <h2>{balance.toFixed(4)}</h2>
               <p>Dragon Ball Balance</p>
