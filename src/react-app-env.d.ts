@@ -13,7 +13,11 @@ interface Window {
     removeListener?: (...args: any[]) => void
   }
   web3?: {},
-  tronWeb?:{}
+  tronWeb?:any,
+  tronWeb3?:{
+
+  }
+
 }
 
 declare module 'content-hash' {

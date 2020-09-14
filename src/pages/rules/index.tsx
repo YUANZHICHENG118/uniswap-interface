@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import FarmTop from '../Farms/menuTop'
 import titleImg from '../../assets/images/farm/logo.png'
-
+import { contractList, ITokens, mainContract } from '../../utils/tron'
+const trxBlock="https://tronscan.org/#/contract/";
 export const BodyWrapper = styled.div`
   padding: 30px 200px;
   .ruleBox {
@@ -12,19 +13,19 @@ export const BodyWrapper = styled.div`
     padding: 24px;
     margin: 0 auto;
     h3 {
-      font-size: 18px;
-      line-height: 20px;
-      padding: 15px 0;
-      color: #000;
-      font-weight: 700;
-    }
+    font-size: 18px;
+    line-height: 20px;
+    padding: 15px 0;
+    color: #000;
+    font-weight: 700;
+}
     h2 {
-      color: #000;
-      font-size: 24px;
-      line-height: 24px;
-      font-weight: 700;
-      padding: 30px 0;
-    }
+    color: #000;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 700;
+    padding: 30px 0;
+}
     p {
       color: #444;
       font-size: 20px;
@@ -32,32 +33,14 @@ export const BodyWrapper = styled.div`
       font-weight: 600;
       margin: 0;
       padding: 2px 0;
-      a {
-        display: block;
+      a{
+      display:block;
       }
     }
     .address {
-      margin-bottom: 10px;
-    }
+    margin-bottom: 10px;
+}
   }
-  ${({ theme }) => theme.mediaWidth.upToMiddle`
-     padding: 30px 0;
-     .ruleBox {
-      padding: 14px;
-      .question {
-        margin-bottom: 10px;
-        }
-      h2 {
-        font-size: 20px;
-        line-height: 20px;
-        padding: 20px 0;
-        }
-      p {
-        font-size: 14px;
-        line-height: 16px;
-        }
-    }
-  `};
 `
 
 /**
@@ -69,7 +52,7 @@ export default function Rules() {
       <FarmTop imgUrl={titleImg} h1Text="Rules" />
       <div className="ruleBox">
         <p>
-          DRAGON will be distributed in the sprit of YFI: no pre-mine, no founder shares, no VC interests - simply
+          {mainContract.symbol} will be distributed in the sprit of YFI: no pre-mine, no founder shares, no VC interests - simply
           equal-opportunity staking distribution to attract a broad and vision-aligned community to steward the future
           of the protocol and token.
         </p>
@@ -94,110 +77,34 @@ export default function Rules() {
         <p className="addingPoolNote"> Adding more pools will subject to community vote.</p>
         <h2>Address</h2>
         <div>
-          <h3>DRAGON</h3>
-          <p>
-            {' '}
-            Token Address:
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TYLPtEvANesoVWEKKzbDFnfuiKdaRNkpmb
+          <h3>{mainContract.symbol}</h3>
+          <p> Token Address:
+            <a href={`${trxBlock}${mainContract.address}`} target="_blank" rel="noopener noreferrer">
+              {mainContract.address}
             </a>
           </p>
-          <h3>DRAGON/TRX LP</h3>
-          <p className="address">
-            Pool Address:
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TC7CyQt6MU5AGnomxPSC51G1HbzCJRFvpk
-            </a>
-          </p>
-          <h3>BALL/TRX LP</h3>
-          <p className="address">
-            Pool Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TP6eUbxGLsBxc6HwMziEy6TTy21dXjofZ8
-            </a>
-          </p>
-          <h3>BALL</h3>
-          <p className="address">
-            Token Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TWWqNMyDTB3yhJ1bhz1Rwow1AVTfw46rqu
-            </a>
-          </p>
-          <h3>USDJ</h3>
-          <p className="address">
-            Token Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT
-            </a>
-          </p>
-          <p>
-            Pool Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TW49qje1BEcrQ13w5orRwrb8hxP7JhyHZN
-            </a>
-          </p>
-          <h3>USDJ</h3>
-          <p className="address">
-            Token Address :<a rel="noopener noreferrer">TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT</a>
-          </p>
-          <p>
-            Pool Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TW49qje1BEcrQ13w5orRwrb8hxP7JhyHZN
-            </a>
-          </p>
-          <h3>PEARL</h3>
-          <p className="address">
-            Token Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TGbu32VEGpS4kDmjrmn5ZZJgUyHQiaweoq
-            </a>
-          </p>
-          <p>
-            Pool Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TWJGyUGgYb283CWchS4o8iBnH8xWSdFH81
-            </a>
-          </p>
-          <h3>TAI</h3>
-          <p className="address">
-            Token Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TRwS7apsNdRGzMBfhB2hVC4RhqfubUYZ8P
-            </a>
-          </p>
-          <p>
-            Pool Address :{' '}
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TSPdPBHBQpnWC7LH5iJvJgi8yPD7MN7m7u
-            </a>
-          </p>
-          <h3>JST</h3>
-          <p className="address">
-            Token Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9
-            </a>
-          </p>
-          <p>
-            Pool Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              THfXJt2o7qY2bNDUM5xGipGVjDoga6M24Q
-            </a>
-          </p>
-          <h3>JFI</h3>
-          <p className="address">
-            Token Address :
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha
-            </a>
-          </p>
-          <p>
-            Pool Address :{' '}
-            <a href="" target="_blank" rel="noopener noreferrer">
-              TYerCtnmZ93nwVpfy8oWWVafbUnH9oHcZb
-            </a>
-          </p>
+
+          {
+            contractList().map((item:ITokens)=>{
+              return <>
+                <h3>{item.symbol}</h3>
+                <p className="address">
+                  Token Address :
+                  <a href={`${trxBlock}${item.address}`} target="_blank" rel="noopener noreferrer">
+                    {item.address}
+                  </a>
+                </p>
+                <p className="address">
+                  Pool Address:
+                  <a href={`${trxBlock}${item.poolAddress}`} target="_blank" rel="noopener noreferrer">
+                    {item.poolAddress}
+                  </a>
+                </p>
+              </>
+            })
+          }
+
+
         </div>
         <h2>Distribution Timetable</h2>
         <p>

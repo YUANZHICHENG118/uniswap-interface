@@ -108,6 +108,8 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "tronweb": "^3.0.0",
-    "antd": "^4.6.3"
+    "antd": "^4.6.3",
+    "umi-request": "^1.0.8"
+
   }
 }
