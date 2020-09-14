@@ -41,7 +41,7 @@ export default function PoolInfo(props: any) {
     let _reward= await reward(token.poolAddress);
     data.balance = balance / Math.pow(10, token.decimals)
     data.totalSupply = total / Math.pow(10, token.decimals)
-    data.reward=_reward / Math.pow(10, token.decimals)
+    data.reward=_reward / Math.pow(10, mainContract.decimals)
     setData(data)
 
 

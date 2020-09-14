@@ -188,7 +188,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const findEarnedBalance=()=>{
     if(tokens) {
       earned(tokens.poolAddress).then((data: any) => {
-        setEarnedBalance(data / Math.pow(10, tokens.decimals));
+        setEarnedBalance(data / Math.pow(10, mainContract.decimals));
       })
     }
   }
