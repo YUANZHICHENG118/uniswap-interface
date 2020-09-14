@@ -7,7 +7,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
-import { contractList, ITokens } from '../../utils/tron'
+import { contractList, ITokens, mainContract } from '../../utils/tron'
 
 
 const MenuBody = styled.div`
@@ -55,14 +55,14 @@ export default function Menu() {
 
   return (
     <MenuWrap>
-      <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={'Earn Dragon tokens by providing liquidity.'} />
+      <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={`Earn ${mainContract.symbol} tokens by providing liquidity.`} />
       <MenuBody>
         <RowBox>
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>
             {contractList().map((item:ITokens, index) => {
               return (
                 <Col xs={24} sm={24} md={8} key={index}>
-                  <ItemWrap itemLogo={item.symbol.toLowerCase()}  title={item.symbol} address={item.address} subTitle={[`Deposit ${item.symbol}`, 'Earn Dragon']} sourceLink="111">
+                  <ItemWrap itemLogo={item.symbol.toLowerCase()}  title={item.symbol} address={item.address} subTitle={[`Deposit ${item.symbol}`, `Earn ${mainContract.symbol}`]} sourceLink="111">
                     {/*<div className="v2tag" slot="tag">*/}
                       {/*Pool v2*/}
                     {/*</div>*/}
