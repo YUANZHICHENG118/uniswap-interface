@@ -62,11 +62,11 @@ export default function PoolInfo(props: any) {
         <p>Total Staked</p>
         <br/>
         <p>========== PRICES ==========</p>
-        <p>1 Dragon = {mainContract.price} $</p>
+        <p>1 {mainContract.symbol} = {mainContract.price} $</p>
         <p>1 {data&&data.symbol} = 0.0000 $</p>
         <br/>
         <p>====== Dragon REWARDS ======</p>
-        <p>Claimable Rewards : {data&&data.reward&&data.reward.toFixed(4)}&nbsp; Dragon = ${((data&&data.reward||0)*(mainContract.price||0)).toFixed(4)}</p>
+        <p>Claimable Rewards : {data&&data.reward&&data.reward.toFixed(4)}&nbsp; {mainContract.symbol} = ${((data&&data.reward||0)*(mainContract.price||0)).toFixed(4)}</p>
 
       </div>
     </Col>

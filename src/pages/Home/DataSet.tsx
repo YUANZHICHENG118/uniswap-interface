@@ -87,7 +87,7 @@ export default function DataSet() {
             <img src={require(`../../assets/images/token/cock.png`)} alt="" />
             <div className="ballBalance">
               <h2>{balance.toFixed(4)}</h2>
-              <p>Dragon Ball Balance</p>
+              <p>{mainContract.symbol} Balance</p>
             </div>
           </div>
         </Col>

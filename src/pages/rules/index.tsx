@@ -68,7 +68,7 @@ export default function Rules() {
         <p>TAI 500</p>
         <p>JST 500</p>
         <p>JFI 500</p>
-        <p>DRAGON/TRX LP 2500</p>
+        <p>{mainContract.symbol}/TRX LP 2500</p>
         <p>BALL 2000</p>
         <p>BALL/TRX LP 1000</p>
         <p>USDT 1000</p>
@@ -108,13 +108,13 @@ export default function Rules() {
         </div>
         <h2>Distribution Timetable</h2>
         <p>
-          Each pool has 45 days for mining since its start. Every three days, the mineable DRAGON tokens will reduce in
+          Each pool has 45 days for mining since its start. Every three days, the mineable {mainContract.symbol} tokens will reduce in
           half for the next stage, and there’re totally 15 mining stages. This is to encourage miners and communities to
-          participate mining early on to get maximum rewards in DRAGON.
+          participate mining early on to get maximum rewards in {mainContract.symbol}.
         </p>
         <h2>Governance</h2>
         <p>
-          The rest of the DRAGON token would be locked in the contract and entirely governed by DRAGON holders, for
+          The rest of the {mainContract.symbol} token would be locked in the contract and entirely governed by {mainContract.symbol} holders, for
           example, vote for adding more distribution pools.
         </p>
       </div>
