@@ -20,19 +20,21 @@ export interface ITokenInfo {
   price?:number
   apy?:string
 }
-export const mainContract=process.env.REACT_APP_DEV?{
+export const mainContract=process.env.REACT_APP_DEV==="0"?{
   symbol: 'DRAGON',
   decimals:18,
   address: 'TCfomXuaxYY2Hx2zmYBZhmNHt7U3hKBq5x',
   poolAddress: '',
   price:257.8067
 }:{
-  symbol: 'DRAGON',
+  symbol: 'COCK',
   decimals:18,
   address: 'TMYigtLSE5uaqWLRQQAQzHuWdXAutFpfN8',
-  poolAddress: ''
+  poolAddress: '',
+  price:257.8067
+
 }
-const contractAddress: ITokens[] =process.env.REACT_APP_DEV? [{
+const contractAddress: ITokens[] =process.env.REACT_APP_DEV==="0"? [{
   symbol: 'USDJ',
   decimals:18,
   apy:'infinity',
@@ -40,7 +42,7 @@ const contractAddress: ITokens[] =process.env.REACT_APP_DEV? [{
   poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z'
 },{
   symbol: 'USDT',
-  decimals:18,
+  decimals:6,
   apy:'infinity',
   address: 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
   poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky'
@@ -52,7 +54,7 @@ const contractAddress: ITokens[] =process.env.REACT_APP_DEV? [{
   poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a'
 },{
   symbol: 'USDT',
-  decimals:18,
+  decimals:6,
   apy:'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TLBrh2Z3xxqNmjGNXzdC49wUrdgtKz28et'
@@ -165,7 +167,6 @@ export async function allowance(contractAddress: string, poolAddress: string) {
   if(!chk(tronWeb)) return false;
 
 
-  console.log("====555000000===")
   const parameter = [{ type: 'address', value: (await address()).hex }, { type: 'address', value: poolAddress }]
   const tx=await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex);
 
@@ -186,8 +187,8 @@ export async function approve(contractAddress: string, poolAddress: string) {
     })
   }
 
-  const value = tronWeb.toBigNumber(Math.pow(10,31));
-  const parameter = [{ type: 'address', value: poolAddress }, { type: 'uint256', value: tronWeb.toHex(value.toNumber()) }]
+  const value = 10000000000000000000000000000000000000000000000000;
+  const parameter = [{ type: 'address', value: poolAddress }, { type: 'uint256', value: tronWeb.toHex(value) }]
   const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'approve(address,uint256)', {}, parameter, (await address()).hex)
   const signedTx = await tronWeb.trx.sign(tx.transaction)
   const broastTx = await tronWeb.trx.sendRawTransaction(signedTx)
@@ -197,7 +198,7 @@ export async function approve(contractAddress: string, poolAddress: string) {
 }
 
 // 质押
-export async function stake(amount: number, contractAddress: string) {
+export async function stake(amount: number, contractAddress: string,decimals: number,) {
   const  tronWeb  = await findTronWeb()
   if(!chk(tronWeb)) {
     return new Promise<IAccount>((resolve, reject) => {
@@ -205,7 +206,7 @@ export async function stake(amount: number, contractAddress: string) {
     })
   }
 
-  const value = tronWeb.toBigNumber(amount*Math.pow(10,18));
+  const value = tronWeb.toBigNumber(amount*Math.pow(10,decimals));
 
   const parameter = [{ type: 'uint256', value: tronWeb.toHex(value.toNumber()) }]
   const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'stake(uint256)', {}, parameter, (await address()).hex)

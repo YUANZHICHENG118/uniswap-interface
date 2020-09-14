@@ -131,7 +131,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   //质押
   const handelStake=()=>{
     if(tokens){
-      stake(amount,tokens.poolAddress).then(data=>{
+      stake(amount,tokens.poolAddress,tokens.decimals).then(data=>{
         console.log("data====>>>",data)
         notification.success({
           message:'success',
