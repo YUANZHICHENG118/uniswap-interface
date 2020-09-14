@@ -92,14 +92,14 @@ export default function DataSet() {
           <div className="dataBox">
             <img src={require(`../../assets/images/token/${mainContract.symbol.toLowerCase()}.png`)} alt="" />
             <div className="ballBalance">
-              <h2>{balance.toFixed(6)}</h2>
+              <h2>{balance.toFixed(4)}</h2>
               <p>Dragon Ball Balance</p>
             </div>
           </div>
         </Col>
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
-            <h2>{supply.toFixed(6)}</h2>
+            <h2>{supply.toFixed(4)}</h2>
             <p>Total Supply</p>
           </div>
         </Col>

@@ -9,25 +9,23 @@ export interface ITokens {
   decimals: number
   address: string
   poolAddress:string
+  price?:number
   apy?:string
 }
 export interface ITokenInfo {
   symbol?: string
   balance?: number
   totalSupply?: number
+  reward?:number
+  price?:number
   apy?:string
 }
-
-// interface ITrc20 {
-//   balance?: string
-//   address?: string
-// }
-
 export const mainContract=process.env.REACT_APP_DEV?{
   symbol: 'DRAGON',
   decimals:18,
   address: 'TCfomXuaxYY2Hx2zmYBZhmNHt7U3hKBq5x',
-  poolAddress: ''
+  poolAddress: '',
+  price:257.8067
 }:{
   symbol: 'DRAGON',
   decimals:18,
@@ -57,7 +55,7 @@ const contractAddress: ITokens[] =process.env.REACT_APP_DEV? [{
   decimals:18,
   apy:'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky'
+  poolAddress: 'TLBrh2Z3xxqNmjGNXzdC49wUrdgtKz28et'
 }]
 
 export function contractList():ITokens[] {
@@ -242,6 +240,39 @@ export async function earned(contractAddress: string) {
 
   const parameter = [{ type: 'address', value: (await address()).hex }]
   const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'earned(address)', {}, parameter, (await address()).hex)
+  if(tx){
+    const amount=tronWeb.toDecimal("0x"+tx['constant_result'][0])
+    return amount
+  }else{
+    return 0
+  }
+
+}
+
+// 可分红
+export async function initreward(contractAddress: string) {
+  const  tronWeb  = await findTronWeb()
+  if(!chk(tronWeb)) return 0;
+
+  const parameter = [{ type: 'address', value: (await address()).hex }]
+  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'initreward(address)', {}, parameter, (await address()).hex)
+  if(tx){
+    const amount=tronWeb.toDecimal("0x"+tx['constant_result'][0])
+    return amount
+  }else{
+    return 0
+  }
+
+}
+
+
+// 我的收益 数据库
+export async function reward(contractAddress: string) {
+  const  tronWeb  = await findTronWeb()
+  if(!chk(tronWeb)) return 0;
+
+  const parameter = [{ type: 'address', value: (await address()).hex }]
+  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'rewards(address)', {}, parameter, (await address()).hex)
   if(tx){
     const amount=tronWeb.toDecimal("0x"+tx['constant_result'][0])
     return amount

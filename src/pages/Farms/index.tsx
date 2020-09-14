@@ -7,7 +7,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
-import { contractList, ITokenInfo, ITokens } from '../../utils/tron'
+import { contractList, initreward,ITokenInfo, ITokens } from '../../utils/tron'
 
 
 const MenuBody = styled.div`
