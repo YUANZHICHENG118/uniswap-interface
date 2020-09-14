@@ -14,7 +14,7 @@ import { YellowCard } from '../Card'
 
 //图片
 import Logo from '../../assets/images/logo.png'
-import Ball from '../../assets/images/home/ball.png'
+import Ball from '../../assets/images/token/cock.png'
 import EnLangImg from '../../assets/images/lang/en.png'
 import KoLangImg from '../../assets/images/lang/ko.png'
 import ZhLangImg from '../../assets/images/lang/zh.png'
