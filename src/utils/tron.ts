@@ -6,11 +6,13 @@ export interface IAccount {
 
 export interface ITokens {
   logo:string
+  key:string
   symbol: string
   earn: string
   decimals: number
   earnDecimals: number
   coming: boolean
+  lp: boolean
   address: string
   poolAddress: string
   price?: number
@@ -42,101 +44,163 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
 }
 const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   logo:'USDJ',
+  key:'USDJ',
   symbol: 'USDJ',
   earn: 'COCK',
   decimals: 18,
   earnDecimals: 18,
   coming: false,
+  lp:false,
   apy: 'infinity',
   address: 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
   poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z'
 }, {
   logo:'USDT',
+  key:'USDT',
+
   symbol: 'USDT',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: false,
+  lp:false,
+
   apy: 'infinity',
   address: 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
   poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky'
 }, {
   logo:'TRX',
+  key:'TRX',
+
   symbol: 'TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
+  lp:false,
+  apy: 'infinity',
+  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
+  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+}, {
+  logo:'cocktrx',
+  key:'COCK_TRX',
+  symbol: 'TRX',
+  earn: 'COCK',
+  decimals: 6,
+  earnDecimals: 18,
+  coming: true,
+  lp:true,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
   logo:'JFI',
+  key:'JFI_TRX',
+
   symbol: 'TRX',
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
+  lp:true,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
   logo:'SUN',
+  key:'SUN_TRX',
+
   symbol: 'TRX',
   earn: 'SUN',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
+  lp:true,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }] : [{
   logo:'USDJ',
+  key:'USDJ',
+
   symbol: 'USDJ',
   earn: 'COCK',
   decimals: 18,
   earnDecimals: 18,
   coming: false,
+  lp:false,
+
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
   poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a'
 }, {
   logo:'USDT',
+  key:'USDT',
+
   symbol: 'USDT',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: false,
+  lp:false,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
   logo:'TRX',
+  key:'TRX',
+
   symbol: 'TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
+  lp:false,
+  apy: 'infinity',
+  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
+  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+}, {
+  logo:'cocktrx',
+  key:'COCK_TRX',
+  symbol: 'TRX',
+  earn: 'COCK',
+  decimals: 6,
+  earnDecimals: 18,
+  coming: true,
+  lp:true,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
   logo:'JFI',
+  key:'JFI_TRX',
+
   symbol: 'TRX',
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
+  lp:true,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
   logo:'SUN',
+  key:'SUN_TRX',
+
   symbol: 'TRX',
   earn: 'SUN',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
+  lp:true,
+
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'

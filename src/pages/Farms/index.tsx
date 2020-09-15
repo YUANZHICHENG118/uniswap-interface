@@ -62,14 +62,14 @@ export default function Menu() {
             {contractList().map((item:ITokens, index) => {
               return (
                 <Col xs={24} sm={24} md={8} key={index}>
-                  <ItemWrap itemLogo={item.logo.toLowerCase()}  title={`${item.earn}/${item.symbol} LP`} address={item.address} subTitle={[`Deposit ${item.symbol}`, `Earn ${item.earn}`]} sourceLink="111">
+                  <ItemWrap itemLogo={item.logo.toLowerCase()}  title={item.lp?`${item.earn}/${item.symbol} LP`:`${item.symbol}`} address={item.address} subTitle={[item.lp?`Deposit ${item.earn}/${item.symbol} LP token`:`Deposit ${item.symbol}`, `Earn ${item.earn}`]} sourceLink="111">
                     {/*<div className="v2tag" slot="tag">*/}
                       {/*Pool v2*/}
                     {/*</div>*/}
                     {
                       item.coming?<RowItemButton slot="button" to={'#'}>
                         <div className="select">Coming Soon</div>
-                      </RowItemButton>:<RowItemButton slot="button" to={`/Farms/${item.symbol}/${item.earn}`}>
+                      </RowItemButton>:<RowItemButton slot="button" to={`/Farms/${item.key}`}>
                         <div className="select">Select</div>
                       </RowItemButton>
                     }

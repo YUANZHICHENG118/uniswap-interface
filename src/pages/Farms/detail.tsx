@@ -69,7 +69,7 @@ const DetailItem = styled(Flex)`
   flex-direction: column;
   flex: 1 1 0%;
 `
-export default function Menu(props: RouteComponentProps<{ symbol: string,earn: string }>) {
+export default function Menu(props: RouteComponentProps<{ symbol: string}>) {
   const [allowStake,setAllowStake]=useState<boolean>(false);
   const [amount,setAmount]=useState<number>(0);
   const [visibleModal,setVisibleModal]=useState<boolean>(false);
@@ -79,10 +79,10 @@ export default function Menu(props: RouteComponentProps<{ symbol: string,earn: s
 
   const {
     match: {
-      params: { symbol ,earn}
+      params: { symbol }
     }
   } = props
-  const tokens=contractList().find((x:ITokens)=>x.symbol===symbol&&x.earn===earn)
+  const tokens=contractList().find((x:ITokens)=>x.key===symbol)
   let timer:any;
   useEffect(()=>{
     setTimeout(()=>{
@@ -201,7 +201,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string,earn: s
   }
   return (
     <MenuWrap>
-      <MenuTop imgUrl={titleImg} textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${tokens&&tokens.symbol}-TRX UNI-V2 LP  Tokens and earn ${tokens&&tokens.earn}`} />
+      <MenuTop imgUrl={titleImg} h1Text="COCK TAIL" h3Text={tokens&&tokens.lp?`Deposit ${tokens&&tokens.earn}/${tokens&&tokens.symbol} LP Tokens and earn ${tokens&&tokens.earn}`:`Deposit ${tokens&&tokens.symbol} Tokens and earn ${tokens&&tokens.earn}`} />
       <Column>
         <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
@@ -214,7 +214,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string,earn: s
 
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={tokens&&tokens.symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[`${tokens&&tokens.symbol} Earned`]}>
+              <ItemWrap itemLogo={tokens&&tokens.symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[tokens&&tokens.lp?`${tokens&&tokens.earn}/${tokens.symbol} Stake`:`${tokens&&tokens.symbol} Stake`]}>
                 <div slot="button" className="button clickableButton"  onClick={()=>allowStake?setVisibleModal(true):handelApprove()}>{allowStake?'Stake':`Approve ${symbol}`}</div>
               </ItemWrap>
             </DetailItem>
