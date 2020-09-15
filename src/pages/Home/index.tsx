@@ -49,9 +49,9 @@ export default function Home() {
       <div className="greating">
         <img src={titleImg} alt="ball" width="180px" />
         <h1>Stake Anytime, Unstake Anytime, Get Rewards Instantly.</h1>
-        <h3>It's a great day to mine some Dragon Balls on TRON.</h3>
+        <h3>It's a great day to mine some {mainContract.symbol}  on TRON.</h3>
         <h3>
-          Dragon Finance's Smart Contract has been verified TronScan. Check open source code
+          {mainContract.symbol} Finance's Smart Contract has been verified TronScan. Check open source code
           <a href="" target="_blank" rel="noopener noreferrer">
             here
           </a>

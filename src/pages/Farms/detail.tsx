@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import Column from '../../components/Column'
+import titleImg from '../../assets/images/farm/logo.png'
+
 import ItemWrap from './ItemWrap'
 import { Row, Col,notification,Modal,Input,Button } from 'antd';
 import { RouteComponentProps } from 'react-router-dom'
@@ -67,7 +69,7 @@ const DetailItem = styled(Flex)`
   flex-direction: column;
   flex: 1 1 0%;
 `
-export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
+export default function Menu(props: RouteComponentProps<{ symbol: string}>) {
   const [allowStake,setAllowStake]=useState<boolean>(false);
   const [amount,setAmount]=useState<number>(0);
   const [visibleModal,setVisibleModal]=useState<boolean>(false);
@@ -80,7 +82,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       params: { symbol }
     }
   } = props
-  const tokens=contractList().find((x:ITokens)=>x.symbol===symbol)
+  const tokens=contractList().find((x:ITokens)=>x.key===symbol)
   let timer:any;
   useEffect(()=>{
     setTimeout(()=>{
@@ -131,7 +133,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   //质押
   const handelStake=()=>{
     if(tokens){
-      stake(amount,tokens.poolAddress).then(data=>{
+      stake(amount,tokens.poolAddress,tokens.decimals).then(data=>{
         console.log("data====>>>",data)
         notification.success({
           message:'success',
@@ -188,7 +190,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const findEarnedBalance=()=>{
     if(tokens) {
       earned(tokens.poolAddress).then((data: any) => {
-        setEarnedBalance(data / Math.pow(10, tokens.decimals));
+        setEarnedBalance(data / Math.pow(10, mainContract.decimals));
       })
     }
   }
@@ -199,12 +201,12 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   }
   return (
     <MenuWrap>
-      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${symbol}-TRX UNI-V2 LP  Tokens and earn ${mainContract.symbol}`} />
+      <MenuTop imgUrl={titleImg} h1Text="COCK TAIL" h3Text={tokens&&tokens.lp?`Deposit ${tokens&&tokens.earn}/${tokens&&tokens.symbol} LP Tokens and earn ${tokens&&tokens.earn}`:`Deposit ${tokens&&tokens.symbol} Tokens and earn ${tokens&&tokens.earn}`} />
       <Column>
         <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={mainContract.symbol.toLowerCase()}  title={earnedBalance.toFixed(6)} subTitle={[`${mainContract.symbol} Earned`]}>
+              <ItemWrap itemLogo={tokens&&tokens.earn.toLowerCase()}  title={earnedBalance.toFixed(6)} subTitle={[`${tokens&&tokens.earn} Earned`]}>
                 <div slot="button" className="button clickableButton" onClick={()=>earnedBalance>0?handelGetReward():console.log('')} style={{color: earnedBalance>0?'':'rgba(209, 0, 75, 0.333)'}}>Harvest</div>
               </ItemWrap>
             </DetailItem>
@@ -212,7 +214,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[`${symbol} Earned`]}>
+              <ItemWrap itemLogo={tokens&&tokens.symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[tokens&&tokens.lp?`${tokens&&tokens.earn}/${tokens.symbol} Stake`:`${tokens&&tokens.symbol} Stake`]}>
                 <div slot="button" className="button clickableButton"  onClick={()=>allowStake?setVisibleModal(true):handelApprove()}>{allowStake?'Stake':`Approve ${symbol}`}</div>
               </ItemWrap>
             </DetailItem>
@@ -225,7 +227,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       <Modal visible={visibleModal} footer={null} onCancel={() => setVisibleModal(false)}>
         <WalletBox>
           <h2>Stake</h2>
-          <h3>{balance.toFixed(6)} {symbol} Avaliable</h3>
+          <h3>{balance.toFixed(6)} {tokens&&tokens.symbol} Avaliable</h3>
           <p>
             <Input value={amount} type={'number'} onChange={(e)=>onChange(e)} addonAfter={<Button type="primary" onClick={()=>setAmount(balance)}>Max</Button>}  />
           </p>

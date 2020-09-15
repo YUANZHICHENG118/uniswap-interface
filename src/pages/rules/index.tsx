@@ -51,31 +51,14 @@ export default function Rules() {
     <BodyWrapper>
       <FarmTop imgUrl={titleImg} h1Text="Rules" />
       <div className="ruleBox">
-        <p>
-          {mainContract.symbol} will be distributed in the sprit of YFI: no pre-mine, no founder shares, no VC interests - simply
-          equal-opportunity staking distribution to attract a broad and vision-aligned community to steward the future
-          of the protocol and token.
-        </p>
-        <h2>Regarding Delays</h2>
-        <p className="question">Q: Why there are delays in updating the numbers?</p>
-        <p className="anwser">
-          A: On opening the website, the website will try to talk with TronLink to get the numbers. Tronlink itself has
-          delays in displaying the assets, the website can only show updated numbers once Tronlink is updated.
-        </p>
-        <h2>Pools</h2>
-        <p>USDJ 500</p>
-        <p>PEARL 500</p>
-        <p>TAI 500</p>
-        <p>JST 500</p>
-        <p>JFI 500</p>
-        <p>DRAGON/TRX LP 2500</p>
-        <p>BALL 2000</p>
-        <p>BALL/TRX LP 1000</p>
-        <p>USDT 1000</p>
-        <p>SUN 500</p>
-        <p>500 Reserved for early justswap liquidity</p>
-        <p className="addingPoolNote"> Adding more pools will subject to community vote.</p>
-        <h2>Address</h2>
+
+          <p>  1. The total number of cocks is 10000, and there is no additional issue;</p>
+          <p>  2. All tokens will be issued within 12 weeks, which will be divided into three stages. The first stage will open the pledge currency: usdt, usdj, TRX is divided into four weeks of equal release; the second stage starts from the fifth week, opening three groups of liquidity Mining: Cock LP / JFI LP / Sun LP; among them, the liquidity mining of cock LP lasts for 8 weeks (from the fifth week to the twelfth week), and the mining income is determined by the proportion of mining liquidity and the mining duration;</p>
+          <p>  3. In the third stage, 10% of cocks (i.e. 1000 pieces) will be reserved, and the specific liquidity currency pairs will be determined by the community;</p>
+          <p>  4. The team will retain 10% of all cocks as development fund“</p>
+
+
+          <h2>Address</h2>
         <div>
           <h3>{mainContract.symbol}</h3>
           <p> Token Address:
@@ -108,13 +91,13 @@ export default function Rules() {
         </div>
         <h2>Distribution Timetable</h2>
         <p>
-          Each pool has 45 days for mining since its start. Every three days, the mineable DRAGON tokens will reduce in
+          Each pool has 45 days for mining since its start. Every three days, the mineable {mainContract.symbol} tokens will reduce in
           half for the next stage, and there’re totally 15 mining stages. This is to encourage miners and communities to
-          participate mining early on to get maximum rewards in DRAGON.
+          participate mining early on to get maximum rewards in {mainContract.symbol}.
         </p>
         <h2>Governance</h2>
         <p>
-          The rest of the DRAGON token would be locked in the contract and entirely governed by DRAGON holders, for
+          The rest of the {mainContract.symbol} token would be locked in the contract and entirely governed by {mainContract.symbol} holders, for
           example, vote for adding more distribution pools.
         </p>
       </div>

@@ -49,9 +49,8 @@ export default function StatsSet() {
     <BodyWrapper>
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="start" align="middle">
         {contractList().map((item:ITokens) => {
-          return (
-            <PoolInfo token={item}></PoolInfo>
-          )
+          return item.coming?'':<PoolInfo token={item}></PoolInfo>
+
         })}
       </Row>
     </BodyWrapper>

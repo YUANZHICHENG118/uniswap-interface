@@ -7,7 +7,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
-import { contractList, ITokenInfo, ITokens } from '../../utils/tron'
+import { contractList, ITokens, mainContract } from '../../utils/tron'
 
 
 const MenuBody = styled.div`
@@ -55,20 +55,25 @@ export default function Menu() {
 
   return (
     <MenuWrap>
-      <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={'Earn Dragon tokens by providing liquidity.'} />
+      <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={`Earn ${mainContract.symbol} tokens by providing liquidity.`} />
       <MenuBody>
         <RowBox>
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>
             {contractList().map((item:ITokens, index) => {
               return (
                 <Col xs={24} sm={24} md={8} key={index}>
-                  <ItemWrap itemLogo={item.symbol.toLowerCase()}  title={item.symbol} address={item.address} subTitle={[`Deposit ${item.symbol}`, 'Earn Dragon']} sourceLink="111">
+                  <ItemWrap itemLogo={item.logo.toLowerCase()}  title={item.lp?`${item.earn}/${item.symbol} LP`:`${item.symbol}`} address={item.address} subTitle={[item.lp?`Deposit ${item.earn}/${item.symbol} LP token`:`Deposit ${item.symbol}`, `Earn ${item.earn}`]} sourceLink="111">
                     {/*<div className="v2tag" slot="tag">*/}
                       {/*Pool v2*/}
                     {/*</div>*/}
-                    <RowItemButton slot="button" to={`/Farms/${item.symbol}`}>
-                      <div className="select">Select</div>
-                    </RowItemButton>
+                    {
+                      item.coming?<RowItemButton slot="button" to={'#'}>
+                        <div className="select">Coming Soon</div>
+                      </RowItemButton>:<RowItemButton slot="button" to={`/Farms/${item.key}`}>
+                        <div className="select">Select</div>
+                      </RowItemButton>
+                    }
+
                     <div className="apy" slot="APY">
                       APY<span>{item.apy}%</span>
                     </div>

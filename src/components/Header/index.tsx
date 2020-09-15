@@ -14,7 +14,7 @@ import { YellowCard } from '../Card'
 
 //图片
 import Logo from '../../assets/images/logo.png'
-import Ball from '../../assets/images/home/ball.png'
+import Ball from '../../assets/images/token/cock.png'
 import EnLangImg from '../../assets/images/lang/en.png'
 import KoLangImg from '../../assets/images/lang/ko.png'
 import ZhLangImg from '../../assets/images/lang/zh.png'
@@ -288,15 +288,7 @@ export default function Header() {
       setBalance(data/Math.pow(10,mainContract.decimals));
     })
   }
-  // const TronWeb = require('tronweb')
-  // const HttpProvider = TronWeb.providers.HttpProvider;
-  // const fullNode = new HttpProvider("https://api.trongrid.io");
-  // const solidityNode = new HttpProvider("https://api.trongrid.io");
-  // const eventServer = new HttpProvider("https://api.trongrid.io");
-  // const  privateKey = "3481E79956D4BD95F358AC96D151C976392FC4E3FC132F78A847906DE588C145";
-  // const tronWeb = new TronWeb(fullNode,solidityNode,eventServer,privateKey);
 
-  // const tronWeb = window.tronWeb;
   const menu = (
     <Menu>
       <Menu.Item>
@@ -322,7 +314,7 @@ export default function Header() {
           <StyledNavLink to={'/home'}>Home</StyledNavLink>
           <StyledNavLink to={'/Farms'}>Farms</StyledNavLink>
           <StyledNavLink to={'/Rules'}>Rules</StyledNavLink>
-          <NavTitle href="https://uniswap.org/">About</NavTitle>
+          <NavTitle style={{display:'none'}} href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
         <div className="myWallet clickableButton" onClick={() => setModalOpen(true)}>
