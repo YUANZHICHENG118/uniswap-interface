@@ -67,7 +67,7 @@ const DetailItem = styled(Flex)`
   flex-direction: column;
   flex: 1 1 0%;
 `
-export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
+export default function Menu(props: RouteComponentProps<{ symbol: string,earn: string }>) {
   const [allowStake,setAllowStake]=useState<boolean>(false);
   const [amount,setAmount]=useState<number>(0);
   const [visibleModal,setVisibleModal]=useState<boolean>(false);
@@ -77,10 +77,10 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
   const {
     match: {
-      params: { symbol }
+      params: { symbol ,earn}
     }
   } = props
-  const tokens=contractList().find((x:ITokens)=>x.symbol===symbol)
+  const tokens=contractList().find((x:ITokens)=>x.symbol===symbol&&x.earn===earn)
   let timer:any;
   useEffect(()=>{
     setTimeout(()=>{
@@ -199,12 +199,12 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   }
   return (
     <MenuWrap>
-      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${symbol}-TRX UNI-V2 LP  Tokens and earn ${mainContract.symbol}`} />
+      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${tokens&&tokens.symbol}-TRX UNI-V2 LP  Tokens and earn ${tokens&&tokens.earn}`} />
       <Column>
         <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={mainContract.symbol.toLowerCase()}  title={earnedBalance.toFixed(6)} subTitle={[`${mainContract.symbol} Earned`]}>
+              <ItemWrap itemLogo={tokens&&tokens.earn.toLowerCase()}  title={earnedBalance.toFixed(6)} subTitle={[`${tokens&&tokens.earn} Earned`]}>
                 <div slot="button" className="button clickableButton" onClick={()=>earnedBalance>0?handelGetReward():console.log('')} style={{color: earnedBalance>0?'':'rgba(209, 0, 75, 0.333)'}}>Harvest</div>
               </ItemWrap>
             </DetailItem>
@@ -212,7 +212,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[`${symbol} Earned`]}>
+              <ItemWrap itemLogo={tokens&&tokens.symbol.toLowerCase()}  title={stakeBalance.toFixed(6)} subTitle={[`${tokens&&tokens.symbol} Earned`]}>
                 <div slot="button" className="button clickableButton"  onClick={()=>allowStake?setVisibleModal(true):handelApprove()}>{allowStake?'Stake':`Approve ${symbol}`}</div>
               </ItemWrap>
             </DetailItem>
@@ -225,7 +225,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       <Modal visible={visibleModal} footer={null} onCancel={() => setVisibleModal(false)}>
         <WalletBox>
           <h2>Stake</h2>
-          <h3>{balance.toFixed(6)} {symbol} Avaliable</h3>
+          <h3>{balance.toFixed(6)} {tokens&&tokens.symbol} Avaliable</h3>
           <p>
             <Input value={amount} type={'number'} onChange={(e)=>onChange(e)} addonAfter={<Button type="primary" onClick={()=>setAmount(balance)}>Max</Button>}  />
           </p>

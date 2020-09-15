@@ -51,7 +51,7 @@ export default function PoolInfo(props: any) {
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
       <div className="statsCard">
-        <img src={require(`../../assets/images/token/${token.symbol.toLowerCase()}.png`)} alt={token.symbol} width="50px"/>
+        <img src={require(`../../assets/images/token/${token.logo.toLowerCase()}.png`)} alt={token.symbol} width="50px"/>
         <span>{data&&data.symbol} Stats</span>
         <h1>{data&&data.balance && data.balance.toFixed(4) || '0.000000'}</h1>
         <p>My Stake</p>
