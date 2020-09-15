@@ -314,7 +314,7 @@ export default function Header() {
           <StyledNavLink to={'/home'}>Home</StyledNavLink>
           <StyledNavLink to={'/Farms'}>Farms</StyledNavLink>
           <StyledNavLink to={'/Rules'}>Rules</StyledNavLink>
-          <NavTitle href="https://uniswap.org/">About</NavTitle>
+          <NavTitle style={{display:'none'}} href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
         <div className="myWallet clickableButton" onClick={() => setModalOpen(true)}>
