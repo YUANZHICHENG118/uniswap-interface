@@ -5,8 +5,8 @@ export interface IAccount {
 }
 
 export interface ITokens {
-  logo:string
-  key:string
+  logo: string
+  key: string
   symbol: string
   earn: string
   decimals: number
@@ -43,163 +43,163 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
 
 }
 const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
-  logo:'USDJ',
-  key:'USDJ',
+  logo: 'USDJ',
+  key: 'USDJ',
   symbol: 'USDJ',
   earn: 'COCK',
   decimals: 18,
   earnDecimals: 18,
   coming: false,
-  lp:false,
+  lp: false,
   apy: 'infinity',
   address: 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
   poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z'
 }, {
-  logo:'USDT',
-  key:'USDT',
+  logo: 'USDT',
+  key: 'USDT',
 
   symbol: 'USDT',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: false,
-  lp:false,
+  lp: false,
 
   apy: 'infinity',
   address: 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
   poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky'
 }, {
-  logo:'TRX',
-  key:'TRX',
+  logo: 'TRX',
+  key: 'TRX',
 
   symbol: 'TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
-  lp:false,
+  coming: false,
+  lp: false,
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: '',
+  poolAddress: 'TKEhao64iZWpzC2wSeMwiUwqExWFzSGqrH'
 }, {
-  logo:'cocktrx',
-  key:'COCK_TRX',
+  logo: 'cocktrx',
+  key: 'COCK_TRX',
   symbol: 'TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:true,
+  lp: true,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
-  logo:'JFI',
-  key:'JFI_TRX',
+  logo: 'JFI',
+  key: 'JFI_TRX',
 
   symbol: 'TRX',
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:true,
+  lp: true,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
-  logo:'SUN',
-  key:'SUN_TRX',
+  logo: 'SUN',
+  key: 'SUN_TRX',
 
   symbol: 'TRX',
   earn: 'SUN',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:true,
+  lp: true,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  poolAddress: 'TWfAVfUrdXmJdrcD4Qrmqoa1PGSf8n9Ymn'
 }] : [{
-  logo:'USDJ',
-  key:'USDJ',
+  logo: 'USDJ',
+  key: 'USDJ',
 
   symbol: 'USDJ',
   earn: 'COCK',
   decimals: 18,
   earnDecimals: 18,
   coming: false,
-  lp:false,
+  lp: false,
 
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
   poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a'
 }, {
-  logo:'USDT',
-  key:'USDT',
+  logo: 'USDT',
+  key: 'USDT',
 
   symbol: 'USDT',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: false,
-  lp:false,
+  lp: false,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
-  logo:'TRX',
-  key:'TRX',
+  logo: 'TRX',
+  key: 'TRX',
 
   symbol: 'TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:false,
+  lp: false,
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: '',
+  poolAddress: 'TWfAVfUrdXmJdrcD4Qrmqoa1PGSf8n9Ymn'
 }, {
-  logo:'cocktrx',
-  key:'COCK_TRX',
+  logo: 'cocktrx',
+  key: 'COCK_TRX',
   symbol: 'TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:true,
+  lp: true,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
-  logo:'JFI',
-  key:'JFI_TRX',
+  logo: 'JFI',
+  key: 'JFI_TRX',
 
   symbol: 'TRX',
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:true,
+  lp: true,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
 }, {
-  logo:'SUN',
-  key:'SUN_TRX',
+  logo: 'SUN',
+  key: 'SUN_TRX',
 
   symbol: 'TRX',
   earn: 'SUN',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
-  lp:true,
+  lp: true,
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
@@ -369,30 +369,38 @@ export async function balanceOf(contractAddress: string) {
   if (!chk(tronWeb)) return 0
 
 
-  const parameter = [{ type: 'address', value: (await address()).base58 }]
-  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'balanceOf(address)', {}, parameter, (await address()).hex)
-  if (tx) {
-    const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
-    return amount
-  } else {
+  try {
+    const parameter = [{ type: 'address', value: (await address()).base58 }]
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'balanceOf(address)', {}, parameter, (await address()).hex)
+    if (tx) {
+      const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return amount
+    } else {
+      return 0
+    }
+  } catch (e) {
     return 0
   }
-
 }
 
 // 我的收益
 export async function earned(contractAddress: string) {
-  const tronWeb = await findTronWeb()
-  if (!chk(tronWeb)) return 0
+  try {
+    const tronWeb = await findTronWeb()
+    if (!chk(tronWeb)) return 0
 
-  const parameter = [{ type: 'address', value: (await address()).hex }]
-  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'earned(address)', {}, parameter, (await address()).hex)
-  if (tx) {
-    const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
-    return amount
-  } else {
+    const parameter = [{ type: 'address', value: (await address()).hex }]
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'earned(address)', {}, parameter, (await address()).hex)
+    if (tx) {
+      const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return amount
+    } else {
+      return 0
+    }
+  } catch (e) {
     return 0
   }
+
 
 }
 
@@ -401,15 +409,18 @@ export async function initreward(contractAddress: string) {
   const tronWeb = await findTronWeb()
   if (!chk(tronWeb)) return 0
 
-  const parameter = [{ type: 'address', value: (await address()).hex }]
-  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'initreward(address)', {}, parameter, (await address()).hex)
-  if (tx) {
-    const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
-    return amount
-  } else {
+  try {
+    const parameter = [{ type: 'address', value: (await address()).hex }]
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'initreward(address)', {}, parameter, (await address()).hex)
+    if (tx) {
+      const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return amount
+    } else {
+      return 0
+    }
+  } catch (e) {
     return 0
   }
-
 }
 
 
@@ -453,11 +464,34 @@ export async function exit(contractAddress: string) {
       return reject()
     })
   }
-
   const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'exit()', {}, [], (await address()).hex)
   const signedTx = await tronWeb.trx.sign(tx.transaction)
   const broastTx = await tronWeb.trx.sendRawTransaction(signedTx)
   console.log('broastTx====', broastTx)
   return broastTx
+}
+
+
+// trx 转账
+// 质押
+export async function deposit(amount: number, contractAddress: string, decimals: number) {
+  const tronWeb = await findTronWeb()
+  if (!chk(tronWeb)) {
+    return new Promise<IAccount>((resolve, reject) => {
+      return reject()
+    })
+  }
+  const value = tronWeb.toBigNumber(amount * Math.pow(10, decimals))
+  let instance = await tronWeb.contract().at(contractAddress)
+  let res = await instance['deposit'](tronWeb.toHex(value.toNumber()))
+  let tx = res.send({
+    feeLimit: 100000000,
+    callValue: tronWeb.toSun(amount),
+    tokenId: 0,
+    shouldPollResponse: true
+  })
+  console.log(tx)
+
+  return tx
 
 }
