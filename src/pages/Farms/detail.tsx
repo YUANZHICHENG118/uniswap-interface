@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import Column from '../../components/Column'
+import titleImg from '../../assets/images/farm/logo.png'
+
 import ItemWrap from './ItemWrap'
 import { Row, Col,notification,Modal,Input,Button } from 'antd';
 import { RouteComponentProps } from 'react-router-dom'
@@ -199,7 +201,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string,earn: s
   }
   return (
     <MenuWrap>
-      <MenuTop textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${tokens&&tokens.symbol}-TRX UNI-V2 LP  Tokens and earn ${tokens&&tokens.earn}`} />
+      <MenuTop imgUrl={titleImg} textLogo="🐢" h1Text="Tether Turtle" h3Text={`Deposit ${tokens&&tokens.symbol}-TRX UNI-V2 LP  Tokens and earn ${tokens&&tokens.earn}`} />
       <Column>
         <Row  gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
           <Col  className="gutter-row" span={12} xs={24} sm={24} md={10}>
