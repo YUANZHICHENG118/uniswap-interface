@@ -28,9 +28,7 @@ import { useETHBalances } from '../../state/wallet/hooks'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
 import { balanceOf, mainContract } from '../../utils/tron'
-import store from '../../state'
-import { changeLang } from '../../state/global/actions'
-
+import i18next from '../../i18n'
 const HeaderFrame = styled.div`
   width: 100%;
   .header {
@@ -296,9 +294,8 @@ export default function Header() {
     })
   }
  const  handleClick=(e:any)=>{
-    const lang=e.key;
-   store.dispatch(changeLang(lang))
-   localStorage.setItem('i18nextLng',lang);
+   const lang=e.key;
+   i18next.changeLanguage(lang)
   }
 
   const menu = (
