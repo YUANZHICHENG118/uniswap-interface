@@ -20,7 +20,7 @@ export const BodyWrapper = styled.div`
     border-top-right-radius: 12px;
     background:url(${bg}) no-repeat;
     background-size: contain;
-    span,strong{
+    span{
     position: absolute;
     width: 80px;
     height: 80px;

@@ -65,7 +65,7 @@ export default function PoolInfo(props: any) {
       <ItemWrap itemLogo={token.logo.toLowerCase()}  title={token.lp?`${token.earn}/${token.symbol} LP`:`${token.symbol}`} address={token.address} subTitle={[token.lp?`Deposit ${token.earn}/${token.symbol} LP token`:`Deposit ${token.symbol}`, `Earn ${token.earn}`]} sourceLink="111">
         <div className="status" slot="status">
           {/*<span>ENDED</span>*/}
-          <strong>{end?'ENDED':<Countdown title="Countdown" value={data} onFinish={onFinish} />}</strong>
+          <strong>{end?'ENDED':<Countdown title="" value={data} onFinish={onFinish} />}</strong>
         </div>
         {
           token.coming?<RowItemButton slot="button" to={'#'}>
