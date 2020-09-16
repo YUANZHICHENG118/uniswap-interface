@@ -284,21 +284,8 @@ export default function Header() {
   const [balance, setBalance] = useState<number>(0.000000)
   const [curLang,setCurLang] = useState({ imgUrl: EnLangImg, value: 'EN' })
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-
-  useEffect(() => {
-    setTimeout(findBalance, 500)
-  })
-
-  const findBalance = () => {
-    balanceOf(mainContract.address).then((data: any) => {
-      setBalance(data / Math.pow(10, mainContract.decimals))
-    })
-  }
-  const handleClick = (e: any) => {
-    const lang = e.key;
-    let current = curLang;
-    localStorage.setItem('i18nextLng',lang)
-    i18next.changeLanguage(lang)
+  const handleSetlang=(lang:string)=>{
+    let current=curLang;
     switch (lang) {
       case 'zh-CN':
         current = {
@@ -326,6 +313,25 @@ export default function Header() {
         break;
     }
     setCurLang(current)
+  }
+  useEffect(() => {
+    const lang=localStorage.getItem('i18nextLng') || 'en';
+    handleSetlang(lang)
+  }, []);
+  useEffect(() => {
+    setTimeout(findBalance, 500)
+  })
+
+  const findBalance = () => {
+    balanceOf(mainContract.address).then((data: any) => {
+      setBalance(data / Math.pow(10, mainContract.decimals))
+    })
+  }
+  const handleClick = (e: any) => {
+    const lang = e.key;
+    localStorage.setItem('i18nextLng',lang)
+    i18next.changeLanguage(lang)
+    handleSetlang(lang)
   }
 
 
