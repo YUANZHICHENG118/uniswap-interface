@@ -29,7 +29,7 @@ export default function Menu() {
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>
             {contractList().map((item:ITokens) => {
               return (
-                <PoolInfo token={item}></PoolInfo>
+                <PoolInfo token={item} key={item.key}></PoolInfo>
               )
             })}
           </Row>

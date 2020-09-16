@@ -55,16 +55,15 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   address: 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
   poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z'
 }, {
-  logo: 'USDT',
-  key: 'USDT',
+  logo: 'JFI',
+  key: 'JFI',
 
-  symbol: 'USDT',
+  symbol: 'JFI',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: false,
   lp: false,
-
   apy: 'infinity',
   address: 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
   poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky'
@@ -137,10 +136,9 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
   poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a'
 }, {
-  logo: 'USDT',
-  key: 'USDT',
-
-  symbol: 'USDT',
+  logo: 'JFI',
+  key: 'JFI',
+  symbol: 'JFI',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
@@ -148,8 +146,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
 
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
+  poolAddress: 'TVGFDPp6ovERs7ZTTNffDT8aMG2vEoSFtP'
 }, {
   logo: 'TRX',
   key: 'TRX',
@@ -162,7 +160,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: '',
-  poolAddress: 'TWfAVfUrdXmJdrcD4Qrmqoa1PGSf8n9Ymn'
+  poolAddress: 'TREPMx3mCfkHd8hffkSFY5C8ZuY9YxX2o4'
 }, {
   logo: 'cocktrx',
   key: 'COCK_TRX',

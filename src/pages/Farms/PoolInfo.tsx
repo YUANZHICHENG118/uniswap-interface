@@ -40,19 +40,19 @@ export default function PoolInfo(props: any) {
   const [data, setData] = useState<number>()
   const [end, setEnd] = useState<boolean>(false)
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      findTime();
-    },300)
+  useEffect( ()=>{
+    console.log("=======",token.symbol)
+    setTimeout(async()=>{
+      await findTime();
+    },500)
     console.log(data)
 
   },[])
 
-  const findTime=  ()=>{
-     periodFinish(token.poolAddress).then(data=>{
-      setData(data*1000);
-
-    });
+  const findTime= async ()=>{
+   const t=await  periodFinish(token.poolAddress);
+   console.log("t=======",t)
+    setData(t*1000);
   }
 
   const onFinish=()=>{
