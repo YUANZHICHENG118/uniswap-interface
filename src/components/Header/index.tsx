@@ -353,7 +353,7 @@ export default function Header() {
     <HeaderFrame>
       <div className="header">
         <Title href=".">
-          <img src={Logo} alt="logo" style={{ width: '7rem' }}/>
+          <img src={Logo} alt="logo" style={{ width: '10rem' }}/>
 
         </Title>
         <Headertabs>
