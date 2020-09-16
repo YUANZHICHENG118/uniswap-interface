@@ -57,7 +57,7 @@ export default function PoolInfo(props: any) {
         <p>My Stake</p>
         <br/>
         <h1>
-          {data&&data.totalSupply && data.totalSupply.toFixed(4) || '0.000000'}<span>{((data&&data.balance||0)/(data&&data.totalSupply||1)).toFixed(4)}%</span>
+          {data&&data.totalSupply && data.totalSupply.toFixed(4) || '0.000000'}<span>{(((data&&data.balance||0)/(data&&data.totalSupply||1))*100).toFixed(2)}%</span>
         </h1>
         <p>Total Staked</p>
         <br/>
@@ -68,6 +68,12 @@ export default function PoolInfo(props: any) {
         <p>====== {mainContract.symbol} REWARDS ======</p>
         <p>Claimable Rewards : {data&&data.reward&&data.reward.toFixed(4)}&nbsp; {mainContract.symbol} = ${((data&&data.reward||0)*(mainContract.price||0)).toFixed(4)}</p>
 
+        <p>Hourly estimate : 0.0000 Pearl = $0.0000</p>
+        <p> Daily estimate : 0.0000 Pearl = $0.0000</p>
+        <p> Weekly estimate : 0.0000 Pearl = $0.0000</p>
+        <p> Hourly ROI in USD : 407.7491%</p>
+        <p> Daily ROI in USD : 9785.9789%</p>
+        <p> Weekly ROI in USD : 68501.8522%</p>
       </div>
     </Col>
   )

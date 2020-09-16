@@ -428,17 +428,38 @@ export async function initreward(contractAddress: string) {
 export async function reward(contractAddress: string) {
   const tronWeb = await findTronWeb()
   if (!chk(tronWeb)) return 0
-
-  const parameter = [{ type: 'address', value: (await address()).hex }]
-  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'rewards(address)', {}, parameter, (await address()).hex)
-  if (tx) {
-    const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
-    return amount
-  } else {
+  try {
+    const parameter = [{ type: 'address', value: (await address()).hex }]
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'rewards(address)', {}, parameter, (await address()).hex)
+    if (tx) {
+      const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return amount
+    } else {
+      return 0
+    }
+  } catch (e) {
     return 0
   }
-
 }
+
+// 结束时间
+export async function periodFinish(contractAddress: string) {
+  const tronWeb = await findTronWeb()
+  if (!chk(tronWeb)) return 0
+  try {
+
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'periodFinish()', {}, [], (await address()).hex)
+    if (tx) {
+      const time = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return time
+    } else {
+      return 0
+    }
+  } catch (e) {
+    return 0
+  }
+}
+
 
 // 提取收益
 export async function getReward(contractAddress: string) {
