@@ -364,7 +364,7 @@ export default function Header() {
         </Headertabs>
         {/*钱包*/}
         <div className="myWallet clickableButton" onClick={() => setModalOpen(true)}>
-          <span>My Wallet</span>
+          <span>{t('wallet')}</span>
         </div>
         {/*语言*/}
         <Dropdown overlay={menu} className="flag">

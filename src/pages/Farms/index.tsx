@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
 import titleImg from '../../assets/images/farm/logo.png'
-
+import { useTranslation } from 'react-i18next'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import ItemWrap from './ItemWrap'
@@ -44,6 +44,7 @@ const RowItemButton = styled(NavLink)`
 `
 
 export default function Menu() {
+  const { t } = useTranslation()
   useEffect(()=>{
 
 
@@ -65,9 +66,9 @@ export default function Menu() {
                     </div>
                     {
                       item.coming?<RowItemButton slot="button" to={'#'}>
-                        <div className="select">Coming Soon</div>
+                        <div className="select">{t('coming')}</div>
                       </RowItemButton>:<RowItemButton slot="button" to={`/Menu/${item.key}`}>
-                        <div className="select">Select</div>
+                        <div className="select">{t('select')}</div>
                       </RowItemButton>
                     }
                     <div className="apy" slot="APY">

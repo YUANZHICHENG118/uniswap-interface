@@ -90,5 +90,8 @@
   "tokenSearchPlaceholder": "Search name or paste address",
   "home": "Home",
   "farm": "Menu",
-  "rule": "Drinking Rules"
+  "rule": "Drinking Rules",
+  "wallet": "My Wallet",
+  "select":"Select",
+  "coming":"Coming Soon"
 }
