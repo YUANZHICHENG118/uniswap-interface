@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Col } from 'antd'
 import { balanceOf, totalSupply, ITokenInfo, reward, mainContract } from '../../utils/tron'
+import { useTranslation } from 'react-i18next'
 
 
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function PoolInfo(props: any) {
-
+  const { t } = useTranslation()
   const { token } = props
 
   const [data, setData] = useState<ITokenInfo>()
@@ -54,7 +55,7 @@ export default function PoolInfo(props: any) {
         <img src={require(`../../assets/images/token/${token.logo.toLowerCase()}.png`)} alt={token.symbol} width="50px"/>
         <span style={{marginLeft:'8px'}}>{data&&data.symbol} Recipe</span>
         <h1>{data&&data.balance && data.balance.toFixed(4) || '0.000000'}</h1>
-        <p>My Stake</p>
+        <p>{t('MyStake')}</p>
         <br/>
         <h1>
           {data&&data.totalSupply && data.totalSupply.toFixed(4) || '0.000000'}<span>{(((data&&data.balance||0)/(data&&data.totalSupply||1))*100).toFixed(2)}%</span>

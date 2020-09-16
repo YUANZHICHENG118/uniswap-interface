@@ -8,5 +8,8 @@
   "harvest":"수취",
   "Approve":"승인 ",
   "HarUnst":"수취 및 언 스테이 킹",
-  "rules":"규칙."
+  "rules":"규칙.",
+  "Balance":"잔금",
+  "totalSupply":"총 공급",
+  "MyStake":"나의 예금"
 }

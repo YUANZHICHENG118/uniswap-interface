@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { Row, Col } from 'antd'
 import { balanceOf,totalSupply,mainContract } from '../../utils/tron'
 
@@ -48,6 +49,7 @@ export const BodyWrapper = styled.div`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function DataSet() {
+  const { t } = useTranslation()
   const [balance,setBalance]=useState<number>(0.000000);
   const [supply,setSupply]=useState<number>(0.000000);
   let timer:any;
@@ -90,14 +92,14 @@ export default function DataSet() {
 
             <div className="ballBalance">
               <h2>{balance.toFixed(4)}</h2>
-              <p>{mainContract.symbol} Balance</p>
+              <p>{mainContract.symbol} {t('Balance')}</p>
             </div>
           </div>
         </Col>
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
             <h2>{supply.toFixed(4)}</h2>
-            <p>Total Supply</p>
+            <p>{t('totalSupply')}</p>
           </div>
         </Col>
       </Row>
