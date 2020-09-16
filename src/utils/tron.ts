@@ -156,7 +156,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: false,
   apy: 'infinity',
   address: '',
