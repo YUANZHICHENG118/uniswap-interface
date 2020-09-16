@@ -44,18 +44,14 @@ const RowItemButton = styled(NavLink)`
 `
 
 export default function Menu() {
-
-
   useEffect(()=>{
 
 
   },[])
 
-
-
   return (
     <MenuWrap>
-      <MenuTop imgUrl={titleImg} h1Text={'Select a farm.'} h3Text={`Earn ${mainContract.symbol} tokens by providing liquidity.`} />
+      <MenuTop imgUrl={titleImg} h1Text={'It’s time for your favorite cocktail.'} h3Text={`Earn ${mainContract.symbol} tokens by providing liquidity.`} />
       <MenuBody>
         <RowBox>
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>

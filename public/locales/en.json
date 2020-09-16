@@ -89,6 +89,6 @@
   "toleranceExplanation": "Lowering this limit decreases your risk of frontrunning. However, this makes more likely that your transaction will fail due to normal price movements.",
   "tokenSearchPlaceholder": "Search name or paste address",
   "home": "Home",
-  "farm": "Farms",
-  "rule": "Rules"
+  "farm": "Menu",
+  "rule": "Drinking Rules"
 }
