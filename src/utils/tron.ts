@@ -502,7 +502,7 @@ export async function deposit(amount: number, contractAddress: string, decimals:
   }
   const value = tronWeb.toBigNumber(amount * Math.pow(10, decimals))
   let instance = await tronWeb.contract().at(contractAddress)
-  let res = await instance['deposit'](tronWeb.toHex(value.toNumber()))
+  let res = await instance['stake'](tronWeb.toHex(value.toNumber()))
   let tx = res.send({
     feeLimit: 100000000,
     callValue: tronWeb.toSun(amount),
