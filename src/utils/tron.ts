@@ -503,13 +503,13 @@ export async function deposit(amount: number, contractAddress: string, decimals:
   const value = tronWeb.toBigNumber(amount * Math.pow(10, decimals))
   let instance = await tronWeb.contract().at(contractAddress)
   let res = await instance['stake'](tronWeb.toHex(value.toNumber()))
-  let tx = res.send({
+  let tx = await res.send({
     feeLimit: 100000000,
     callValue: tronWeb.toSun(amount),
     tokenId: 0,
-    shouldPollResponse: true
+    shouldPollResponse: false
   })
-  console.log(tx)
+  console.log("deposit====="+tx)
 
   return tx
 

@@ -227,7 +227,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const findDeposit = () => {
     if (tokens) {
       deposit(amount, tokens.poolAddress, tokens.decimals).then(data => {
-        console.log(data)
+        console.log("====="+data)
         notification.success({
           message: 'success',
           description: 'success'
