@@ -11,5 +11,7 @@
   "rules":"규칙.",
   "Balance":"잔금",
   "totalSupply":"총 공급",
-  "MyStake":"나의 예금"
+  "MyStake":"나의 예금",
+  "address":" 주소",
+  "price":"가격"
 }

@@ -84,5 +84,7 @@
   "rules":"规则",
   "Balance":"余额",
   "totalSupply":"总供应量",
-  "MyStake":"我的质押"
+  "MyStake":"我的质押",
+  "address":" 代币地址",
+  "price":"价格"
 }

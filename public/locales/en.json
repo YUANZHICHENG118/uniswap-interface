@@ -100,5 +100,7 @@
   "rules":"Rules",
   "Balance":"Balance",
   "totalSupply":"Total Supply",
-  "MyStake":"My Stake"
+  "MyStake":"My Stake",
+  "address":"Address",
+  "price":"PRICES"
 }

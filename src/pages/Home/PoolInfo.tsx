@@ -62,7 +62,7 @@ export default function PoolInfo(props: any) {
         </h1>
         <p>Total Staked</p>
         <br/>
-        <p>========== PRICES ==========</p>
+        <p>========== {t('price')} ==========</p>
         <p>1 {mainContract.symbol} = {mainContract.price} $</p>
         <p>1 {data&&data.symbol} = 0.0000 $</p>
         <br/>
