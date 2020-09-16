@@ -59,9 +59,10 @@ export default function Menu() {
               return (
                 <Col xs={24} sm={24} md={8} key={index}>
                   <ItemWrap itemLogo={item.logo.toLowerCase()}  title={item.lp?`${item.earn}/${item.symbol} LP`:`${item.symbol}`} address={item.address} subTitle={[item.lp?`Deposit ${item.earn}/${item.symbol} LP token`:`Deposit ${item.symbol}`, `Earn ${item.earn}`]} sourceLink="111">
-                    {/*<div className="v2tag" slot="tag">*/}
-                      {/*Pool v2*/}
-                    {/*</div>*/}
+                    <div className="status" slot="status">
+                      {/*<span>ENDED</span>*/}
+                      <strong>00 : 12 : 22</strong>
+                    </div>
                     {
                       item.coming?<RowItemButton slot="button" to={'#'}>
                         <div className="select">Coming Soon</div>
@@ -69,7 +70,6 @@ export default function Menu() {
                         <div className="select">Select</div>
                       </RowItemButton>
                     }
-
                     <div className="apy" slot="APY">
                       APY<span>{item.apy}%</span>
                     </div>

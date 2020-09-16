@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import bg from '../../assets/images/bg.png'
 
 import { FlexCenter } from '../../components/Column'
 export const BodyWrapper = styled.div`
@@ -10,12 +11,39 @@ export const BodyWrapper = styled.div`
   position: relative;
   margin-bottom: 30px;
   width: 100%;
+  .status{
+    right: 0;
+    top: 0;
+    left: auto;
+    bottom: auto;
+    overflow: hidden;
+    border-top-right-radius: 12px;
+    background:url(${bg}) no-repeat;
+    background-size: contain;
+    span,strong{
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    color: #fff;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    transform: rotate(45deg);
+    text-align: center;
+    right: 11px;
+    top: 12px;
+    }
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    }
 `
 const RowItemBox = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1 1 0%;
-  padding: 16px;
+  // padding: 16px;
   .v2tag {
     position: absolute;
     left: -1px;
@@ -99,6 +127,7 @@ export default function ItemWrap(props: any) {
   }, {})
   return (
     <BodyWrapper>
+      {slots['status']}
       <RowItemBox>
         <FlexCenter>
           {slots['tag']}
