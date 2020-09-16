@@ -219,12 +219,12 @@ export function findTronWeb(): Promise<any> {
   const { tronWeb } = window
   return new Promise<any>((resolve, reject) => {
     _awaitCount = _awaitCount + 1
-    console.log(`>> Await tronWeb:: ${_awaitCount * 300}ms`)
+    // console.log(`>> Await tronWeb:: ${_awaitCount * 300}ms`)
 
     if (tronWeb) {
       return resolve(tronWeb)
     } else {
-      console.log('_awaitCount===', _awaitCount)
+      // console.log('_awaitCount===', _awaitCount)
       if (_awaitCount < 3) {
         return reject()
       } else {

@@ -1,7 +1,10 @@
 import { ChainId } from '@uniswap/sdk'
 import React, { useEffect, useState } from 'react'
+
 import { NavLink } from 'react-router-dom'
 import { isMobile } from 'react-device-detect'
+import { useTranslation } from 'react-i18next'
+
 //组件
 import { Text } from 'rebass'
 import { Modal, Dropdown, Menu } from 'antd'
@@ -25,6 +28,8 @@ import { useETHBalances } from '../../state/wallet/hooks'
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
 import { balanceOf, mainContract } from '../../utils/tron'
+import store from '../../state'
+import { changeLang } from '../../state/global/actions'
 
 const HeaderFrame = styled.div`
   width: 100%;
@@ -275,6 +280,7 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
 }
 
 export default function Header() {
+  const {t} = useTranslation();
   const { account, chainId } = useActiveWeb3React()
   const [balance,setBalance]=useState<number>(0.000000);
 
@@ -283,21 +289,27 @@ export default function Header() {
   useEffect(()=>{
     setTimeout(findBalance,500)
   })
+
   const findBalance=()=>{
     balanceOf(mainContract.address).then((data:any)=>{
       setBalance(data/Math.pow(10,mainContract.decimals));
     })
   }
+ const  handleClick=(e:any)=>{
+    const lang=e.key;
+   store.dispatch(changeLang(lang))
+   localStorage.setItem('i18nextLng',lang);
+  }
 
   const menu = (
-    <Menu>
-      <Menu.Item>
+    <Menu  onClick={handleClick}>
+      <Menu.Item key="en">
         <span><img src={EnLangImg} alt="EnLangImg" width='25px' />&nbsp;EN</span>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="zh-CN">
         <span><img src={ZhLangImg} alt="ZhLangImg" width='25px'/>&nbsp;CN</span>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item  key='ko'>
         <span><img src={KoLangImg} alt="KoLangImg" width='25px'/>&nbsp;KO</span>
       </Menu.Item>
     </Menu>
@@ -311,9 +323,9 @@ export default function Header() {
 
         </Title>
         <Headertabs>
-          <StyledNavLink to={'/home'}>Home</StyledNavLink>
-          <StyledNavLink to={'/Farms'}>Farms</StyledNavLink>
-          <StyledNavLink to={'/Rules'}>Rules</StyledNavLink>
+          <StyledNavLink to={'/home'}>{t('home')}</StyledNavLink>
+          <StyledNavLink to={'/Farms'}>{t('farm')}</StyledNavLink>
+          <StyledNavLink to={'/Rules'}>{t('rule')}</StyledNavLink>
           <NavTitle style={{display:'none'}} href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
