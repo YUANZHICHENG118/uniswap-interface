@@ -74,5 +74,8 @@
   "enterTokenCont": "输入通证地址并继续",
   "home": "首页",
   "farm": "农场",
-  "rule": "规则"
+  "rule": "规则",
+  "wallet": "我的钱包",
+  "select":"选择",
+  "coming":"即将推出"
 }
