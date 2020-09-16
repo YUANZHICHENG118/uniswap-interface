@@ -53,6 +53,7 @@ export default function DataSet() {
   let timer:any;
 
   useEffect(()=>{
+
     findTotalSupply();
     findBalance();
     timer= setInterval(()=>{
@@ -79,6 +80,7 @@ export default function DataSet() {
      })
 
   }
+
   return (
     <BodyWrapper>
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="center" align="middle">

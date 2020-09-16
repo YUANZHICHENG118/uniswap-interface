@@ -8,7 +8,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 import ItemWrap from './ItemWrap'
 import { Row, Col,notification,Modal,Input,Button } from 'antd';
 import { RouteComponentProps } from 'react-router-dom'
-import { contractList, ITokens, allowance, mainContract, approve, stake, balanceOf ,earned,getReward,exit} from '../../utils/tron'
+import { contractList, ITokens, allowance, mainContract, approve, stake, balanceOf ,earned,getReward,exit,deposit,account} from '../../utils/tron'
 const WalletBox = styled.div`
   text-align: center;
   h2 {
@@ -86,13 +86,18 @@ export default function Menu(props: RouteComponentProps<{ symbol: string}>) {
   let timer:any;
   useEffect(()=>{
     setTimeout(()=>{
-      findAllow()
+      if(tokens&&tokens.symbol==='TRX'){
+        setAllowStake(true)
+      }else {
+        findAllow()
+      }
+
       findBalance()
       findStakeBalance()
       findEarnedBalance()
 
      timer= setInterval(()=>{
-       findAllow()
+       //findAllow()
        findBalance()
         findStakeBalance()
         findEarnedBalance()
@@ -173,11 +178,21 @@ export default function Menu(props: RouteComponentProps<{ symbol: string}>) {
 
   const findBalance=()=>{
     if(tokens) {
-      balanceOf(tokens.address).then((data: any) => {
-        setBalance(data / Math.pow(10, tokens.decimals));
-      })
+      if(tokens.symbol==='TRX'){
+        account().then((data: any) => {
+          setBalance(data.balance / Math.pow(10, tokens.decimals));
+        })
+      }else{
+        balanceOf(tokens.address).then((data: any) => {
+          setBalance(data / Math.pow(10, tokens.decimals));
+        })
+      }
+
     }
   }
+
+
+
 
   const findStakeBalance=()=>{
     if(tokens) {
@@ -191,6 +206,14 @@ export default function Menu(props: RouteComponentProps<{ symbol: string}>) {
     if(tokens) {
       earned(tokens.poolAddress).then((data: any) => {
         setEarnedBalance(data / Math.pow(10, mainContract.decimals));
+      })
+    }
+  }
+
+  const findDeposit=()=>{
+    if(tokens) {
+      deposit(amount, tokens.poolAddress, tokens.decimals).then(data => {
+        console.log("====", data)
       })
     }
   }
@@ -232,7 +255,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string}>) {
             <Input value={amount} type={'number'} onChange={(e)=>onChange(e)} addonAfter={<Button type="primary" onClick={()=>setAmount(balance)}>Max</Button>}  />
           </p>
           <div className="cancle clickableButton" onClick={()=>setVisibleModal(false)}>Cancel</div>
-          <div className="cancle clickableButton" onClick={()=>handelStake()}>Stake</div>
+          <div className="cancle clickableButton" onClick={()=>tokens&&tokens.symbol==='TRX'?findDeposit():handelStake()}>Stake</div>
 
         </WalletBox>
       </Modal>
