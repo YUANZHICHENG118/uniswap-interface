@@ -97,5 +97,10 @@
   "harvest":"Harvest",
   "Approve":"Approve",
   "HarUnst":"Harvest & Unstake",
-  "rules":"Rules"
+  "rules":"Rules",
+  "Balance":"Balance",
+  "totalSupply":"Total Supply",
+  "MyStake":"My Stake",
+  "address":"Address",
+  "price":"PRICES"
 }

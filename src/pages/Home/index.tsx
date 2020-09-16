@@ -4,6 +4,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 import DataSet from './DataSet'
 import StatsSet from './StatsSet'
 import { mainContract } from '../../utils/tron'
+import { useTranslation } from 'react-i18next'
 
 export const BodyWrapper = styled.div`
   padding: 30px 0;
@@ -44,6 +45,7 @@ export const BodyWrapper = styled.div`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function Home() {
+  const { t } = useTranslation()
   return (
     <BodyWrapper>
       <div className="greating">
@@ -59,7 +61,7 @@ export default function Home() {
           .
         </h3>*/}
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
-          {mainContract.symbol} Address:
+          {mainContract.symbol} {t('address')}：
           <span className="ellipsis" style={{ color: 'rgb(91, 38, 57)' }}>
             {mainContract.address}
           </span>
