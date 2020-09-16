@@ -66,7 +66,7 @@ export default function Menu() {
                     {
                       item.coming?<RowItemButton slot="button" to={'#'}>
                         <div className="select">Coming Soon</div>
-                      </RowItemButton>:<RowItemButton slot="button" to={`/Farms/${item.key}`}>
+                      </RowItemButton>:<RowItemButton slot="button" to={`/Menu/${item.key}`}>
                         <div className="select">Select</div>
                       </RowItemButton>
                     }

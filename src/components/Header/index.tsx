@@ -324,7 +324,7 @@ export default function Header() {
         </Title>
         <Headertabs>
           <StyledNavLink to={'/home'}>{t('home')}</StyledNavLink>
-          <StyledNavLink to={'/Farms'}>{t('farm')}</StyledNavLink>
+          <StyledNavLink to={'/Menu'}>{t('farm')}</StyledNavLink>
           <StyledNavLink to={'/Rules'}>{t('rule')}</StyledNavLink>
           <NavTitle style={{display:'none'}} href="https://uniswap.org/">About</NavTitle>
         </Headertabs>

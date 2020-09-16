@@ -74,8 +74,8 @@ export default function App() {
               <Switch>
                 <Route exact strict path="/home" component={Home} />
                 <Route exact strict path="/swap" component={Swap} />
-                <Route exact strict path="/Farms" component={Farms} />
-                <Route exact strict path="/Farms/:symbol" component={Detail}/>
+                <Route exact strict path="/Menu" component={Farms} />
+                <Route exact strict path="/Menu/:symbol" component={Detail}/>
                 {/*Rules*/}
                 <Route exact strict path="/Rules" component={Rules} />
                 <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
