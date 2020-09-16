@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import FarmTop from '../Farms/menuTop'
 import titleImg from '../../assets/images/farm/logo.png'
@@ -47,9 +48,10 @@ export const BodyWrapper = styled.div`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function Rules() {
+  const { t } = useTranslation()
   return (
     <BodyWrapper>
-      <FarmTop imgUrl={titleImg} h1Text="Rules" />
+      <FarmTop imgUrl={titleImg} h1Text={t('rules')} />
       <div className="ruleBox">
 
           <p>  1. The total number of cocks is 10000, and there is no additional issue;</p>

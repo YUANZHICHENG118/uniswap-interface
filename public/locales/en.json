@@ -93,5 +93,9 @@
   "rule": "Drinking Rules",
   "wallet": "My Wallet",
   "select":"Select",
-  "coming":"Coming Soon"
+  "coming":"Coming Soon",
+  "harvest":"Harvest",
+  "Approve":"Approve",
+  "HarUnst":"Harvest & Unstake",
+  "rules":"Rules"
 }
