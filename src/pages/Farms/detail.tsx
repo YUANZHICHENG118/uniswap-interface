@@ -258,7 +258,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
     <MenuWrap>
       <MenuTop
         imgUrl={titleImg}
-        h1Text="COCK TAIL"
+        h1Text="COCKTAIL"
         h3Text={
           tokens && tokens.lp
             ? `Deposit ${tokens && tokens.symbol} LP Tokens and earn ${tokens && tokens.earn}`
