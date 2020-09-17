@@ -12,8 +12,11 @@
   "Balance":"잔금",
   "totalSupply":"총 공급",
   "MyStake":"나의 예금",
+  "totalStake":"예금 합계",
   "address":" 주소",
   "price":"가격",
   "greet":"초밥, 마, 탄수화물 을 너무 많이 먹 었 나?",
-  "greet-small":"칵테일 한 잔 을 마셔 정신 을 차리다."
+  "greet-small":"칵테일 한 잔 을 마셔 정신 을 차리다.",
+  "Recipe":"레 시 피",
+  "rewords":" 보상 "
 }

@@ -101,8 +101,11 @@
   "Balance":"Balance",
   "totalSupply":"Total Supply",
   "MyStake":"My Stake",
+  "totalStake":"Total Staked",
   "address":"Address",
   "price":"PRICES",
   "greet":"Had too much Sushi, Yam and Carb?",
-  "greet-small":"Sip a glass of {{label}}TAIL to refresh your DEFI taste bud."
+  "greet-small":"Sip a glass of {{label}}TAIL to refresh your DEFI taste bud.",
+  "Recipe":"Recipe",
+  "rewords":"REWARDS"
 }
