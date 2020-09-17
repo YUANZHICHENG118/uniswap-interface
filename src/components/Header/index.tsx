@@ -328,7 +328,7 @@ export default function Header() {
   })
 
   const findBalance = () => {
-    balanceOf(mainContract.address).then((data: any) => {
+    balanceOf(mainContract.address,false).then((data: any) => {
       setBalance(data / Math.pow(10, mainContract.decimals))
     })
   }

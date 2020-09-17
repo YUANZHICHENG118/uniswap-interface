@@ -7,7 +7,7 @@ import Column from '../../components/Column'
 import titleImg from '../../assets/images/farm/logo.png'
 
 import ItemWrap from './ItemWrap'
-import { Row, Col, notification, Modal, Input, Button } from 'antd'
+import { Row, Col, notification, Modal, Input } from 'antd'
 import { RouteComponentProps } from 'react-router-dom'
 import {
   contractList,
@@ -23,6 +23,7 @@ import {
   deposit,
   account
 } from '../../utils/tron'
+const { Search } = Input;
 
 const WalletBox = styled.div`
   text-align: center;
@@ -61,6 +62,9 @@ const WalletBox = styled.div`
     line-height: 18px;
   }
   .cancle {
+   :hover {
+      background-color: #f1dae1;
+      }
     margin: 60px 20px 20px;
     align-items: center;
     background-color: #f0e7ea;
@@ -132,7 +136,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   // 是否已授权
   const findAllow = () => {
     if (tokens) {
-      allowance(tokens.address, tokens.poolAddress).then(data => {
+      allowance(tokens.address, tokens.poolAddress,tokens.lp).then(data => {
         setAllowStake(data)
       })
     }
@@ -152,6 +156,13 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
   //质押
   const handelStake = () => {
+    if(amount<=0){
+      notification.error({
+        message: 'Amount error',
+        description: 'Amount error'
+      })
+      return;
+    }
     if (tokens) {
       stake(amount, tokens.poolAddress, tokens.decimals).then(data => {
         console.log('data====>>>', data)
@@ -196,7 +207,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           setBalance(data.balance / Math.pow(10, tokens.decimals))
         })
       } else {
-        balanceOf(tokens.address).then((data: any) => {
+        balanceOf(tokens.address,tokens.lp).then((data: any) => {
           setBalance(data / Math.pow(10, tokens.decimals))
         })
       }
@@ -205,7 +216,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
   const findStakeBalance = () => {
     if (tokens) {
-      balanceOf(tokens.poolAddress).then((data: any) => {
+      balanceOf(tokens.poolAddress,tokens.lp).then((data: any) => {
         setStakeBalance(data / Math.pow(10, tokens.decimals))
       })
     }
@@ -220,6 +231,13 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   }
 
   const findDeposit = () => {
+    if(amount<=0){
+      notification.error({
+        message: 'Amount error',
+        description: 'Amount error'
+      })
+      return;
+    }
     if (tokens) {
       deposit(amount, tokens.poolAddress, tokens.decimals).then(data => {
         console.log('=====' + data)
@@ -275,13 +293,13 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
                 title={stakeBalance.toFixed(6)}
                 subTitle={[
                   tokens && tokens.lp
-                    ? `${tokens && tokens.earn}/${tokens.symbol} ${t('stake')}`
+                    ? `${tokens && tokens.earn}/${tokens.symbol} LP ${t('stake')}`
                     : `${tokens && tokens.symbol} ${t('stake')}`
                 ]}
               >
                 <div
                   slot="button"
-                  className="button clickableButton"
+                  className=" button clickableButton"
                   onClick={() => (allowStake ? setVisibleModal(true) : handelApprove())}
                 >
                   {allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}
@@ -305,15 +323,14 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
             {balance.toFixed(6)} {tokens && tokens.symbol} Avaliable
           </h3>
           <p>
-            <Input
-              value={amount}
-              type={'number'}
+
+            <Search
               onChange={e => onChange(e)}
-              addonAfter={
-                <Button type="primary" onClick={() => setAmount(balance)}>
-                  Max
-                </Button>
-              }
+              value={amount}
+              placeholder="input amount"
+              enterButton="Max"
+              size="large"
+              onSearch={() => setAmount(balance)}
             />
           </p>
           <div className="cancle clickableButton" onClick={() => setVisibleModal(false)}>

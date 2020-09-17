@@ -36,7 +36,7 @@ export default function PoolInfo(props: any) {
       price:0
     }
     data.symbol = token.symbol
-    let balance = await balanceOf(token.poolAddress)
+    let balance = await balanceOf(token.poolAddress,token.lp)
     let total = await  totalSupply(token.poolAddress)
     let _reward= await reward(token.poolAddress);
     data.balance = balance / Math.pow(10, token.decimals)

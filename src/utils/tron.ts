@@ -15,6 +15,7 @@ export interface ITokens {
   lp: boolean
   address: string
   poolAddress: string
+  exAddress?: string
   price?: number
   apy?: string
 }
@@ -87,28 +88,28 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
+  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9'
 }, {
-  logo: 'JFI',
+  logo: 'jfitrx',
   key: 'JFI_TRX',
 
   symbol: 'TRX',
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
+  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq'
 }, {
-  logo: 'SUN',
+  logo: 'suntrx',
   key: 'SUN_TRX',
 
   symbol: 'TRX',
@@ -147,7 +148,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
-  poolAddress: 'TVGFDPp6ovERs7ZTTNffDT8aMG2vEoSFtP'
+  poolAddress: 'TVtzw8s4wcbJmrG4wjvf5nLehz72RmpoJh'
 }, {
   logo: 'TRX',
   key: 'TRX',
@@ -168,28 +169,28 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
+  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9'
 }, {
-  logo: 'JFI',
+  logo: 'jfitrx',
   key: 'JFI_TRX',
 
-  symbol: 'TRX',
-  earn: 'JFI',
+  symbol: 'JFITRX',
+  earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
+  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq'
 }, {
-  logo: 'SUN',
+  logo: 'suntrx',
   key: 'SUN_TRX',
 
   symbol: 'TRX',
@@ -306,14 +307,21 @@ export async function totalSupply(contractAddress: string) {
 
 
 // 是否已授权
-export async function allowance(contractAddress: string, poolAddress: string) {
+export async function allowance(contractAddress: string, poolAddress: string, lp: boolean) {
   const tronWeb = await findTronWeb()
   if (!chk(tronWeb)) return false
 
 
   const parameter = [{ type: 'address', value: (await address()).hex }, { type: 'address', value: poolAddress }]
-  const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
 
+  let tx = undefined
+  if (lp) {
+    tx = await tronWeb.transactionBuilder.triggerConstantContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
+  } else {
+
+    tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
+
+  }
   if (tx) {
     const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
     return amount > 0
@@ -362,14 +370,18 @@ export async function stake(amount: number, contractAddress: string, decimals: n
 
 
 // 我的质押/代币余额
-export async function balanceOf(contractAddress: string) {
+export async function balanceOf(contractAddress: string, lp: boolean) {
   const tronWeb = await findTronWeb()
   if (!chk(tronWeb)) return 0
 
-
   try {
     const parameter = [{ type: 'address', value: (await address()).base58 }]
-    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'balanceOf(address)', {}, parameter, (await address()).hex)
+    let tx = undefined
+    if (lp) {
+      tx = await tronWeb.transactionBuilder.triggerConstantContract(tronWeb.address.toHex(contractAddress), 'balanceOf(address)', {}, parameter, (await address()).hex)
+    } else {
+      tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'balanceOf(address)', {}, parameter, (await address()).hex)
+    }
     if (tx) {
       const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
       return amount
@@ -509,7 +521,7 @@ export async function deposit(amount: number, contractAddress: string, decimals:
     tokenId: 0,
     shouldPollResponse: false
   })
-  console.log("deposit====="+tx)
+  console.log('deposit=====' + tx)
 
   return tx
 
