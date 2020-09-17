@@ -23,9 +23,9 @@ export const BodyWrapper = styled.div`
  */
 export default function Footer() {
   return <BodyWrapper>
-    <a href="https://t.me/dragonfinance" target="_blank" rel="noopener noreferrer">Telegram</a>
+    <a href="" target="_blank" rel="noopener noreferrer">Telegram</a>
     <a href="/">Discord</a>
-    <a href="https://twitter.com/DragonfiHunter" target="_blank" rel="noopener noreferrer">Twitter</a>
-    <a href="https://medium.com/@dragonfinance" target="_blank" rel="noopener noreferrer">Medium</a>
+    <a href="" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <a href="" target="_blank" rel="noopener noreferrer">Medium</a>
   </BodyWrapper>
 }
