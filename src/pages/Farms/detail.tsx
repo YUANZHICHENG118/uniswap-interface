@@ -89,9 +89,9 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const [allowStake, setAllowStake] = useState<boolean>(false)
   const [amount, setAmount] = useState<number>(0)
   const [visibleModal, setVisibleModal] = useState<boolean>(false)
-  const [balance, setBalance] = useState<number>(0.000000)
-  const [stakeBalance, setStakeBalance] = useState<number>(0.000000)
-  const [earnedBalance, setEarnedBalance] = useState<number>(0.000000)
+  const [balance, setBalance] = useState<number>(0.0)
+  const [stakeBalance, setStakeBalance] = useState<number>(0.0)
+  const [earnedBalance, setEarnedBalance] = useState<number>(0.0)
 
   const {
     match: {
@@ -121,13 +121,11 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
     }, 300)
 
     return componentWillUnmount
-
   }, [])
 
   function componentWillUnmount() {
     if (timer) {
       clearInterval(timer)
-
     }
   }
 
@@ -191,7 +189,6 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
     }
   }
 
-
   const findBalance = () => {
     if (tokens) {
       if (tokens.symbol === 'TRX') {
@@ -203,10 +200,8 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           setBalance(data / Math.pow(10, tokens.decimals))
         })
       }
-
     }
   }
-
 
   const findStakeBalance = () => {
     if (tokens) {
@@ -227,7 +222,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const findDeposit = () => {
     if (tokens) {
       deposit(amount, tokens.poolAddress, tokens.decimals).then(data => {
-        console.log("====="+data)
+        console.log('=====' + data)
         notification.success({
           message: 'success',
           description: 'success'
@@ -243,52 +238,93 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   }
   return (
     <MenuWrap>
-      <MenuTop imgUrl={titleImg} h1Text="COCK TAIL"
-               h3Text={tokens && tokens.lp ? `Deposit ${tokens && tokens.earn}/${tokens && tokens.symbol} LP Tokens and earn ${tokens && tokens.earn}` : `Deposit ${tokens && tokens.symbol} Tokens and earn ${tokens && tokens.earn}`}/>
+      <MenuTop
+        imgUrl={titleImg}
+        h1Text="COCK TAIL"
+        h3Text={
+          tokens && tokens.lp
+            ? `Deposit ${tokens && tokens.earn}/${tokens && tokens.symbol} LP Tokens and earn ${tokens && tokens.earn}`
+            : `${t('menu-detail-greet-small',{symbol1:tokens && tokens.symbol,symbol2:tokens && tokens.earn})}`
+        }
+      />
       <Column>
-        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify='center' align='middle'>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} justify="center" align="middle">
           <Col className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={tokens && tokens.earn.toLowerCase()} title={earnedBalance.toFixed(6)}
-                        subTitle={[`${tokens && tokens.earn} ${t('earned')}`]}>
-                <div slot="button" className="button clickableButton"
-                     onClick={() => earnedBalance > 0 ? handelGetReward() : console.log('')}
-                     style={{ color: earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}>{t('harvest')}</div>
+              <ItemWrap
+                itemLogo={tokens && tokens.earn.toLowerCase()}
+                title={earnedBalance.toFixed(6)}
+                subTitle={[`${tokens && tokens.earn} ${t('earned')}`]}
+              >
+                <div
+                  slot="button"
+                  className="button clickableButton"
+                  onClick={() => (earnedBalance > 0 ? handelGetReward() : console.log(''))}
+                  style={{ color: earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
+                >
+                  {t('harvest')}
+                </div>
               </ItemWrap>
             </DetailItem>
           </Col>
 
           <Col className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
-              <ItemWrap itemLogo={tokens && tokens.symbol.toLowerCase()} title={stakeBalance.toFixed(6)}
-                        subTitle={[tokens && tokens.lp ? `${tokens && tokens.earn}/${tokens.symbol} ${t('stake')}` : `${tokens && tokens.symbol} ${t('stake')}`]}>
-                <div slot="button" className="button clickableButton"
-                     onClick={() => allowStake ? setVisibleModal(true) : handelApprove()}>{allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}</div>
+              <ItemWrap
+                itemLogo={tokens && tokens.symbol.toLowerCase()}
+                title={stakeBalance.toFixed(6)}
+                subTitle={[
+                  tokens && tokens.lp
+                    ? `${tokens && tokens.earn}/${tokens.symbol} ${t('stake')}`
+                    : `${tokens && tokens.symbol} ${t('stake')}`
+                ]}
+              >
+                <div
+                  slot="button"
+                  className="button clickableButton"
+                  onClick={() => (allowStake ? setVisibleModal(true) : handelApprove())}
+                >
+                  {allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}
+                </div>
               </ItemWrap>
             </DetailItem>
           </Col>
-
         </Row>
       </Column>
-      <div className="button harvestAndUnstake clickableButton"
-           onClick={() => stakeBalance > 0 && earnedBalance > 0 ? handelExit() : console.error('not balance')}
-           style={{ color: stakeBalance > 0 && earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
+      <div
+        className="button harvestAndUnstake clickableButton"
+        onClick={() => (stakeBalance > 0 && earnedBalance > 0 ? handelExit() : console.error('not balance'))}
+        style={{ color: stakeBalance > 0 && earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
       >
         {t('HarUnst')}
       </div>
       <Modal visible={visibleModal} footer={null} onCancel={() => setVisibleModal(false)}>
         <WalletBox>
           <h2>Stake</h2>
-          <h3>{balance.toFixed(6)} {tokens && tokens.symbol} Avaliable</h3>
+          <h3>
+            {balance.toFixed(6)} {tokens && tokens.symbol} Avaliable
+          </h3>
           <p>
-            <Input value={amount} type={'number'} onChange={(e) => onChange(e)}
-                   addonAfter={<Button type="primary" onClick={() => setAmount(balance)}>Max</Button>}/>
+            <Input
+              value={amount}
+              type={'number'}
+              onChange={e => onChange(e)}
+              addonAfter={
+                <Button type="primary" onClick={() => setAmount(balance)}>
+                  Max
+                </Button>
+              }
+            />
           </p>
-          <div className="cancle clickableButton" onClick={() => setVisibleModal(false)}>Cancel</div>
-          <div className="cancle clickableButton"
-               onClick={() => tokens && tokens.symbol === 'TRX' ? findDeposit() : handelStake()}>Stake
+          <div className="cancle clickableButton" onClick={() => setVisibleModal(false)}>
+            Cancel
           </div>
-
+          <div
+            className="cancle clickableButton"
+            onClick={() => (tokens && tokens.symbol === 'TRX' ? findDeposit() : handelStake())}
+          >
+            Stake
+          </div>
         </WalletBox>
       </Modal>
     </MenuWrap>

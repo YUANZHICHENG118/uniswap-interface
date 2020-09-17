@@ -114,5 +114,6 @@
   "earn":"Earn",
   "source":"Contract source code",
   "earned":"Earned",
-  "stake":"Stake"
+  "stake":"Stake",
+  "menu-detail-greet-small":"Deposit {{symbol1}} Tokens and earn {{symbol2}}"
 }

@@ -98,5 +98,6 @@
   "earn":"获取",
   "source":"合约开源代码",
   "earned":"已获取",
-  "stake":"质押"
+  "stake":"质押",
+  "menu-detail-greet-small":"存入{{symbol1}}代币，赢取 {{symbol2}}"
 }
