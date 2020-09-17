@@ -110,5 +110,7 @@
   "rewords":"REWARDS",
   "menu-greet":"It’s time for your favorite cocktail.",
   "menu-greet-small":"Earn {{symbol}} tokens by providing liquidity.",
-  "deposit":"Deposit"
+  "deposit":"Deposit",
+  "earn":"Earn",
+  "source":"Contract source code"
 }

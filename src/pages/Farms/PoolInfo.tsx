@@ -122,7 +122,7 @@ export default function PoolInfo(props: any) {
         address={token.address}
         subTitle={[
           token.lp ? `${t('deposit')} ${token.earn}/${token.symbol} LP token` : `${t('deposit')} ${token.symbol}`,
-          `Earn ${token.earn}`
+          `${t('earn')} ${token.earn}`
         ]}
         sourceLink="111"
       >
@@ -132,7 +132,7 @@ export default function PoolInfo(props: any) {
         </div>
         {token.coming ? (
           <RowItemButton slot="button" to={'#'}>
-            <div className="select">Coming Soon</div>
+            <div className="select">{t('coming')}</div>
           </RowItemButton>
         ) : (
           <RowItemButton slot="button" to={`/Menu/${token.key}`}>

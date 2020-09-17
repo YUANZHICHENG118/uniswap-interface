@@ -21,5 +21,7 @@
   "rewords":" 보상 ",
   "menu-greet":"네가 가장 좋아 하 는 칵테일 을 마 실 때 가 되 었 다.",
   "menu-greet-small":"유동성 제공 으로 {{symbol}} 토 큰 을 벌다.",
-  "deposit":"예금"
+  "deposit":"예금",
+  "earn":"벌다",
+  "source":"계약 소스 코드"
 }

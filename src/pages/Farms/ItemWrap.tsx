@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import bg from '../../assets/images/bg.png'
 
 import { FlexCenter } from '../../components/Column'
+import { useTranslation } from 'react-i18next'
 
 export const BodyWrapper = styled.div`
   padding: 24px;
@@ -119,6 +120,7 @@ const RowItemTitle = styled.h2`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function ItemWrap(props: any) {
+  const { t } = useTranslation()
   let childrens = Array.isArray(props.children) ? props.children : [props.children]
   const slots = childrens.reduce((slots: any, item: any) => {
     slots[item.props.slot] = item
@@ -141,7 +143,7 @@ export default function ItemWrap(props: any) {
               <span>
                 <a href={`https://tronscan.org/#/contract/${props.address}`} target="_blank" rel="noopener noreferrer">
                   {' '}
-                  Contract source code{' '}
+                  {t('source')}
                 </a>
               </span>
             )}
