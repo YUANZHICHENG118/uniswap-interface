@@ -267,6 +267,11 @@ const WalletBox = styled.div`
     justify-content: center;
     width: calc(100% - 40px);
     border-radius: 12px;
+    :hover{
+    background-color: #f1dae1!important;
+    cursor: pointer;
+    opacity: .9;
+    }
   }
 `
 
@@ -367,7 +372,8 @@ export default function Header() {
           <span>{t('wallet')}</span>
         </div>
         {/*语言*/}
-        <Dropdown overlay={menu} className="flag">
+        <div style={{ display: 'none' }}>
+        <Dropdown overlay={menu} className="flag" >
           <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
             <img src={curLang.imgUrl} alt="" width="30px"/>
             &nbsp; {curLang.value}
@@ -388,6 +394,7 @@ export default function Header() {
             </span>
           </span>
         </Dropdown>
+        </div>
         {/*先隐藏*/}
         <HeaderControls style={{ display: 'none' }}>
           <HeaderElement>

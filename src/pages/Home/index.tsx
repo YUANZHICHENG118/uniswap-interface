@@ -52,11 +52,15 @@ export default function Home() {
         <img src={titleImg} alt="ball" width="180px" />
         <h1>{t('greet')}</h1>
         <h3>{t('greet-small',{label:mainContract.symbol})}</h3>
+        <h3>
+          {mainContract.symbol} finance's smart contract has been verified TronScan. Check open source code
+          <a href=""  target="_blank" rel="noopener noreferrer" style={{marginLeft:'10px'}}>here</a>.
+        </h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
-          {mainContract.symbol} {t('address')}：
-          <span className="ellipsis" style={{ color: 'rgb(91, 38, 57)' }}>
+          {mainContract.symbol} {t('address')}:
+          <a className="ellipsis" href="" style={{ color: 'rgb(91, 38, 57)',marginLeft:'10px' }}>
             {mainContract.address}
-          </span>
+          </a>
         </h3>
       </div>
       {/*account*/}
