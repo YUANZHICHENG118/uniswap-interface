@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import bg from '../../assets/images/bg.png'
 
 import { FlexCenter } from '../../components/Column'
+
 export const BodyWrapper = styled.div`
   padding: 24px;
   border: 1px solid #efc6ed;
@@ -88,7 +89,6 @@ const RowItemBox = styled.div`
     }
   }
 `
-
 const RowItemLogo = styled.div`
   background-color: #f0e7ea;
   font-size: 36px;
@@ -103,6 +103,7 @@ const RowItemLogo = styled.div`
   justify-content: center;
   align-items: center;
 `
+
 const RowItemTitle = styled.h2`
   margin-top: 24px;
   text-align: center;
@@ -112,6 +113,7 @@ const RowItemTitle = styled.h2`
   font-weight: 700;
   display: block;
   word-break: break-all;
+  }
 `
 /**
  * The styled container element that wraps the content of most pages and the tabs.
