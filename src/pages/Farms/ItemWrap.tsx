@@ -102,9 +102,6 @@ const RowItemLogo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  img {
-    width: 100%;
-  }
 `
 const RowItemTitle = styled.h2`
   margin-top: 24px;
@@ -132,7 +129,7 @@ export default function ItemWrap(props: any) {
         <FlexCenter>
           {slots['tag']}
           <RowItemLogo>
-            <img src={require(`../../assets/images/token/${props.itemLogo.toLowerCase()}.png`)} alt={props.symbol} width="50px"/>
+            <img src={require(`../../assets/images/token/${props.itemLogo.toLowerCase()}.png`)} alt={props.symbol} height="80px"/>
           </RowItemLogo>
           <RowItemTitle>{props.title}</RowItemTitle>
           <div className="cardNote">
