@@ -102,5 +102,7 @@
   "totalSupply":"Total Supply",
   "MyStake":"My Stake",
   "address":"Address",
-  "price":"PRICES"
+  "price":"PRICES",
+  "greet":"Had too much Sushi, Yam and Carb?",
+  "greet-small":"Sip a glass of {{label}}TAIL to refresh your DEFI taste bud."
 }

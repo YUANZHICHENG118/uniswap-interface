@@ -50,16 +50,8 @@ export default function Home() {
     <BodyWrapper>
       <div className="greating">
         <img src={titleImg} alt="ball" width="180px" />
-        <h1> Had too much Sushi, Yam and Carb?</h1>
-        {/*<h3>It's a great day to mine some {mainContract.symbol}  on TRON.</h3>*/}
-        <h3>Sip a glass of {mainContract.symbol}TAIL to refresh your DEFI taste bud.</h3>
-        {/*<h3>
-          {mainContract.symbol} Finance's Smart Contract has been verified TronScan. Check open source code
-          <a href="" target="_blank" rel="noopener noreferrer">
-            here
-          </a>
-          .
-        </h3>*/}
+        <h1>{t('greet')}</h1>
+        <h3>{t('greet-small',{label:mainContract.symbol})}</h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
           {mainContract.symbol} {t('address')}：
           <span className="ellipsis" style={{ color: 'rgb(91, 38, 57)' }}>

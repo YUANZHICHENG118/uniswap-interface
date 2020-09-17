@@ -86,5 +86,7 @@
   "totalSupply":"总供应量",
   "MyStake":"我的质押",
   "address":" 代币地址",
-  "price":"价格"
+  "price":"价格",
+  "greet":"吃了太多寿司、山药和碳水化合物?",
+  "greet-small":"喝一杯鸡尾酒来提神提神"
 }
