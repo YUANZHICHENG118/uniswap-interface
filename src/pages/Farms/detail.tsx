@@ -250,7 +250,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           <Col className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
               <ItemWrap itemLogo={tokens && tokens.earn.toLowerCase()} title={earnedBalance.toFixed(6)}
-                        subTitle={[`${tokens && tokens.earn} Earned`]}>
+                        subTitle={[`${tokens && tokens.earn} ${t('earned')}`]}>
                 <div slot="button" className="button clickableButton"
                      onClick={() => earnedBalance > 0 ? handelGetReward() : console.log('')}
                      style={{ color: earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}>{t('harvest')}</div>
@@ -261,9 +261,9 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           <Col className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
               <ItemWrap itemLogo={tokens && tokens.symbol.toLowerCase()} title={stakeBalance.toFixed(6)}
-                        subTitle={[tokens && tokens.lp ? `${tokens && tokens.earn}/${tokens.symbol} Stake` : `${tokens && tokens.symbol} Stake`]}>
+                        subTitle={[tokens && tokens.lp ? `${tokens && tokens.earn}/${tokens.symbol} ${t('stake')}` : `${tokens && tokens.symbol} ${t('stake')}`]}>
                 <div slot="button" className="button clickableButton"
-                     onClick={() => allowStake ? setVisibleModal(true) : handelApprove()}>{allowStake ? 'Stake' : `${t('Approve')} ${symbol}`}</div>
+                     onClick={() => allowStake ? setVisibleModal(true) : handelApprove()}>{allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}</div>
               </ItemWrap>
             </DetailItem>
           </Col>

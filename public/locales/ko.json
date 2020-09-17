@@ -23,5 +23,7 @@
   "menu-greet-small":"유동성 제공 으로 {{symbol}} 토 큰 을 벌다.",
   "deposit":"예금",
   "earn":"벌다",
-  "source":"계약 소스 코드"
+  "source":"계약 소스 코드",
+  "earned":"벌 어 들이다",
+  "stake":"판돈"
 }

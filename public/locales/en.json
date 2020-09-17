@@ -112,5 +112,7 @@
   "menu-greet-small":"Earn {{symbol}} tokens by providing liquidity.",
   "deposit":"Deposit",
   "earn":"Earn",
-  "source":"Contract source code"
+  "source":"Contract source code",
+  "earned":"Earned",
+  "stake":"Stake"
 }

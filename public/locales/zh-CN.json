@@ -96,5 +96,7 @@
   "menu-greet-small":"通过提供流动性赚取{{symbol}}代币。",
   "deposit":"存款",
   "earn":"获取",
-  "source":"合约开源代码"
+  "source":"合约开源代码",
+  "earned":"已获取",
+  "stake":"质押"
 }
