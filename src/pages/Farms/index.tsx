@@ -7,6 +7,7 @@ import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import PoolInfo from './PoolInfo'
 import { contractList, ITokens, mainContract } from '../../utils/tron'
+import { useTranslation } from 'react-i18next'
 
 
 const MenuBody = styled.div`
@@ -19,11 +20,10 @@ const RowBox = styled.div`
 `
 
 export default function Menu() {
-
-
+  const { t } = useTranslation()
   return (
     <MenuWrap>
-      <MenuTop imgUrl={titleImg} h1Text={'It’s time for your favorite cocktail.'} h3Text={`Earn ${mainContract.symbol} tokens by providing liquidity.`} />
+      <MenuTop imgUrl={titleImg} h1Text={`${t('menu-greet')}`} h3Text={`${t('menu-greet-small',{symbol:mainContract.symbol})}`} />
       <MenuBody>
         <RowBox>
           <Row gutter={{ sm: 16, md: 32 }} justify="center" align="middle" style={{ width: '100%' }}>

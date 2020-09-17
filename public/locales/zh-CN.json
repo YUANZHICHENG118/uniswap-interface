@@ -91,5 +91,8 @@
   "greet":"吃了太多寿司、山药和碳水化合物?",
   "greet-small":"喝一杯鸡尾酒来提神提神",
   "Recipe":"配方",
-  "rewords":"奖励"
+  "rewords":"奖励",
+  "menu-greet":"是时候喝你最喜欢的鸡尾酒了。",
+  "menu-greet-small":"通过提供流动性赚取{{symbol}}代币。",
+  "deposit":"存款"
 }

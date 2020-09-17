@@ -121,7 +121,7 @@ export default function PoolInfo(props: any) {
         title={token.lp ? `${token.earn}/${token.symbol} LP` : `${token.symbol}`}
         address={token.address}
         subTitle={[
-          token.lp ? `Deposit ${token.earn}/${token.symbol} LP token` : `Deposit ${token.symbol}`,
+          token.lp ? `${t('deposit')} ${token.earn}/${token.symbol} LP token` : `${t('deposit')} ${token.symbol}`,
           `Earn ${token.earn}`
         ]}
         sourceLink="111"

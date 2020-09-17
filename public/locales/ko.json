@@ -18,5 +18,8 @@
   "greet":"초밥, 마, 탄수화물 을 너무 많이 먹 었 나?",
   "greet-small":"칵테일 한 잔 을 마셔 정신 을 차리다.",
   "Recipe":"레 시 피",
-  "rewords":" 보상 "
+  "rewords":" 보상 ",
+  "menu-greet":"네가 가장 좋아 하 는 칵테일 을 마 실 때 가 되 었 다.",
+  "menu-greet-small":"유동성 제공 으로 {{symbol}} 토 큰 을 벌다.",
+  "deposit":"예금"
 }

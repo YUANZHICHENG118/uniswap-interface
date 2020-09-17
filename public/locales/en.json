@@ -107,5 +107,8 @@
   "greet":"Stake & Earn your defi cocktail",
   "greet-small":"Sip a glass of {{label}}TAIL to refresh your DEFI taste bud.",
   "Recipe":"Recipe",
-  "rewords":"REWARDS"
+  "rewords":"REWARDS",
+  "menu-greet":"It’s time for your favorite cocktail.",
+  "menu-greet-small":"Earn {{symbol}} tokens by providing liquidity.",
+  "deposit":"Deposit"
 }
