@@ -27,7 +27,7 @@ import { useETHBalances } from '../../state/wallet/hooks'
 
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
-import { balanceOf, mainContract } from '../../utils/tron'
+import { balanceOf, mainContract, getAccount } from '../../utils/tron'
 import i18next from '../../i18n'
 
 const HeaderFrame = styled.div`
@@ -287,6 +287,8 @@ export default function Header() {
   const { t } = useTranslation()
   const { account, chainId } = useActiveWeb3React()
   const [balance, setBalance] = useState<number>(0.000000)
+  const [unlock, setUnlock] = useState<boolean>(true)
+
   const [curLang,setCurLang] = useState({ imgUrl: EnLangImg, value: 'EN' })
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const handleSetlang=(lang:string)=>{
@@ -322,12 +324,28 @@ export default function Header() {
   useEffect(() => {
     const lang=localStorage.getItem('i18nextLng') || 'en';
     handleSetlang(lang)
+
+
   }, []);
   useEffect(() => {
-    setTimeout(findBalance, 500)
-  })
+    setInterval(() => {
+      findAccount()
+    }, 3000)
+    setTimeout(findBalance, 800)
+  },[])
+
+  const findAccount=()=>{
+    getAccount().then((data:any)=>{
+
+      debugger
+      if(data&&data.address){
+        setUnlock(false)
+      }
+    })
+  }
 
   const findBalance = () => {
+
     balanceOf(mainContract.address,false).then((data: any) => {
       setBalance(data / Math.pow(10, mainContract.decimals))
     })
@@ -369,7 +387,7 @@ export default function Header() {
         </Headertabs>
         {/*钱包*/}
         <div className="myWallet clickableButton" onClick={() => setModalOpen(true)}>
-          <span>{t('wallet')}</span>
+          <span>{unlock?'Unlock Wallet':t('wallet')}</span>
         </div>
         {/*语言*/}
         <div style={{ display: 'none' }}>

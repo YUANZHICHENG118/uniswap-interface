@@ -1,7 +1,7 @@
 export interface IAccount {
-  base58?: string
-  hex?: string
-  name?: string
+  base58?: string|boolean
+  hex?: string|boolean
+  name?: string|boolean
 }
 
 export interface ITokens {
@@ -82,10 +82,10 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   address: '',
   poolAddress: 'TKEhao64iZWpzC2wSeMwiUwqExWFzSGqrH'
 }, {
-  logo: 'cocktrx',
+  logo: 'COCK',
   key: 'COCK_TRX',
   symbol: 'TRX',
-  earn: 'COCK',
+  earn: 'COCKTRX',
   decimals: 6,
   earnDecimals: 18,
   coming: false,
@@ -98,7 +98,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   logo: 'jfitrx',
   key: 'JFI_TRX',
 
-  symbol: 'TRX',
+  symbol: 'JFITRX',
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
@@ -112,7 +112,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   logo: 'suntrx',
   key: 'SUN_TRX',
 
-  symbol: 'TRX',
+  symbol: 'SUNTRX',
   earn: 'SUN',
   decimals: 6,
   earnDecimals: 18,
@@ -163,13 +163,13 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   address: '',
   poolAddress: 'TREPMx3mCfkHd8hffkSFY5C8ZuY9YxX2o4'
 }, {
-  logo: 'cocktrx',
+  logo: 'COCK',
   key: 'COCK_TRX',
-  symbol: 'TRX',
+  symbol: 'COCKTRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: false,
+  coming: true,
   lp: true,
 
   apy: 'infinity',
@@ -193,7 +193,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   logo: 'suntrx',
   key: 'SUN_TRX',
 
-  symbol: 'TRX',
+  symbol: 'SUNTRX',
   earn: 'SUN',
   decimals: 6,
   earnDecimals: 18,
@@ -278,14 +278,13 @@ export function chk(tronWeb: any) {
 }
 
 // 获取账号信息包括 token 余额
-export async function account() {
+export async function getAccount() {
   const tronWeb = await findTronWeb()
   if (!chk(tronWeb)) {
     return new Promise<IAccount>((resolve, reject) => {
       return reject()
     })
   }
-
   const tx = await  tronWeb.trx.getAccount((await address()).hex)
   return tx
 }

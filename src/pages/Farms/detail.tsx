@@ -21,7 +21,7 @@ import {
   getReward,
   exit,
   deposit,
-  account
+  getAccount
 } from '../../utils/tron'
 const { Search } = Input;
 
@@ -117,7 +117,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       findEarnedBalance()
 
       timer = setInterval(() => {
-        //findAllow()
+        findAllow()
         findBalance()
         findStakeBalance()
         findEarnedBalance()
@@ -203,7 +203,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const findBalance = () => {
     if (tokens) {
       if (tokens.symbol === 'TRX') {
-        account().then((data: any) => {
+        getAccount().then((data: any) => {
           setBalance(data.balance / Math.pow(10, tokens.decimals))
         })
       } else {
