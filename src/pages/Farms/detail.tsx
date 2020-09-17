@@ -261,7 +261,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         h1Text="COCK TAIL"
         h3Text={
           tokens && tokens.lp
-            ? `Deposit ${tokens && tokens.earn}/${tokens && tokens.symbol} LP Tokens and earn ${tokens && tokens.earn}`
+            ? `Deposit ${tokens && tokens.symbol} LP Tokens and earn ${tokens && tokens.earn}`
             : `${t('menu-detail-greet-small',{symbol1:tokens && tokens.symbol,symbol2:tokens && tokens.earn})}`
         }
       />
@@ -289,11 +289,11 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           <Col className="gutter-row" span={12} xs={24} sm={24} md={10}>
             <DetailItem>
               <ItemWrap
-                itemLogo={tokens && tokens.symbol.toLowerCase()}
+                itemLogo={tokens && tokens.logo.toLowerCase()}
                 title={stakeBalance.toFixed(6)}
                 subTitle={[
                   tokens && tokens.lp
-                    ? `${tokens && tokens.earn}/${tokens.symbol} LP ${t('stake')}`
+                    ? `${tokens.symbol} LP ${t('stake')}`
                     : `${tokens && tokens.symbol} ${t('stake')}`
                 ]}
               >

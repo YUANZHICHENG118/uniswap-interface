@@ -118,10 +118,10 @@ export default function PoolInfo(props: any) {
     <Col xs={24} sm={24} md={8}>
       <ItemWrap
         itemLogo={token.logo.toLowerCase()}
-        title={token.lp ? `${token.earn}/${token.symbol} LP` : `${token.symbol}`}
+        title={token.lp ? `${token.symbol} LP` : `${token.symbol}`}
         address={token.address}
         subTitle={[
-          token.lp ? `${t('deposit')} ${token.earn}/${token.symbol} LP token` : `${t('deposit')} ${token.symbol}`,
+          token.lp ? `${t('deposit')} ${token.symbol} LP token` : `${t('deposit')} ${token.symbol}`,
           `${t('earn')} ${token.earn}`
         ]}
         sourceLink="111"
