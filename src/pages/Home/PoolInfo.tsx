@@ -69,9 +69,9 @@ export default function PoolInfo(props: any) {
         <p>Hourly estimate : 0.0000 Pearl = $0.0000</p>
         <p> Daily estimate : 0.0000 Pearl = $0.0000</p>
         <p> Weekly estimate : 0.0000 Pearl = $0.0000</p>
-        <p> Hourly ROI in USD : 407.7491%</p>
-        <p> Daily ROI in USD : 9785.9789%</p>
-        <p> Weekly ROI in USD : 68501.8522%</p>
+        <p> Hourly ROI in USD : 0%</p>
+        <p> Daily ROI in USD : 0%</p>
+        <p> Weekly ROI in USD : 0%</p>
       </div>
     </Col>
   )

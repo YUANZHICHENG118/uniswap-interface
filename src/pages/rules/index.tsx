@@ -24,7 +24,7 @@ export const BodyWrapper = styled.div`
     h2 {
     color: #000;
     font-size: 24px;
-    line-height: 24px;
+    line-height: 20px;
     font-weight: 700;
     padding: 30px 0;
 }
@@ -40,7 +40,7 @@ export const BodyWrapper = styled.div`
       }
     }
     .address {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
   }
 `
@@ -83,12 +83,12 @@ export default function Rules() {
 
         <h2> Pools</h2>
 
-        <p> FIrst Round - 4000, initiated at: 20th Sep 2020 2:00 PM UTC time</p>
+        <p> FIrst Round - 4000</p>
         <p> USDJ 1500</p>
         <p> JFI 1500</p>
         <p> TRX 1000</p>
 
-        <p> Second Round - 5000, initiated at: 3rd Oct 2020 2:00 PM UTC time</p>
+        <p> Second Round - 5000</p>
         <p>COCKTAIL/TRX LP 3500</p>
         <p> JFI/TRX LP 750</p>
         <p> SUN/TRX LP 750</p>
@@ -99,7 +99,7 @@ export default function Rules() {
 
         <h3>Address</h3>
         <div>
-          <h3>{mainContract.symbol}</h3>
+          <p>{mainContract.symbol}</p>
           <p> Token Address:
             <a href={`${trxBlock}${mainContract.address}`} target="_blank" rel="noopener noreferrer">
               {mainContract.address}
@@ -109,7 +109,7 @@ export default function Rules() {
           {
             contractList().map((item: ITokens) => {
               return <>
-                <h3>{item.symbol}</h3>
+                <p>{item.symbol} {item.lp?'LP':''}</p>
                 <p className="address">
                   Token Address :
                   <a href={`${trxBlock}${item.address}`} target="_blank" rel="noopener noreferrer">
@@ -141,8 +141,8 @@ export default function Rules() {
           example, vote for adding more distribution pools.</p>
 
         <h3> How does the earning calculated?</h3>
-        <p> It’s equally distributed through time. For example, each hour USDJ pool generates 1500/14/24 = 4.46428571
-          COCK.</p>
+        <p>It’s equally distributed through time. For example, each hour USDJ pool generates 1500/28/24 = 2.232142 COCK.
+        </p>
 
       </div>
     </BodyWrapper>

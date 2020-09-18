@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import MenuWrap from './wrapper'
@@ -8,7 +8,7 @@ import titleImg from '../../assets/images/farm/logo.png'
 
 import ItemWrap from './ItemWrap'
 import { Row, Col, notification, Modal, Input } from 'antd'
-import { RouteComponentProps } from 'react-router-dom'
+import {  RouteComponentProps } from 'react-router-dom'
 import {
   contractList,
   ITokens,
@@ -62,9 +62,7 @@ const WalletBox = styled.div`
     line-height: 18px;
   }
   .cancle {
-   :hover {
-      background-color: #f1dae1;
-      }
+  
     margin: 60px 20px 20px;
     align-items: center;
     background-color: #f0e7ea;
@@ -78,6 +76,11 @@ const WalletBox = styled.div`
     justify-content: center;
     width: calc(100% - 40px);
     border-radius: 12px;
+    
+    :hover {
+      background-color: #f1dae1;
+     
+    }
   }
 `
 
@@ -104,6 +107,8 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   } = props
   const tokens = contractList().find((x: ITokens) => x.key === symbol)
   let timer: any
+
+
   useEffect(() => {
     setTimeout(() => {
       if (tokens && tokens.symbol === 'TRX') {
@@ -112,20 +117,19 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         findAllow()
       }
 
+    }, 300)
+
+
+    timer = setInterval(() => {
+      findAllow()
       findBalance()
       findStakeBalance()
       findEarnedBalance()
-
-      timer = setInterval(() => {
-        findAllow()
-        findBalance()
-        findStakeBalance()
-        findEarnedBalance()
-      }, 5000)
-    }, 300)
-
+    }, 5000)
     return componentWillUnmount
   }, [])
+
+
 
   function componentWillUnmount() {
     if (timer) {
@@ -254,6 +258,19 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
     console.log('e====', e.currentTarget.value)
     setAmount(e.currentTarget.value)
   }
+  useMemo(() => {
+    findBalance()
+  }, [balance])
+
+  useMemo(() => {
+    findStakeBalance()
+  }, [stakeBalance])
+
+  useMemo(() => {
+    findEarnedBalance()
+  }, [earnedBalance])
+
+
   return (
     <MenuWrap>
       <MenuTop
@@ -320,7 +337,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         <WalletBox>
           <h2>Stake</h2>
           <h3>
-            {balance.toFixed(6)} {tokens && tokens.symbol} Avaliable
+            {balance.toFixed(6)} {tokens && tokens.symbol} {tokens&&tokens.lp?'LP':''} Avaliable
           </h3>
           <p>
 

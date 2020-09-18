@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { Row, Col } from 'antd'
-import { balanceOf,totalSupply,mainContract } from '../../utils/tron'
+import { balanceOf, mainContract } from '../../utils/tron'
 
 export const BodyWrapper = styled.div`
   .dataBox {
@@ -50,45 +50,48 @@ export const BodyWrapper = styled.div`
  */
 export default function DataSet() {
   const { t } = useTranslation()
-  const [balance,setBalance]=useState<number>(0.000000);
-  const [supply,setSupply]=useState<number>(0.000000);
-  let timer:any;
+  const [balance, setBalance] = useState<number>(0.000000)
+  const [supply, setSupply] = useState<number>(0.000000)
+  let timer: any
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    findTotalSupply();
-    findBalance();
-    timer= setInterval(()=>{
-      findTotalSupply();
-      findBalance();
-    },3000)
-    return componentWillUnmount;
+    setSupply(10000)
+    // findTotalSupply();
+    findBalance()
+    timer = setInterval(() => {
+      //findTotalSupply();
+      findBalance()
+    }, 3000)
+    return componentWillUnmount
 
-  },[])
+  }, [])
+
   function componentWillUnmount() {
-    if(timer){
-      clearInterval(timer);
+    if (timer) {
+      clearInterval(timer)
     }
   }
-  const findBalance=()=>{
-    balanceOf(mainContract.address,false).then((data:any)=>{
-      setBalance(data/Math.pow(10,mainContract.decimals));
+
+  const findBalance = () => {
+    balanceOf(mainContract.address, false).then((data: any) => {
+      setBalance(data / Math.pow(10, mainContract.decimals))
     })
   }
 
-  const findTotalSupply=()=>{
-     totalSupply(mainContract.address).then((data:any)=>{
-       setSupply(data/Math.pow(10,mainContract.decimals));
-     })
-
-  }
+  // const findTotalSupply=()=>{
+  //    totalSupply(mainContract.address).then((data:any)=>{
+  //      setSupply(data/Math.pow(10,mainContract.decimals));
+  //    })
+  //
+  // }
 
   return (
     <BodyWrapper>
       <Row gutter={{ xs: 8, sm: 16, md: 32 }} justify="center" align="middle">
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
-            <img src={require(`../../assets/images/token/cock.png`)} alt="" />
+            <img src={require(`../../assets/images/token/cock.png`)} alt=""/>
 
             <div className="ballBalance">
               <h2>{balance.toFixed(4)}</h2>
@@ -98,7 +101,7 @@ export default function DataSet() {
         </Col>
         <Col xs={24} sm={24} md={10}>
           <div className="dataBox">
-            <h2>{supply.toFixed(4)}</h2>
+            <h2>{supply}</h2>
             <p>{t('totalSupply')}</p>
           </div>
         </Col>

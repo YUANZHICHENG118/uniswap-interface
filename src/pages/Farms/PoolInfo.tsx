@@ -97,7 +97,6 @@ export default function PoolInfo(props: any) {
   const [end, setEnd] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log('=======', token.symbol)
     setTimeout(async () => {
       await findTime()
     }, 500)
@@ -128,8 +127,11 @@ export default function PoolInfo(props: any) {
       >
         <div className="status" slot="status">
           {/*<span>ENDED</span>*/}
-          <strong>{end ? 'ENDED' : <Countdown title="" value={data} onFinish={onFinish} />}</strong>
-        </div>
+          {
+            token.coming ? <span>Coming Soon</span> :
+              <strong>{end ? 'ENDED' : <Countdown title="" value={data} onFinish={onFinish}/>}</strong>
+          }
+              </div>
         {token.coming ? (
           <RowItemButton slot="button" to={'#'}>
             <div className="select">{t('coming')}</div>

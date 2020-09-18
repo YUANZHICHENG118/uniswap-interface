@@ -34,13 +34,13 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
   decimals: 18,
   address: 'TCfomXuaxYY2Hx2zmYBZhmNHt7U3hKBq5x',
   poolAddress: '',
-  price: 257.8067
+  price: 0
 } : {
   symbol: 'COCK',
   decimals: 18,
   address: 'TMYigtLSE5uaqWLRQQAQzHuWdXAutFpfN8',
   poolAddress: '',
-  price: 257.8067
+  price: 0
 
 }
 const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
@@ -141,7 +141,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   key: 'JFI',
   symbol: 'JFI',
   earn: 'COCK',
-  decimals: 6,
+  decimals: 18,
   earnDecimals: 18,
   coming: false,
   lp: false,
@@ -165,7 +165,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 }, {
   logo: 'COCK',
   key: 'COCK_TRX',
-  symbol: 'COCK/TRX',
+  symbol: 'COCKTAIL/TRX',
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,

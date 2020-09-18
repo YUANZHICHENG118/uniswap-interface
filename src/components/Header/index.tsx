@@ -27,7 +27,7 @@ import { useETHBalances } from '../../state/wallet/hooks'
 
 import Web3Status from '../Web3Status'
 import VersionSwitch from './VersionSwitch'
-import { balanceOf, mainContract, getAccount } from '../../utils/tron'
+import { balanceOf, mainContract } from '../../utils/tron'
 import i18next from '../../i18n'
 
 const HeaderFrame = styled.div`
@@ -330,18 +330,14 @@ export default function Header() {
   useEffect(() => {
     setInterval(() => {
       findAccount()
-    }, 3000)
+    }, 300)
     setTimeout(findBalance, 800)
   },[])
 
   const findAccount=()=>{
-    getAccount().then((data:any)=>{
+    const {tronWeb}=window;
+    setUnlock(tronWeb && tronWeb.defaultAddress && tronWeb.defaultAddress.hex)
 
-      debugger
-      if(data&&data.address){
-        setUnlock(false)
-      }
-    })
   }
 
   const findBalance = () => {
@@ -386,8 +382,8 @@ export default function Header() {
           <NavTitle style={{ display: 'none' }} href="https://uniswap.org/">About</NavTitle>
         </Headertabs>
         {/*钱包*/}
-        <div className="myWallet clickableButton" onClick={() => setModalOpen(true)}>
-          <span>{unlock?'Unlock Wallet':t('wallet')}</span>
+        <div className="myWallet clickableButton" onClick={() =>!unlock?console.log("lock"): setModalOpen(true)}>
+          <span>{!unlock?'Unlock':t('wallet')}</span>
         </div>
         {/*语言*/}
         <div style={{ display: 'none' }}>
