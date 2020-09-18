@@ -49,7 +49,6 @@
   "willReceive": "will receive at least",
   "to": "to",
   "addLiquidity": "Add Liquidity",
-  "deposit": "Deposit",
   "currentPoolSize": "Current Pool Size",
   "yourPoolShare": "Your Pool Share",
   "noZero": "Amount cannot be zero.",
@@ -126,4 +125,5 @@
   "Hourly-ROI":"Hourly ROI in USD",
   "Daily-ROI":"Daily ROI in USD",
   "Weekly-ROI":"Weekly ROI in USD",
+  "ended":"ENDED"
 }

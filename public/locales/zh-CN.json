@@ -40,7 +40,6 @@
   "willReceive": "将至少收到",
   "to": "至",
   "addLiquidity": "添加流动金",
-  "deposit": "存入",
   "currentPoolSize": "当前资金池大小",
   "yourPoolShare": "你的资金池份额",
   "noZero": "金额不能为零。",
@@ -110,5 +109,6 @@
   "Hourly-ROI":"每小时投资回报（美元）",
   "Daily-ROI":"每日投资回报率（美元）",
   "Weekly-ROI":"每周投资回报率（美元）",
-  "unlock":"解锁"
+  "unlock":"解锁",
+  "ended":"已结束"
 }

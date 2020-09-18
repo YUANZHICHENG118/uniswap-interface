@@ -135,7 +135,7 @@ export default function PoolInfo(props: any) {
           {token.coming ? (
             <span>{t('coming')}</span>
           ) : (
-            <strong>{end ? 'ENDED' : <Countdown title="" value={data} onFinish={onFinish} />}</strong>
+            <strong>{end ? t('ended') : <Countdown title="" value={data} onFinish={onFinish} />}</strong>
           )}
         </div>
         {token.coming ? (
