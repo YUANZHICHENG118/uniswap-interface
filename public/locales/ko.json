@@ -26,5 +26,9 @@
   "source":"계약 소스 코드",
   "earned":"벌 어 들이다",
   "stake":"판돈",
-  "menu-detail-greet-small":"{{symbol1}} 기호 화 폐 를 넣 어서 {{symbol2}} 를 벌 어 들 인 다."
+  "menu-detail-greet-small":"{{symbol1}} 기호 화 폐 를 넣 어서 {{symbol2}} 를 벌 어 들 인 다.",
+  "Claimable":"지급 가능한 보상",
+  "Hourly":"시간 계산",
+  "Daily":"일 일 추산",
+  "Weekly":"매주 견적 하 다."
 }

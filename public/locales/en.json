@@ -115,5 +115,9 @@
   "source":"Contract source code",
   "earned":"Earned",
   "stake":"Stake",
-  "menu-detail-greet-small":"Deposit {{symbol1}} Tokens and earn {{symbol2}}"
+  "menu-detail-greet-small":"Deposit {{symbol1}} Tokens and earn {{symbol2}}",
+  "Claimable":"Claimable Rewards",
+  "Hourly":"Hourly estimate",
+  "Daily":"Daily estimate",
+  "Weekly":"Weekly estimate"
 }

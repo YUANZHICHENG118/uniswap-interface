@@ -1,14 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import MenuWrap from './wrapper'
 import MenuTop from './menuTop'
 import Column from '../../components/Column'
 import titleImg from '../../assets/images/farm/logo.png'
-
+import shakeImg from '../../assets/images/token/bottle.png'
 import ItemWrap from './ItemWrap'
 import { Row, Col, notification, Modal, Input } from 'antd'
-import {  RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import {
   contractList,
   ITokens,
@@ -23,7 +23,7 @@ import {
   deposit,
   getAccount
 } from '../../utils/tron'
-const { Search } = Input;
+const { Search } = Input
 
 const WalletBox = styled.div`
   text-align: center;
@@ -62,7 +62,6 @@ const WalletBox = styled.div`
     line-height: 18px;
   }
   .cancle {
-  
     margin: 60px 20px 20px;
     align-items: center;
     background-color: #f0e7ea;
@@ -76,10 +75,9 @@ const WalletBox = styled.div`
     justify-content: center;
     width: calc(100% - 40px);
     border-radius: 12px;
-    
+
     :hover {
       background-color: #f1dae1;
-     
     }
   }
 `
@@ -87,9 +85,71 @@ const WalletBox = styled.div`
 const Flex = styled.div`
   display: flex;
 `
+const rock = keyframes`
+   0% {
+		        transform: rotate(-30deg)
+		    }
+		    10% {
+		        transform: rotate(-15deg)
+		    }
+		    20% {
+		        transform: rotate(-30deg)
+		    }
+		    30% {
+		        transform: rotate(-45deg)
+		    }
+		    35% {
+		        transform: rotate(-15deg)
+		    }
+		    40% {
+		        transform: rotate(-45deg)
+		    }
+		    45% {
+		        transform: rotate(-15deg)
+		    }
+		    50% {
+		        transform: rotate(-30deg)
+		    }
+		    60% {
+		        transform: rotate(-15deg)
+		    }
+		    100% {
+		        transform: rotate(-30deg)
+		    }
+`
 const DetailItem = styled(Flex)`
   flex-direction: column;
   flex: 1 1 0%;
+  .selectbtn {
+    position: relative;
+    :hover {
+      background-color: #f1dae1;
+      :after {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius:10px;
+        background-color: #f1dae1;
+      }
+      .hasbg {
+        display: inline-block;
+        width: 40px;
+        height: 80%;
+        position: absolute;
+        top: 5px;
+        left: 45%;
+        transform: translateX(-45%);
+        background: url(${shakeImg}) no-repeat;
+        background-size: contain;
+        background-position: center;
+        animation: ${rock} 1s 0s ease-in-out infinite;
+        z-index: 5;
+      }
+    }
+  }
 `
 export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const { t } = useTranslation()
@@ -108,7 +168,6 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   const tokens = contractList().find((x: ITokens) => x.key === symbol)
   let timer: any
 
-
   useEffect(() => {
     setTimeout(() => {
       if (tokens && tokens.symbol === 'TRX') {
@@ -116,9 +175,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       } else {
         findAllow()
       }
-
     }, 300)
-
 
     timer = setInterval(() => {
       findAllow()
@@ -129,8 +186,6 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
     return componentWillUnmount
   }, [])
 
-
-
   function componentWillUnmount() {
     if (timer) {
       clearInterval(timer)
@@ -140,7 +195,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   // 是否已授权
   const findAllow = () => {
     if (tokens) {
-      allowance(tokens.address, tokens.poolAddress,tokens.lp).then(data => {
+      allowance(tokens.address, tokens.poolAddress, tokens.lp).then(data => {
         setAllowStake(data)
       })
     }
@@ -160,12 +215,12 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
   //质押
   const handelStake = () => {
-    if(amount<=0){
+    if (amount <= 0) {
       notification.error({
         message: 'Amount error',
         description: 'Amount error'
       })
-      return;
+      return
     }
     if (tokens) {
       stake(amount, tokens.poolAddress, tokens.decimals).then(data => {
@@ -211,7 +266,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           setBalance(data.balance / Math.pow(10, tokens.decimals))
         })
       } else {
-        balanceOf(tokens.address,tokens.lp).then((data: any) => {
+        balanceOf(tokens.address, tokens.lp).then((data: any) => {
           setBalance(data / Math.pow(10, tokens.decimals))
         })
       }
@@ -220,7 +275,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
   const findStakeBalance = () => {
     if (tokens) {
-      balanceOf(tokens.poolAddress,tokens.lp).then((data: any) => {
+      balanceOf(tokens.poolAddress, tokens.lp).then((data: any) => {
         setStakeBalance(data / Math.pow(10, tokens.decimals))
       })
     }
@@ -235,12 +290,12 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
   }
 
   const findDeposit = () => {
-    if(amount<=0){
+    if (amount <= 0) {
       notification.error({
         message: 'Amount error',
         description: 'Amount error'
       })
-      return;
+      return
     }
     if (tokens) {
       deposit(amount, tokens.poolAddress, tokens.decimals).then(data => {
@@ -270,7 +325,6 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
     findEarnedBalance()
   }, [earnedBalance])
 
-
   return (
     <MenuWrap>
       <MenuTop
@@ -279,7 +333,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         h3Text={
           tokens && tokens.lp
             ? `Deposit ${tokens && tokens.symbol} LP Tokens and earn ${tokens && tokens.earn}`
-            : `${t('menu-detail-greet-small',{symbol1:tokens && tokens.symbol,symbol2:tokens && tokens.earn})}`
+            : `${t('menu-detail-greet-small', { symbol1: tokens && tokens.symbol, symbol2: tokens && tokens.earn })}`
         }
       />
       <Column>
@@ -309,17 +363,16 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
                 itemLogo={tokens && tokens.logo.toLowerCase()}
                 title={stakeBalance.toFixed(6)}
                 subTitle={[
-                  tokens && tokens.lp
-                    ? `${tokens.symbol} LP ${t('stake')}`
-                    : `${tokens && tokens.symbol} ${t('stake')}`
+                  tokens && tokens.lp ? `${tokens.symbol} LP ${t('stake')}` : `${tokens && tokens.symbol} ${t('stake')}`
                 ]}
               >
                 <div
                   slot="button"
-                  className=" button clickableButton"
+                  className={allowStake?'button clickableButton selectbtn':'button clickableButton'}
                   onClick={() => (allowStake ? setVisibleModal(true) : handelApprove())}
                 >
                   {allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}
+                  {allowStake && <span className="hasbg"></span>}
                 </div>
               </ItemWrap>
             </DetailItem>
@@ -337,10 +390,9 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         <WalletBox>
           <h2>Stake</h2>
           <h3>
-            {balance.toFixed(6)} {tokens && tokens.symbol} {tokens&&tokens.lp?'LP':''} Avaliable
+            {balance.toFixed(6)} {tokens && tokens.symbol} {tokens && tokens.lp ? 'LP' : ''} Avaliable
           </h3>
           <p>
-
             <Search
               onChange={e => onChange(e)}
               value={amount}
