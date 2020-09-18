@@ -103,5 +103,8 @@
   "Claimable":"可提取奖励",
   "Hourly":"时奖励",
   "Daily":"日奖励",
-  "Weekly":"周奖励"
+  "Weekly":"周奖励",
+  "here":"此处",
+  "check-source":"检查开源代码",
+  "contract-verified":"{{name}} Finance的智能合约已通过 TronScan 验证。"
 }

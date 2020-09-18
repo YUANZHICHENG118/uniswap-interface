@@ -128,7 +128,7 @@ export default function PoolInfo(props: any) {
         <div className="status" slot="status">
           {/*<span>ENDED</span>*/}
           {
-            token.coming ? <span>Coming Soon</span> :
+            token.coming ? <span>{t('coming')}</span> :
               <strong>{end ? 'ENDED' : <Countdown title="" value={data} onFinish={onFinish}/>}</strong>
           }
               </div>

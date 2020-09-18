@@ -53,8 +53,8 @@ export default function Home() {
         <h1>{t('greet')}</h1>
         <h3>{t('greet-small',{label:mainContract.symbol})}</h3>
         <h3>
-          {mainContract.symbol} finance's smart contract has been verified TronScan. Check open source code
-          <a href=""  target="_blank" rel="noopener noreferrer" style={{marginLeft:'10px'}}>here</a>.
+          {t('contract-verified',{name:mainContract.symbol})} {t('check-source')}
+          <a href=""  target="_blank" rel="noopener noreferrer" style={{marginLeft:'10px'}}>{t('here')}</a>
         </h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
           {mainContract.symbol} {t('address')}:

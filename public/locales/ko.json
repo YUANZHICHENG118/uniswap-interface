@@ -30,5 +30,8 @@
   "Claimable":"지급 가능한 보상",
   "Hourly":"시간 계산",
   "Daily":"일 일 추산",
-  "Weekly":"매주 견적 하 다."
+  "Weekly":"매주 견적 하 다.",
+  "here":"클릭.",
+  "check-source":"오픈 소스 코드 검사",
+  "contract-verified":"{{name}} Finance 의 스마트 계약 은 TronScan 을 통 해 검증 됐다."
 }
