@@ -352,7 +352,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
               >
                 <div
                   slot="button"
-                  className="button clickableButton"
+                  className="button clickableButton selectbtn"
                   onClick={() => (earnedBalance > 0 ? handelGetReward() : console.log(''))}
                   style={{ color: earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
                 >
@@ -385,7 +385,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         </Row>
       </Column>
       <div
-        className="button harvestAndUnstake clickableButton"
+        className="button harvestAndUnstake clickableButton "
         onClick={() => (stakeBalance > 0 && earnedBalance > 0 ? handelExit() : console.error('not balance'))}
         style={{ color: stakeBalance > 0 && earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
       >

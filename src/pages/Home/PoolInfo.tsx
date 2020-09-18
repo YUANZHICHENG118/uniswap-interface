@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col } from 'antd'
-import { balanceOf, totalSupply, ITokenInfo, reward, mainContract } from '../../utils/tron'
+import { balanceOf, totalSupply, ITokenInfo, reward, mainContract,price } from '../../utils/tron'
 import { useTranslation } from 'react-i18next'
 
 
@@ -13,11 +13,17 @@ export default function PoolInfo(props: any) {
 
   const [data, setData] = useState<ITokenInfo>()
 
+  const [_price, setPrice] = useState<number>()
+  const [_mainPrice, setMainPrice] = useState<number>()
+
+
   let timer:any;
   useEffect(()=>{
     findData()
     timer= setInterval(()=>{
       findData()
+      findTokenPrice()
+      findMainTokenPrice()
     },5000)
     return componentWillUnmount;
 
@@ -45,6 +51,42 @@ export default function PoolInfo(props: any) {
     setData(data)
   }
 
+  const findTokenPrice= async ()=>{
+    const p= await  findPrice(token.exAddress);
+    setPrice(p);
+  }
+
+  const findMainTokenPrice= async ()=>{
+    const p= await  findPrice(mainContract.exAddress);
+    setMainPrice(p);
+  }
+
+  const findPrice=(exAddress:string)=>{
+
+   return price(exAddress).then((ret:any)=>{
+      console.log("data====",ret)
+      if(ret&&ret.code===0){
+
+        let data=ret.data;
+        let tx=data['transactionList'][0];
+
+        let trxPrice=data['trxPrice'];
+        let trxAmount=tx['trxAmount'];
+        let tokenAmount=tx['tokenAmount']
+        let tokenDecimal=tx['tokenDecimal']
+
+        let _trxAmount=trxAmount/Math.pow(10,6)
+        let _tokenAmount=tokenAmount/Math.pow(10,tokenDecimal)
+
+        let rate=_trxAmount/_tokenAmount;
+
+        let price =rate*trxPrice;
+        return price;
+      }
+      return 0
+    })
+  }
+
 
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
@@ -60,8 +102,8 @@ export default function PoolInfo(props: any) {
         <p>{t('totalStake')}</p>
         <br/>
         <p>========== {t('price')} ==========</p>
-        <p>1 {mainContract.symbol} = {mainContract.price} $</p>
-        <p>1 {data&&data.symbol} = 0.0000 $</p>
+        <p>1 {mainContract.symbol} = {_mainPrice} $</p>
+        <p>1 {data&&data.symbol} = {_price&&_price.toFixed(4)} $</p>
         <br/>
         <p>====== {mainContract.symbol} {t('rewords')} ======</p>
         <p>{t('Claimable')} : {data&&data.reward&&data.reward.toFixed(4)}&nbsp; {mainContract.symbol} = ${((data&&data.reward||0)*(mainContract.price||0)).toFixed(4)}</p>

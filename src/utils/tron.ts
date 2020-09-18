@@ -1,3 +1,6 @@
+import request from 'umi-request';
+//查询交易记录
+const exApi="https://api.just.network/swap/scan/transactions?exchangeAddress=";
 export interface IAccount {
   base58?: string|boolean
   hex?: string|boolean
@@ -34,12 +37,14 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
   decimals: 18,
   address: 'TCfomXuaxYY2Hx2zmYBZhmNHt7U3hKBq5x',
   poolAddress: '',
+  exAddress:'',
   price: 0
 } : {
   symbol: 'COCK',
   decimals: 18,
   address: 'TMYigtLSE5uaqWLRQQAQzHuWdXAutFpfN8',
   poolAddress: '',
+  exAddress:'',
   price: 0
 
 }
@@ -54,7 +59,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
-  poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z'
+  poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z',
+  exAddress:'',
 }, {
   logo: 'JFI',
   key: 'JFI',
@@ -67,7 +73,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
-  poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky'
+  poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky',
+  exAddress:'',
 }, {
   logo: 'TRX',
   key: 'TRX',
@@ -80,7 +87,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: '',
-  poolAddress: 'TKEhao64iZWpzC2wSeMwiUwqExWFzSGqrH'
+  poolAddress: 'TKEhao64iZWpzC2wSeMwiUwqExWFzSGqrH',
+  exAddress:'',
 }, {
   logo: 'COCK',
   key: 'COCK_TRX',
@@ -93,7 +101,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
-  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9'
+  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9',
+  exAddress:'',
 }, {
   logo: 'jfitrx',
   key: 'JFI_TRX',
@@ -107,7 +116,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
-  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq'
+  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq',
+  exAddress:'',
 }, {
   logo: 'suntrx',
   key: 'SUN_TRX',
@@ -121,7 +131,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TWfAVfUrdXmJdrcD4Qrmqoa1PGSf8n9Ymn'
+  poolAddress: 'TWfAVfUrdXmJdrcD4Qrmqoa1PGSf8n9Ymn',
+  exAddress:'',
 }] : [{
   logo: 'USDJ',
   key: 'USDJ',
@@ -135,7 +146,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
-  poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a'
+  poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a',
+  exAddress:'',
 }, {
   logo: 'JFI',
   key: 'JFI',
@@ -148,7 +160,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
-  poolAddress: 'TVtzw8s4wcbJmrG4wjvf5nLehz72RmpoJh'
+  poolAddress: 'TVtzw8s4wcbJmrG4wjvf5nLehz72RmpoJh',
+  exAddress:'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
 }, {
   logo: 'TRX',
   key: 'TRX',
@@ -161,7 +174,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: '',
-  poolAddress: 'TREPMx3mCfkHd8hffkSFY5C8ZuY9YxX2o4'
+  poolAddress: 'TREPMx3mCfkHd8hffkSFY5C8ZuY9YxX2o4',
+  exAddress:'TTnSHzUoho1CU6zFYVzVSCKq8EX8ZddkVv',
 }, {
   logo: 'COCK',
   key: 'COCK_TRX',
@@ -174,7 +188,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
-  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9'
+  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9',
+  exAddress:'',
 }, {
   logo: 'jfitrx',
   key: 'JFI_TRX',
@@ -188,7 +203,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
-  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq'
+  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq',
+  exAddress:'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
 }, {
   logo: 'suntrx',
   key: 'SUN_TRX',
@@ -202,7 +218,8 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2'
+  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2',
+  exAddress:'',
 }]
 
 export function contractList(): ITokens[] {
@@ -392,6 +409,17 @@ export async function balanceOf(contractAddress: string, lp: boolean) {
   }
 }
 
+// 价格
+export async function price(exAddress: string) {
+
+  if(exAddress===""){
+    return 0;
+  }
+  return request(`${exApi}${exAddress}`).then(data=>{
+    return data;
+  })
+}
+
 // 我的收益
 export async function earned(contractAddress: string) {
   try {
@@ -525,3 +553,5 @@ export async function deposit(amount: number, contractAddress: string, decimals:
   return tx
 
 }
+
+
