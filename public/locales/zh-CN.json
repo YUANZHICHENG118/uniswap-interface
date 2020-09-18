@@ -114,5 +114,12 @@
   "distribute-desc":"鸡尾酒会（COCK）将本着YFI的精神发行：没有预售，没有创办人股份，没有风险投资利益-只是平等的机会赌注分配，以吸引一个广泛和有远见的社区来管理协议和代币的未来。COCK是建立在TRON网络上的。",
   "how-mine":"我怎样才能开采COCK",
   "res-how-mine":"你需要TronLink来开采COCK。选择你最喜欢的鸡尾酒，然后点击“赌注”。等几秒钟，你就会看到“成功”的通知。",
-  "aboout-regarding":"关于延误"
+  "aboout-regarding":"关于延误",
+  "why-aboout-regarding":"为什么更新数字会有延误",
+  "res-why-aboout-regarding":"在打开网站时，网站将尝试与TronLink联系以获取号码。Tronlink本身在显示资产方面存在延迟，网站只能在Tronlink更新后显示更新的数字。",
+  "when-begin":"池子什么时候开始",
+  "how-calculated":"收入如何计算",
+  "res-how-calculated":"它在时间上是均匀分布的。例如，USDJ池每小时生成",
+  "Governance":"治理",
+  "re-governance":"其余的COCK代币将被锁定在合同中，并完全由COCK持有人管理，例如，投票支持增加更多的分销池。"
 }

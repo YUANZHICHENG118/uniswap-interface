@@ -130,5 +130,12 @@
   "distribute-desc":"COCKTAIL(COCK) will be distributed in the spirit of YFI: there is no pre-mine, no founder shares, no VC interests - simply equal-opportunity staking distribution to attract a broad and vision-aligned community to steward the future of the protocol and token. COCK is built on the TRON network.",
   "how-mine":"How can I mine COCK",
   "res-how-mine":"You will need TronLink to mine COCK. Choose your favorite cocktail and click on 'Stake'. Wait for a few seconds and you will see the 'Success' notice.",
-  "aboout-regarding":"Regarding Delays"
+  "aboout-regarding":"Regarding Delays",
+  "why-aboout-regarding":"Why are there delays in updating the numbers",
+  "res-why-aboout-regarding":"On opening the website, the website will try to talk with TronLink to get the numbers. Tronlink itself has delays in displaying the assets, the website can only show updated numbers once Tronlink is updated.",
+  "when-begin":"When did the pool begin",
+  "how-calculated":"How does the earning calculated",
+  "res-how-calculated":"It’s equally distributed through time. For example, each hour USDJ pool generates",
+  "Governance":"Governance",
+  "re-governance":"The rest of the COCK token would be locked in the contract and entirely governed by COCK holders, for example, vote for adding more distribution pools."
 }
