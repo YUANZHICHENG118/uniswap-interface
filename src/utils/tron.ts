@@ -147,7 +147,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
   poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a',
-  exAddress:'',
+  exAddress:'TQcia2H2TU3WrFk9sKtdK9qCfkW8XirfPQ',
 }, {
   logo: 'JFI',
   key: 'JFI',
