@@ -137,5 +137,20 @@
   "how-calculated":"How does the earning calculated",
   "res-how-calculated":"It’s equally distributed through time. For example, each hour USDJ pool generates",
   "Governance":"Governance",
-  "re-governance":"The rest of the COCK token would be locked in the contract and entirely governed by COCK holders, for example, vote for adding more distribution pools."
+  "re-governance":"The rest of the COCK token would be locked in the contract and entirely governed by COCK holders, for example, vote for adding more distribution pools.",
+  "Development-fund":"Development Fund",
+  "re-Development-fund":"In order to maintain the project and bring more pools & features, 10% of all mined COCK token rewards will be set aside for the development fund.",
+  "distribution-timetable":"Distribution Timetable",
+  "re-distribution-timetable":"The total supply of COCK token is fixed at 10,000 with no extra supply. All tokens will be distributed to miners within 12 weeks.",
+  "poolAddress":"Pool Address",
+  "re-when-begin":"For the first round, the #USDJ, #JFI and #TRX begins on 20th Sep 2020 2:00 PM UTC time.",
+  "how-long-last":"How long will the mining last",
+  "re-how-long-last":"Each round lasts for 14 days since it starts. There are three rounds in total. While for #COCK/TRX pool, it lasts for 28 days since it starts from the second round.",
+  "will-list-swap":"Will COCK be listed on Justswap",
+  "yes":"Yes",
+  "Pools":"Pools",
+  "first-round":"First Round",
+  "second-round":"Second Round",
+  "add-more":"Adding more pools will be subject to community vote",
+  "future-reserved":"1000 Reserved for future pool (the third round)"
 }

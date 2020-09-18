@@ -173,7 +173,7 @@ const Title = styled.a`
  `}
 `
 
-const AccountElement = styled.div < { active: boolean } > `
+const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -267,10 +267,10 @@ const WalletBox = styled.div`
     justify-content: center;
     width: calc(100% - 40px);
     border-radius: 12px;
-    :hover{
-    background-color: #f1dae1!important;
-    cursor: pointer;
-    opacity: .9;
+    :hover {
+      background-color: #f1dae1 !important;
+      cursor: pointer;
+      opacity: 0.9;
     }
   }
 `
@@ -286,84 +286,88 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
 export default function Header() {
   const { t } = useTranslation()
   const { account, chainId } = useActiveWeb3React()
-  const [balance, setBalance] = useState<number>(0.000000)
+  const [balance, setBalance] = useState<number>(0.0)
   const [unlock, setUnlock] = useState<boolean>(true)
 
-  const [curLang,setCurLang] = useState({ imgUrl: EnLangImg, value: 'EN' })
+  const [curLang, setCurLang] = useState({ imgUrl: EnLangImg, value: 'EN' })
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
-  const handleSetlang=(lang:string)=>{
-    let current=curLang;
+  const handleSetlang = (lang: string) => {
+    let current = curLang
     switch (lang) {
       case 'zh-CN':
         current = {
           imgUrl: ZhLangImg,
           value: 'CN'
         }
-        break;
+        break
       case 'en':
         current = {
           imgUrl: EnLangImg,
           value: 'EN'
         }
-        break;
+        break
       case 'ko':
         current = {
           imgUrl: KoLangImg,
           value: 'KO'
         }
-        break;
+        break
       default:
         current = {
           imgUrl: EnLangImg,
           value: 'EN'
         }
-        break;
+        break
     }
     setCurLang(current)
   }
   useEffect(() => {
-    const lang=localStorage.getItem('i18nextLng') || 'en';
+    const lang = localStorage.getItem('i18nextLng') || 'en'
     handleSetlang(lang)
-
-
-  }, []);
+  }, [])
   useEffect(() => {
     setInterval(() => {
       findAccount()
     }, 300)
     setTimeout(findBalance, 800)
-  },[])
+  }, [])
 
-  const findAccount=()=>{
-    const {tronWeb}=window;
+  const findAccount = () => {
+    const { tronWeb } = window
     setUnlock(tronWeb && tronWeb.defaultAddress && tronWeb.defaultAddress.hex)
-
   }
 
   const findBalance = () => {
-
-    balanceOf(mainContract.address,false).then((data: any) => {
+    balanceOf(mainContract.address, false).then((data: any) => {
       setBalance(data / Math.pow(10, mainContract.decimals))
     })
   }
   const handleClick = (e: any) => {
-    const lang = e.key;
-    localStorage.setItem('i18nextLng',lang)
+    const lang = e.key
+    localStorage.setItem('i18nextLng', lang)
     i18next.changeLanguage(lang)
     handleSetlang(lang)
   }
 
-
   const menu = (
     <Menu onClick={handleClick}>
       <Menu.Item key="en">
-        <span><img src={EnLangImg} alt="EnLangImg" width='25px'/>&nbsp;EN</span>
+        <span>
+          <img src={EnLangImg} alt="EnLangImg" width="25px" />
+          &nbsp;EN
+        </span>
       </Menu.Item>
       <Menu.Item key="zh-CN">
-        <span><img src={ZhLangImg} alt="ZhLangImg" width='25px'/>&nbsp;CN</span>
+        <span>
+          <img src={ZhLangImg} alt="ZhLangImg" width="25px" />
+          &nbsp;CN
+        </span>
       </Menu.Item>
-      <Menu.Item key='ko'>
-        <span><img src={KoLangImg} alt="KoLangImg" width='25px'/>&nbsp;KO</span>
+      <Menu.Item key="ko">
+        <span>
+          <img src={KoLangImg} alt="KoLangImg" width="25px" />
+          &nbsp;KO
+        </span>
       </Menu.Item>
     </Menu>
   )
@@ -372,24 +376,24 @@ export default function Header() {
     <HeaderFrame>
       <div className="header">
         <Title href=".">
-          <img src={Logo} alt="logo" style={{ width: '10rem' }}/>
-
+          <img src={Logo} alt="logo" style={{ width: '10rem' }} />
         </Title>
         <Headertabs>
           <StyledNavLink to={'/home'}>{t('home')}</StyledNavLink>
           <StyledNavLink to={'/Menu'}>{t('farm')}</StyledNavLink>
           <StyledNavLink to={'/Rules'}>{t('rule')}</StyledNavLink>
-          <NavTitle style={{ display: 'none' }} href="https://uniswap.org/">About</NavTitle>
+          <NavTitle style={{ display: 'none' }} href="https://uniswap.org/">
+            About
+          </NavTitle>
         </Headertabs>
         {/*钱包*/}
-        <div className="myWallet clickableButton" onClick={() =>!unlock?console.log("lock"): setModalOpen(true)}>
-          <span>{!unlock?t('unlock'):t('wallet')}</span>
+        <div className="myWallet clickableButton" onClick={() => (!unlock ? console.log('lock') : setModalOpen(true))}>
+          <span>{!unlock ? t('unlock') : t('wallet')}</span>
         </div>
         {/*语言*/}
-        <div style={{ display: 'none' }}>
-        <Dropdown overlay={menu} className="flag" >
+        <Dropdown overlay={menu} className="flag">
           <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-            <img src={curLang.imgUrl} alt="" width="30px"/>
+            <img src={curLang.imgUrl} alt="" width="30px" />
             &nbsp; {curLang.value}
             <span className="anticon">
               <svg
@@ -402,13 +406,11 @@ export default function Header() {
                 fill="currentColor"
                 aria-hidden="true"
               >
-                <path
-                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
+                <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
               </svg>
             </span>
           </span>
         </Dropdown>
-        </div>
         {/*先隐藏*/}
         <HeaderControls style={{ display: 'none' }}>
           <HeaderElement>
@@ -421,13 +423,13 @@ export default function Header() {
                   {userEthBalance?.toSignificant(4)} ETH
                 </BalanceText>
               ) : null}
-              <Web3Status/>
+              <Web3Status />
             </AccountElement>
           </HeaderElement>
           <HeaderElementWrap>
-            <VersionSwitch/>
-            <Settings/>
-            <MenuList/>
+            <VersionSwitch />
+            <Settings />
+            <MenuList />
           </HeaderElementWrap>
         </HeaderControls>
       </div>
@@ -435,10 +437,12 @@ export default function Header() {
         <Modal visible={modalOpen} footer={null} onCancel={() => setModalOpen(false)}>
           <WalletBox>
             <h2>My Account</h2>
-            <img src={Ball} alt="logo" width="80px"/>
+            <img src={Ball} alt="logo" width="80px" />
             <h1>{balance.toFixed(6)}</h1>
             <p>{mainContract.symbol} Balance</p>
-            <div className="cancle clickableButton" onClick={() => setModalOpen(false)}>Cancel</div>
+            <div className="cancle clickableButton" onClick={() => setModalOpen(false)}>
+              Cancel
+            </div>
           </WalletBox>
         </Modal>
       }

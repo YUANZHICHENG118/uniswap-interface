@@ -50,5 +50,21 @@
   "how-calculated":"수입 은 어떻게 계산 합 니까",
   "res-how-calculated":"그것 은 시간 적 으로 고 르 게 분포 한다.예 를 들 어 USDJ 풀 은 매 시간 생 성 된다.",
   "Governance":"다스리다",
-  "re-governance":"나머지 COCK 기호 화 폐 는 계약서 에 고정 되 고 완전히 COCK 소지 자가 관리 할 것 이다. 예 를 들 어 투표 지원 이 더 많은 분 양 지 를 증가 하 는 것 이다."
+  "re-governance":"나머지 COCK 기호 화 폐 는 계약서 에 고정 되 고 완전히 COCK 소지 자가 관리 할 것 이다. 예 를 들 어 투표 지원 이 더 많은 분 양 지 를 증가 하 는 것 이다.",
+  "Development-fund":"발전 기금",
+  "re-Development-fund":"이 사업 을 유지 하고 더 많은 연못 과 기능 을 가 져 오기 위해 개발 한 수탉 기호 화폐 보상 의 10% 는 개발 기금 에 예치 된다.",
+  "distribution-timetable":"배포 시간표",
+  "re-distribution-timetable":"수탉 기호 화폐의 총 공 급 량 은 10000 파운드 로 고정 되 어 있 으 며, 추가 공급 은 없다.모든 토 큰 은 12 주 내 에 광부 들 에 게 나 누 어 줄 것 이다.",
+  "tokenAddress": "토 큰 주소",
+  "poolAddress":"풀 주소",
+  "re-when-begin":"1 차 전에 서 는 미 일, JFI, TRX 가 2020 년 9 월 20 일 UTC 시간 으로 오후 2 시 에 시작된다.",
+  "how-long-last":"채굴 은 얼마나 지속 합 니까",
+  "re-how-long-last":"매 라운드 경 기 는 시작 후 14 일 동안 계속된다.모두 3 라운드 가 있다.COCK / TRX 연못 은, 2 라운드 부터 28 일 동안 계속된다.",
+  "will-list-swap":"COCK 이 Justswap 에 들 어가 나 요?",
+  "yes":"네.",
+  "Pools":"못.",
+  "first-round":"제 1 라운드",
+  "second-round":"제 2 차",
+  "add-more":"더 많은 수영장 을 늘 리 는 것 은 지역 사회 투표 에 달 려 있다.",
+  "future-reserved":"1000 개의 미래 풀 을 미리 남 겨 둔다 (3 차)"
 }
