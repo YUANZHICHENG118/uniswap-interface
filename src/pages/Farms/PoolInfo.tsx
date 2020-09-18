@@ -43,24 +43,7 @@ const rock = keyframes`
 `
 const RowItemButton = styled(NavLink)`
   width: 100%;
-  .select {
-    height: 56px;
-    font-size: 16px;
-    align-items: center;
-    background-color: #f0e7ea;
-    border: 0;
-    border-radius: 12px;
-    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
-    cursor: pointer;
-    display: flex;
-    font-weight: 700;
-    justify-content: center;
-    outline: none;
-    padding-left: 16px;
-    padding-right: 16px;
-    width: 100%;
-    color: ${({ theme }) => theme.highLignt};
-    position: relative;
+  .selectbtn {
     :hover {
       background-color: #f1dae1;
       :after {
@@ -86,6 +69,28 @@ const RowItemButton = styled(NavLink)`
         animation: ${rock} 1s 0s ease-in-out infinite;
         z-index: 5;
       }
+    }
+  }
+  .select {
+    height: 56px;
+    font-size: 16px;
+    align-items: center;
+    background-color: #f0e7ea;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px #efc6ed, -8px -8px 16px #e7d7ea;
+    cursor: pointer;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    outline: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    color: ${({ theme }) => theme.highLignt};
+    position: relative;
+    :hover {
+      background-color: #f1dae1;
     }
   }
 `
@@ -127,18 +132,19 @@ export default function PoolInfo(props: any) {
       >
         <div className="status" slot="status">
           {/*<span>ENDED</span>*/}
-          {
-            token.coming ? <span>{t('coming')}</span> :
-              <strong>{end ? 'ENDED' : <Countdown title="" value={data} onFinish={onFinish}/>}</strong>
-          }
-              </div>
+          {token.coming ? (
+            <span>{t('coming')}</span>
+          ) : (
+            <strong>{end ? 'ENDED' : <Countdown title="" value={data} onFinish={onFinish} />}</strong>
+          )}
+        </div>
         {token.coming ? (
           <RowItemButton slot="button" to={'#'}>
             <div className="select">{t('coming')}</div>
           </RowItemButton>
         ) : (
           <RowItemButton slot="button" to={`/Menu/${token.key}`}>
-            <div className="select">
+            <div className="select selectbtn">
               {t('select')}
               <span className="hasbg"></span>
             </div>

@@ -122,5 +122,8 @@
   "Weekly":"Weekly estimate",
   "here":"here",
   "check-source":"Check open source",
-  "contract-verified":"{{name}} Finance's smart contract has been verified TronScan."
+  "contract-verified":"{{name}} Finance's smart contract has been verified TronScan.",
+  "Hourly-ROI":"Hourly ROI in USD",
+  "Daily-ROI":"Daily ROI in USD",
+  "Weekly-ROI":"Weekly ROI in USD",
 }

@@ -33,5 +33,9 @@
   "Weekly":"매주 견적 하 다.",
   "here":"클릭.",
   "check-source":"오픈 소스 코드 검사",
-  "contract-verified":"{{name}} Finance 의 스마트 계약 은 TronScan 을 통 해 검증 됐다."
+  "contract-verified":"{{name}} Finance 의 스마트 계약 은 TronScan 을 통 해 검증 됐다.",
+  "Hourly-ROI":"시간 당 투자 수익 (달러)",
+  "Daily-ROI":"일 일 투자 수익 률 (달러)",
+  "Weekly-ROI":"매주 투자 수익 률 (달러)",
+  "unlock":"자 물 쇠 를 풀다."
 }

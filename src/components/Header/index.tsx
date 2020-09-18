@@ -383,10 +383,10 @@ export default function Header() {
         </Headertabs>
         {/*钱包*/}
         <div className="myWallet clickableButton" onClick={() =>!unlock?console.log("lock"): setModalOpen(true)}>
-          <span>{!unlock?'Unlock':t('wallet')}</span>
+          <span>{!unlock?t('unlock'):t('wallet')}</span>
         </div>
         {/*语言*/}
-        <div style={{ display: 'none' }}>
+        <div style={{ display: 'block' }}>
         <Dropdown overlay={menu} className="flag" >
           <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
             <img src={curLang.imgUrl} alt="" width="30px"/>

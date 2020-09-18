@@ -120,6 +120,11 @@ const rock = keyframes`
 const DetailItem = styled(Flex)`
   flex-direction: column;
   flex: 1 1 0%;
+  .select {
+    :hover {
+      background-color: #f1dae1;
+    }
+  }
   .selectbtn {
     position: relative;
     :hover {
@@ -131,7 +136,7 @@ const DetailItem = styled(Flex)`
         right: 0;
         top: 0;
         bottom: 0;
-        border-radius:10px;
+        border-radius: 10px;
         background-color: #f1dae1;
       }
       .hasbg {
@@ -368,7 +373,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
               >
                 <div
                   slot="button"
-                  className={allowStake?'button clickableButton selectbtn':'button clickableButton'}
+                  className={allowStake ? 'button clickableButton selectbtn' : 'button clickableButton select'}
                   onClick={() => (allowStake ? setVisibleModal(true) : handelApprove())}
                 >
                   {allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}
