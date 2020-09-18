@@ -386,7 +386,7 @@ export default function Header() {
           <span>{!unlock?t('unlock'):t('wallet')}</span>
         </div>
         {/*语言*/}
-        <div style={{ display: 'block' }}>
+        <div style={{ display: 'none' }}>
         <Dropdown overlay={menu} className="flag" >
           <span className="ant-dropdown-link" onClick={e => e.preventDefault()}>
             <img src={curLang.imgUrl} alt="" width="30px"/>
