@@ -108,9 +108,9 @@ export default function PoolInfo(props: any) {
         <p>====== {mainContract.symbol} {t('rewords')} ======</p>
         <p>{t('Claimable')} : {data&&data.reward&&data.reward.toFixed(4)}&nbsp; {mainContract.symbol} = ${((data&&data.reward||0)*(mainContract.price||0)).toFixed(4)}</p>
 
-        <p>{t('Hourly')} : 0.0000 Pearl = $0.0000</p>
-        <p>{t('Daily')} : 0.0000 Pearl = $0.0000</p>
-        <p>{t('Weekly')} : 0.0000 Pearl = $0.0000</p>
+        <p>{t('Hourly')} : 0.0000 COCK = $0.0000</p>
+        <p>{t('Daily')} : 0.0000 COCK = $0.0000</p>
+        <p>{t('Weekly')} : 0.0000 COCK = $0.0000</p>
         <p>{t('Hourly-ROI')} : 0%</p>
         <p>{t('Daily-ROI')} : 0%</p>
         <p>{t('Weekly-ROI')} : 0%</p>
