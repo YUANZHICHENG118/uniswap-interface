@@ -139,6 +139,7 @@ const Headertabs = styled.div`
   }
   ${({ theme }) => theme.mediaWidth.upToMiddle`
     margin: 10px -20px;
+    width:100%;
     display: block;
     text-align:center;
     a{

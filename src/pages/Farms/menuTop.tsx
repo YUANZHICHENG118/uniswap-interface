@@ -46,7 +46,7 @@ export const BodyWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   margin: 0px auto;
-  padding: 0px 24px;
+  text-align:center;
 `
 const TextLogo = styled.div`
   font-size: 120px;

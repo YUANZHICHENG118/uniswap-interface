@@ -8,9 +8,6 @@ import { contractList, ITokens, mainContract } from '../../utils/tron'
 const trxBlock = 'https://tronscan.org/#/contract/'
 export const BodyWrapper = styled.div`
   padding: 30px 200px;
-  ${({ theme }) => theme.mediaWidth.upToMiddle`
-  padding: 30px 0;
-  `}
   .ruleBox {
     text-align: left;
     border: 2px solid #aa8592;
@@ -25,14 +22,6 @@ export const BodyWrapper = styled.div`
       font-weight: 700;
       margin: 0;
     }
-    h2 {
-      color: #000;
-      font-size: 24px;
-      line-height: 20px;
-      font-weight: 700;
-      padding: 30px 0;
-      margin: 0;
-    }
     p {
       color: #444;
       font-size: 16px;
@@ -42,12 +31,22 @@ export const BodyWrapper = styled.div`
       padding: 2px 0;
       a {
         display: block;
+        word-break: break-all;
       }
     }
     .address {
       margin-bottom: 5px;
     }
   }
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+  padding: 30px 0;
+  .ruleBox {
+  p{
+  line-height:25px;
+  }
+  }
+  `}
+  
 `
 
 /**
@@ -72,7 +71,7 @@ export default function Rules() {
         <p>{t('re-how-long-last')}</p>
         <h3>{t('will-list-swap')}?</h3>
         <p>{t('yes')}</p>
-        <h2>{t('Pools')}</h2>
+        <h3>{t('Pools')}</h3>
         <p>{t('first-round')} - 4000</p>
         <p> USDJ 1500</p>
         <p> JFI 1500</p>

@@ -24,6 +24,9 @@ export const BodyWrapper = styled.div`
     }
     h3 {
     font-size: 16px;
+    a{
+    word-break: break-all;
+    }
     }
   `}
     h1 {
@@ -49,23 +52,23 @@ export default function Home() {
   return (
     <BodyWrapper>
       <div className="greating">
-        <img src={titleImg} alt="ball" width="180px" />
+        <img src={titleImg} alt="ball" width="180px"/>
         <h1>{t('greet')}</h1>
-        <h3>{t('greet-small',{label:mainContract.symbol})}</h3>
+        <h3>{t('greet-small', { label: mainContract.symbol })}</h3>
         <h3>
-          {t('contract-verified',{name:mainContract.symbol})} {t('check-source')}
-          <a href=""  target="_blank" rel="noopener noreferrer" style={{marginLeft:'10px'}}>{t('here')}</a>
+          {t('contract-verified', { name: mainContract.symbol })} {t('check-source')}
+          <a href="" target="_blank" rel="noopener noreferrer" style={{ marginLeft: '10px' }}>{t('here')}</a>
         </h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
           {mainContract.symbol} {t('address')}:
-          <a className="ellipsis" href="" style={{ color: 'rgb(91, 38, 57)',marginLeft:'10px' }}>
+          <a className="ellipsis" href="" style={{ color: 'rgb(91, 38, 57)', marginLeft: '10px' }}>
             {mainContract.address}
           </a>
         </h3>
       </div>
       {/*account*/}
-      <DataSet />
-      <StatsSet />
+      <DataSet/>
+      <StatsSet/>
     </BodyWrapper>
   )
 }
