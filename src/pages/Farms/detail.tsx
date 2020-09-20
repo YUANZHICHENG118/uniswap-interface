@@ -347,7 +347,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
             <DetailItem>
               <ItemWrap
                 itemLogo={tokens && tokens.earn.toLowerCase()}
-                title={earnedBalance.toFixed(6)}
+                title={earnedBalance.toFixed(4)}
                 subTitle={[`${tokens && tokens.earn} ${t('earned')}`]}
               >
                 <div
@@ -366,7 +366,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
             <DetailItem>
               <ItemWrap
                 itemLogo={tokens && tokens.logo.toLowerCase()}
-                title={stakeBalance.toFixed(6)}
+                title={stakeBalance.toFixed(4)}
                 subTitle={[
                   tokens && tokens.lp ? `${tokens.symbol} LP ${t('stake')}` : `${tokens && tokens.symbol} ${t('stake')}`
                 ]}
@@ -395,7 +395,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
         <WalletBox>
           <h2>Stake</h2>
           <h3>
-            {balance.toFixed(6)} {tokens && tokens.symbol} {tokens && tokens.lp ? 'LP' : ''} Avaliable
+            {balance.toFixed(4)} {tokens && tokens.symbol} {tokens && tokens.lp ? 'LP' : ''} Avaliable
           </h3>
           <p>
             <Search

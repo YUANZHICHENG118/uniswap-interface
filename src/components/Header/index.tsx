@@ -443,7 +443,7 @@ export default function Header() {
           <WalletBox>
             <h2>My Account</h2>
             <img src={Ball} alt="logo" width="80px" />
-            <h1>{balance.toFixed(6)}</h1>
+            <h1>{balance.toFixed(4)}</h1>
             <p>{mainContract.symbol} Balance</p>
             <div className="cancle clickableButton" onClick={() => setModalOpen(false)}>
               Cancel

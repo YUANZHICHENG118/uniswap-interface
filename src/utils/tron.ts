@@ -111,7 +111,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'JFI',
   decimals: 6,
   earnDecimals: 18,
-  coming: false,
+  coming: true,
   lp: true,
 
   apy: 'infinity',
@@ -123,7 +123,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   key: 'SUN_TRX',
 
   symbol: 'SUNTRX',
-  earn: 'SUN',
+  earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,
@@ -198,7 +198,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: false,
+  coming: true,
   lp: true,
 
   apy: 'infinity',
@@ -210,7 +210,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   key: 'SUN_TRX',
 
   symbol: 'SUN/TRX',
-  earn: 'SUN',
+  earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
   coming: true,

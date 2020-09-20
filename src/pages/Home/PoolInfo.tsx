@@ -108,11 +108,11 @@ export default function PoolInfo(props: any) {
         <img src={require(`../../assets/images/token/${token.logo.toLowerCase()}.png`)} alt={token.symbol}
              width="50px"/>
         <span style={{ marginLeft: '8px' }}>{data && data.symbol} {t('Recipe')}</span>
-        <h1>{data && data.balance && data.balance.toFixed(4) || '0.000000'}</h1>
+        <h1>{data && data.balance && data.balance.toFixed(4) || '0.0000'}</h1>
         <p>{t('MyStake')}</p>
         <br/>
         <h1>
-          {data && data.totalSupply && data.totalSupply.toFixed(4) || '0.000000'}<span>{(((data && data.balance || 0) / (data && data.totalSupply || 1)) * 100).toFixed(2)}%</span>
+          {data && data.totalSupply && data.totalSupply.toFixed(4) || '0.0000'}<span>{(((data && data.balance || 0) / (data && data.totalSupply || 1)) * 100).toFixed(2)}%</span>
         </h1>
         <p>{t('totalStake')}</p>
         <br/>
@@ -129,9 +129,9 @@ export default function PoolInfo(props: any) {
         <p>{t('Hourly')} : 0.0000 COCK = $0.0000</p>
         <p>{t('Daily')} : 0.0000 COCK = $0.0000</p>
         <p>{t('Weekly')} : 0.0000 COCK = $0.0000</p>
-        <p>{t('Hourly-ROI')} : 0%</p>
-        <p>{t('Daily-ROI')} : 0%</p>
-        <p>{t('Weekly-ROI')} : {income(180)}%</p>
+        <p>{t('Hourly-ROI')} : {income(1)}%</p>
+        <p>{t('Daily-ROI')} : {income(24)}%</p>
+        <p>{t('Weekly-ROI')} : {income(24*7)}%</p>
       </div>
     </Col>
   )

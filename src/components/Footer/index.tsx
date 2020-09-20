@@ -25,6 +25,6 @@ export default function Footer() {
   return <BodyWrapper>
     <a href="https://t.me/cocktailswap" target="_blank" rel="noopener noreferrer">Telegram</a>
     <a href="https://twitter.com/cocktailswap" target="_blank" rel="noopener noreferrer">Twitter</a>
-    <a href="mailto:cocktailswap@protonmail.com" target="_blank" rel="noopener noreferrer">Medium</a>
+    <a href="https://medium.com/@cocktailswap" target="_blank" rel="noopener noreferrer">Medium</a>
   </BodyWrapper>
 }

@@ -97,12 +97,15 @@ export default function Rules() {
                 <p>
                   {item.symbol} {item.lp ? 'LP' : ''}
                 </p>
-                <p className="address">
-                  {t('tokenAddress')} :
+                {
+                  item.symbol==="TRX"?'' :<p className="address">
+                    {t('tokenAddress')} :
                   <a href={`${trxBlock}${item.address}`} target="_blank" rel="noopener noreferrer">
-                    {item.address}
+                  {item.address}
                   </a>
-                </p>
+                  </p>
+                }
+
                 <p className="address">
                   {t('poolAddress')}:
                   <a href={`${trxBlock}${item.poolAddress}`} target="_blank" rel="noopener noreferrer">
