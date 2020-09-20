@@ -119,7 +119,6 @@ export default function PoolInfo(props: any) {
         <p>========== {t('price')} ==========</p>
         <p>1 {mainContract.symbol} = {_mainPrice} $</p>
         <p>1 {data && data.symbol} = {_price && _price.toFixed(4)} $</p>
-        <p>2 {data && data.symbol} = {initAmount} $</p>
 
         <br/>
         <p>====== {mainContract.symbol} {t('rewords')} ======</p>
