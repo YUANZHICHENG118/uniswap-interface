@@ -329,6 +329,10 @@ export default function Header() {
     setInterval(() => {
       findAccount()
     }, 300)
+
+    setInterval(() => {
+      findBalance()
+    }, 800)
     setTimeout(findBalance, 800)
   }, [])
 
