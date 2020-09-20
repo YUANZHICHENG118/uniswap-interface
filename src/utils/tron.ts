@@ -146,7 +146,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
-  poolAddress: 'TUzsz6a8e316X8qpDtNxiNr98mvkcZ791a',
+  poolAddress: 'TCaNis9qvzvdqvsgoFTeiRHF5884hdYMvY',
   exAddress:'TQcia2H2TU3WrFk9sKtdK9qCfkW8XirfPQ',
 }, {
   logo: 'JFI',
@@ -160,7 +160,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
-  poolAddress: 'TVtzw8s4wcbJmrG4wjvf5nLehz72RmpoJh',
+  poolAddress: 'TCG1LB61CYkhcJFGWvT8wsv8VtMqMruj9g',
   exAddress:'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
 }, {
   logo: 'TRX',
@@ -174,7 +174,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: '',
-  poolAddress: 'TREPMx3mCfkHd8hffkSFY5C8ZuY9YxX2o4',
+  poolAddress: 'TLi1HWsM52tVtG2B2KoHnAkMhab84k7b8e',
   exAddress:'TTnSHzUoho1CU6zFYVzVSCKq8EX8ZddkVv',
 }, {
   logo: 'COCK',
