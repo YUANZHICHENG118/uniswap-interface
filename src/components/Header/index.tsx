@@ -376,7 +376,7 @@ export default function Header() {
     <HeaderFrame>
       <div className="header">
         <Title href=".">
-          <img src={Logo} alt="logo" style={{ width: '10rem' }} />
+          <img src={Logo} alt="logo" style={{ width: '7rem' }} />
         </Title>
         <Headertabs>
           <StyledNavLink to={'/home'}>{t('home')}</StyledNavLink>

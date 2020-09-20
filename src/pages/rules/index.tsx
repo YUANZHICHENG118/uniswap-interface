@@ -8,6 +8,9 @@ import { contractList, ITokens, mainContract } from '../../utils/tron'
 const trxBlock = 'https://tronscan.org/#/contract/'
 export const BodyWrapper = styled.div`
   padding: 30px 200px;
+  ${({ theme }) => theme.mediaWidth.upToMiddle`
+  padding: 30px 0;
+  `}
   .ruleBox {
     text-align: left;
     border: 2px solid #aa8592;
