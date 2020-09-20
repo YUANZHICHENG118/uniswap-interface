@@ -42,7 +42,7 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
 } : {
   symbol: 'COCK',
   decimals: 18,
-  address: 'TMYigtLSE5uaqWLRQQAQzHuWdXAutFpfN8',
+  address: 'TRgnZRSuA4uzKZvpQ2pFabdiuaEmBQ68VW',
   poolAddress: '',
   exAddress:'',
   price: 0

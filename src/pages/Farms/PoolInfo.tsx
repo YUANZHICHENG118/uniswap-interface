@@ -139,8 +139,8 @@ export default function PoolInfo(props: any) {
           )}
         </div>
         {token.coming ? (
-          <RowItemButton slot="button" to={'#'}>
-            <div className="select">{t('coming')}</div>
+          <RowItemButton slot="button" to={'#'} >
+            <div className="select" style={{color:'#dad1d1'}}>{t('coming')}</div>
           </RowItemButton>
         ) : (
           <RowItemButton slot="button" to={`/Menu/${token.key}`}>
