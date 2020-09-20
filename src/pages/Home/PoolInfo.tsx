@@ -14,21 +14,28 @@ export default function PoolInfo(props: any) {
   const [data, setData] = useState<ITokenInfo>()
 
   const [_price, setPrice] = useState<number>(0)
-  const [_mainPrice, setMainPrice] = useState<number>(100)
+  const [_mainPrice, setMainPrice] = useState<number>(0)
   // 矿池代币总量
   const [initAmount, setInitAmount] = useState<number>(0)
 
 
   let timer: any
+  let timer1: any
+
   useEffect(() => {
     findData()
     findInitreward()
     timer = setInterval(() => {
       findData()
       findInitreward()
-      findTokenPrice()
+
+
       findMainTokenPrice()
-    }, 5000)
+    }, _mainPrice>0?10000:5000)
+
+    timer1 = setInterval(() => {
+      findTokenPrice()
+    }, _price>0?15000:3000)
     return componentWillUnmount
 
   }, [])
@@ -36,6 +43,9 @@ export default function PoolInfo(props: any) {
   function componentWillUnmount() {
     if (timer) {
       clearInterval(timer)
+    }
+    if (timer1) {
+      clearInterval(timer1)
     }
   }
 
