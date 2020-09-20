@@ -18,19 +18,21 @@ export const BodyWrapper = styled.div`
     padding: 24px;
     margin: 0 auto;
     h3 {
-    font-size: 18px;
-    line-height: 20px;
-    padding: 15px 0;
-    color: #000;
-    font-weight: 700;
-}
+      font-size: 18px;
+      line-height: 20px;
+      padding: 15px 0;
+      color: #000;
+      font-weight: 700;
+      margin: 0;
+    }
     h2 {
-    color: #000;
-    font-size: 24px;
-    line-height: 20px;
-    font-weight: 700;
-    padding: 30px 0;
-}
+      color: #000;
+      font-size: 24px;
+      line-height: 20px;
+      font-weight: 700;
+      padding: 30px 0;
+      margin: 0;
+    }
     p {
       color: #444;
       font-size: 16px;
@@ -38,13 +40,13 @@ export const BodyWrapper = styled.div`
       font-weight: 600;
       margin: 0;
       padding: 2px 0;
-      a{
-      display:block;
+      a {
+        display: block;
       }
     }
     .address {
-    margin-bottom: 5px;
-}
+      margin-bottom: 5px;
+    }
   }
 `
 
@@ -55,7 +57,7 @@ export default function Rules() {
   const { t } = useTranslation()
   return (
     <BodyWrapper>
-      <FarmTop imgUrl={titleImg} h1Text={t('rules')}/>
+      <FarmTop imgUrl={titleImg} h1Text={t('rules')} />
       <div className="ruleBox">
         <h3>{t('Drinking-rules')}</h3>
         <p>{t('distribute-desc')}</p>
@@ -75,24 +77,27 @@ export default function Rules() {
         <p> USDJ 1500</p>
         <p> JFI 1500</p>
         <p> TRX 1000</p>
-        <p>{t("second-round")} - 5000</p>
+        <p>{t('second-round')} - 5000</p>
         <p>COCKTAIL/TRX LP 3500</p>
         <p> JFI/TRX LP 750</p>
         <p> SUN/TRX LP 750</p>
-        <p>{t("future-reserved")}</p>
+        <p>{t('future-reserved')}</p>
         <p>{t('add-more')}</p>
         <h3>{t('address')}</h3>
         <div>
           <p>{mainContract.symbol}</p>
-          <p>{t('tokenAddress')}:
+          <p>
+            {t('tokenAddress')}:
             <a href={`${trxBlock}${mainContract.address}`} target="_blank" rel="noopener noreferrer">
               {mainContract.address}
             </a>
           </p>
-          {
-            contractList().map((item: ITokens) => {
-              return <>
-                <p>{item.symbol} {item.lp?'LP':''}</p>
+          {contractList().map((item: ITokens) => {
+            return (
+              <>
+                <p>
+                  {item.symbol} {item.lp ? 'LP' : ''}
+                </p>
                 <p className="address">
                   {t('tokenAddress')} :
                   <a href={`${trxBlock}${item.address}`} target="_blank" rel="noopener noreferrer">
@@ -106,8 +111,8 @@ export default function Rules() {
                   </a>
                 </p>
               </>
-            })
-          }
+            )
+          })}
         </div>
         <h3>{t('distribution-timetable')}</h3>
         <p>{t('re-distribution-timetable')}</p>
@@ -116,8 +121,7 @@ export default function Rules() {
         <h3>{t('Governance')}</h3>
         <p>{t('re-governance')}</p>
         <h3>{t('how-calculated')}?</h3>
-        <p>{t('res-how-calculated')} 1500/28/24 = 2.232142 COCK.
-        </p>
+        <p>{t('res-how-calculated')} 1500/28/24 = 2.232142 COCK.</p>
       </div>
     </BodyWrapper>
   )
