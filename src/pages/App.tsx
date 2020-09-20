@@ -34,7 +34,7 @@ const AppWrapper = styled.div`
     color: #aa8592;
     padding: 0 100px;
     ${({ theme }) => theme.mediaWidth.upToLarge`
-    padding: 0 20px;
+    padding: 0 10px;
   `};
 `
 const HeaderWrapper = styled.div`
