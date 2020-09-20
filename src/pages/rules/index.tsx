@@ -42,6 +42,7 @@ export const BodyWrapper = styled.div`
       padding: 2px 0;
       a {
         display: block;
+        word-break: break-all;
       }
     }
     .address {
