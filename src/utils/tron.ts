@@ -447,8 +447,7 @@ export async function initreward(contractAddress: string) {
   if (!chk(tronWeb)) return 0
 
   try {
-    const parameter = [{ type: 'address', value: (await address()).hex }]
-    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'initreward(address)', {}, parameter, (await address()).hex)
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'initreward()', {}, [], (await address()).hex)
     if (tx) {
       const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
       return amount
