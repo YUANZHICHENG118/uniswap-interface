@@ -173,7 +173,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   coming: false,
   lp: false,
   apy: 'infinity',
-  address: '',
+  address: 'TWBwgjgRcTnUwM861bQzdaKCBHaUtsZd4q',
   poolAddress: 'TWBwgjgRcTnUwM861bQzdaKCBHaUtsZd4q',
   exAddress:'TTnSHzUoho1CU6zFYVzVSCKq8EX8ZddkVv',
 }, {

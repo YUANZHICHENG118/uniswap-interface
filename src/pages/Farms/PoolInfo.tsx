@@ -118,7 +118,7 @@ export default function PoolInfo(props: any) {
   const findTime = async () => {
     const t = await periodFinish(token.poolAddress)
     console.log('t=======', t)
-    setData(t * 1000)
+    setData(t)
   }
 
   const findStartTime = async () => {
