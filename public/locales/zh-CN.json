@@ -128,7 +128,7 @@
   "distribution-timetable":"分发时间表",
   "re-distribution-timetable":"COCK代币的总供应量固定在10000，没有额外供应。所有代币将在12周内分发给矿工。",
   "poolAddress":"池地址",
-  "re-when-begin":"第一轮比赛，USDJ、JFI和TRX将于2020-9-21 2:00 PM UTC开始",
+  "re-when-begin":"第一轮比赛，USDJ、JFI和TRX将于2020-9-21 2:00 PM UTC开始。",
   "how-long-last":"开采要持续多久",
   "re-how-long-last":"每轮比赛自开始后持续28天。一共有三个回合。而对于COCK/TRX池，从第二轮开始持续56天。",
   "will-list-swap":"COCK会列在Justswap上吗",
