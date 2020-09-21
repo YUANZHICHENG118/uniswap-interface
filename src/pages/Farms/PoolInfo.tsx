@@ -145,7 +145,7 @@ export default function PoolInfo(props: any) {
           token.lp ? `${t('deposit')} ${token.symbol} LP token` : `${t('deposit')} ${token.symbol}`,
           `${t('earn')} ${token.earn}`
         ]}
-        sourceLink="111"
+        sourceLink={token.coming?false:true}
       >
         <div className="status" slot="status">
           {/*<span>ENDED</span>*/}

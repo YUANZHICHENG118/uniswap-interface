@@ -92,28 +92,27 @@ export default function Rules() {
             </a>
           </p>
           {contractList().map((item: ITokens) => {
-            return (
-              <>
-                <p>
-                  {item.symbol} {item.lp ? 'LP' : ''}
-                </p>
-                {
-                  item.symbol==="TRX"?'' :<p className="address">
-                    {t('tokenAddress')} :
+            return item.coming?'':<>
+              <p>
+                {item.symbol} {item.lp ? 'LP' : ''}
+              </p>
+              {
+                item.symbol === "TRX" ? '' : <p className="address">
+                  {t('tokenAddress')} :
                   <a href={`${trxBlock}${item.address}`} target="_blank" rel="noopener noreferrer">
-                  {item.address}
-                  </a>
-                  </p>
-                }
-
-                <p className="address">
-                  {t('poolAddress')}:
-                  <a href={`${trxBlock}${item.poolAddress}`} target="_blank" rel="noopener noreferrer">
-                    {item.poolAddress}
+                    {item.address}
                   </a>
                 </p>
-              </>
-            )
+              }
+
+              <p className="address">
+                {t('poolAddress')}:
+                <a href={`${trxBlock}${item.poolAddress}`} target="_blank" rel="noopener noreferrer">
+                  {item.poolAddress}
+                </a>
+              </p>
+            </>
+
           })}
         </div>
         <h3>{t('distribution-timetable')}</h3>
