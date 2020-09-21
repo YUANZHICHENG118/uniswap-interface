@@ -497,6 +497,23 @@ export async function periodFinish(contractAddress: string) {
 }
 
 
+// 开始时间
+export async function startTime(contractAddress: string) {
+  const tronWeb = await findTronWeb()
+  if (!chk(tronWeb)) return 0
+  try {
+
+    const tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'starttime()', {}, [], (await address()).hex)
+    if (tx) {
+      const time = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return time
+    } else {
+      return 0
+    }
+  } catch (e) {
+    return 0
+  }
+}
 // 提取收益
 export async function getReward(contractAddress: string) {
   const tronWeb = await findTronWeb()

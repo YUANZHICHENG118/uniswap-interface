@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components'
 import { Col, Statistic } from 'antd'
 
 import ItemWrap from './ItemWrap'
-import { periodFinish } from '../../utils/tron'
+import { periodFinish,startTime } from '../../utils/tron'
 import { useTranslation } from 'react-i18next'
 import shakeImg from '../../assets/images/token/bottle.png'
 
@@ -100,11 +100,18 @@ export default function PoolInfo(props: any) {
 
   const [data, setData] = useState<number>()
   const [end, setEnd] = useState<boolean>(false)
+  const [_startTime,setStartTime]=useState<number>()
+  const [start,setStart]=useState<boolean>(false)
 
   useEffect(() => {
     setTimeout(async () => {
       await findTime()
-    }, 500)
+      const s= await findStartTime()
+      const timestamp = (new Date()).getTime()
+      if(timestamp>s*1000){
+        setStart(true)
+      }
+    }, 800)
     console.log(data)
   }, [])
 
@@ -114,8 +121,18 @@ export default function PoolInfo(props: any) {
     setData(t * 1000)
   }
 
+  const findStartTime = async () => {
+    const t = await startTime(token.poolAddress)
+    setStartTime(t * 1000)
+    return t
+  }
+
   const onFinish = () => {
     setEnd(true)
+  }
+
+  const onStartFinish = () => {
+    setStart(true)
   }
 
   return (
@@ -135,12 +152,12 @@ export default function PoolInfo(props: any) {
           {token.coming ? (
             <span>{t('coming')}</span>
           ) : (
-            <strong>{end ? t('ended') : <Countdown title="" value={data} onFinish={onFinish} />}</strong>
+            <strong>{end && start ? t('ended') : <Countdown  value={start?data:_startTime} onFinish={()=>start?onFinish():onStartFinish()} />}</strong>
           )}
         </div>
-        {token.coming ? (
+        {token.coming || !start? (
           <RowItemButton slot="button" to={'#'} >
-            <div className="select" style={{color:'#dad1d1'}}>{t('coming')}</div>
+            <div className="select" style={{color:'#dad1d1'}}>{!start?<Countdown  value={start?data:_startTime} />:t('coming')}</div>
           </RowItemButton>
         ) : (
           <RowItemButton slot="button" to={`/Menu/${token.key}`}>
