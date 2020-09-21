@@ -42,7 +42,7 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
 } : {
   symbol: 'COCK',
   decimals: 18,
-  address: 'TRgnZRSuA4uzKZvpQ2pFabdiuaEmBQ68VW',
+  address: 'TE7BRt9GxPoossd1Csyidnai8q4EjsXKs4',
   poolAddress: '',
   exAddress:'',
   price: 0
@@ -146,7 +146,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
-  poolAddress: 'TCaNis9qvzvdqvsgoFTeiRHF5884hdYMvY',
+  poolAddress: 'TLJ7tXMbAauYy5bxRXGQ1ng5XPxbuPfVEL',
   exAddress:'TQcia2H2TU3WrFk9sKtdK9qCfkW8XirfPQ',
 }, {
   logo: 'JFI',
@@ -160,7 +160,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   apy: 'infinity',
   address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
-  poolAddress: 'TCG1LB61CYkhcJFGWvT8wsv8VtMqMruj9g',
+  poolAddress: 'TECM6dzCnreMPc5ZESJuxS5bFAEpdz2fZK',
   exAddress:'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
 }, {
   logo: 'TRX',
@@ -174,7 +174,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: false,
   apy: 'infinity',
   address: '',
-  poolAddress: 'TLi1HWsM52tVtG2B2KoHnAkMhab84k7b8e',
+  poolAddress: 'TWBwgjgRcTnUwM861bQzdaKCBHaUtsZd4q',
   exAddress:'TTnSHzUoho1CU6zFYVzVSCKq8EX8ZddkVv',
 }, {
   logo: 'COCK',
