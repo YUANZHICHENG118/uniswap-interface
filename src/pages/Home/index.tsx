@@ -62,7 +62,7 @@ export default function Home() {
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>{t('token_info')}</h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
           {mainContract.symbol} {t('address')}:
-          <a className="ellipsis" href="" style={{ color: 'rgb(91, 38, 57)', marginLeft: '10px' }}>
+          <a className="ellipsis" href={`https://tronscan.org/#/contract/${mainContract.address}`} style={{ color: 'rgb(91, 38, 57)', marginLeft: '10px' }}>
             {mainContract.address}
           </a>
         </h3>
