@@ -4,7 +4,13 @@ import styled, { keyframes } from 'styled-components'
 import { Col, Statistic } from 'antd'
 
 import ItemWrap from './ItemWrap'
-import { periodFinish,startTime } from '../../utils/tron'
+import {
+  initreward,
+  mainContract,
+  periodFinish, price,
+  startTime,
+  totalSupply
+} from '../../utils/tron'
 import { useTranslation } from 'react-i18next'
 import shakeImg from '../../assets/images/token/bottle.png'
 
@@ -100,20 +106,50 @@ export default function PoolInfo(props: any) {
 
   const [data, setData] = useState<number>()
   const [end, setEnd] = useState<boolean>(false)
-  const [_startTime,setStartTime]=useState<number>()
-  const [start,setStart]=useState<boolean>(false)
+  const [_startTime, setStartTime] = useState<number>()
+  const [start, setStart] = useState<boolean>(false)
+
+  const [_price, setPrice] = useState<number>(0)
+
+  const [total, setTotal] = useState<number>(0)
+
+  const [_mainPrice, setMainPrice] = useState<number>(0)
+  // 矿池代币总量
+  const [initAmount, setInitAmount] = useState<number>(0)
+
+  let timer: any
+  let timer1: any
 
   useEffect(() => {
     setTimeout(async () => {
       await findTime()
-      const s= await findStartTime()
+      const s = await findStartTime()
       const timestamp = (new Date()).getTime()
-      if(timestamp>s*1000){
+      if (timestamp > s * 1000) {
         setStart(true)
       }
     }, 800)
-    console.log(data)
+    timer = setInterval(() => {
+      findTotal()
+      findInitreward()
+      findMainTokenPrice()
+    }, _mainPrice>0?10000:5000)
+
+    timer1 = setInterval(() => {
+      findTokenPrice()
+    }, _price>0?15000:3000)
+    return componentWillUnmount
+
   }, [])
+
+  function componentWillUnmount() {
+    if (timer) {
+      clearInterval(timer)
+    }
+    if (timer1) {
+      clearInterval(timer1)
+    }
+  }
 
   const findTime = async () => {
     const t = await periodFinish(token.poolAddress)
@@ -135,6 +171,61 @@ export default function PoolInfo(props: any) {
     setStart(true)
   }
 
+
+  const findTotal = async () => {
+
+    let total = await  totalSupply(token.poolAddress)
+    let t =total / Math.pow(10, token.decimals)
+    setTotal(t)
+  }
+
+  const findTokenPrice = async () => {
+    const p = await  findPrice(token.exAddress)
+    setPrice(p)
+  }
+
+  const findMainTokenPrice = async () => {
+    const p = await  findPrice(mainContract.exAddress)
+    setMainPrice(p)
+  }
+
+  const findPrice = (exAddress: string) => {
+
+    return price(exAddress).then((ret: any) => {
+      console.log('data====', ret)
+      if (ret && ret.code === 0) {
+
+        let data = ret.data
+        let tx = data['transactionList'][0]
+
+        let trxPrice = data['trxPrice']
+        let trxAmount = tx['trxAmount']
+        let tokenAmount = tx['tokenAmount']
+        let tokenDecimal = tx['tokenDecimal']
+
+        let _trxAmount = trxAmount / Math.pow(10, 6)
+        let _tokenAmount = tokenAmount / Math.pow(10, tokenDecimal)
+
+        let rate = _trxAmount / _tokenAmount
+
+        let price = rate * trxPrice
+        return price
+      }
+      return 0
+    })
+  }
+
+  const findInitreward = () => {
+    return initreward(token.poolAddress).then(data => {
+      setInitAmount(data / Math.pow(10, mainContract.decimals))
+    })
+  }
+
+
+  const income = (period: number) => {
+    return ((initAmount * _mainPrice) / ((total) * _price) * period).toFixed(4) || 0
+  }
+
   return (
     <Col xs={24} sm={24} md={8}>
       <ItemWrap
@@ -145,19 +236,21 @@ export default function PoolInfo(props: any) {
           token.lp ? `${t('deposit')} ${token.symbol} LP token` : `${t('deposit')} ${token.symbol}`,
           `${t('earn')} ${token.earn}`
         ]}
-        sourceLink={token.coming?false:true}
+        sourceLink={token.coming ? false : true}
       >
         <div className="status" slot="status">
           {/*<span>ENDED</span>*/}
           {token.coming ? (
             <span>{t('coming')}</span>
           ) : (
-            <strong>{end && start ? t('ended') : <Countdown  value={start?data:_startTime} onFinish={()=>start?onFinish():onStartFinish()} />}</strong>
+            <strong>{end && start ? t('ended') : <Countdown value={start ? data : _startTime}
+                                                            onFinish={() => start ? onFinish() : onStartFinish()}/>}</strong>
           )}
         </div>
-        {token.coming || !start? (
-          <RowItemButton slot="button" to={'#'} >
-            <div className="select" style={{color:'#dad1d1'}}>{!start?<Countdown  value={start?data:_startTime} />:t('coming')}</div>
+        {token.coming || !start ? (
+          <RowItemButton slot="button" to={'#'}>
+            <div className="select" style={{ color: '#dad1d1' }}>{!start ?
+              <Countdown value={start ? data : _startTime}/> : t('coming')}</div>
           </RowItemButton>
         ) : (
           <RowItemButton slot="button" to={`/Menu/${token.key}`}>
@@ -168,7 +261,7 @@ export default function PoolInfo(props: any) {
           </RowItemButton>
         )}
         <div className="apy" slot="APY">
-          APY<span>{token.apy}%</span>
+          APY<span>{token.coming?'Infinity':income(24*7)}%</span>
         </div>
       </ItemWrap>
     </Col>

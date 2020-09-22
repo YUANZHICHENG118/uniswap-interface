@@ -199,7 +199,12 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
 
   // 是否已授权
   const findAllow = () => {
+
     if (tokens) {
+      if(tokens.symbol==="TRX"){
+        setAllowStake(true)
+        return ;
+      }
       allowance(tokens.address, tokens.poolAddress, tokens.lp).then(data => {
         setAllowStake(data)
       })

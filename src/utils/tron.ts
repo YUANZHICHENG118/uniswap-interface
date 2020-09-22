@@ -1,10 +1,11 @@
-import request from 'umi-request';
+import request from 'umi-request'
 //查询交易记录
-const exApi="https://api.just.network/swap/scan/transactions?exchangeAddress=";
+const exApi = 'https://api.just.network/swap/scan/transactions?exchangeAddress='
+
 export interface IAccount {
-  base58?: string|boolean
-  hex?: string|boolean
-  name?: string|boolean
+  base58?: string | boolean
+  hex?: string | boolean
+  name?: string | boolean
 }
 
 export interface ITokens {
@@ -37,14 +38,14 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
   decimals: 18,
   address: 'TCfomXuaxYY2Hx2zmYBZhmNHt7U3hKBq5x',
   poolAddress: '',
-  exAddress:'',
+  exAddress: '',
   price: 0
 } : {
   symbol: 'COCK',
   decimals: 18,
   address: 'TE7BRt9GxPoossd1Csyidnai8q4EjsXKs4',
   poolAddress: '',
-  exAddress:'TCWxwQhsphTT2rGmhLHcq46Z6LHssYp67A',
+  exAddress: 'TCWxwQhsphTT2rGmhLHcq46Z6LHssYp67A',
   price: 0
 
 }
@@ -60,7 +61,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TLBaRhANQoJFTqre9Nf1mjuwNWjCJeYqUL',
   poolAddress: 'TH7XHfCjGtt1kmEDJvyZ2wqXM5r52yy29Z',
-  exAddress:'',
+  exAddress: ''
 }, {
   logo: 'JFI',
   key: 'JFI',
@@ -74,7 +75,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf',
   poolAddress: 'TA533qgBKEikbzM7ayAGkEMLsEPsGs36ky',
-  exAddress:'',
+  exAddress: ''
 }, {
   logo: 'TRX',
   key: 'TRX',
@@ -88,7 +89,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: '',
   poolAddress: 'TKEhao64iZWpzC2wSeMwiUwqExWFzSGqrH',
-  exAddress:'',
+  exAddress: ''
 }, {
   logo: 'COCK',
   key: 'COCK_TRX',
@@ -102,7 +103,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
   poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9',
-  exAddress:'',
+  exAddress: ''
 }, {
   logo: 'jfitrx',
   key: 'JFI_TRX',
@@ -117,7 +118,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
   poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq',
-  exAddress:'',
+  exAddress: ''
 }, {
   logo: 'suntrx',
   key: 'SUN_TRX',
@@ -132,7 +133,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TWfAVfUrdXmJdrcD4Qrmqoa1PGSf8n9Ymn',
-  exAddress:'',
+  exAddress: ''
 }] : [{
   logo: 'USDJ',
   key: 'USDJ',
@@ -147,7 +148,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TMwFHYXLJaRUPeW6421aqXL4ZEzPRFGkGT',
   poolAddress: 'TLJ7tXMbAauYy5bxRXGQ1ng5XPxbuPfVEL',
-  exAddress:'TQcia2H2TU3WrFk9sKtdK9qCfkW8XirfPQ',
+  exAddress: 'TQcia2H2TU3WrFk9sKtdK9qCfkW8XirfPQ'
 }, {
   logo: 'JFI',
   key: 'JFI',
@@ -161,7 +162,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
   poolAddress: 'TECM6dzCnreMPc5ZESJuxS5bFAEpdz2fZK',
-  exAddress:'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
+  exAddress: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE'
 }, {
   logo: 'TRX',
   key: 'TRX',
@@ -175,7 +176,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TWBwgjgRcTnUwM861bQzdaKCBHaUtsZd4q',
   poolAddress: 'TWBwgjgRcTnUwM861bQzdaKCBHaUtsZd4q',
-  exAddress:'TTnSHzUoho1CU6zFYVzVSCKq8EX8ZddkVv',
+  exAddress: 'TTnSHzUoho1CU6zFYVzVSCKq8EX8ZddkVv'
 }, {
   logo: 'COCK',
   key: 'COCK_TRX',
@@ -189,7 +190,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
   poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9',
-  exAddress:'',
+  exAddress: ''
 }, {
   logo: 'jfitrx',
   key: 'JFI_TRX',
@@ -204,7 +205,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
   poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq',
-  exAddress:'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
+  exAddress: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE'
 }, {
   logo: 'suntrx',
   key: 'SUN_TRX',
@@ -219,7 +220,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   apy: 'infinity',
   address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
   poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2',
-  exAddress:'',
+  exAddress: ''
 }]
 
 export function contractList(): ITokens[] {
@@ -328,22 +329,23 @@ export async function allowance(contractAddress: string, poolAddress: string, lp
   if (!chk(tronWeb)) return false
 
 
-  const parameter = [{ type: 'address', value: (await address()).hex }, { type: 'address', value: poolAddress }]
+    const parameter = [{ type: 'address', value: (await address()).hex }, { type: 'address', value: poolAddress }]
 
-  let tx = undefined
-  if (lp) {
-    tx = await tronWeb.transactionBuilder.triggerConstantContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
-  } else {
+    let tx = undefined
+    if (lp) {
+      tx = await tronWeb.transactionBuilder.triggerConstantContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
+    } else {
 
-    tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
+      tx = await tronWeb.transactionBuilder.triggerSmartContract(tronWeb.address.toHex(contractAddress), 'allowance(address,address)', {}, parameter, (await address()).hex)
 
-  }
-  if (tx) {
-    const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
-    return amount > 0
-  } else {
-    return false
-  }
+    }
+    if (tx) {
+      const amount = tronWeb.toDecimal('0x' + tx['constant_result'][0])
+      return amount > 0
+    } else {
+      return false
+    }
+
 }
 
 // 授权
@@ -412,11 +414,11 @@ export async function balanceOf(contractAddress: string, lp: boolean) {
 // 价格
 export async function price(exAddress: string) {
 
-  if(exAddress===""){
-    return 0;
+  if (exAddress === '') {
+    return 0
   }
-  return request(`${exApi}${exAddress}`).then(data=>{
-    return data;
+  return request(`${exApi}${exAddress}`).then(data => {
+    return data
   })
 }
 
@@ -514,6 +516,7 @@ export async function startTime(contractAddress: string) {
     return 0
   }
 }
+
 // 提取收益
 export async function getReward(contractAddress: string) {
   const tronWeb = await findTronWeb()
