@@ -261,7 +261,7 @@ export default function PoolInfo(props: any) {
           </RowItemButton>
         )}
         <div className="apy" slot="APY">
-          APY<span>{token.coming?'Infinity':income(24*7)}%</span>
+          APY<span>{token.coming?'Infinity':income(24*7*2)}%</span>
         </div>
       </ItemWrap>
     </Col>
