@@ -44,7 +44,7 @@ export const mainContract = process.env.REACT_APP_DEV === '0' ? {
   decimals: 18,
   address: 'TE7BRt9GxPoossd1Csyidnai8q4EjsXKs4',
   poolAddress: '',
-  exAddress:'',
+  exAddress:'TCWxwQhsphTT2rGmhLHcq46Z6LHssYp67A',
   price: 0
 
 }

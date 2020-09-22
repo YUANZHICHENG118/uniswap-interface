@@ -110,7 +110,7 @@ export default function PoolInfo(props: any) {
   }
 
   const income = (period:number) => {
-    return ((initAmount*_mainPrice)/((data&&data.totalSupply||0)*_price)*period)||0
+    return ((initAmount*_mainPrice)/((data&&data.totalSupply||0)*_price)*period).toFixed(4)||0
   }
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
@@ -127,7 +127,7 @@ export default function PoolInfo(props: any) {
         <p>{t('totalStake')}</p>
         <br/>
         <p>========== {t('price')} ==========</p>
-        <p>1 {mainContract.symbol} = {_mainPrice} $</p>
+        <p>1 {mainContract.symbol} = {_mainPrice.toFixed(4)} $</p>
         <p>1 {data && data.symbol} = {_price && _price.toFixed(4)} $</p>
 
         <br/>
