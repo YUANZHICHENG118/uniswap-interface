@@ -17,6 +17,7 @@ export default function PoolInfo(props: any) {
   const [_mainPrice, setMainPrice] = useState<number>(0)
   // 矿池代币总量
   const [initAmount, setInitAmount] = useState<number>(0)
+  const [tokenToTrx, setTokenToTrx] = useState<number>(0)
 
 
   let timer: any
@@ -91,10 +92,12 @@ export default function PoolInfo(props: any) {
         let tokenAmount = tx['tokenAmount']
         let tokenDecimal = tx['tokenDecimal']
 
+
         let _trxAmount = trxAmount / Math.pow(10, 6)
         let _tokenAmount = tokenAmount / Math.pow(10, tokenDecimal)
 
         let rate = _trxAmount / _tokenAmount
+        setTokenToTrx(rate)
 
         let price = rate * trxPrice
         return price
@@ -110,7 +113,15 @@ export default function PoolInfo(props: any) {
   }
 
   const income = (period:number) => {
-    return ((initAmount*_mainPrice)/((data&&data.totalSupply||0)*_price)*period).toFixed(4)||0
+    // console.log(token.symbol+"可分红数量====",initAmount)
+    // console.log(token.earn+"价格====",_mainPrice)
+    // console.log(token.symbol+"总质押====",data&&data.totalSupply)
+    // console.log(token.symbol+"价格====",tokenToTrx)
+    //
+    // console.log(token.symbol+"分子====",(initAmount/28)*_mainPrice)
+    // console.log(token.symbol+"分母====",(data&&data.totalSupply||0)*_price)
+
+    return ((((initAmount/28)*_mainPrice)/((data&&data.totalSupply||0)*_price))*period*100).toFixed(4)||0
   }
   return (
     <Col xs={24} sm={24} md={12} lg={8}>
@@ -138,9 +149,9 @@ export default function PoolInfo(props: any) {
         <p>{t('Hourly')} : 0.0000 COCK = $0.0000</p>
         <p>{t('Daily')} : 0.0000 COCK = $0.0000</p>
         <p>{t('Weekly')} : 0.0000 COCK = $0.0000</p>
-        <p>{t('Hourly-ROI')} : {income(1)}%</p>
-        <p>{t('Daily-ROI')} : {income(24)}%</p>
-        <p>{t('Weekly-ROI')} : {income(24*7)}%</p>
+        <p>{t('Hourly-ROI')} : {income(1/24)}%</p>
+        <p>{t('Daily-ROI')} : {income(1)}%</p>
+        <p>{t('Weekly-ROI')} : {income(4*7)}%</p>
       </div>
     </Col>
   )
