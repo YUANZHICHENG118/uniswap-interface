@@ -25,6 +25,11 @@ export const BodyWrapper = styled.section`
         span {
           color: ${({ theme }) => theme.text1};
         }
+        .iconfont{
+          position:absolute;
+          right:10px;
+          top:13px;
+        }
       }
     }
     .banner_text {
@@ -62,6 +67,7 @@ export default function HomeSection() {
           <div className="wow blue_dark_bg banner_token  animation col-lg-6 animated fadeInUp">
             <a href=" " className="token-url">
               <span>ZFI通证:</span> TFHyQvBcqMeL5yq7y1dHJutzZX4YqLRzhe
+              <span className="iconfont icon-copy"></span>
             </a>
           </div>
         </div>
