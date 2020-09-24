@@ -49,7 +49,7 @@ export const BodyWrapper = styled.section`
           line-height: 54px;
           color: ${({ theme }) => theme.text1};
           border-radius: 27px;
-          background: ${({ theme }) => theme.bg2};
+          background: ${({ theme }) => theme.primary3};
         }
       }
       @media (min-width: 960px) {
