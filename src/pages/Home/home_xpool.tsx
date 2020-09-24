@@ -5,12 +5,25 @@ import XpoolItem from './xpoolItem'
 
 export const BodyWrapper = styled.section`
   position: relative;
+  .title_default_light {
+    p {
+      margin-bottom: 30px;
+    }
+  }
   .income {
+    .tk_countdown.bg-white-tran {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px 10px;
+    }
+    .token_sale_box_white {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px 15px 15px;
+      colorr: #fff;
+    }
     .pool-news {
       background-color: rgba(255, 255, 255, 0.1);
       padding: 20px 40px;
       border-radius: 5px;
-
       .pool-content {
         color: #ffcb68;
         word-wrap: break-word;
@@ -33,11 +46,11 @@ export const BodyWrapper = styled.section`
         width: 100%;
         margin: 0 0 10px 0 !important;
       }
-       @media (min-width: 960px) {
-      .pool-width {
-        width: 300px;
+      @media (min-width: 960px) {
+        .pool-width {
+          width: 300px;
+        }
       }
-    }
     }
     .inner-wrapper {
       max-width: none;
@@ -81,17 +94,13 @@ export default function Xpool() {
             ))}
           </div>
           <div className="row my-1 mx-n1">
-            <div className="token_sale res_md_mt_10 animation p-1 w-100 animated fadeInUp">
-              <div className="tk_countdown bg-white-tran text-center animation animated fadeInUp">
+            <div className="token_sale res_md_mt_10 p-1 w-100">
+              <div className="tk_countdown bg-white-tran text-center">
                 <div className="tk_counter_inner inner-wrapper">
                   <div className="text-center mb-2">
                     You Balance: <div className="zfi-balance">--.-----</div> ZFI
                   </div>
-                  <a
-                    className="btn btn-default btn-radius withdraw animation active-zfi animated fadeInUp"
-                    data-animation="fadeInUp"
-                    data-wow-delay="0.4s"
-                  >
+                  <a className="btn btn-default btn-radius withdraw  active-zfi">
                     Registration with 100 TRX!
                     <i className="ion-ios-arrow-thin-right btn-radius"></i>
                   </a>
@@ -105,17 +114,13 @@ export default function Xpool() {
             ))}
           </div>
           <div className="my-1 pt-1">
-            <div className="pool-news animation mt-0 animated fadeInUp">
+            <div className="pool-news mt-0">
               <div className="link-name pool-content">Your Referral Link：</div>
               <div className="link-content pool-content">
                 Please install tronlink wallet, if installed, please login！{' '}
               </div>
               <div className="pool-wrapper">
-                <a
-                  className="btn btn-default btn-radius withdraw animation pool-width btn-copy animated fadeInUp"
-                  data-animation="fadeInUp"
-                  data-animation-delay="0.4s"
-                >
+                <a className="btn btn-default btn-radius withdraw animation pool-width btn-copy">
                   copy
                   <i className="ion-ios-arrow-thin-right btn-radius "></i>
                 </a>
