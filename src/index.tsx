@@ -17,6 +17,8 @@ import UserUpdater from './state/user/updater'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
 import getLibrary from './utils/getLibrary'
 import './assets/style/animate.css'
+import './assets/style/bootstrap-grid.min.css'
+import './assets/style/bootstrap.min.css'
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
 
 if ('ethereum' in window) {
