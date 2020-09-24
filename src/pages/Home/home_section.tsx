@@ -8,7 +8,6 @@ export const BodyWrapper = styled.section`
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding: 100px 0 0;
   .container {
     padding-bottom: 50px;
     .certificate {
