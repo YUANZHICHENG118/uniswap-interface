@@ -116,7 +116,7 @@ export default function PoolInfo(props: any) {
     // console.log(token.symbol+"可分红数量====",initAmount)
     // console.log(token.earn+"价格====",_mainPrice)
     // console.log(token.symbol+"总质押====",data&&data.totalSupply)
-    // console.log(token.symbol+"价格====",tokenToTrx)
+     console.log(token.symbol+"价格====",tokenToTrx)
     //
     // console.log(token.symbol+"分子====",(initAmount/28)*_mainPrice)
     // console.log(token.symbol+"分母====",(data&&data.totalSupply||0)*_price)
