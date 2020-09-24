@@ -68,8 +68,8 @@ export default function Xpool() {
       <div className="container">
         <div className="col-lg-6 offset-lg-3 col-md-12 col-sm-12">
           <div className="title_default_light title_border text-center">
-            <h4 className="animation animated fadeInUp">ZFI POOL</h4>
-            <p className="animation animated fadeInUp" data-animation="fadeInUp" data-animation-delay="0.4s">
+            <h4 className="wow animation animated fadeInUp">ZFI POOL</h4>
+            <p className="wow animation animated fadeInUp " data-wow-animation="fadeInUp" data-wow-delay="0.4s">
               Stake ZFI, Earn ZFI
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function Xpool() {
                   <a
                     className="btn btn-default btn-radius withdraw animation active-zfi animated fadeInUp"
                     data-animation="fadeInUp"
-                    data-animation-delay="0.4s"
+                    data-wow-delay="0.4s"
                   >
                     Registration with 100 TRX!
                     <i className="ion-ios-arrow-thin-right btn-radius"></i>

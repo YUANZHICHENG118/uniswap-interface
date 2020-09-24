@@ -13,11 +13,7 @@ export const BodyWrapper = styled.div`
 export default function XpoolItem() {
   return <BodyWrapper>
     <div className="col p-1">
-      <div
-        className="bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp"
-        data-animation="fadeInUp"
-        data-animation-delay="0s"
-      >
+      <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
         <h5>Total Lock-ups</h5>
         <span className="total-lock show-data">--.--</span>
         <span>ZFI</span>

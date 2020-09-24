@@ -8,6 +8,7 @@ export const BodyWrapper = styled.section`
   position: relative;
   overflow: hidden;
   width: 100%;
+  padding: 100px 0 0;
   background: linear-gradient(270deg, rgba(25, 61, 192, 1) 0%, rgba(10, 29, 149, 1) 50%, rgba(25, 61, 192, 1) 100%);
   .container {
     padding-bottom: 50px;
@@ -59,7 +60,7 @@ export default function HomeSection() {
           </Col>
         </Row>
         <div className="certificate">
-          <div className="blue_dark_bg banner_token  animation col-lg-6 animated fadeInUp">
+          <div className="wow blue_dark_bg banner_token  animation col-lg-6 animated fadeInUp">
             <a href="" className="token-url">
               <span>ZFI通证:</span> TFHyQvBcqMeL5yq7y1dHJutzZX4YqLRzhe
             </a>

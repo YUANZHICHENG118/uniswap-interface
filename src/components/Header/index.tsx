@@ -27,10 +27,11 @@ const HeaderFrame = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  width: 100%;
+  position: fixed;
   top: 0;
-  position: absolute;
-  z-index: 2;
+  right: 0;
+  left: 0;
+  z-index: 1030;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     padding: 12px 0 0 0;
     width: calc(100%);
@@ -44,21 +45,21 @@ const HeaderElement = styled.div`
 `
 
 const StyledNavLink = styled(NavLink)`
-    font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
-    &.active {
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: #fff;
+  &.active {
     color: rgb(209, 108, 0);
-}
+  }
 `
-const NavTitle=styled.a`
-   font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
+const NavTitle = styled.a`
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: #fff;
 `
 
 const HeaderElementWrap = styled.div`
@@ -161,7 +162,7 @@ export default function Header() {
 
   return (
     <HeaderFrame>
-      <RowBetween  padding="1rem 1rem 0 1rem">
+      <RowBetween padding="1rem 1rem 0 1rem">
         <HeaderElement>
           <Title href=".">
             <UniIcon>
@@ -173,7 +174,7 @@ export default function Header() {
           </Title>
         </HeaderElement>
         <HeaderElement>
-          <StyledNavLink  to={'/swap'} >home</StyledNavLink>
+          <StyledNavLink to={'/home'}>Home</StyledNavLink>
           <StyledNavLink to={'/menu'}>Menu</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </HeaderElement>
