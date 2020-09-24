@@ -20,7 +20,6 @@ import './assets/style/animate.css'
 import './assets/style/bootstrap-grid.min.css'
 import './assets/style/bootstrap.min.css'
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
-
 if ('ethereum' in window) {
   ;(window.ethereum as any).autoRefreshOnNetworkChange = false
 }
