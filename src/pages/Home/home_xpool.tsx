@@ -22,6 +22,25 @@ export const BodyWrapper = styled.section`
       padding: 20px 15px 15px;
       colorr: ${({ theme }) => theme.text1};
     }
+    .pool-wrapper {
+      text-align: center;
+      margin-top: 30px;
+      .withdraw {
+        margin: 0 0 10px 0 !important;
+        padding: 0;
+        height: 54px;
+        line-height: 54px;
+        color: ${({ theme }) => theme.text1};
+        border-radius: 27px;
+        background: ${({ theme }) => theme.primary3};
+      }
+    }
+     @media (min-width: 960px) {
+        .pool-width {
+          width: 300px;
+        }
+    }
+
     .pool-news {
       padding: 20px 40px;
       border-radius: 5px;
@@ -39,24 +58,6 @@ export const BodyWrapper = styled.section`
         word-break: break-all;
         cursor: pointer;
       }
-      .pool-wrapper {
-        text-align: center;
-        margin-top: 30px;
-        .withdraw {
-          margin: 0 0 10px 0 !important;
-          padding: 0;
-          height: 54px;
-          line-height: 54px;
-          color: ${({ theme }) => theme.text1};
-          border-radius: 27px;
-          background: ${({ theme }) => theme.primary3};
-        }
-      }
-      @media (min-width: 960px) {
-        .pool-width {
-          width: 300px;
-        }
-      }
     }
     .inner-wrapper {
       max-width: none;
@@ -69,10 +70,6 @@ export const BodyWrapper = styled.section`
       .zfi-balance {
         color: #ffcb68;
         display: inline-block;
-      }
-      .withdraw {
-        width: 100%;
-        margin: 0 0 10px 0 !important;
       }
     }
   }
@@ -106,10 +103,12 @@ export default function Xpool() {
                   <div className="text-center mb-2">
                     You Balance: <div className="zfi-balance">--.-----</div> ZFI
                   </div>
-                  <a href="/" className="btn btn-default btn-radius withdraw  active-zfi">
-                    Registration with 100 TRX!
-                    <i className="ion-ios-arrow-thin-right btn-radius"></i>
-                  </a>
+                  <div className="pool-wrapper ">
+                    <a href="/" className="btn btn-default pool-width btn-radius withdraw  active-zfi">
+                      Registration with 100 TRX!
+                      <i className="ion-ios-arrow-thin-right btn-radius"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -126,7 +125,7 @@ export default function Xpool() {
                 Please install tronlink wallet, if installed, please login！{' '}
               </div>
               <div className="pool-wrapper">
-                <a href='/' className="btn btn-default btn-radius withdraw  pool-width btn-copy">
+                <a href="/" className="btn btn-default btn-radius withdraw  pool-width btn-copy">
                   copy
                   <i className="ion-ios-arrow-thin-right btn-radius "></i>
                 </a>
