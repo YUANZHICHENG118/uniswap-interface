@@ -106,7 +106,7 @@ export default function Xpool() {
                   <div className="text-center mb-2">
                     You Balance: <div className="zfi-balance">--.-----</div> ZFI
                   </div>
-                  <a className="btn btn-default btn-radius withdraw  active-zfi">
+                  <a href="/" className="btn btn-default btn-radius withdraw  active-zfi">
                     Registration with 100 TRX!
                     <i className="ion-ios-arrow-thin-right btn-radius"></i>
                   </a>
@@ -126,7 +126,7 @@ export default function Xpool() {
                 Please install tronlink wallet, if installed, please login！{' '}
               </div>
               <div className="pool-wrapper">
-                <a className="btn btn-default btn-radius withdraw  pool-width btn-copy">
+                <a href='/' className="btn btn-default btn-radius withdraw  pool-width btn-copy">
                   copy
                   <i className="ion-ios-arrow-thin-right btn-radius "></i>
                 </a>

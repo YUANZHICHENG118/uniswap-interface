@@ -60,7 +60,7 @@ export default function HomeSection() {
         </Row>
         <div className="certificate">
           <div className="wow blue_dark_bg banner_token  animation col-lg-6 animated fadeInUp">
-            <a href="" className="token-url">
+            <a href=" " className="token-url">
               <span>ZFI通证:</span> TFHyQvBcqMeL5yq7y1dHJutzZX4YqLRzhe
             </a>
           </div>
