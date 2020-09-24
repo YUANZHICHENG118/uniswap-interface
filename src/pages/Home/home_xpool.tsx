@@ -12,16 +12,16 @@ export const BodyWrapper = styled.section`
   }
   .income {
     .tk_countdown.bg-white-tran {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: ${({ theme }) => theme.middleBG};
       padding: 20px 10px;
     }
     .token_sale_box_white {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: ${({ theme }) => theme.middleBG};
       padding: 20px 15px 15px;
-      colorr: #fff;
+      colorr: ${({ theme }) => theme.text1};
     }
     .pool-news {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: ${({ theme }) => theme.middleBG};
       padding: 20px 40px;
       border-radius: 5px;
       .pool-content {
@@ -41,10 +41,15 @@ export const BodyWrapper = styled.section`
       .pool-wrapper {
         text-align: center;
         margin-top: 30px;
-      }
-      .withdraw {
-        width: 100%;
+        .withdraw {
         margin: 0 0 10px 0 !important;
+        padding:0;
+        height:54px;
+        line-height:54px;
+        color:${({ theme }) => theme.text1};
+        border-radius:27px;
+        background:${({ theme }) => theme.bg2};
+      }
       }
       @media (min-width: 960px) {
         .pool-width {
@@ -58,7 +63,7 @@ export const BodyWrapper = styled.section`
     }
     .tk_counter_inner {
       .mb-2 {
-        color: #fff;
+        color: ${({ theme }) => theme.text1};
       }
       .zfi-balance {
         color: #ffcb68;
@@ -120,7 +125,7 @@ export default function Xpool() {
                 Please install tronlink wallet, if installed, please login！{' '}
               </div>
               <div className="pool-wrapper">
-                <a className="btn btn-default btn-radius withdraw animation pool-width btn-copy">
+                <a className="btn btn-default btn-radius withdraw  pool-width btn-copy">
                   copy
                   <i className="ion-ios-arrow-thin-right btn-radius "></i>
                 </a>
