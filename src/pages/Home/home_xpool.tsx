@@ -52,7 +52,7 @@ export const BodyWrapper = styled.section`
         margin: 10px 0;
       }
       .link-name {
-        color: white;
+        color: ${({ theme }) => theme.text1};
       }
       .link-content {
         word-break: break-all;
