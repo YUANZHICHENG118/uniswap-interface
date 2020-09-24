@@ -178,6 +178,7 @@ export default function Header() {
         </HeaderElement>
         <NavElements>
           <StyledNavLink  to={'/home'} >home</StyledNavLink>
+          <StyledNavLink  to={'/swap'} >Swap</StyledNavLink>
           <StyledNavLink to={'/menu'}>Menu</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </NavElements>
