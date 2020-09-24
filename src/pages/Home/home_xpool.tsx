@@ -20,7 +20,7 @@ export const BodyWrapper = styled.section`
     .token_sale_box_white {
       background-color: ${({ theme }) => theme.middleBG};
       padding: 20px 15px 15px;
-      colorr: ${({ theme }) => theme.text1};
+      color: ${({ theme }) => theme.text1};
     }
     .pool-wrapper {
       text-align: center;
@@ -32,7 +32,7 @@ export const BodyWrapper = styled.section`
         line-height: 54px;
         color: ${({ theme }) => theme.text1};
         border-radius: 27px;
-        background: ${({ theme }) => theme.primary3};
+        background: ${({ theme }) => theme.primary4};
       }
     }
      @media (min-width: 960px) {

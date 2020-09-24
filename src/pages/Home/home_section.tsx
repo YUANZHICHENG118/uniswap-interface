@@ -17,24 +17,25 @@ export const BodyWrapper = styled.section`
         border-radius: 10px;
         color: white;
         padding: 10px;
+        background-color: ${({ theme }) => theme.primary4};
         .token-url {
           width: 100%;
           color: #ffcb68;
         }
         span {
-          color: #fff;
+          color: ${({ theme }) => theme.text1};
         }
       }
     }
     .banner_text {
       h1 {
-        color: #ffffff;
+        color: ${({ theme }) => theme.text1};
         font-weight: bold;
         margin-bottom: 25px;
         text-align: center;
       }
       p {
-        color: #fff;
+        color: ${({ theme }) => theme.text1};
         margin-bottom: 30px;
         text-align: center;
         word-break: break-word;
