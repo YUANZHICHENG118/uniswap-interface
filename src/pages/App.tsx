@@ -56,10 +56,6 @@ const BodyWrapper = styled.div`
   z-index: 1;
 `
 
-const Marginer = styled.div`
-  margin-top: 5rem;
-`
-
 export default function App() {
   return (
     <Suspense fallback={null}>
@@ -94,7 +90,6 @@ export default function App() {
                 <Route component={RedirectPathToSwapOnly} />
               </Switch>
             </Web3ReactManager>
-            <Marginer />
           </BodyWrapper>
         </AppWrapper>
       </HashRouter>
