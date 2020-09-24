@@ -11,8 +11,10 @@ export const BodyWrapper = styled.section`
     }
   }
   .income {
-    .tk_countdown.bg-white-tran {
+    .middleBG {
       background-color: ${({ theme }) => theme.middleBG};
+    }
+    .tk_countdown.bg-white-tran {
       padding: 20px 10px;
     }
     .token_sale_box_white {
@@ -21,7 +23,6 @@ export const BodyWrapper = styled.section`
       colorr: ${({ theme }) => theme.text1};
     }
     .pool-news {
-      background-color: ${({ theme }) => theme.middleBG};
       padding: 20px 40px;
       border-radius: 5px;
       .pool-content {
@@ -42,14 +43,14 @@ export const BodyWrapper = styled.section`
         text-align: center;
         margin-top: 30px;
         .withdraw {
-        margin: 0 0 10px 0 !important;
-        padding:0;
-        height:54px;
-        line-height:54px;
-        color:${({ theme }) => theme.text1};
-        border-radius:27px;
-        background:${({ theme }) => theme.bg2};
-      }
+          margin: 0 0 10px 0 !important;
+          padding: 0;
+          height: 54px;
+          line-height: 54px;
+          color: ${({ theme }) => theme.text1};
+          border-radius: 27px;
+          background: ${({ theme }) => theme.bg2};
+        }
       }
       @media (min-width: 960px) {
         .pool-width {
@@ -100,7 +101,7 @@ export default function Xpool() {
           </div>
           <div className="row my-1 mx-n1">
             <div className="token_sale res_md_mt_10 p-1 w-100">
-              <div className="tk_countdown bg-white-tran text-center">
+              <div className="tk_countdown bg-white-tran text-center middleBG">
                 <div className="tk_counter_inner inner-wrapper">
                   <div className="text-center mb-2">
                     You Balance: <div className="zfi-balance">--.-----</div> ZFI
@@ -119,7 +120,7 @@ export default function Xpool() {
             ))}
           </div>
           <div className="my-1 pt-1">
-            <div className="pool-news mt-0">
+            <div className="pool-news mt-0 middleBG">
               <div className="link-name pool-content">Your Referral Link：</div>
               <div className="link-content pool-content">
                 Please install tronlink wallet, if installed, please login！{' '}
