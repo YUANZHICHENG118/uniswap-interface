@@ -108,7 +108,7 @@ export default function ItemWrap({
           {subTitle[1]&&<div className="kdcQzs">{subTitle[1]}</div>}
         </RowItemSubTitle>
         <RowItemButton color="#d16c00" font-size="16">
-          <a href="#">Select</a>
+          <a>Select</a>
         </RowItemButton>
         {children}
       </FlexCenter>
