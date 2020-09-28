@@ -1,7 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import { TransactionResponse } from '@ethersproject/providers'
+import BigNumber from 'bignumber.js'
+import { POOL_ADDRESS } from '../../constants/index'
 
 import XpoolItem from './xpoolItem'
+import { useBatContract } from '../../hooks/useContract'
+import { useActiveWeb3React } from '../../hooks'
+import { useSingleCallResult } from '../../state/multicall/hooks'
+import { calculateGasMargin } from '../../utils'
+BigNumber.config({
+  EXPONENTIAL_AT: 1000,
+  DECIMAL_PLACES: 80,
+})
 
 export const BodyWrapper = styled.section`
   position: relative;
@@ -79,6 +90,43 @@ export const BodyWrapper = styled.section`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function Xpool() {
+
+  const { account } = useActiveWeb3React()
+
+
+  const contract = useBatContract(POOL_ADDRESS, true)
+  const isUserExists = useSingleCallResult(contract, 'isUserExists', [account||""])
+
+  console.log("isUserExists===",isUserExists)
+
+  const isReg=isUserExists&&isUserExists.result&&isUserExists.result[0]
+
+  const register=async ()=>{
+
+    if(contract){
+
+      const refAddress="0x514c51818BE9270e4f9a9e790CABfC4d7e8136D2"
+      const estimatedGas = await contract.estimateGas.registrationExt(refAddress).catch(() => {
+        // general fallback for tokens who restrict approval amounts
+        return contract.estimateGas.registrationExt(refAddress)
+      })
+
+      return contract.registrationExt(refAddress, {
+        gasLimit: calculateGasMargin(estimatedGas)
+      })
+        .then((response: TransactionResponse) => {
+
+          console.log("response====",response)
+        })
+        .catch((error: Error) => {
+          console.debug('Failed to reg token', error)
+          throw error
+        })
+
+    }
+  }
+
+
   return (
     <BodyWrapper>
       <div className="container">
@@ -104,10 +152,16 @@ export default function Xpool() {
                     You Balance: <div className="zfi-balance">--.-----</div> ZFI
                   </div>
                   <div className="pool-wrapper ">
-                    <a href="/" className="btn btn-default pool-width btn-radius withdraw  active-zfi">
-                      Registration with 100 TRX!
-                      <i className="ion-ios-arrow-thin-right btn-radius"></i>
-                    </a>
+                    {
+                      isReg?<a href="javascript:void(0)" className="btn btn-default pool-width btn-radius withdraw  active-zfi">
+                        Register Success
+                        <i className="ion-ios-arrow-thin-right btn-radius"></i>
+                      </a>:<a href="javascript:void(0)" onClick={()=>register()} className="btn btn-default pool-width btn-radius withdraw  active-zfi">
+                        Registration with 100 TRX!
+                        <i className="ion-ios-arrow-thin-right btn-radius"></i>
+                      </a>
+                    }
+
                   </div>
                 </div>
               </div>

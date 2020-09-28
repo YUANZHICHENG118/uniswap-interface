@@ -2,6 +2,8 @@ import React from 'react'
 
 import styled from 'styled-components'
 
+import {supportedPools} from '../../constants/index'
+
 const MenuWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -134,33 +136,41 @@ const RowItemButton = styled.div`
 export default function Menu() {
   return (
     <MenuWrap>
-      <MenuTop>menu</MenuTop>
+      <MenuTop></MenuTop>
       <MenuBody>
         <RowBox>
           <div></div>
-          <RowItem>
-            <div className={'itemWarp'}>
-              <RowItemBox>
-                <FlexCenter>
-                  <RowItemLogo>🍣</RowItemLogo>
-                  <RowItemTitle>Sushi Party!</RowItemTitle>
-                  <RowItemSubTitle>
-                    <div className="kdcQzs">Deposit SUSHI-ETH UNI-V2 LP</div>
-                    <div className="kdcQzs">Earn SUSHI</div>
-                  </RowItemSubTitle>
-                  <RowItemButton color="#d16c00" font-size="16">
-                    <a className="sc-AxirZ kRQAGp" href="/farms/SUSHI-ETH UNI-V2 LP">
-                      Select
-                    </a>
-                  </RowItemButton>
-                  <RowItemBottom>
-                    <span>APY</span>
-                    <span>914.87%</span>
-                  </RowItemBottom>
-                </FlexCenter>
-              </RowItemBox>
-            </div>
-          </RowItem>
+
+          {
+            supportedPools.map((item:any)=><RowItem>
+              <div className={'itemWarp'}>
+                <RowItemBox>
+                  <FlexCenter>
+                    <RowItemLogo>{item.icon}</RowItemLogo>
+                    <RowItemTitle>{item.name}</RowItemTitle>
+                    <RowItemSubTitle>
+                      <div className="kdcQzs">Deposit {item.symbol} LP</div>
+                      <div className="kdcQzs">Earn {item.tokenSymbol}</div>
+                    </RowItemSubTitle>
+                    <RowItemButton color="#d16c00" font-size="16">
+                      <a className="sc-AxirZ kRQAGp" href={`/#/Farm/${item.symbol}`}>
+                        Select
+                      </a>
+                    </RowItemButton>
+                    <RowItemBottom>
+                      <span>APY</span>
+                      <span>0.00%</span>
+                    </RowItemBottom>
+                  </FlexCenter>
+                </RowItemBox>
+              </div>
+            </RowItem>)
+          }
+
+
+
+
+
         </RowBox>
       </MenuBody>
     </MenuWrap>

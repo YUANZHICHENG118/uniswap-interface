@@ -10,6 +10,38 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
+export const POOL_ADDRESS = '0xba3d03787e8a989635df0be8e2263c0e297e7138'
+export const mainToken = {
+  symbol: 'SUSHI',
+  address:'0xc1171972a56dffeec911de003dbe6c18c08f662a',
+  decimals:18,
+  icon: '🦆'
+}
+
+export const supportedPools = [
+
+  {
+    pid: 0,
+    lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
+    tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
+    name: 'Donald DAI',
+    symbol: 'DAI-ETH',
+    tokenSymbol: 'SUSHI',
+    decimals:18,
+    icon: '🦆',
+  },
+  {
+    pid: 1,
+    lpAddresses: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
+    tokenAddresses: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
+    name: 'Spartan Dollar',
+    symbol: 'SUSD-ETH',
+    tokenSymbol: 'SUSHI',
+    decimals:18,
+    icon: '🦍',
+  }
+]
+
 export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
 export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
 export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')

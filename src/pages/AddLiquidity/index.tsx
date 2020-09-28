@@ -116,6 +116,7 @@ export default function AddLiquidity({
   )
 
   // check whether the user has approved the router on the tokens
+  debugger
   const [approvalA, approveACallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_A], ROUTER_ADDRESS)
   const [approvalB, approveBCallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_B], ROUTER_ADDRESS)
 
@@ -420,7 +421,7 @@ export default function AddLiquidity({
                           {approvalB === ApprovalState.PENDING ? (
                             <Dots>Approving {currencies[Field.CURRENCY_B]?.symbol}</Dots>
                           ) : (
-                            'Approve ' + currencies[Field.CURRENCY_B]?.symbol
+                            'Approve' + currencies[Field.CURRENCY_B]?.symbol
                           )}
                         </ButtonPrimary>
                       )}

@@ -9,6 +9,9 @@ import ERC20_ABI from '../constants/abis/erc20.json'
 import { MIGRATOR_ABI, MIGRATOR_ADDRESS } from '../constants/abis/migrator'
 import UNISOCKS_ABI from '../constants/abis/unisocks.json'
 import WETH_ABI from '../constants/abis/weth.json'
+import BAT_ABI from '../constants/abis/bat.json'
+import LP_ABI from '../constants/abis/lp.json'
+
 import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
 import { getContract } from '../utils'
@@ -91,4 +94,12 @@ export function useSocksController(): Contract | null {
     UNISOCKS_ABI,
     false
   )
+}
+
+export function useBatContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
+  return useContract(address, BAT_ABI, withSignerIfPossible)
+}
+
+export function useLpContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
+  return useContract(address, LP_ABI, withSignerIfPossible)
 }
