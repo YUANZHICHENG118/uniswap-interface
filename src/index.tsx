@@ -18,6 +18,7 @@ import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
 import getLibrary from './utils/getLibrary'
 import './assets/style/bootstrap-grid.min.css'
 import './assets/style/bootstrap.min.css'
+import './assets/fonts/iconfont.css'
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
 
 if ('ethereum' in window) {

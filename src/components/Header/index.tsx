@@ -32,7 +32,7 @@ const HeaderFrame = styled.div`
   position: absolute;
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    padding: 12px 0 0 0;
+    padding: 0 0 40px;
     width: calc(100%);
     position: relative;
   `};
@@ -45,6 +45,10 @@ const HeaderElement = styled.div`
 const NavElements = styled.nav`
   display: flex;
   align-items: center;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    position:absolute;
+    bottom:8px;
+ `};
 `
 
 const StyledNavLink = styled(NavLink)`

@@ -18,6 +18,18 @@ export const BodyWrapper = styled.section`
         color: white;
         padding: 10px;
         background-color: ${({ theme }) => theme.primary4};
+        ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+        font-size:14px;
+      `};
+        .code {
+          flex: 1;
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          .iconfont {
+            margin-left: 10px;
+          }
+        }
         .token-url {
           width: 100%;
           color: #ffcb68;
@@ -59,9 +71,13 @@ export default function HomeSection() {
           </Col>
         </Row>
         <div className="certificate">
-          <div className="wow blue_dark_bg banner_token  animation col-lg-6 animated fadeInUp">
+          <div className="wow blue_dark_bg banner_token col-lg-6">
             <a href=" " className="token-url">
-              <span>ZFI通证:</span> TFHyQvBcqMeL5yq7y1dHJutzZX4YqLRzhe
+              <span>ZFI通证:</span>
+              <span className="code">
+                <span>TFHyQvBcqMeL5yq7y1dHJutzZX4YqLRzhe</span>
+                <span className="iconfont icon-copy"></span>
+              </span>
             </a>
           </div>
         </div>

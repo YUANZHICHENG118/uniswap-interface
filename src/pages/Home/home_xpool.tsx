@@ -44,6 +44,9 @@ export const BodyWrapper = styled.section`
         color: ${({ theme }) => theme.text1};
         border-radius: 27px;
         background: ${({ theme }) => theme.primary4};
+        ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+        width:80%;
+      `};
       }
     }
      @media (min-width: 960px) {

@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1600945203772'); /* IE9 */
+  src: url('iconfont.eot?t=1600945203772#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPIAAsAAAAAB/AAAAN7AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqDTIMVATYCJAMMCwgABCAFhG0HQRvmBlGUDUqZ7EdiDO6hSyYry4TV2lFbVlyKKPGMb+Lh+fv9t/Y552Xa/xSJ31t7kiJpwFqHokQScAjSWuBurWX+Syxcxj+QelUihfYwu7cHn51cnlzR6SpVIVvhOvz+7EPjEYwTLimZbyclickuxUl/3Dv9K/H57vJcxtq0p03qAownBzTWpoCyuEAS9IaxC1rifgJti1oah5f3T7CpMIcF4r6zEWxmtEpDemgK9Yq5RbyAa6Zn6Qx4Hnw//hvEJkktMw86vXeRwvGv4S/N/FoBMRkA05nBFpGxBRTiWqX1qpUosGVFW5WuNsfXFSFN5a4qAq4mrlt/eCRB1JmpXbCGgolfQ4ebyOaQf9W8hxtcxxh4B/JZ0k2ZLzDS2KeHICiMYqpKKJOJwQgL1isUTdKZddbD2vS6KwgD1wxW/S0Mj83BqEKkKRTxhHRRXouGRZ1mSyoY78Q4CeOKKQYD2VGLQY5NvAwGBCbceGmbloheNx43108pJsU0SwA0WsUmWrFYTK9+G43UlnotcZtCU9S6PA40hOy64XbQMcJQEjQDL6R2YATSCtB1YQv97c4dMu0v7H7tLuyDEg50FrTX5k3jl0PC5hOTkwhgUO7uDHHrnGCLWCV3pV92uFKmUjjbV82ww6DXLRpBrmwk6oqfHiU39grtyDn4dzRRyd3AXSmRHW4QHpPy4IvYhJ0f+G+Goeib0ZILVcEGbNg+vBSqbjgzfX263zLfcse+QjWm20317Uy7Jc0lO2Z7zKo+zBghQLWfn+ZgAPL7BP7hbxz9nJ4FB/7fTUYBX1/1DANHtV90DzYlGO+P8TqWFE1g6nJRuA7XCGcPHL0PjbYm858yYexvuH0GEnNoch6EpGEBsqYltJC2oKZjG+qadqBt09XijgmxIkoLG74AhKFvSPq+QDb0gxbSL9TM/UPdMFag7XKordmxEm47TChSSjFeokt4YmyDbofpD2SnZSRpQUB+IamdG/udXj58RROSKSbUMztQNWiEK7wEh1FZMnrhnBLtZKp+3O2aqid1Eq5g2wFBIoqkUGwJOQk2YbzKarvw+QfEmipFpKGoyvyCiJprHfV19DqgV9JJp6JbeaQ2Yw0oZSBDsAq6BGZSWgGGfHWvHEmojmyAzxvronKmq7SzvLx6v1XQZl6dI0WOotxmvzw8EeH5g7OZ9tuDkV8AAAA=') format('woff2'),
+  url('iconfont.woff?t=1600945203772') format('woff'),
+  url('iconfont.ttf?t=1600945203772') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1600945203772#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-copy:before {
+  content: "\e616";
+}
+
+.icon-ArrowRight1-24px:before {
+  content: "\e610";
+}
+
