@@ -83,7 +83,7 @@ export const BodyWrapper = styled.section`
       .mb-2 {
         color: ${({ theme }) => theme.text1};
       }
-      .{mainToken.symbol}-balance {
+      .sushi-balance {
         color: #ffcb68;
         display: inline-block;
       }
@@ -177,7 +177,7 @@ export default function Xpool(props: { refAddress: any }) {
               <div className="tk_countdown bg-white-tran text-center middleBG">
                 <div className="tk_counter_inner inner-wrapper">
                   <div className="text-center mb-2">
-                    You Balance: <div className="{mainToken.symbol}-balance">--.-----</div> {mainToken.symbol}
+                    You Balance: <div className="sushi-balance">--.-----</div> {mainToken.symbol}
                   </div>
                   <div className="pool-wrapper ">
                     {

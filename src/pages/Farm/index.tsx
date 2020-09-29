@@ -234,9 +234,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     if(contract){
       const Web3 = require('web3');
       let web3 = new Web3(window.ethereum);
-      let value:any=format(stakeBalance.toString(),token &&token.decimals||18);
-      let amount=new BigNumber(value*Math.pow(10,token &&token.decimals||18))
-      let _amount=web3.utils.toHex(amount);
+      let _amount=web3.utils.toHex(stakeBalance.toString());
       debugger
       const estimatedGas = await contract.estimateGas.withdraw(token && token.pid,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
