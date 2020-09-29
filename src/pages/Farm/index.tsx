@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 //import { MaxUint256 } from '@ethersproject/constants'
-import {   Input } from 'antd'
 import Modal from '../../components/Modal'
+import { Input as NumericalInput } from '../../components/NumericalInput'
 
 import { supportedPools, mainToken, POOL_ADDRESS } from '../../constants/index'
 import { RouteComponentProps } from 'react-router-dom'
@@ -18,49 +18,56 @@ BigNumber.config({
   EXPONENTIAL_AT: 1000,
   DECIMAL_PLACES: 80,
 })
-const { Search } = Input
+const InputRow = styled.div<{ selected: boolean }>`
+  ${({ theme }) => theme.flexRowNoWrap}
+  align-items: center;
+  padding: ${({ selected }) => (selected ? '0.75rem 0.5rem 0.75rem 1rem' : '0.75rem 0.75rem 0.75rem 1rem')};
+`
+
+const StyledBalanceMax = styled.button`
+  height: 28px;
+  background-color: ${({ theme }) => theme.primary5};
+  border: 1px solid ${({ theme }) => theme.primary5};
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  color: ${({ theme }) => theme.primaryText1};
+  :hover {
+    border: 1px solid ${({ theme }) => theme.primary1};
+  }
+  :focus {
+    border: 1px solid ${({ theme }) => theme.primary1};
+    outline: none;
+  }
+
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    margin-right: 0.5rem;
+  `};
+`
 
 const WalletBox = styled.div`
   text-align: center;
   padding:50px auto;
-  margin:0 auto;
+  margin:10px auto;
   h2 {
     text-align: center;
     color: #fff;
     font-size: 18px;
     font-weight: 500;
-    padding:30px auto;
+    margin:20px auto;
     position: relative;
   }
-  img {
-    background-color: #f0e7ea;
-    font-size: 36px;
-    height: 80px;
-    width: 80px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    box-shadow: inset 4px 4px 8px #e2cfd5, inset -6px -6px 12px #f7f2f4;
-    border-radius: 40px;
-    margin: 70px auto 16px;
-    font-style: normal;
-  }
-  h1 {
-    color: #5b2639;
-    font-size: 36px;
-    font-weight: 700;
-    padding: 0;
-    line-height: 40px;
-    margin-bottom: 0;
-    margin-top: 40px;
-  }
+ 
   p {
     color: #80495d;
     font-size: 16px;
     line-height: 18px;
   }
   .cancle {
-    margin: 60px 20px 20px;
+    margin: 30px 20px 20px;
     align-items: center;
     background-color: #f0e7ea;
     color: #d1004b;
@@ -200,11 +207,10 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const { activate, active }=useWeb3ReactCore()
   console.log("useWeb3ReactCore===",activate,active)
   const [visibleModal, setVisibleModal] = useState<boolean>(false)
-  const [amount, setAmount] = useState<number|undefined>(0)
+  const [stakeAmount, setAmount] = useState<number>(0)
 
   const onChange = (e: any) => {
-    console.log('e====', e.currentTarget.value)
-    setAmount(e.currentTarget.value)
+    setAmount(e)
   }
   const token = supportedPools.find(x => x.symbol === symbol)
 
@@ -276,10 +282,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
     let web3 = new Web3(window.ethereum);
 
+    if(stakeAmount<=0){
+      return ;
+    }
+
     if(contract){
 
-      let amount=new BigNumber(1*Math.pow(10,token &&token.decimals||18))
-      let _amount=web3.utils.toHex(amount);
+      let value=new BigNumber(stakeAmount*Math.pow(10,token &&token.decimals||18))
+      let _amount=web3.utils.toHex(value);
 
       const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
         return contract.estimateGas.deposit(token && token.pid,_amount)
@@ -380,7 +390,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         Approval
                       </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
-                        stack
+                        Stake
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel:console.log("111")}>
                         Approval
                       </a>
@@ -400,16 +410,21 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
           <h2>
             {format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)} {token && token.symbol} LP Avaliable
           </h2>
-          <p>
-            <Search
-              onChange={e => onChange(e)}
-              value={amount}
-              placeholder="input amount"
-              enterButton="Max"
-              size="large"
-              onSearch={() => setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18))}
-            />
-          </p>
+          <InputRow style={true ? { padding: '0', borderRadius: '8px' } : {}} selected={false}>
+            <>
+              <NumericalInput
+                className="token-amount-input"
+                value={stakeAmount}
+                onUserInput={val => {
+                  onChange(val)
+                }}
+              />
+              {account  && (
+                <StyledBalanceMax onClick={()=>setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18))}>MAX</StyledBalanceMax>
+              )}
+            </>
+
+          </InputRow>
 
           <div
             className="cancle clickableButton"
