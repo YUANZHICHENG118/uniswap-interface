@@ -231,7 +231,7 @@ export default function Xpool(props: { refAddress: any }) {
       <TransactionConfirmationModal
         isOpen={txConfirm}
         onDismiss={()=>setTxConfirm(false)}
-        attemptingTxn={true}
+        attemptingTxn={false}
         hash={txId}
         content={()=><></>}
         pendingText={"Loading"}
