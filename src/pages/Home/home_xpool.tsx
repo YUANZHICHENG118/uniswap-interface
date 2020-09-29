@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import BigNumber from 'bignumber.js'
-import { POOL_ADDRESS, HOST, mainToken } from '../../constants/index'
+import { POOL_ADDRESS, HOST, mainToken,defRefAddress } from '../../constants/index'
 
 import XpoolItem from './xpoolItem'
 import { useBatContract } from '../../hooks/useContract'
@@ -103,10 +103,8 @@ export default function Xpool(props: { refAddress: any }) {
 
   const { account } = useActiveWeb3React()
 
-  const defRefAddress="0xcfce2a772ae87c5fae474b2de0324ee19c2c145f";
-
   const contract = useBatContract(POOL_ADDRESS, true)
-  const isUserExists = useSingleCallResult(contract, 'isUserExists', [account || ''])
+  const isUserExists = useSingleCallResult(contract, 'isUserExists', [account || defRefAddress])
 
   const isRefUserExists =useSingleCallResult(contract, 'isUserExists', [refAddress||defRefAddress])
 
@@ -120,6 +118,11 @@ export default function Xpool(props: { refAddress: any }) {
     setCopied(val)
   }
   const register = async () => {
+
+    if(!account){
+      alert("connect to wallet")
+      return ;
+    }
 
     if (contract) {
       let _ref=refAddress;

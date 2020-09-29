@@ -146,11 +146,11 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const contract = useBatContract(POOL_ADDRESS, true)
 
 
-  const allowance = useSingleCallResult(lpcontract, 'allowance', [account||"", POOL_ADDRESS])
+  const allowance = useSingleCallResult(lpcontract, 'allowance', [account ?? undefined, POOL_ADDRESS])
 
-  const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account||""])
+  const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account ?? undefined])
 
-  const getTokenBalance = useSingleCallResult(contract, 'pendingSushi', [token&&token.pid, account||""])
+  const getTokenBalance = useSingleCallResult(contract, 'pendingSushi', [token&&token.pid, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
@@ -162,7 +162,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     if(value){
       value=value/Math.pow(10,decimal)
     }
-    return value&&value.toFixed(4) ||0
+    return value&&value.toFixed(4) ||"0.0000"
   }
 
   console.log("stakeBalance===",stakeBalance)
@@ -267,15 +267,19 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
               <RowItemBox>
                 <FlexCenter>
                   <RowItemLogo>{mainToken && mainToken.icon}</RowItemLogo>
-                  <RowItemTitle>{tokenBalance&&tokenBalance.toString()}</RowItemTitle>
+                  <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>
                   </RowItemSubTitle>
+
                   <RowItemButton color="#d16c00" font-size="16">
+
+
+
                     {
-                      stakeBalance&&stakeBalance.toString()==="0"?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         Harvest
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={harvestHandel}>
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel:console.log("000")}>
                         Harvest
                       </a>
                     }
@@ -299,10 +303,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   </RowItemSubTitle>
                   <RowItemButton color="#d16c00" font-size="16">
 
+
+
                     {
-                      allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={stakeHandel}>
+                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                        Approval
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={stakeHandel}>
                         stack
-                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={approvalHandel}>
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel:console.log("111")}>
                         Approval
                       </a>
                     }

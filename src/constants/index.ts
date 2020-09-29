@@ -11,6 +11,8 @@ type ChainTokenList = {
 }
 
 export const HOST = 'http://127.0.0.1:3002'
+export const defRefAddress = '0xcfce2a772ae87c5fae474b2de0324ee19c2c145f'
+
 
 export const POOL_ADDRESS = '0xb64e71d7694Bd221b18C875D4Cb57aC2a94E17af'
 export const mainToken = {
