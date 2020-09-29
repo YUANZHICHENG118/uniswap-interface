@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 //import { MaxUint256 } from '@ethersproject/constants'
+import {   Input } from 'antd'
+import Modal from '../../components/Modal'
 
 import { supportedPools, mainToken, POOL_ADDRESS } from '../../constants/index'
 import { RouteComponentProps } from 'react-router-dom'
@@ -16,6 +18,65 @@ BigNumber.config({
   EXPONENTIAL_AT: 1000,
   DECIMAL_PLACES: 80,
 })
+const { Search } = Input
+
+const WalletBox = styled.div`
+  text-align: center;
+  padding:50px auto;
+  margin:0 auto;
+  h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding:30px auto;
+    position: relative;
+  }
+  img {
+    background-color: #f0e7ea;
+    font-size: 36px;
+    height: 80px;
+    width: 80px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    box-shadow: inset 4px 4px 8px #e2cfd5, inset -6px -6px 12px #f7f2f4;
+    border-radius: 40px;
+    margin: 70px auto 16px;
+    font-style: normal;
+  }
+  h1 {
+    color: #5b2639;
+    font-size: 36px;
+    font-weight: 700;
+    padding: 0;
+    line-height: 40px;
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+  p {
+    color: #80495d;
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .cancle {
+    margin: 60px 20px 20px;
+    align-items: center;
+    background-color: #f0e7ea;
+    color: #d1004b;
+    cursor: pointer;
+    display: flex;
+    font-size: 16px;
+    font-weight: 700;
+    height: 56px;
+    justify-content: center;
+    width: calc(100% - 40px);
+    border-radius: 12px;
+    :hover {
+      background-color: #f1dae1;
+    }
+  }
+`
 
 const MenuWrap = styled.div`
   display: flex;
@@ -138,7 +199,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const { account } = useActiveWeb3React()
   const { activate, active }=useWeb3ReactCore()
   console.log("useWeb3ReactCore===",activate,active)
+  const [visibleModal, setVisibleModal] = useState<boolean>(false)
+  const [amount, setAmount] = useState<number|undefined>(0)
 
+  const onChange = (e: any) => {
+    console.log('e====', e.currentTarget.value)
+    setAmount(e.currentTarget.value)
+  }
   const token = supportedPools.find(x => x.symbol === symbol)
 
   const lpcontract = useLpContract(token && token.lpAddresses, true)
@@ -147,6 +214,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
 
   const allowance = useSingleCallResult(lpcontract, 'allowance', [account ?? undefined, POOL_ADDRESS])
+
+  const getLpBalance = useSingleCallResult(lpcontract, 'balanceOf', [account ?? undefined])
 
   const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account ?? undefined])
 
@@ -158,7 +227,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const tokenBalance=getTokenBalance && getTokenBalance.result && getTokenBalance.result[0]
   const stakeBalance=getStakeBalance && getStakeBalance.result&& getStakeBalance.result[0]
 
-  const format=(value:number,decimal:number)=>{
+  const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
+
+  const format=(value:number,decimal:number):any=>{
     if(value){
       value=value/Math.pow(10,decimal)
     }
@@ -308,7 +379,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         Approval
-                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={stakeHandel}>
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
                         stack
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel:console.log("111")}>
                         Approval
@@ -324,6 +395,30 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
         </RowBox>
       </MenuBody>
+      <Modal isOpen={visibleModal} onDismiss={()=>setVisibleModal(false)} minHeight={20} maxHeight={390} >
+        <WalletBox>
+          <h2>
+            {format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)} {token && token.symbol} LP Avaliable
+          </h2>
+          <p>
+            <Search
+              onChange={e => onChange(e)}
+              value={amount}
+              placeholder="input amount"
+              enterButton="Max"
+              size="large"
+              onSearch={() => setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18))}
+            />
+          </p>
+
+          <div
+            className="cancle clickableButton"
+            onClick={stakeHandel}
+          >
+            Stake
+          </div>
+        </WalletBox>
+      </Modal>
     </MenuWrap>
   )
 }
