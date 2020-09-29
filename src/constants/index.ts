@@ -16,8 +16,8 @@ export const defRefAddress = '0xcfce2a772ae87c5fae474b2de0324ee19c2c145f'
 
 export const POOL_ADDRESS = '0xb64e71d7694Bd221b18C875D4Cb57aC2a94E17af'
 export const mainToken = {
-  name:"SuShi ",
-  symbol: 'SUSHI',
+  name:"Pizza ",
+  symbol: 'PZ',
   address:'0xc1171972a56dffeec911de003dbe6c18c08f662a',
   decimals:18,
   icon: '🦆'
