@@ -10,8 +10,11 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const POOL_ADDRESS = '0xba3d03787e8a989635df0be8e2263c0e297e7138'
+export const HOST = 'http://127.0.0.1:3002'
+
+export const POOL_ADDRESS = '0xb64e71d7694Bd221b18C875D4Cb57aC2a94E17af'
 export const mainToken = {
+  name:"SuShi ",
   symbol: 'SUSHI',
   address:'0xc1171972a56dffeec911de003dbe6c18c08f662a',
   decimals:18,

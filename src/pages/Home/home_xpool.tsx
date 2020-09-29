@@ -2,16 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import BigNumber from 'bignumber.js'
-import { POOL_ADDRESS } from '../../constants/index'
+import { POOL_ADDRESS, HOST, mainToken } from '../../constants/index'
 
 import XpoolItem from './xpoolItem'
 import { useBatContract } from '../../hooks/useContract'
 import { useActiveWeb3React } from '../../hooks'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { calculateGasMargin } from '../../utils'
+import useCopyClipboard from '../../hooks/useCopyClipboard'
+
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
-  DECIMAL_PLACES: 80,
+  DECIMAL_PLACES: 80
 })
 
 export const BodyWrapper = styled.section`
@@ -81,7 +83,7 @@ export const BodyWrapper = styled.section`
       .mb-2 {
         color: ${({ theme }) => theme.text1};
       }
-      .zfi-balance {
+      .{mainToken.symbol}-balance {
         color: #ffcb68;
         display: inline-block;
       }
@@ -92,34 +94,57 @@ export const BodyWrapper = styled.section`
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
-export default function Xpool() {
+export default function Xpool(props: { refAddress: any }) {
+  const {
+    refAddress
+  } = props
+
+  const [isCopied, setCopied] = useCopyClipboard()
 
   const { account } = useActiveWeb3React()
 
+  const defRefAddress="0xcfce2a772ae87c5fae474b2de0324ee19c2c145f";
 
   const contract = useBatContract(POOL_ADDRESS, true)
-  const isUserExists = useSingleCallResult(contract, 'isUserExists', [account||""])
+  const isUserExists = useSingleCallResult(contract, 'isUserExists', [account || ''])
 
-  console.log("isUserExists===",isUserExists)
+  const isRefUserExists =useSingleCallResult(contract, 'isUserExists', [refAddress||defRefAddress])
 
-  const isReg=isUserExists&&isUserExists.result&&isUserExists.result[0]
 
-  const register=async ()=>{
 
-    if(contract){
+  const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
+  const isRefReg = isRefUserExists && isRefUserExists.result && isRefUserExists.result[0]
 
-      const refAddress="0x514c51818BE9270e4f9a9e790CABfC4d7e8136D2"
-      const estimatedGas = await contract.estimateGas.registrationExt(refAddress).catch(() => {
+
+  const copy = (val: string) => {
+    setCopied(val)
+  }
+  const register = async () => {
+
+    if (contract) {
+      let _ref=refAddress;
+
+      if(!refAddress){
+        _ref=defRefAddress;
+      }else{
+        if(!isRefReg){
+          alert("refAddress not register")
+        }
+      }
+
+
+
+      const estimatedGas = await contract.estimateGas.registrationExt(_ref).catch(() => {
         // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.registrationExt(refAddress)
+        return contract.estimateGas.registrationExt(_ref)
       })
 
-      return contract.registrationExt(refAddress, {
+      return contract.registrationExt(_ref, {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
 
-          console.log("response====",response)
+          console.log('response====', response)
         })
         .catch((error: Error) => {
           console.debug('Failed to reg token', error)
@@ -135,16 +160,16 @@ export default function Xpool() {
       <div className="container">
         <div className="col-lg-6 offset-lg-3 col-md-12 col-sm-12">
           <div className="title_default_light title_border text-center">
-            <h4 className="wow animation animated fadeInUp">ZFI POOL</h4>
+            <h4 className="wow animation animated fadeInUp">{mainToken.symbol} POOL</h4>
             <p className="wow animation animated fadeInUp " data-wow-animation="fadeInUp" data-wow-delay="0.4s">
-              Stake ZFI, Earn ZFI
+              Stake {mainToken.symbol}, Earn {mainToken.symbol}
             </p>
           </div>
         </div>
         <div className="income">
           <div className="row row-cols-1 row-cols-lg-2 m-n1">
             {[1, 1, 1, 1].map(() => (
-              <XpoolItem />
+              <XpoolItem/>
             ))}
           </div>
           <div className="row my-1 mx-n1">
@@ -152,14 +177,16 @@ export default function Xpool() {
               <div className="tk_countdown bg-white-tran text-center middleBG">
                 <div className="tk_counter_inner inner-wrapper">
                   <div className="text-center mb-2">
-                    You Balance: <div className="zfi-balance">--.-----</div> ZFI
+                    You Balance: <div className="{mainToken.symbol}-balance">--.-----</div> {mainToken.symbol}
                   </div>
                   <div className="pool-wrapper ">
                     {
-                      isReg?<a href="javascript:void(0)" className="btn btn-default pool-width btn-radius withdraw  active-zfi">
+                      isReg ? <a href="javascript:void(0)"
+                                 className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
                         Register Success
                         <i className="ion-ios-arrow-thin-right btn-radius"></i>
-                      </a>:<a href="javascript:void(0)" onClick={()=>register()} className="btn btn-default pool-width btn-radius withdraw  active-zfi">
+                      </a> : <a href="javascript:void(0)" onClick={() => register()}
+                                className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
                         Registration with 100 TRX!
                         <i className="ion-ios-arrow-thin-right btn-radius"></i>
                       </a>
@@ -172,18 +199,21 @@ export default function Xpool() {
           </div>
           <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
             {[1, 1, 1].map(() => (
-              <XpoolItem />
+              <XpoolItem/>
             ))}
           </div>
           <div className="my-1 pt-1">
             <div className="pool-news mt-0 middleBG">
-              <div className="link-name pool-content">Your Referral Link：</div>
-              <div className="link-content pool-content">
-                Please install tronlink wallet, if installed, please login！{' '}
-              </div>
+              <div className="link-name pool-content">Your Referral Link：{`${HOST}/#/Home?${account || ''}`}</div>
+              {/*<div className="link-content pool-content">*/}
+              {/*Please install tronlink wallet, if installed, please login！{' '}*/}
+              {/*</div>*/}
               <div className="pool-wrapper">
-                <a href="/" className="btn btn-default btn-radius withdraw  pool-width btn-copy">
-                  copy
+                <a href="javascript:void(0)" onClick={() => copy(`${HOST}/#/Home?${account || ''}`)}
+                   className="btn btn-default btn-radius withdraw  pool-width btn-copy">
+                  {
+                    isCopied ? 'Copy Sucess' : 'Copy Link'
+                  }
                   <i className="ion-ios-arrow-thin-right btn-radius "></i>
                 </a>
               </div>

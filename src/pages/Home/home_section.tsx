@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
+import { mainToken } from '../../constants/index'
+import Copy from '../../components/AccountDetails/Copy'
 
 export const BodyWrapper = styled.section`
   background-position: left bottom;
@@ -65,20 +67,23 @@ export default function HomeSection() {
         <Row>
           <Col sm={12} md={12} lg={12}>
             <div className="banner_text text_md_center">
-              <h1>Zebra DeFi</h1>
+              <h1>{mainToken.name} DeFi</h1>
               <p>让我们一起养斑马，有邀请奖励的斑马</p>
             </div>
           </Col>
         </Row>
         <div className="certificate">
           <div className="wow blue_dark_bg banner_token col-lg-6">
-            <a href=" " className="token-url">
-              <span>ZFI通证:</span>
-              <span className="code">
-                <span>TFHyQvBcqMeL5yq7y1dHJutzZX4YqLRzhe</span>
-                <span className="iconfont icon-copy"></span>
+
+            <span>{mainToken.symbol}通证:</span>
+            <span className="code">
+               <a href={`https://etherscan.io/address/${mainToken.address}`}
+                  className="token-url" target={"_blank"}> <span>{mainToken.address}</span></a>
+                <Copy toCopy={mainToken.address}>
+                  </Copy>
+
               </span>
-            </a>
+
           </div>
         </div>
       </div>

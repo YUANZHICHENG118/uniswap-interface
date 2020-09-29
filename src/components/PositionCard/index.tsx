@@ -47,7 +47,6 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   const [showMore, setShowMore] = useState(false)
   const userPoolBalance = useTokenBalance(account ?? undefined, pair.liquidityToken)
 
-  debugger
 
   const totalPoolTokens = useTotalSupply(pair.liquidityToken)
 

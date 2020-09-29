@@ -167,6 +167,7 @@ export default function Header() {
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
 
+  console.log("userEthBalance====",userEthBalance)
   return (
     <HeaderFrame>
       <RowBetween  padding="1rem 1rem 0 1rem">

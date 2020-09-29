@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { mainToken} from '../../constants/index'
 
 export const BodyWrapper = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ export default function XpoolItem() {
       <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
         <h5>Total Lock-ups</h5>
         <span className="total-lock show-data">--.--</span>
-        <span>ZFI</span>
+        <span>{mainToken.symbol}</span>
       </div>
     </div>
   </BodyWrapper>

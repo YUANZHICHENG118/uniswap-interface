@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
+import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
+//import { MaxUint256 } from '@ethersproject/constants'
 
 import { supportedPools, mainToken, POOL_ADDRESS } from '../../constants/index'
 import { RouteComponentProps } from 'react-router-dom'
@@ -134,8 +136,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     }
   } = props
   const { account } = useActiveWeb3React()
-
-  const [allow, setAllow] = useState<boolean>(false)
+  const { activate, active }=useWeb3ReactCore()
+  console.log("useWeb3ReactCore===",activate,active)
 
   const token = supportedPools.find(x => x.symbol === symbol)
 
@@ -146,26 +148,43 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   const allowance = useSingleCallResult(lpcontract, 'allowance', [account||"", POOL_ADDRESS])
 
-  const stakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account||""])
+  const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account||""])
 
   const getTokenBalance = useSingleCallResult(contract, 'pendingSushi', [token&&token.pid, account||""])
 
-  console.log('allowance', allowance,stakeBalance,getTokenBalance)
-  console.log('contract', contract,lpcontract,account)
+
+  const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
+
+  const tokenBalance=getTokenBalance && getTokenBalance.result && getTokenBalance.result[0]
+  const stakeBalance=getStakeBalance && getStakeBalance.result&& getStakeBalance.result[0]
+
+  const format=(value:number,decimal:number)=>{
+    if(value){
+      value=value/Math.pow(10,decimal)
+    }
+    return value&&value.toFixed(4) ||0
+  }
+
+  console.log("stakeBalance===",stakeBalance)
 
   useEffect(()=>{
-    setAllow(true)
   },[])
 
   // 授权
   const approvalHandel= async ()=>{
     if(lpcontract){
-      const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,100000).catch(() => {
+      const Web3 = require('web3');
+
+      let web3 = new Web3(window.ethereum);
+
+      let amount=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
+      let _amount=web3.utils.toHex(amount);
+      const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
-        return lpcontract.estimateGas.approve(POOL_ADDRESS,100000)
+        return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
       })
 
-      return lpcontract.approve(POOL_ADDRESS,100000, {
+      return lpcontract.approve(POOL_ADDRESS,_amount, {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
@@ -182,12 +201,16 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   // 质押
   const stakeHandel= async ()=>{
+    const Web3 = require('web3');
+
+    let web3 = new Web3(window.ethereum);
+
     if(contract){
-      const amount=1* Math.pow(10,token&&token.decimals||18);
-      const _amount=1*amount;
+
+      let amount=new BigNumber(1*Math.pow(10,token &&token.decimals||18))
+      let _amount=web3.utils.toHex(amount);
 
       const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
-        // general fallback for tokens who restrict approval amounts
         return contract.estimateGas.deposit(token && token.pid,_amount)
       })
 
@@ -209,12 +232,17 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   // 赎回
   const harvestHandel= async ()=>{
     if(contract){
-      const estimatedGas = await contract.estimateGas.withdraw(token && token.pid,1).catch(() => {
+      const Web3 = require('web3');
+      let web3 = new Web3(window.ethereum);
+      let value=format(stakeBalance.toString(),token &&token.decimals||18);
+      let amount=new BigNumber(value||0*Math.pow(10,token &&token.decimals||18))
+      let _amount=web3.utils.toHex(amount);
+      const estimatedGas = await contract.estimateGas.withdraw(token && token.pid,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.withdraw(token && token.pid,1)
+        return contract.estimateGas.withdraw(token && token.pid,_amount)
       })
 
-      return contract.withdraw(token && token.pid,1, {
+      return contract.withdraw(token && token.pid,_amount, {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
@@ -240,14 +268,19 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
               <RowItemBox>
                 <FlexCenter>
                   <RowItemLogo>{mainToken && mainToken.icon}</RowItemLogo>
-                  <RowItemTitle>0.00</RowItemTitle>
+                  <RowItemTitle>{tokenBalance&&tokenBalance.toString()}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>
                   </RowItemSubTitle>
                   <RowItemButton color="#d16c00" font-size="16">
-                    <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={harvestHandel}>
-                      Harvest
-                    </a>
+                    {
+                      stakeBalance&&stakeBalance.toString()==="0"?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                        Harvest
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={harvestHandel}>
+                        Harvest
+                      </a>
+                    }
+
                   </RowItemButton>
 
                 </FlexCenter>
@@ -261,9 +294,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
               <RowItemBox>
                 <FlexCenter>
                   <RowItemLogo>{token && token.icon}</RowItemLogo>
-                  <RowItemTitle>0.00</RowItemTitle>
+                  <RowItemTitle>{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemTitle>
                   <RowItemSubTitle>
-                    <div className="kdcQzs">{token && token.symbol} Tokens Staked</div>
+                    <div className="kdcQzs">{token && token.symbol} LP Staked</div>
                   </RowItemSubTitle>
                   <RowItemButton color="#d16c00" font-size="16">
 
