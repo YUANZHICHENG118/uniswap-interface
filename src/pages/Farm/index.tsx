@@ -6,7 +6,7 @@ import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 //import { MaxUint256 } from '@ethersproject/constants'
 import Modal from '../../components/Modal'
 import { Input as NumericalInput } from '../../components/NumericalInput'
-
+import TransactionConfirmationModal from '../../components/TransactionConfirmationModal'
 import { supportedPools, mainToken, POOL_ADDRESS } from '../../constants/index'
 import { RouteComponentProps } from 'react-router-dom'
 import { useBatContract, useLpContract } from '../../hooks/useContract'
@@ -208,6 +208,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   console.log("useWeb3ReactCore===",activate,active)
   const [visibleModal, setVisibleModal] = useState<boolean>(false)
   const [stakeAmount, setAmount] = useState<number>(0)
+  const [txId, setTxId] = useState<string>("")
+  const [txConfirm, setTxConfirm] = useState<boolean>(false)
 
   const onChange = (e: any) => {
     setAmount(e)
@@ -266,6 +268,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       })
         .then((response: TransactionResponse) => {
 
+          setTxConfirm(true)
+          setTxId(response.hash)
+
           console.log("response====",response)
         })
         .catch((error: Error) => {
@@ -299,7 +304,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
-
+          setTxConfirm(true)
+          setTxId(response.hash)
+          setVisibleModal(false)
           console.log("stake response====",response)
         })
         .catch((error: Error) => {
@@ -316,7 +323,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       const Web3 = require('web3');
       let web3 = new Web3(window.ethereum);
       let _amount=web3.utils.toHex(stakeBalance.toString());
-      debugger
+
       const estimatedGas = await contract.estimateGas.withdraw(token && token.pid,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
         return contract.estimateGas.withdraw(token && token.pid,_amount)
@@ -326,7 +333,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
-
+          setTxConfirm(true)
+          setTxId(response.hash)
           console.log("stake response====",response)
         })
         .catch((error: Error) => {
@@ -434,6 +442,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
           </div>
         </WalletBox>
       </Modal>
+      <TransactionConfirmationModal
+        isOpen={txConfirm}
+        onDismiss={()=>setTxConfirm(false)}
+        attemptingTxn={false}
+        hash={txId}
+        content={()=><></>}
+        pendingText={"Loading"}
+      />
     </MenuWrap>
   )
 }

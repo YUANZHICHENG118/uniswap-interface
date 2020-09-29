@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import BigNumber from 'bignumber.js'
 import { POOL_ADDRESS, HOST, mainToken,defRefAddress } from '../../constants/index'
+import TransactionConfirmationModal from '../../components/TransactionConfirmationModal'
 
 import XpoolItem from './xpoolItem'
 import { useBatContract } from '../../hooks/useContract'
@@ -102,6 +103,8 @@ export default function Xpool(props: { refAddress: any }) {
   const [isCopied, setCopied] = useCopyClipboard()
 
   const { account } = useActiveWeb3React()
+  const [txId, setTxId] = useState<string>("")
+  const [txConfirm, setTxConfirm] = useState<boolean>(false)
 
   const contract = useBatContract(POOL_ADDRESS, true)
   const isUserExists = useSingleCallResult(contract, 'isUserExists', [account || defRefAddress])
@@ -146,7 +149,8 @@ export default function Xpool(props: { refAddress: any }) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
-
+          setTxConfirm(true)
+          setTxId(response.hash)
           console.log('response====', response)
         })
         .catch((error: Error) => {
@@ -224,6 +228,14 @@ export default function Xpool(props: { refAddress: any }) {
           </div>
         </div>
       </div>
+      <TransactionConfirmationModal
+        isOpen={txConfirm}
+        onDismiss={()=>setTxConfirm(false)}
+        attemptingTxn={true}
+        hash={txId}
+        content={()=><></>}
+        pendingText={"Loading"}
+      />
     </BodyWrapper>
   )
 }
