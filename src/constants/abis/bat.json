@@ -174,6 +174,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "defaultReferAddr",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -258,6 +271,57 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "_getPending",
+        "type": "address"
+      }
+    ],
+    "name": "getReferPending",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract SushiToken",
+        "name": "_sushi",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_sushiPerBlock",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_startBlock",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_bonusEndBlock",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_devaddr",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_defaultReferAddr",
+        "type": "address"
+      }
+    ],
+    "name": "initContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "user",
         "type": "address"
       }
@@ -291,32 +355,6 @@
     "name": "massUpdatePools",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_pid",
-        "type": "uint256"
-      }
-    ],
-    "name": "migrate",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "migrator",
-    "outputs": [
-      {
-        "internalType": "contract IMigratorChef",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -407,6 +445,25 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "refer_pending",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "referrerAddress",
         "type": "address"
       }
@@ -449,25 +506,17 @@
   {
     "inputs": [
       {
-        "internalType": "contract IMigratorChef",
-        "name": "_migrator",
-        "type": "address"
-      }
-    ],
-    "name": "setMigrator",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
+        "internalType": "uint256",
+        "name": "level",
+        "type": "uint256"
+      },
       {
-        "internalType": "contract SushiToken",
-        "name": "_sushi",
-        "type": "address"
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
       }
     ],
-    "name": "setSushiToken",
+    "name": "setVipLevel",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -514,6 +563,25 @@
   {
     "inputs": [],
     "name": "totalAllocPoint",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "totalReward",
     "outputs": [
       {
         "internalType": "uint256",
@@ -607,6 +675,30 @@
       {
         "internalType": "uint256",
         "name": "amountCount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "vip",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "vipLevel",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       }
     ],

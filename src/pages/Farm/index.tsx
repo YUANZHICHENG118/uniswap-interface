@@ -368,7 +368,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         Harvest
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel:console.log("000")}>
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
                         Harvest
                       </a>
                     }
@@ -399,7 +399,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                         Approval
                       </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
                         Stake
-                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel:console.log("111")}>
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
                         Approval
                       </a>
                     }

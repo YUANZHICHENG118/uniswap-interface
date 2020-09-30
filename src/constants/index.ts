@@ -11,10 +11,10 @@ type ChainTokenList = {
 }
 
 export const HOST = 'http://127.0.0.1:3002'
-export const defRefAddress = '0xcfce2a772ae87c5fae474b2de0324ee19c2c145f'
+export const defRefAddress = '0x0513dc7403e074f5c77368ee2819fa3a65b5cf80'
 
 
-export const POOL_ADDRESS = '0xb64e71d7694Bd221b18C875D4Cb57aC2a94E17af'
+export const POOL_ADDRESS = '0x81f2BDC6C2cECa557628BAb7FE839d1B738ed120'
 export const mainToken = {
   name:"Pizza ",
   symbol: 'PZ',
@@ -29,21 +29,21 @@ export const supportedPools = [
     pid: 0,
     lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
     tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    name: 'Donald DAI',
-    symbol: 'DAI-ETH',
-    tokenSymbol: 'SUSHI',
+    name: 'Donald PZ',
+    symbol: 'PZ-ETH',
+    tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
   },
   {
-    pid: 1,
-    lpAddresses: '0xf80758ab42c3b07da84053fd88804bcb6baa4b5c',
-    tokenAddresses: '0x57ab1ec28d129707052df4df418d58a2d46d5f51',
-    name: 'Spartan Dollar',
-    symbol: 'SUSD-ETH',
-    tokenSymbol: 'SUSHI',
+    pid: 0,
+    lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
+    tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
+    name: 'Donald PZ',
+    symbol: 'PZ-USDT',
+    tokenSymbol: 'PIZZA',
     decimals:18,
-    icon: '🦍',
+    icon: '🦆',
   }
 ]
 
