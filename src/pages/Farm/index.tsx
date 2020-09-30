@@ -210,6 +210,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const [stakeAmount, setAmount] = useState<number>(0)
   const [txId, setTxId] = useState<string>("")
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
+  const [txLoading, setTxLoading] = useState<boolean>(false)
 
   const onChange = (e: any) => {
     setAmount(e)
@@ -256,6 +257,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
       let web3 = new Web3(window.ethereum);
 
+      setTxLoading(true)
+      setTxConfirm(true)
+
       let amount=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
       let _amount=web3.utils.toHex(amount);
       const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
@@ -267,6 +271,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
+          setTxLoading(false)
 
           setTxConfirm(true)
           setTxId(response.hash)
@@ -290,11 +295,12 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     if(stakeAmount<=0){
       return ;
     }
-
     if(contract){
 
       let value=new BigNumber(stakeAmount*Math.pow(10,token &&token.decimals||18))
       let _amount=web3.utils.toHex(value);
+      setTxLoading(true)
+      setTxConfirm(true)
 
       const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
         return contract.estimateGas.deposit(token && token.pid,_amount)
@@ -304,6 +310,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
+          setTxLoading(false)
+
           setTxConfirm(true)
           setTxId(response.hash)
           setVisibleModal(false)
@@ -323,6 +331,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       const Web3 = require('web3');
       let web3 = new Web3(window.ethereum);
       let _amount=web3.utils.toHex(stakeBalance.toString());
+      setTxLoading(true)
+      setTxConfirm(true)
 
       const estimatedGas = await contract.estimateGas.withdraw(token && token.pid,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
@@ -333,6 +343,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
+          setTxLoading(false)
+
           setTxConfirm(true)
           setTxId(response.hash)
           console.log("stake response====",response)
@@ -445,7 +457,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       <TransactionConfirmationModal
         isOpen={txConfirm}
         onDismiss={()=>setTxConfirm(false)}
-        attemptingTxn={false}
+        attemptingTxn={txLoading}
         hash={txId}
         content={()=><></>}
         pendingText={"Loading"}

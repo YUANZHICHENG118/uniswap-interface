@@ -129,6 +129,8 @@ export default function Xpool(props: { refAddress: any }) {
   const { account } = useActiveWeb3React()
   const [txId, setTxId] = useState<string>("")
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
+  const [txLoading, setTxLoading] = useState<boolean>(false)
+
   const token=supportedPools[0];
   const token1=supportedPools[1];
 
@@ -191,6 +193,9 @@ export default function Xpool(props: { refAddress: any }) {
       }
 
 
+      setTxLoading(true)
+      setTxConfirm(true)
+
 
       const estimatedGas = await contract.estimateGas.registrationExt(_ref).catch(() => {
         // general fallback for tokens who restrict approval amounts
@@ -201,6 +206,7 @@ export default function Xpool(props: { refAddress: any }) {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
+          setTxLoading(false)
           setTxConfirm(true)
           setTxId(response.hash)
           console.log('response====', response)
@@ -295,12 +301,12 @@ export default function Xpool(props: { refAddress: any }) {
           </div>
           <div className="my-1 pt-1">
             <div className="pool-news mt-0 middleBG">
-              <div className="link-name pool-content">Your Referral Link：{`${HOST}/#/Home?${account || ''}`}</div>
+              <div className="link-name pool-content">Your Referral Link：{`${HOST}/#/Home?ref=${account || ''}`}</div>
               {/*<div className="link-content pool-content">*/}
               {/*Please install tronlink wallet, if installed, please login！{' '}*/}
               {/*</div>*/}
               <div className="pool-wrapper">
-                <a href="javascript:void(0)" onClick={() => copy(`${HOST}/#/Home?${account || ''}`)}
+                <a href="javascript:void(0)" onClick={() => copy(`${HOST}/#/Home?ref=${account || ''}`)}
                    className="btn btn-default btn-radius withdraw  pool-width btn-copy">
                   {
                     isCopied ? 'Copy Sucess' : 'Copy Link'
@@ -315,7 +321,7 @@ export default function Xpool(props: { refAddress: any }) {
       <TransactionConfirmationModal
         isOpen={txConfirm}
         onDismiss={()=>setTxConfirm(false)}
-        attemptingTxn={false}
+        attemptingTxn={txLoading}
         hash={txId}
         content={()=><></>}
         pendingText={"Loading"}
