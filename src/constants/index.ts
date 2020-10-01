@@ -10,7 +10,7 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const HOST = 'https://www.pizzaswp.net'
+export const HOST = 'https://www.pizzaswap.net'
 export const defRefAddress = '0x0513dc7403e074f5c77368ee2819fa3a65b5cf80'
 
 
