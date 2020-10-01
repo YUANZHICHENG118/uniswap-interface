@@ -144,7 +144,7 @@ const HeaderControls = styled.div`
   align-items: center;
 
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    flex-direction: column;
+    //flex-direction: column;
     align-items: flex-end;
   `};
 `
