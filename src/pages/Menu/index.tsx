@@ -142,7 +142,7 @@ export default function Menu() {
               <div className='itemWarp '>
                 <RowItemBox>
                   <FlexCenter>
-                    <RowItemLogo>{item.icon}</RowItemLogo>
+                    <RowItemLogo><img src={require(`../../assets/images/lp/${item.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                     <RowItemTitle>{item.name}</RowItemTitle>
                     <RowItemSubTitle>
                       <div className="kdcQzs">Deposit {item.symbol} LP</div>

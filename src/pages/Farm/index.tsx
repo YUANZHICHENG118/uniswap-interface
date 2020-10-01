@@ -304,8 +304,10 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         return contract.estimateGas.deposit(token && token.pid,_amount)
       })
 
+      console.log("estimatedGas====",estimatedGas)
+
       return contract.deposit(token && token.pid,_amount, {
-        gasLimit: calculateGasMargin(estimatedGas)
+        gasLimit: 8000000
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -363,7 +365,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             <div className='itemWarp'>
               <RowItemBox>
                 <FlexCenter>
-                  <RowItemLogo>{mainToken && mainToken.icon}</RowItemLogo>
+                  <RowItemLogo><img src={require("../../assets/images/lp/pz.png")} height={75}></img></RowItemLogo>
                   <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>
@@ -393,7 +395,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             <div className={'itemWarp'}>
               <RowItemBox>
                 <FlexCenter>
-                  <RowItemLogo>{token && token.icon}</RowItemLogo>
+                  <RowItemLogo><img src={require(`../../assets/images/lp/${token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">{token && token.symbol} LP Staked</div>

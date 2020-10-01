@@ -16,7 +16,7 @@ import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 
 import { YellowCard } from '../Card'
-import Settings from '../Settings'
+//import Settings from '../Settings'
 //import Menu from '../Menu'
 
 import  { RowBetween } from '../Row'
@@ -132,7 +132,7 @@ const UniIcon = styled.div`
   }
   ${({ theme }) => theme.mediaWidth.upToSmall`
     img { 
-      width: 4.5rem;
+      width: 2.5rem;
     }
   `};
 `
@@ -177,17 +177,17 @@ export default function Header() {
           <HeaderElement>
             <Title href=".">
               <UniIcon>
-                <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
+                <img src={isDark ? LogoDark : Logo} alt="logo" height={35} width={40} />
               </UniIcon>
               <TitleText>
-                <img style={{ marginLeft: '4px', marginTop: '4px' }} height={20} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
+                <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
               </TitleText>
             </Title>
           </HeaderElement>
           <StyledNavLink  to={'/home'} >Home</StyledNavLink>
           <StyledNavLink to={'/menu'}>Pool</StyledNavLink>
           <StyledNavLink  to={'/swap'} >Swap</StyledNavLink>
-          <NavTitle href="https://uniswap.org/">About</NavTitle>
+          <NavTitle href="#about">About</NavTitle>
         </NavElements>
         <HeaderControls>
           <HeaderElement>
@@ -205,7 +205,7 @@ export default function Header() {
           </HeaderElement>
           <HeaderElementWrap>
             {/*<VersionSwitch />*/}
-            <Settings />
+            {/*<Settings />*/}
             {/*<Menu />*/}
           </HeaderElementWrap>
         </HeaderControls>

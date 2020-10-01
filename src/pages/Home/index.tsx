@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import HomeSection from './home_section'
 import XpoolSection from './home_xpool'
+import About from './about'
+
 import { RouteComponentProps } from 'react-router-dom'
 export const BodyWrapper = styled.div`
 width:100%;
@@ -37,5 +39,6 @@ export default function Home(props: RouteComponentProps<{ }>) {
   return <BodyWrapper>
     <HomeSection/>
     <XpoolSection refAddress={ref}/>
+    <About></About>
   </BodyWrapper>
 }
