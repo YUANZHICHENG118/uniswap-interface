@@ -21,7 +21,6 @@ const MenuTop = styled.div`
   padding: 0px 24px;
 `
 const MenuBody = styled.div`
-  width: 900px;
 `
 const RowBox = styled.div`
   display: flex;
@@ -30,9 +29,9 @@ const RowBox = styled.div`
 `
 const RowItem = styled.div`
   display: flex;
-  width: 30%;
   position: relative;
   .itemWarp {
+    margin:10px 0;
     box-shadow: rgb(247, 244, 242) 1px 1px 0px inset;
     display: flex;
     flex-direction: column;
@@ -134,15 +133,13 @@ const RowItemButton = styled.div`
 `
 export default function Menu() {
   return (
-    <MenuWrap>
+    <MenuWrap className='container'>
       <MenuTop></MenuTop>
       <MenuBody>
-        <RowBox>
-          <div></div>
-
+        <RowBox className='row'>
           {
-            supportedPools.map((item:any)=><RowItem>
-              <div className={'itemWarp'}>
+            supportedPools.map((item:any)=><RowItem className='col-xs-6 col-md-4 col-sm-12'>
+              <div className='itemWarp '>
                 <RowItemBox>
                   <FlexCenter>
                     <RowItemLogo>{item.icon}</RowItemLogo>
