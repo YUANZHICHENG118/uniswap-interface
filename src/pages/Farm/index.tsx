@@ -117,7 +117,7 @@ const RowItem = styled.div`
     box-shadow: rgb(247, 244, 242) 1px 1px 0px inset;
     display: flex;
     flex-direction: column;
-    background: rgb(240, 233, 231);
+    background: ${({ theme }) => theme.bg1};
     border-width: 1px;
     border-style: solid;
     border-color: rgb(226, 214, 207);
@@ -165,8 +165,7 @@ const RowItemSubTitle = styled.div`
 
 const RowItemButton = styled.div`
   align-items: center;
-  background-color: rgb(240, 233, 231);
-  box-shadow: rgb(226, 214, 207) 6px 6px 12px, rgb(247, 244, 242) -12px -12px 24px -2px;
+  background-color: ${({ theme }) => theme.primary5};
   color: rgb(209, 108, 0);
   cursor: pointer;
   display: flex;

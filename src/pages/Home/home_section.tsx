@@ -78,7 +78,7 @@ export default function HomeSection() {
             <span>{mainToken.symbol}通证:</span>
             <span className="code">
                <a href={`https://etherscan.io/address/${mainToken.address}`}
-                  className="token-url" target={"_blank"}> <span>{mainToken.address}</span></a>
+                  className="token-url" target="_blank" rel="noopener noreferrer"> <span>{mainToken.address}</span></a>
                 <Copy toCopy={mainToken.address}>
                   </Copy>
 
