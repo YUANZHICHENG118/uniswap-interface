@@ -68,7 +68,7 @@ export default function HomeSection() {
           <Col sm={12} md={12} lg={12}>
             <div className="banner_text text_md_center">
               <h1>{mainToken.name} DeFi</h1>
-              <p>让我们一起养斑马，有邀请奖励的斑马</p>
+              <p>让我们一起吃披萨 ，有邀请奖励的披萨</p>
             </div>
           </Col>
         </Row>

@@ -110,17 +110,16 @@ const RowBox = styled.div`
 `
 const RowItem = styled.div`
   display: flex;
-  width: 30%;
   position: relative;
   .itemWarp {
     margin:10px 0;
-    box-shadow: rgb(247, 244, 242) 1px 1px 0px inset;
+    //box-shadow: rgb(247, 244, 242) 1px 1px 0px inset;
     display: flex;
     flex-direction: column;
     background: ${({ theme }) => theme.bg1};
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(226, 214, 207);
+    border-color: #000;
     border-image: initial;
     border-radius: 12px;
     flex: 1 1 0%;
@@ -149,7 +148,7 @@ const RowItemLogo = styled.span.attrs({
   margin: 0px auto 16px;
 `
 const RowItemTitle = styled.h4`
-  color: rgb(91, 57, 38);
+  color: #efe7e7;
   font-size: 24px;
   font-weight: 700;
   margin: 8px 0px 0px;
@@ -159,7 +158,7 @@ const RowItemSubTitle = styled.div`
   margin-top: 8px;
   text-align: center;
   .kdcQzs {
-    color: rgb(128, 94, 73);
+    color: #efe7e7;
   }
 `
 

@@ -5,11 +5,12 @@ import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 
 import styled from 'styled-components'
+import Row  from '../Row'
 
 import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
-//import Wordmark from '../../assets/svg/wordmark.svg'
-//import WordmarkDark from '../../assets/svg/wordmark_white.svg'
+import Wordmark from '../../assets/images/logoTitle.png'
+import WordmarkDark from '../../assets/images/logoTitle.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -87,14 +88,14 @@ const Title = styled.a`
     cursor: pointer;
   }
 `
-//
-// const TitleText = styled(Row)`
-//   width: fit-content;
-//   white-space: nowrap;
-//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-//     display: none;
-//   `};
-// `
+
+const TitleText = styled(Row)`
+  width: fit-content;
+  white-space: nowrap;
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    display: none;
+  `};
+`
 
 const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
@@ -171,18 +172,21 @@ export default function Header() {
   return (
     <HeaderFrame>
       <RowBetween  padding="1rem 1rem 0 1rem">
-        <HeaderElement>
-          <Title href=".">
-            <UniIcon>
-              <img src={isDark ? LogoDark : Logo} alt="logo" height={80} />
-            </UniIcon>
 
-          </Title>
-        </HeaderElement>
         <NavElements>
+          <HeaderElement>
+            <Title href=".">
+              <UniIcon>
+                <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
+              </UniIcon>
+              <TitleText>
+                <img style={{ marginLeft: '4px', marginTop: '4px' }} height={20} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
+              </TitleText>
+            </Title>
+          </HeaderElement>
           <StyledNavLink  to={'/home'} >Home</StyledNavLink>
+          <StyledNavLink to={'/menu'}>Pool</StyledNavLink>
           <StyledNavLink  to={'/swap'} >Swap</StyledNavLink>
-          <StyledNavLink to={'/menu'}>Menu</StyledNavLink>
           <NavTitle href="https://uniswap.org/">About</NavTitle>
         </NavElements>
         <HeaderControls>
