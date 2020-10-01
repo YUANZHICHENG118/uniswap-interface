@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Row, Col } from 'antd'
 import { mainToken } from '../../constants/index'
 import Copy from '../../components/AccountDetails/Copy'
+import { useTranslation } from 'react-i18next'
 
 export const BodyWrapper = styled.section`
   background-position: left bottom;
@@ -61,6 +62,8 @@ export const BodyWrapper = styled.section`
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function HomeSection() {
+  const { t } = useTranslation()
+
   return (
     <BodyWrapper>
       <div className="container">
@@ -68,14 +71,14 @@ export default function HomeSection() {
           <Col sm={12} md={12} lg={12}>
             <div className="banner_text text_md_center">
               <h1>{mainToken.name} DeFi</h1>
-              <p>让我们一起吃披萨 ，有邀请奖励的披萨</p>
+              <p>{t("index1")}</p>
             </div>
           </Col>
         </Row>
         <div className="certificate">
           <div className="wow blue_dark_bg banner_token col-lg-6">
 
-            <span>{mainToken.symbol}通证:</span>
+            <span>{mainToken.symbol}{t("index2")}:</span>
             <span className="code">
                <a href={`https://etherscan.io/address/${mainToken.address}`}
                   className="token-url" target="_blank" rel="noopener noreferrer"> <span>{mainToken.address}</span></a>

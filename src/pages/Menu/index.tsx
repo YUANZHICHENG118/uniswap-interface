@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import {supportedPools} from '../../constants/index'
+import { useTranslation } from 'react-i18next'
 
 const MenuWrap = styled.div`
   display: flex;
@@ -132,6 +133,7 @@ const RowItemButton = styled.div`
   }
 `
 export default function Menu() {
+  const {t}=useTranslation();
   return (
     <MenuWrap className='container'>
       <MenuTop></MenuTop>
@@ -145,8 +147,8 @@ export default function Menu() {
                     <RowItemLogo><img src={require(`../../assets/images/lp/${item.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                     <RowItemTitle>{item.name}</RowItemTitle>
                     <RowItemSubTitle>
-                      <div className="kdcQzs">Deposit {item.symbol} LP</div>
-                      <div className="kdcQzs">Earn {item.tokenSymbol}</div>
+                      <div className="kdcQzs">{t("deposit")} {item.symbol} LP</div>
+                      <div className="kdcQzs">{t("earn")} {item.tokenSymbol}</div>
                     </RowItemSubTitle>
                     <RowItemButton color="#d16c00" font-size="16">
                       <a className="sc-AxirZ kRQAGp" href={`/#/Farm/${item.symbol}`}>

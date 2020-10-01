@@ -18,10 +18,11 @@ import { useETHBalances } from '../../state/wallet/hooks'
 import { YellowCard } from '../Card'
 //import Settings from '../Settings'
 //import Menu from '../Menu'
-
+import Lan from '../Lan'
 import  { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
 //import VersionSwitch from './VersionSwitch'
+import { useTranslation } from 'react-i18next'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -162,8 +163,11 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.KOVAN]: 'Kovan'
 }
 
+
+
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
@@ -184,10 +188,10 @@ export default function Header() {
               </TitleText>
             </Title>
           </HeaderElement>
-          <StyledNavLink  to={'/home'} >Home</StyledNavLink>
-          <StyledNavLink to={'/menu'}>Pool</StyledNavLink>
-          <StyledNavLink  to={'/swap'} >Swap</StyledNavLink>
-          <NavTitle href="#about">About</NavTitle>
+          <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
+          <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
+          <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
+          <NavTitle href="#about">{t('about')}</NavTitle>
         </NavElements>
         <HeaderControls>
           <HeaderElement>
@@ -204,6 +208,7 @@ export default function Header() {
             </AccountElement>
           </HeaderElement>
           <HeaderElementWrap>
+            <Lan />
             {/*<VersionSwitch />*/}
             {/*<Settings />*/}
             {/*<Menu />*/}

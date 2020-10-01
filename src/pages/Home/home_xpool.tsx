@@ -11,6 +11,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { calculateGasMargin } from '../../utils'
 import useCopyClipboard from '../../hooks/useCopyClipboard'
+import { useTranslation } from 'react-i18next'
 
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -123,6 +124,7 @@ export default function Xpool(props: { refAddress: any }) {
   const {
     refAddress
   } = props
+  const { t } = useTranslation()
 
   const [isCopied, setCopied] = useCopyClipboard()
 
@@ -258,33 +260,33 @@ export default function Xpool(props: { refAddress: any }) {
           <div className="title_default_light title_border text-center">
             <h4 className="wow animation animated fadeInUp">{mainToken.name} POOL</h4>
             <p className="wow animation animated fadeInUp " data-wow-animation="fadeInUp" data-wow-delay="0.4s">
-              Stake {mainToken.symbol}, Earn {mainToken.symbol}
+              {t("index3")} {mainToken.symbol}, {t("index4")} {mainToken.symbol}
             </p>
           </div>
         </div>
         <div className="income">
           <div className="row row-cols-1 row-cols-lg-2 m-n1">
-            <XpoolItem title={`${token.symbol} Total Stake`} token={token} amount={format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)}/>
-            <XpoolItem title={`${token1.symbol} Total Stake`} token={token1} amount={format(lpBalance1&&lpBalance1.toString(),token1&&token1.decimals||18)}/>
-            <XpoolItem title={"Total Lock-ups"} token={mainToken} amount={9000}/>
-            <XpoolItem title={"APR (Annual Percentage Rate)"} token={mainToken} amount={60} rate={true}/>
+            <XpoolItem title={`${token.symbol} ${t("index5")}`} token={token} amount={format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)}/>
+            <XpoolItem title={`${token1.symbol} ${t("index5")}`} token={token1} amount={format(lpBalance1&&lpBalance1.toString(),token1&&token1.decimals||18)}/>
+            <XpoolItem title={t("index6")} token={mainToken} amount={9000}/>
+            <XpoolItem title={`APR (${t("index7")})`} token={mainToken} amount={60} rate={true}/>
           </div>
           <div className="row my-1 mx-n1">
             <div className="token_sale res_md_mt_10 p-1 w-100">
               <div className="tk_countdown bg-white-tran text-center middleBG">
                 <div className="tk_counter_inner inner-wrapper">
                   <div className="text-center mb-2">
-                    You Balance: <div className="sushi-balance">{format(tokenBalance&&tokenBalance.toString(),mainToken&&mainToken.decimals||18)||'--.-----'}</div> {mainToken.symbol}
+                    {t("index8")}: <div className="sushi-balance">{format(tokenBalance&&tokenBalance.toString(),mainToken&&mainToken.decimals||18)||'--.-----'}</div> {mainToken.symbol}
                   </div>
                   <div className="pool-wrapper ">
                     {
                       isReg ? <a href="javascript:void(0)"
                                  className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
-                        Register Success
+                          {t("index10")}
                         <i className="ion-ios-arrow-thin-right btn-radius"></i>
                       </a> : <a href="javascript:void(0)" onClick={() => register()}
                                 className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
-                        Free Registration
+                          {t("index9")}
                         <i className="ion-ios-arrow-thin-right btn-radius"></i>
                       </a>
                     }
@@ -295,13 +297,13 @@ export default function Xpool(props: { refAddress: any }) {
             </div>
           </div>
           <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
-            <XpoolItem title={"Total Mining Rewards"} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
-            <XpoolItem title={"Referral Rewards"} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>Receive</StyledBalanceMax>}/>
-            <XpoolItem title={"Total Referral Rewards"} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax>}/>
+            <XpoolItem title={t("index3")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
           </div>
           <div className="my-1 pt-1">
             <div className="pool-news mt-0 middleBG">
-              <div className="link-name pool-content">Your Referral Link：{`${HOST}/#/Home?ref=${account || ''}`}</div>
+              <div className="link-name pool-content">{t("index16")}：{`${HOST}/#/Home?ref=${account || ''}`}</div>
               {/*<div className="link-content pool-content">*/}
               {/*Please install tronlink wallet, if installed, please login！{' '}*/}
               {/*</div>*/}
@@ -309,7 +311,7 @@ export default function Xpool(props: { refAddress: any }) {
                 <a href="javascript:void(0)" onClick={() => copy(`${HOST}/#/Home?ref=${account || ''}`)}
                    className="btn btn-default btn-radius withdraw  pool-width btn-copy">
                   {
-                    isCopied ? 'Copy Sucess' : 'Copy Link'
+                    isCopied ? 'Copy Sucess' : t("index17")
                   }
                   <i className="ion-ios-arrow-thin-right btn-radius "></i>
                 </a>

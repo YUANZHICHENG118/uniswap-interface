@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
@@ -201,6 +202,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       params: { symbol }
     }
   } = props
+  const {t}=useTranslation()
   const { account } = useActiveWeb3React()
   const { activate, active }=useWeb3ReactCore()
   console.log("useWeb3ReactCore===",activate,active)
@@ -377,9 +379,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
-                        Harvest
+                        {t("Harvest")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
-                        Harvest
+                        {t("Harvest")}
                       </a>
                     }
 
@@ -395,7 +397,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             <div className={'itemWarp'}>
               <RowItemBox>
                 <FlexCenter>
-                  <RowItemLogo><img src={require(`../../assets/images/lp/${token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
+                  <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">{token && token.symbol} LP Staked</div>
@@ -406,11 +408,11 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
-                        Approval
+                         {t("Approval")}
                       </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
-                        Stake
+                        {t("stake")}
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
-                        Approval
+                        {t("Approval")}
                       </a>
                     }
                   </RowItemButton>
@@ -448,7 +450,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             className="cancle clickableButton"
             onClick={stakeHandel}
           >
-            Stake
+            {t("stake")}
           </div>
         </WalletBox>
       </Modal>
