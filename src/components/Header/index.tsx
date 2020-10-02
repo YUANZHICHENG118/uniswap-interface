@@ -52,6 +52,14 @@ const NavElements = styled.nav`
     bottom:8px;
  `};
 `
+//
+// const LogoElements = styled.nav`
+//   display: flex;
+//   align-items: center;
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//
+//  `};
+// `
 
 const StyledNavLink = styled(NavLink)`
     font-weight: 700;
@@ -77,10 +85,7 @@ const Title = styled.a`
   display: flex;
   align-items: center;
   pointer-events: auto;
-${({ theme }) => theme.mediaWidth.upToExtraSmall`
 
-    display: none;
-  `}
   :hover {
     cursor: pointer;
   }
@@ -122,19 +127,19 @@ const NetworkCard = styled(YellowCard)`
   border-radius: 12px;
   padding: 8px 12px;
 `
-const UniIconMobile = styled.div`
-  transition: transform 0.3s ease;
-  :hover {
-    transform: rotate(-5deg);
-  }
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-   display: block;
-    img { 
-      width: 3.5rem;
-      margin-top:20px
-    }
-  `};
-`
+// const UniIconMobile = styled.div`
+//   transition: transform 0.3s ease;
+//   :hover {
+//     transform: rotate(-5deg);
+//   }
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//    display: block;
+//     img {
+//       width: 3.5rem;
+//       margin-top:20px
+//     }
+//   `};
+// `
 const UniIcon = styled.div`
   transition: transform 0.3s ease;
   :hover {
@@ -142,8 +147,7 @@ const UniIcon = styled.div`
   }
   ${({ theme }) => theme.mediaWidth.upToSmall`
     img { 
-      width: 3.5rem;
-      margin-top:20px
+      width: 2.5rem;
     }
   `};
 `
@@ -185,16 +189,14 @@ export default function Header() {
   console.log("userEthBalance====",userEthBalance)
   return (
     <HeaderFrame>
-      <UniIconMobile style={{display:isMobile?'block':'none'}}>
-        <img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />
-      </UniIconMobile>
+
       <RowBetween  padding="1rem 1rem 0 1rem">
 
         <NavElements>
           <HeaderElement>
             <Title href=".">
               <UniIcon>
-                <img src={isDark ? LogoDark : Logo} alt="logo" height={35} width={40} />
+                <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
               </UniIcon>
               <TitleText>
                 <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
@@ -208,7 +210,17 @@ export default function Header() {
 
 
         </NavElements>
+        {/*<LogoElements>*/}
+          {/*<UniIconMobile style={{display:isMobile?'block':'none'}}>*/}
+            {/*<img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />*/}
+          {/*</UniIconMobile>*/}
+        {/*</LogoElements>*/}
+
+
+
+
         <HeaderControls>
+
           <HeaderElement>
             <TestnetWrapper>
               {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
@@ -229,6 +241,7 @@ export default function Header() {
             {/*<Menu />*/}
           </HeaderElementWrap>
         </HeaderControls>
+
       </RowBetween>
     </HeaderFrame>
   )
