@@ -63,13 +63,6 @@ const StyledNavLink = styled(NavLink)`
     color: rgb(209, 108, 0);
 }
 `
-const NavTitle=styled.a`
-   font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
-`
 
 const HeaderElementWrap = styled.div`
   display: flex;
@@ -211,7 +204,8 @@ export default function Header() {
           <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
           <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
-          <NavTitle href="#about">{t('about')}</NavTitle>
+          <StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>
+
 
         </NavElements>
         <HeaderControls>

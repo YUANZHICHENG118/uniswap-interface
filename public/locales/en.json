@@ -114,5 +114,16 @@
   "index14":"Receive",
   "index15":"Pizzaswap is an exchange that integrates defi, decentralized trading, liquidity mining, invitation and reward, and NFT. Our original intention is to commemorate the bitcoin and pizza deal",
   "index16":"Referral Link",
-  "index17":"Copy Link"
+  "index17":"Copy Link",
+  "about1":"Mining Rules:",
+
+  "about2":"400 pieces are mined every day, about 0.046263 pieces per block, every 86400 blocks (an average of 10 seconds in Ethereum, about 10 days), the output of each block is halved, and a total of 9,000 are mined Coins, mining is over",
+
+  "about3":"Steps",
+  "about4":"1. First exchange Ethereum or USDT for PZ",
+  "about5": "2. Invest the same value of Ethereum/USDT and Pz to get LP tokens",
+  "about6":"3. Pledge tokens to participate in mining",
+  "about7":"4. Mining income gets 20% pz every day",
+  "about8":"5. Direct push mining reward 10% pz, inter push reward 5% pz",
+  "about9":"6. Manually click and harvest the dug out Pz to the wallet, and at the same time, 10% of the PZ handling fee will be deducted to reward the development team for holding!"
 }

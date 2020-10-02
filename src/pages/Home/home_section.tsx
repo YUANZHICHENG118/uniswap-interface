@@ -72,7 +72,6 @@ export default function HomeSection() {
             <div className="banner_text text_md_center">
               <h1>{mainToken.name} DeFi</h1>
               <p>{t("index1")}</p>
-              <p id={"about"}>{t("index15")}</p>
             </div>
           </Col>
         </Row>
