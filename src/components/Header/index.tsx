@@ -5,12 +5,12 @@ import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 
 import styled from 'styled-components'
-import Row  from '../Row'
+//import Row  from '../Row'
 
 import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
-import Wordmark from '../../assets/images/logoTitle.png'
-import WordmarkDark from '../../assets/images/logoTitle.png'
+//import Wordmark from '../../assets/images/logoTitle.png'
+//import WordmarkDark from '../../assets/images/logoTitle.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
@@ -63,13 +63,13 @@ const StyledNavLink = styled(NavLink)`
     color: rgb(209, 108, 0);
 }
 `
-const NavTitle=styled.a`
-   font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
-`
+// const NavTitle=styled.a`
+//    font-weight: 700;
+//     padding-left: 16px;
+//     padding-right: 16px;
+//     text-decoration: none;
+//     color: rgb(170, 149, 133);
+// `
 
 const HeaderElementWrap = styled.div`
   display: flex;
@@ -94,13 +94,13 @@ ${({ theme }) => theme.mediaWidth.upToExtraSmall`
   
 `
 
-const TitleText = styled(Row)`
-  width: fit-content;
-  white-space: nowrap;
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
-  `};
-`
+// const TitleText = styled(Row)`
+//   width: fit-content;
+//   white-space: nowrap;
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//     display: none;
+//   `};
+// `
 
 const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
@@ -129,19 +129,19 @@ const NetworkCard = styled(YellowCard)`
   border-radius: 12px;
   padding: 8px 12px;
 `
-const UniIconMobile = styled.div`
-  transition: transform 0.3s ease;
-  :hover {
-    transform: rotate(-5deg);
-  }
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-   display: block;
-    img { 
-      width: 3.5rem;
-      margin-top:20px
-    }
-  `};
-`
+// const UniIconMobile = styled.div`
+//   transition: transform 0.3s ease;
+//   :hover {
+//     transform: rotate(-5deg);
+//   }
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//    display: block;
+//     img {
+//       width: 3.5rem;
+//       margin-top:20px
+//     }
+//   `};
+// `
 const UniIcon = styled.div`
   transition: transform 0.3s ease;
   :hover {
@@ -192,9 +192,9 @@ export default function Header() {
   console.log("userEthBalance====",userEthBalance)
   return (
     <HeaderFrame>
-      <UniIconMobile style={{display:isMobile?'block':'none'}}>
-        <img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />
-      </UniIconMobile>
+      {/*<UniIconMobile style={{display:isMobile?'block':'none'}}>*/}
+        {/*<img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />*/}
+      {/*</UniIconMobile>*/}
       <RowBetween  padding="1rem 1rem 0 1rem">
 
         <NavElements>
@@ -203,15 +203,18 @@ export default function Header() {
               <UniIcon>
                 <img src={isDark ? LogoDark : Logo} alt="logo" height={35} width={40} />
               </UniIcon>
-              <TitleText>
-                <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-              </TitleText>
+              {/*<TitleText>*/}
+                {/*<img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />*/}
+              {/*</TitleText>*/}
             </Title>
           </HeaderElement>
           <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
-          <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
-          <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
-          <NavTitle href="#about">{t('about')}</NavTitle>
+          {/*<StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>*/}
+          {/*<StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>*/}
+          {/*<StyledNavLink  to={'/air'} >{t('bear')}</StyledNavLink>*/}
+          {/*<NavTitle href="#about">{t('about')}</NavTitle>*/}
+          {/*<StyledNavLink  to={'/air'} >{t('home')}</StyledNavLink>*/}
+
 
         </NavElements>
         <HeaderControls>

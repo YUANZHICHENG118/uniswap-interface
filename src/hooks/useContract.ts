@@ -11,6 +11,7 @@ import UNISOCKS_ABI from '../constants/abis/unisocks.json'
 import WETH_ABI from '../constants/abis/weth.json'
 import BAT_ABI from '../constants/abis/bat.json'
 import LP_ABI from '../constants/abis/lp.json'
+import AIR_ABI from '../constants/abis/air.json'
 
 import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
@@ -102,4 +103,8 @@ export function useBatContract(address?: string, withSignerIfPossible?: boolean)
 
 export function useLpContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
   return useContract(address, LP_ABI, withSignerIfPossible)
+}
+
+export function useAirContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
+  return useContract(address, AIR_ABI, withSignerIfPossible)
 }

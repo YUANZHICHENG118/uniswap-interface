@@ -13,12 +13,14 @@ type ChainTokenList = {
 export const HOST = 'https://www.pizzaswap.net'
 export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
 
+// 空头合约
+export const AIR_POOL_ADDRESS = '0xee26e5F2F6F8695369Fec045dA1c4B4514C65cD7'
 
 export const POOL_ADDRESS = '0xdFBDB4C579eF4B1b20726f0FE1840cA783C7c809'
 export const mainToken = {
-  name:"Pizza ",
-  symbol: 'PZ',
-  address:'0x6A6C7Cf41CEe2D51E42e8F99DAfC920362fE6c06',
+  name:"Lef ",
+  symbol: 'LEF',
+  address:'0xa5313C57Ec36396BE3031Ed41ccA21B396362301',
   decimals:18,
   icon: '🦆'
 }
