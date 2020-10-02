@@ -84,10 +84,14 @@ const Title = styled.a`
   display: flex;
   align-items: center;
   pointer-events: auto;
+${({ theme }) => theme.mediaWidth.upToExtraSmall`
 
+    display: none;
+  `}
   :hover {
     cursor: pointer;
   }
+  
 `
 
 const TitleText = styled(Row)`
@@ -125,7 +129,19 @@ const NetworkCard = styled(YellowCard)`
   border-radius: 12px;
   padding: 8px 12px;
 `
-
+const UniIconMobile = styled.div`
+  transition: transform 0.3s ease;
+  :hover {
+    transform: rotate(-5deg);
+  }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+   display: block;
+    img { 
+      width: 3.5rem;
+      margin-top:20px
+    }
+  `};
+`
 const UniIcon = styled.div`
   transition: transform 0.3s ease;
   :hover {
@@ -133,7 +149,8 @@ const UniIcon = styled.div`
   }
   ${({ theme }) => theme.mediaWidth.upToSmall`
     img { 
-      width: 2.5rem;
+      width: 3.5rem;
+      margin-top:20px
     }
   `};
 `
@@ -151,7 +168,7 @@ const HeaderControls = styled.div`
 
 const BalanceText = styled(Text)`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    display: none;
+    display: block;
   `};
 `
 
@@ -175,6 +192,9 @@ export default function Header() {
   console.log("userEthBalance====",userEthBalance)
   return (
     <HeaderFrame>
+      <UniIconMobile style={{display:isMobile?'block':'none'}}>
+        <img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />
+      </UniIconMobile>
       <RowBetween  padding="1rem 1rem 0 1rem">
 
         <NavElements>
@@ -192,6 +212,7 @@ export default function Header() {
           <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
           <NavTitle href="#about">{t('about')}</NavTitle>
+
         </NavElements>
         <HeaderControls>
           <HeaderElement>
