@@ -283,13 +283,13 @@
   {
     "inputs": [
       {
-        "internalType": "contract SushiToken",
-        "name": "_sushi",
+        "internalType": "contract PizzaToken",
+        "name": "_pizza",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_sushiPerBlock",
+        "name": "_pizzaPerBlock",
         "type": "uint256"
       },
       {
@@ -383,7 +383,33 @@
         "type": "address"
       }
     ],
-    "name": "pendingSushi",
+    "name": "pendingPizza",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pizza",
+    "outputs": [
+      {
+        "internalType": "contract PizzaToken",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pizzaPerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -421,7 +447,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accSushiPerShare",
+        "name": "accPizzaPerShare",
         "type": "uint256"
       }
     ],
@@ -536,20 +562,7 @@
   },
   {
     "inputs": [],
-    "name": "sushi",
-    "outputs": [
-      {
-        "internalType": "contract SushiToken",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "sushiPerBlock",
+    "name": "totalAllocPoint",
     "outputs": [
       {
         "internalType": "uint256",
@@ -562,7 +575,7 @@
   },
   {
     "inputs": [],
-    "name": "totalAllocPoint",
+    "name": "totalMinted",
     "outputs": [
       {
         "internalType": "uint256",

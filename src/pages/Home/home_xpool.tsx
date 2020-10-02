@@ -269,7 +269,17 @@ export default function Xpool(props: { refAddress: any }) {
             <XpoolItem title={`${token.symbol} ${t("index5")}`} token={token} amount={format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)}/>
             <XpoolItem title={`${token1.symbol} ${t("index5")}`} token={token1} amount={format(lpBalance1&&lpBalance1.toString(),token1&&token1.decimals||18)}/>
             <XpoolItem title={t("index6")} token={mainToken} amount={9000}/>
-            <XpoolItem title={`APR (${t("index7")})`} token={mainToken} amount={60} rate={true}/>
+
+            <BodyWrapper>
+              <div className="col p-1">
+                <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
+                  <h5>{`APR (${t("index7")})`}</h5>
+                  <span className="total-lock show-data">{`${t("index701")}`}</span>&nbsp;
+                </div>
+              </div>
+            </BodyWrapper>
+
+
           </div>
           <div className="row my-1 mx-n1">
             <div className="token_sale res_md_mt_10 p-1 w-100">
@@ -278,20 +288,7 @@ export default function Xpool(props: { refAddress: any }) {
                   <div className="text-center mb-2">
                     {t("index8")}: <div className="sushi-balance">{format(tokenBalance&&tokenBalance.toString(),mainToken&&mainToken.decimals||18)||'--.-----'}</div> {mainToken.symbol}
                   </div>
-                  <div className="pool-wrapper ">
-                    {
-                      isReg ? <a href="javascript:void(0)"
-                                 className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
-                          {t("index10")}
-                        <i className="ion-ios-arrow-thin-right btn-radius"></i>
-                      </a> : <a href="javascript:void(0)" onClick={() => register()}
-                                className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
-                          {t("index9")}
-                        <i className="ion-ios-arrow-thin-right btn-radius"></i>
-                      </a>
-                    }
 
-                  </div>
                 </div>
               </div>
             </div>
@@ -299,9 +296,23 @@ export default function Xpool(props: { refAddress: any }) {
           <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
             <XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
             <XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax>}/>
-            <XpoolItem title={t("index3")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
           </div>
           <div className="my-1 pt-1">
+            <div className="pool-wrapper ">
+              {
+                isReg ? <a href="javascript:void(0)"
+                           className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
+                  {t("index10")}
+                  <i className="ion-ios-arrow-thin-right btn-radius"></i>
+                </a> : <a href="javascript:void(0)" onClick={() => register()}
+                          className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
+                  {t("index9")}
+                  <i className="ion-ios-arrow-thin-right btn-radius"></i>
+                </a>
+              }
+
+            </div>
             <div className="pool-news mt-0 middleBG">
               <div className="link-name pool-content">{t("index16")}：{`${HOST}/#/Home?ref=${account || ''}`}</div>
               {/*<div className="link-content pool-content">*/}
