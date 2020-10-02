@@ -34,7 +34,7 @@ const HeaderFrame = styled.div`
   position: absolute;
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    padding: 0 0 40px;
+    padding: 0 0 5px;
     width: calc(100%);
     position: relative;
   `};
@@ -49,7 +49,8 @@ const NavElements = styled.nav`
   align-items: center;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     position:absolute;
-    bottom:8px;
+    //bottom:8px;
+    top:20px
  `};
 `
 //
@@ -146,8 +147,9 @@ const UniIcon = styled.div`
     transform: rotate(-5deg);
   }
   ${({ theme }) => theme.mediaWidth.upToSmall`
-    img { 
-      width: 2.5rem;
+    img {
+      margin-top:10px 
+      width: 7.5rem;
     }
   `};
 `
@@ -160,6 +162,7 @@ const HeaderControls = styled.div`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     //flex-direction: column;
     align-items: flex-end;
+    margin-top:30px
   `};
 `
 
@@ -193,16 +196,19 @@ export default function Header() {
       <RowBetween  padding="1rem 1rem 0 1rem">
 
         <NavElements>
-          <HeaderElement>
-            <Title href=".">
-              <UniIcon>
-                <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
-              </UniIcon>
-              <TitleText>
-                <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-              </TitleText>
-            </Title>
-          </HeaderElement>
+          {
+            isMobile?'':<HeaderElement>
+              <Title href=".">
+                <UniIcon>
+                  <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
+                </UniIcon>
+                <TitleText>
+                  <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
+                </TitleText>
+              </Title>
+            </HeaderElement>
+          }
+
           <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
           <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
@@ -243,6 +249,19 @@ export default function Header() {
         </HeaderControls>
 
       </RowBetween>
+      {
+        isMobile?<HeaderElement>
+          <Title href=".">
+            <UniIcon>
+              <img src={isDark ? LogoDark : Logo} alt="logo" height={110} />
+            </UniIcon>
+            <TitleText>
+              <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
+            </TitleText>
+          </Title>
+        </HeaderElement>:null
+      }
+
     </HeaderFrame>
   )
 }
