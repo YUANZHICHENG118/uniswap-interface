@@ -295,7 +295,7 @@ export default function Xpool(props: { refAddress: any }) {
           </div>
           <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
             <XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
-            <XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax>}/>
+            <XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
             <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
           </div>
           <div className="my-1 pt-1">
