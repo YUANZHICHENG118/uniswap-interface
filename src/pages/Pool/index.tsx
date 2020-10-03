@@ -12,7 +12,7 @@ import { StyledInternalLink, TYPE } from '../../theme'
 import { Text } from 'rebass'
 import { LightCard } from '../../components/Card'
 import { RowBetween } from '../../components/Row'
-import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
+import { ButtonPrimary } from '../../components/Button'
 import { AutoColumn } from '../../components/Column'
 
 import { useActiveWeb3React } from '../../hooks'
@@ -103,7 +103,7 @@ export default function Pool() {
 
             <div>
               <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
-                {hasV1Liquidity ? 'Uniswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
+                {hasV1Liquidity ? 'Pizzaswap V1 liquidity found!' : "Don't see a pool you joined?"}{' '}
                 <StyledInternalLink id="import-pool-link" to={hasV1Liquidity ? '/migrate/v1' : '/find'}>
                   {hasV1Liquidity ? 'Migrate now.' : 'Import it.'}
                 </StyledInternalLink>
@@ -114,9 +114,9 @@ export default function Pool() {
       </AppBody>
 
       <div style={{ display: 'flex', alignItems: 'center', marginTop: '1.5rem' }}>
-        <ButtonSecondary as={Link} style={{ width: 'initial' }} to="/migrate/v1">
-          Migrate V1 Liquidity
-        </ButtonSecondary>
+        {/*<ButtonSecondary as={Link} style={{ width: 'initial' }} to="/migrate/v1">*/}
+          {/*Migrate V1 Liquidity*/}
+        {/*</ButtonSecondary>*/}
       </div>
     </>
   )

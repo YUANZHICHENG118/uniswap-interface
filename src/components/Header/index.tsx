@@ -210,7 +210,7 @@ export default function Header() {
           }
 
           <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
-          <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
+          <StyledNavLink to={'/menu'}>{t('pizza')}</StyledNavLink>
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
           <StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>
 
@@ -253,7 +253,7 @@ export default function Header() {
         isMobile?<HeaderElement>
           <Title href=".">
             <UniIcon>
-              <img src={isDark ? LogoDark : Logo} alt="logo" height={110} />
+              <img src={isDark ? LogoDark : Logo} alt="logo" height={120} />
             </UniIcon>
             <TitleText>
               <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
