@@ -171,7 +171,7 @@ export default function Bear() {
             <div className='itemWarp '>
               <RowItemBox>
                 <FlexCenter>
-                  <RowItemLogo><img src={require(`../../assets/images/lp/${mainToken.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
+                  <RowItemLogo><img src={require(`../../assets/images/lp/lef.png`)} height={75}></img></RowItemLogo>
 
                   <RowItemSubTitle>
                     <div className="kdcQzs">{t("index14")}  {mainToken.symbol}</div>
