@@ -37,6 +37,7 @@ import { Dots, Wrapper } from '../Pool/styleds'
 import { ConfirmAddModalBottom } from './ConfirmAddModalBottom'
 import { currencyId } from '../../utils/currencyId'
 import { PoolPriceBar } from './PoolPriceBar'
+import { useTranslation } from 'react-i18next'
 
 export default function AddLiquidity({
   match: {
@@ -46,6 +47,7 @@ export default function AddLiquidity({
 }: RouteComponentProps<{ currencyIdA?: string; currencyIdB?: string }>) {
   const { account, chainId, library } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
+  const { t } =useTranslation()
 
   const currencyA = useCurrency(currencyIdA)
   const currencyB = useCurrency(currencyIdB)
@@ -391,7 +393,7 @@ export default function AddLiquidity({
             )}
 
             {!account ? (
-              <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
+              <ButtonLight onClick={toggleWalletModal}>{t("choose")}</ButtonLight>
             ) : (
               <AutoColumn gap={'md'}>
                 {(approvalA === ApprovalState.NOT_APPROVED ||

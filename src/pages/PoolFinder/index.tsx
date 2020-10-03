@@ -18,6 +18,7 @@ import { StyledInternalLink } from '../../theme'
 import { currencyId } from '../../utils/currencyId'
 import AppBody from '../AppBody'
 import { Dots } from '../Pool/styleds'
+import { useTranslation } from 'react-i18next'
 
 enum Fields {
   TOKEN0 = 0,
@@ -26,6 +27,7 @@ enum Fields {
 
 export default function PoolFinder() {
   const { account } = useActiveWeb3React()
+  const { t } =useTranslation()
 
   const [showSearch, setShowSearch] = useState<boolean>(false)
   const [activeField, setActiveField] = useState<number>(Fields.TOKEN1)
@@ -143,7 +145,7 @@ export default function PoolFinder() {
                 <AutoColumn gap="sm" justify="center">
                   <Text textAlign="center">You don’t have liquidity in this pool yet.</Text>
                   <StyledInternalLink to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}>
-                    <Text textAlign="center">Add liquidity.</Text>
+                    <Text textAlign="center">{t("addLiquidity")}.</Text>
                   </StyledInternalLink>
                 </AutoColumn>
               </LightCard>

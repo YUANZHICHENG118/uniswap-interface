@@ -19,6 +19,7 @@ import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from '../../
 import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
+import { useTranslation } from 'react-i18next'
 
 import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE } from '../../constants'
 import { getTradeVersion, isTradeBetter } from '../../data/V1'
@@ -47,6 +48,7 @@ import Loader from '../../components/Loader'
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
+  const { t } =useTranslation()
 
   // token warning stuff
   const [loadedInputCurrency, loadedOutputCurrency] = [
@@ -381,7 +383,7 @@ export default function Swap() {
           </AutoColumn>
           <BottomGrouping>
             {!account ? (
-              <ButtonLight onClick={toggleWalletModal}>Connect Wallet</ButtonLight>
+              <ButtonLight onClick={toggleWalletModal}>{t("connect")}</ButtonLight>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??
