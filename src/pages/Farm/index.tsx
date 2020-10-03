@@ -228,7 +228,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account ?? undefined])
 
-  const getTokenBalance = useSingleCallResult(contract, 'pendingSushi', [token&&token.pid, account ?? undefined])
+  const getTokenBalance = useSingleCallResult(contract, 'pendingPizza', [token&&token.pid, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
