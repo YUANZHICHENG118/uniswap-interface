@@ -153,10 +153,10 @@ export default function Xpool(props: { refAddress: any }) {
   const getTotalReward = useSingleCallResult(contract, 'allHfiAmount', [account??undefined])
   const getNotReward = useSingleCallResult(contract, 'pendingAllHfi', [account??undefined])
   const getUser = useSingleCallResult(contract, 'users', [account??undefined])
-  console.log("getUser======",getUser,getTotalReward,getNotReward)
 
 
   const getRefReward = useSingleCallResult(contract, 'getReferReward', [account??undefined])
+  console.log("getUser======",getRefReward)
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const lpBalance1=getLpBalance1 && getLpBalance1.result&& getLpBalance1.result[0]
@@ -170,11 +170,11 @@ export default function Xpool(props: { refAddress: any }) {
   const totalRefReward=getRefReward && getRefReward.result&&getRefReward.result[0]
 
   // 直接推荐人
-  const refUserCount=getUser && getUser.result&&getUser.result[2]||0
+  const refUserCount=getUser && getUser.result&&getUser.result[2]
   // 间接推荐人
-  const refUserCount1=getUser && getUser.result&&getUser.result[3]||0
+  const refUserCount1=getUser && getUser.result&&getUser.result[3]
   // 待领取推人奖励
-  const refUserAmount=getUser && getUser.result&&getUser.result[6]||0
+  const refUserAmount=getUser && getUser.result&&getUser.result[6]
 
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
   const isRefReg = isRefUserExists && isRefUserExists.result && isRefUserExists.result[0]
@@ -314,7 +314,7 @@ export default function Xpool(props: { refAddress: any }) {
               <div className="col p-1">
                 <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
                   <h5>{"推荐人"}</h5>
-                  <span className="total-lock show-data">直接推荐人:{refUserCount} 间接推荐人:{refUserCount1}</span>&nbsp;
+                  <span className="total-lock show-data">直接推荐人:{refUserCount&&refUserCount.toString()} 间接推荐人:{refUserCount1&&refUserCount1.toString()}</span>&nbsp;
                 </div>
               </div>
             </BodyWrapper>

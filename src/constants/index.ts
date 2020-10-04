@@ -14,7 +14,7 @@ export const HOST = 'https://www.hfiswap.net'
 export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
 
 
-export const POOL_ADDRESS = '0x04904456c5F9c744033bcd8a8427af858ad52F7A'
+export const POOL_ADDRESS = '0x9A8FB1698EF246E17085Ca92D48f3A7701d46970'
 export const mainToken = {
   name:"HFI ",
   symbol: 'HFI',
