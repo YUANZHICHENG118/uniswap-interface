@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import BigNumber from 'bignumber.js'
-import { POOL_ADDRESS, HOST, mainToken,defRefAddress,supportedPools } from '../../constants/index'
+import {  HOST, mainToken,defRefAddress,supportedPools,POOL_ADDRESS } from '../../constants/index'
 import TransactionConfirmationModal from '../../components/TransactionConfirmationModal'
 
 import XpoolItem from './xpoolItem'
@@ -148,9 +148,13 @@ export default function Xpool(props: { refAddress: any }) {
   const getLpBalance = useSingleCallResult(lpcontract, 'balanceOf', [POOL_ADDRESS])
   const getLpBalance1 = useSingleCallResult(lpcontract1, 'balanceOf', [POOL_ADDRESS])
   const getTokenBalance = useSingleCallResult(tokenContract, 'balanceOf', [account??undefined])
+
+
   const getTotalReward = useSingleCallResult(contract, 'allHfiAmount', [account??undefined])
   const getNotReward = useSingleCallResult(contract, 'pendingAllHfi', [account??undefined])
   const getUser = useSingleCallResult(contract, 'users', [account??undefined])
+  console.log("getUser======",getUser,getTotalReward,getNotReward)
+
 
   const getRefReward = useSingleCallResult(contract, 'getReferReward', [account??undefined])
 
@@ -165,7 +169,6 @@ export default function Xpool(props: { refAddress: any }) {
   // 实时查询推荐人可以获取的所有推荐平台币奖励
   const totalRefReward=getRefReward && getRefReward.result&&getRefReward.result[0]
 
-  console.log("getUser======",isRefUserExists)
   // 直接推荐人
   const refUserCount=getUser && getUser.result&&getUser.result[2]||0
   // 间接推荐人
