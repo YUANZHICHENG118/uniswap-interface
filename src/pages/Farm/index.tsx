@@ -228,7 +228,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account ?? undefined])
 
-  const getTokenBalance = useSingleCallResult(contract, 'pendingPizza', [token&&token.pid, account ?? undefined])
+  const getTokenBalance = useSingleCallResult(contract, 'pendingHfi', [token&&token.pid, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
@@ -302,11 +302,11 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
-        return contract.estimateGas.deposit(token && token.pid,_amount)
-      })
+      // const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
+      //   return contract.estimateGas.deposit(token && token.pid,_amount)
+      // })
 
-      console.log("estimatedGas====",estimatedGas)
+      //console.log("estimatedGas====",estimatedGas)
 
       return contract.deposit(token && token.pid,_amount, {
         gasLimit: 8000000
@@ -367,7 +367,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             <div className='itemWarp'>
               <RowItemBox>
                 <FlexCenter>
-                  <RowItemLogo><img src={require("../../assets/images/lp/pz.png")} height={75}></img></RowItemLogo>
+                  <RowItemLogo><img src={require("../../assets/images/lp/hfi.png")} height={75}></img></RowItemLogo>
                   <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>

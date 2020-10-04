@@ -144,25 +144,34 @@ export default function Xpool(props: { refAddress: any }) {
   const contract = useBatContract(POOL_ADDRESS, true)
   const isUserExists = useSingleCallResult(contract, 'isUserExists', [account || defRefAddress])
 
-
   const isRefUserExists =useSingleCallResult(contract, 'isUserExists', [refAddress||defRefAddress])
   const getLpBalance = useSingleCallResult(lpcontract, 'balanceOf', [POOL_ADDRESS])
   const getLpBalance1 = useSingleCallResult(lpcontract1, 'balanceOf', [POOL_ADDRESS])
   const getTokenBalance = useSingleCallResult(tokenContract, 'balanceOf', [account??undefined])
-  const getTotalReward = useSingleCallResult(contract, 'totalReward', [account??undefined])
-  const getTotalRef = useSingleCallResult(contract, 'users', [account??undefined])
-  const getNotRef = useSingleCallResult(contract, 'refer_pending', [account??undefined])
+  const getTotalReward = useSingleCallResult(contract, 'allHfiAmount', [account??undefined])
+  const getNotReward = useSingleCallResult(contract, 'pendingAllHfi', [account??undefined])
+  const getUser = useSingleCallResult(contract, 'users', [account??undefined])
+
+  const getRefReward = useSingleCallResult(contract, 'getReferReward', [account??undefined])
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const lpBalance1=getLpBalance1 && getLpBalance1.result&& getLpBalance1.result[0]
   const tokenBalance=getTokenBalance && getTokenBalance.result&& getTokenBalance.result[0]
+
+  // 矿池总收益
   const totalReward=getTotalReward && getTotalReward.result&& getTotalReward.result[0]
+  // 待领取矿池收益
+  const notReward=getNotReward && getNotReward.result&& getNotReward.result[0]
+  // 实时查询推荐人可以获取的所有推荐平台币奖励
+  const totalRefReward=getRefReward && getRefReward.result&&getRefReward.result[0]
 
-  // 待领取
-  const notRef=getNotRef && getNotRef.result&& getNotRef.result[0]
-  // 领取合计
-  const totalRef=getTotalRef && getTotalRef.result&& getTotalRef.result[3]
-
+  console.log("getUser======",isRefUserExists)
+  // 直接推荐人
+  const refUserCount=getUser && getUser.result&&getUser.result[2]||0
+  // 间接推荐人
+  const refUserCount1=getUser && getUser.result&&getUser.result[3]||0
+  // 待领取推人奖励
+  const refUserAmount=getUser && getUser.result&&getUser.result[6]||0
 
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
   const isRefReg = isRefUserExists && isRefUserExists.result && isRefUserExists.result[0]
@@ -279,6 +288,10 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </BodyWrapper>
 
+            <XpoolItem title={"矿池总收益"} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
+
+            <XpoolItem title={"矿池待领取收益"} token={mainToken} amount={format(notReward&&notReward.toString(),mainToken&&mainToken.decimals||18)}/>
+
 
           </div>
           <div className="row my-1 mx-n1">
@@ -294,9 +307,16 @@ export default function Xpool(props: { refAddress: any }) {
             </div>
           </div>
           <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
-            <XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
-            <XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
-            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
+            <BodyWrapper>
+              <div className="col p-1">
+                <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
+                  <h5>{"推荐人"}</h5>
+                  <span className="total-lock show-data">直接推荐人:{refUserCount} 间接推荐人:{refUserCount1}</span>&nbsp;
+                </div>
+              </div>
+            </BodyWrapper>
+            <XpoolItem title={t("index12")} token={mainToken} amount={format(refUserAmount&&refUserAmount.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>refUserAmount&&refUserAmount.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
+            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),mainToken&&mainToken.decimals||18)}/>
           </div>
           <div className="my-1 pt-1">
             <div className="pool-wrapper ">

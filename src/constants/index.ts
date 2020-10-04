@@ -10,15 +10,15 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const HOST = 'https://www.pizzaswap.net'
+export const HOST = 'https://www.hfiswap.net'
 export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
 
 
-export const POOL_ADDRESS = '0xdFBDB4C579eF4B1b20726f0FE1840cA783C7c809'
+export const POOL_ADDRESS = '0x04904456c5F9c744033bcd8a8427af858ad52F7A'
 export const mainToken = {
-  name:"Pizza ",
-  symbol: 'PZ',
-  address:'0x6A6C7Cf41CEe2D51E42e8F99DAfC920362fE6c06',
+  name:"HFI ",
+  symbol: 'HFI',
+  address:'0x54CF703014A82B4FF7E9a95DD45e453e1Ba13eb1',
   decimals:18,
   icon: '🦆'
 }
@@ -29,9 +29,9 @@ export const supportedPools = [
     pid: 0,
     lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
     tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    name: 'Donald PZ',
-    symbol: 'PZ-ETH',
-    tokenSymbol: 'PIZZA',
+    name: 'Donald HFI',
+    symbol: 'HFI-ETH',
+    tokenSymbol: 'HFI',
     decimals:18,
     icon: '🦆',
   },
@@ -39,9 +39,9 @@ export const supportedPools = [
     pid: 0,
     lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
     tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    name: 'Donald PZ',
-    symbol: 'PZ-USDT',
-    tokenSymbol: 'PIZZA',
+    name: 'Donald HFI',
+    symbol: 'HFI-USDT',
+    tokenSymbol: 'HFI',
     decimals:18,
     icon: '🦆',
   }

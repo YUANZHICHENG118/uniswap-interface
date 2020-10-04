@@ -1,5 +1,4 @@
-[
-  {
+[{
     "anonymous": false,
     "inputs": [
       {
@@ -103,6 +102,57 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "reward",
+        "type": "uint256"
+      }
+    ],
+    "name": "RewardAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "reward",
+        "type": "uint256"
+      }
+    ],
+    "name": "RewardPaid",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Staked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "user",
@@ -122,6 +172,25 @@
       }
     ],
     "name": "Withdraw",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Withdrawn",
     "type": "event"
   },
   {
@@ -155,14 +224,20 @@
         "type": "bool"
       }
     ],
-    "name": "add",
+    "name": "addLp",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "bonusEndBlock",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "allHfiAmount",
     "outputs": [
       {
         "internalType": "uint256",
@@ -233,6 +308,19 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_getPending",
+        "type": "address"
+      }
+    ],
+    "name": "drawReferPending",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_pid",
         "type": "uint256"
@@ -270,36 +358,79 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "_pid",
+        "type": "uint256"
+      },
+      {
         "internalType": "address",
-        "name": "_getPending",
+        "name": "_referrer",
         "type": "address"
       }
     ],
-    "name": "getReferPending",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "getPidReferReward",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
       {
-        "internalType": "contract PizzaToken",
-        "name": "_pizza",
+        "internalType": "address",
+        "name": "_referrer",
+        "type": "address"
+      }
+    ],
+    "name": "getReferReward",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "hfi",
+    "outputs": [
+      {
+        "internalType": "contract HfiToken",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract HfiToken",
+        "name": "_hfi",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_pizzaPerBlock",
+        "name": "_rewardRate",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_startBlock",
+        "name": "_starttime",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_bonusEndBlock",
+        "name": "_periodFinish",
         "type": "uint256"
       },
       {
@@ -332,6 +463,19 @@
         "internalType": "bool",
         "name": "",
         "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "lastUpdateTime",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -373,6 +517,25 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "pendingAllHfi",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_pid",
         "type": "uint256"
@@ -383,7 +546,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingPizza",
+    "name": "pendingHfi",
     "outputs": [
       {
         "internalType": "uint256",
@@ -396,20 +559,7 @@
   },
   {
     "inputs": [],
-    "name": "pizza",
-    "outputs": [
-      {
-        "internalType": "contract PizzaToken",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "pizzaPerBlock",
+    "name": "periodFinish",
     "outputs": [
       {
         "internalType": "uint256",
@@ -442,12 +592,17 @@
       },
       {
         "internalType": "uint256",
-        "name": "lastRewardBlock",
+        "name": "lastRewardTime",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "accPizzaPerShare",
+        "name": "accHfiPerShare",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalPool",
         "type": "uint256"
       }
     ],
@@ -457,25 +612,6 @@
   {
     "inputs": [],
     "name": "poolLength",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "refer_pending",
     "outputs": [
       {
         "internalType": "uint256",
@@ -504,6 +640,32 @@
     "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "rewardPerTokenStored",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "rewardRate",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -549,7 +711,7 @@
   },
   {
     "inputs": [],
-    "name": "startBlock",
+    "name": "starttime",
     "outputs": [
       {
         "internalType": "uint256",
@@ -576,25 +738,6 @@
   {
     "inputs": [],
     "name": "totalMinted",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "totalReward",
     "outputs": [
       {
         "internalType": "uint256",
@@ -655,6 +798,16 @@
         "internalType": "uint256",
         "name": "rewardDebt",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rewardPaid",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "referrerAmount",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -682,12 +835,27 @@
       },
       {
         "internalType": "uint256",
-        "name": "partnersCount",
+        "name": "firstRefer",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "amountCount",
+        "name": "indirectRefer",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalReferReward",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalReward",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "refeRewardPending",
         "type": "uint256"
       },
       {
