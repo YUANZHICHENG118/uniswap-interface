@@ -291,9 +291,9 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </BodyWrapper>
 
-            <XpoolItem title={"矿池总收益"} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index18")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
 
-            <XpoolItem title={"矿池待领取收益"} token={mainToken} amount={format(notReward&&notReward.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index19")} token={mainToken} amount={format(notReward&&notReward.toString(),mainToken&&mainToken.decimals||18)}/>
 
 
           </div>
@@ -313,8 +313,8 @@ export default function Xpool(props: { refAddress: any }) {
             <BodyWrapper>
               <div className="col p-1">
                 <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
-                  <h5>{"推荐人"}</h5>
-                  <span className="total-lock show-data">直接推荐人:{refUserCount&&refUserCount.toString()} 间接推荐人:{refUserCount1&&refUserCount1.toString()}</span>&nbsp;
+                  <h5>{t("index20")}</h5>
+                  <span className="total-lock show-data">{t("index21")}:{refUserCount&&refUserCount.toString()} {t("index22")}:{refUserCount1&&refUserCount1.toString()}</span>&nbsp;
                 </div>
               </div>
             </BodyWrapper>
