@@ -165,7 +165,7 @@ const RowItemSubTitle = styled.div`
 
 const RowItemButton = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.primary5};
+  background-color: #130f09;
   color: rgb(209, 108, 0);
   cursor: pointer;
   display: flex;
@@ -367,15 +367,56 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             <div className='itemWarp'>
               <RowItemBox>
                 <FlexCenter>
-                  <RowItemLogo><img src={require("../../assets/images/lp/pz.png")} height={75}></img></RowItemLogo>
-                  <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemTitle>
+                  <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
+                  <RowItemTitle>3天</RowItemTitle>
+                  <RowItemSubTitle>我的质押:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+
+                  <RowItemSubTitle>我的收益:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
                   <RowItemSubTitle>
-                    <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>
+                    <div className="kdcQzs">质押 {mainToken && mainToken.symbol} LP Token</div>
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
+                    {
+                      stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                        {t("Harvest")}
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
+                        {t("Harvest")}
+                      </a>
+                    }
+                  </RowItemButton>
+                  <RowItemButton color="#d16c00" font-size="16">
+                    {
+                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                         {t("Approval")}
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
+                        {t("stake")}
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                        {t("Approval")}
+                      </a>
+                    }
+                  </RowItemButton>
+                </FlexCenter>
+              </RowItemBox>
+            </div>
+          </RowItem>
+
+          <RowItem className='col-xs-6 col-md-4 col-sm-12'>
+            <div className='itemWarp'>
+              <RowItemBox>
+                <FlexCenter>
+                  <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
+                  <RowItemTitle>10天</RowItemTitle>
+                  <RowItemSubTitle>我的质押:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+
+                  <RowItemSubTitle>我的收益:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
+                  <RowItemSubTitle>
+                    <div className="kdcQzs">质押 {mainToken && mainToken.symbol} LP Token</div>
+                  </RowItemSubTitle>
+
+                  <RowItemButton color="#d16c00" font-size="16">
 
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
@@ -387,24 +428,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                   </RowItemButton>
 
-                </FlexCenter>
-              </RowItemBox>
-            </div>
-          </RowItem>
-
-
-          <RowItem className='col-xs-6 col-md-4 col-sm-12'>
-            <div className={'itemWarp'}>
-              <RowItemBox>
-                <FlexCenter>
-                  <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
-                  <RowItemTitle>{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemTitle>
-                  <RowItemSubTitle>
-                    <div className="kdcQzs">{token && token.symbol} LP Staked</div>
-                  </RowItemSubTitle>
                   <RowItemButton color="#d16c00" font-size="16">
-
-
 
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
@@ -422,6 +446,50 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
             </div>
           </RowItem>
 
+
+          <RowItem className='col-xs-6 col-md-4 col-sm-12'>
+            <div className='itemWarp'>
+              <RowItemBox>
+                <FlexCenter>
+                  <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
+                  <RowItemTitle>25天</RowItemTitle>
+                  <RowItemSubTitle>我的质押:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我的收益:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
+
+
+                  <RowItemSubTitle>
+                    <div className="kdcQzs">质押 {mainToken && mainToken.symbol} LP Token</div>
+                  </RowItemSubTitle>
+
+                  <RowItemButton color="#d16c00" font-size="16">
+
+                    {
+                      stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                        {t("Harvest")}
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
+                        {t("Harvest")}
+                      </a>
+                    }
+
+                  </RowItemButton>
+
+                  <RowItemButton color="#d16c00" font-size="16">
+
+                    {
+                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                         {t("Approval")}
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
+                        {t("stake")}
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                        {t("Approval")}
+                      </a>
+                    }
+                  </RowItemButton>
+
+                </FlexCenter>
+              </RowItemBox>
+            </div>
+          </RowItem>
 
         </RowBox>
       </MenuBody>
