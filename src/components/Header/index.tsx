@@ -200,11 +200,11 @@ export default function Header() {
             isMobile?'':<HeaderElement>
               <Title href=".">
                 <UniIcon>
-                  <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
+                  <img src={isDark ? LogoDark : Logo} alt="logo" height={40} />
                 </UniIcon>
-                <TitleText>
-                  <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-                </TitleText>
+                {/*<TitleText>*/}
+                  {/*<img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />*/}
+                {/*</TitleText>*/}
               </Title>
             </HeaderElement>
           }
