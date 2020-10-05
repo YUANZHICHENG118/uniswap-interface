@@ -4,6 +4,7 @@ import { Row, Col } from 'antd'
 import { mainToken } from '../../constants/index'
 import Copy from '../../components/AccountDetails/Copy'
 import { useTranslation } from 'react-i18next'
+import { isMobile } from 'react-device-detect'
 
 export const BodyWrapper = styled.section`
   background-position: left bottom;
@@ -72,7 +73,6 @@ export default function HomeSection() {
             <div className="banner_text text_md_center">
               <h1>{mainToken.name} DeFi</h1>
               <p>{t("index1")}</p>
-              <p id={"about"}>{t("index15")}</p>
             </div>
           </Col>
         </Row>
@@ -82,7 +82,12 @@ export default function HomeSection() {
             <span>{mainToken.symbol}{t("index2")}:</span>
             <span className="code">
                <a href={`https://etherscan.io/address/${mainToken.address}`}
-                  className="token-url" target="_blank" rel="noopener noreferrer"> <span>{mainToken.address}</span></a>
+                  className="token-url" target="_blank" rel="noopener noreferrer">
+                 {
+                   isMobile?<span style={{fontSize:12}}>{mainToken.address}</span>:<span >{mainToken.address}</span>
+                 }
+
+               </a>
                 <Copy toCopy={mainToken.address}>
                   </Copy>
 

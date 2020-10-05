@@ -1,4 +1,12 @@
 {
+  "choose":"选择列表",
+  "tokenList":"Token 列表",
+  "chooseTip":"Pizzaswap现在支持令牌列表。您可以通过IPFS、HTTPS和ENS添加您自己的自定义列表",
+  "chooseInfo":"令牌列表是一个开放的规范. 点击 tokenlists.org 查看更多.",
+  "addLiquidity":"增加流动性",
+  "yourLiquidity":"你的流动性",
+  "liquidityInfo":"连接到钱包增加您的流动性.",
+  "liquidityTip":"没有发现您参与的矿池?",
   "noWallet": "未发现以太钱包",
   "wrongNetwork": "网络错误",
   "switchNetwork": "请切换到 {{ correctNetwork }}",
@@ -72,8 +80,10 @@
   "label": "通证符号",
   "decimals": "小数位数",
   "enterTokenCont": "输入通证地址并继续",
+  "connect":"连接到钱包",
   "home":"首页",
   "about":"关于",
+  "pizza":"披萨",
   "en":"英文",
   "zh-CN":"中文",
   "deposit":"质押",
@@ -99,5 +109,16 @@
   "index14":"领取",
   "index15":"PizzaSwap是一个集Defi，去中心化交易，流动性挖矿，邀请奖励，NFT于一体的交易所，我们的初衷是纪念那笔比特币和披萨的交易",
   "index16":"邀请链接",
-  "index17":"复制链接"
+  "index17":"复制链接",
+  "about1":"挖矿细则：",
+
+  "about2":"每天挖出400枚，大概每个块产出0.046263枚，每隔86400块（按以太坊平均10秒一个块，大概10天左右）每个块产量减半，累计挖出9000枚，挖矿结束",
+
+  "about3":"步骤",
+  "about4":"1.先用以太坊或者USDT 换取PZ",
+  "about5":"2.投入相同价值的以太坊/USDT和Pz获得LP令牌",
+  "about6":"3.质押令牌参与挖矿",
+  "about7":"4.挖矿收益每日获得20%pz",
+  "about8":"5.直推挖矿奖励10%pz间推奖励5%pz",
+  "about9":"6.挖出来的Pz手动点击收割到钱包，同时要扣除10%的PZ手续费奖励开发团队持有！"
 }

@@ -23,6 +23,8 @@ import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redir
 import Menu from './Menu'
 import Bear from './Bear'
 
+import About from './About'
+
 import Swap from './Swap'
 import Farm from './Farm'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
@@ -78,6 +80,8 @@ export default function App() {
               <Switch>
                 <Route exact strict path="/home" component={Bear} />
                 <Route exact strict path="/Menu" component={Menu} />
+                <Route exact strict path="/about" component={About} />
+
                 <Route exact strict path="/air" component={Bear} />
 
                 <Route exact strict path="/Farm/:symbol" component={Farm} />

@@ -1,4 +1,12 @@
 {
+  "choose":"Choose List",
+  "tokenList":"Token List",
+  "chooseTip":"Pizzaswap now supports token lists. You can add your own custom lists via IPFS, HTTPS and ENS.",
+  "chooseInfo":"Token lists are an open specification. Check out tokenlists.org to learn more.",
+  "addLiquidity":"Add Liquidity",
+  "yourLiquidity":"Your Liquidity",
+  "liquidityInfo":"Connect to a wallet to view your liquidity.",
+  "liquidityTip":"Don't see a pool you joined?",
   "noWallet": "No Ethereum wallet found",
   "wrongNetwork": "You are on the wrong network",
   "switchNetwork": "Please switch to {{ correctNetwork }}",
@@ -85,11 +93,13 @@
   "enterTokenCont": "Enter a token address to continue",
   "priceChange": "Expected price slippage",
   "forAtLeast": "for at least ",
-  "brokenToken": "The selected token is not compatible with Uniswap V1. Adding liquidity will result in locked funds.",
+  "brokenToken": "The selected token is not compatible with Pizzaswap V1. Adding liquidity will result in locked funds.",
   "toleranceExplanation": "Lowering this limit decreases your risk of frontrunning. However, this makes more likely that your transaction will fail due to normal price movements.",
   "tokenSearchPlaceholder": "Search name or paste address",
+  "connect":"Connect to a wallet",
   "home":"Home",
   "about":"About",
+  "pizza":"Pizza",
   "en":"English",
   "zh-CN":"Chinese",
   "deposit":"Deposit",
@@ -115,5 +125,16 @@
   "index14":"Receive",
   "index15":"Pizzaswap is an exchange that integrates defi, decentralized trading, liquidity mining, invitation and reward, and NFT. Our original intention is to commemorate the bitcoin and pizza deal",
   "index16":"Referral Link",
-  "index17":"Copy Link"
+  "index17":"Copy Link",
+  "about1":"Mining Rules:",
+
+  "about2":"400 pieces are mined every day, about 0.046263 pieces per block, every 86400 blocks (an average of 10 seconds in Ethereum, about 10 days), the output of each block is halved, and a total of 9,000 are mined Coins, mining is over",
+
+  "about3":"Steps",
+  "about4":"1. First exchange Ethereum or USDT for PZ",
+  "about5": "2. Invest the same value of Ethereum/USDT and Pz to get LP tokens",
+  "about6":"3. Pledge tokens to participate in mining",
+  "about7":"4. Mining income gets 20% pz every day",
+  "about8":"5. Direct push mining reward 10% pz, inter push reward 5% pz",
+  "about9":"6. Manually click and harvest the dug out Pz to the wallet, and at the same time, 10% of the PZ handling fee will be deducted to reward the development team for holding!"
 }
