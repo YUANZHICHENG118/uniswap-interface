@@ -209,11 +209,11 @@ export default function Header() {
             </Title>
           </HeaderElement>
           <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
-          {/*<StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>*/}
-          {/*<StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>*/}
-          {/*<StyledNavLink  to={'/air'} >{t('bear')}</StyledNavLink>*/}
-          {/*<NavTitle href="#about">{t('about')}</NavTitle>*/}
-          {/*<StyledNavLink  to={'/air'} >{t('home')}</StyledNavLink>*/}
+          <StyledNavLink to={'/menu'}>{t('pool')}</StyledNavLink>
+          <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
+          <StyledNavLink  to={'/air'} >{t('bear')}</StyledNavLink>
+          <NavTitle href="#about">{t('about')}</NavTitle>
+          <StyledNavLink  to={'/air'} >{t('home')}</StyledNavLink>
 
 
         </NavElements>
