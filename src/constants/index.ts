@@ -29,8 +29,8 @@ export const supportedPools = [
 
   {
     pid: 0,
-    lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
-    tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
+    lpAddresses: '0x54Bf9813e0eA3C56Fb38F90D9206C9ae397831D9',
+    tokenAddresses: '0xDFcdD3c3Baa91594a6ea361a099600687087D998',
     name: 'Donald LEF',
     symbol: 'LEF-ETH',
     tokenSymbol: 'LEF',
