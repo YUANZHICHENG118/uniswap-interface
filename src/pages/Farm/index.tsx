@@ -342,7 +342,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     if(contract){
       const Web3 = require('web3');
       let web3 = new Web3(window.ethereum);
-      let _amount=web3.utils.toHex(stakeBalance.toString());
+      let _amount=web3.utils.toHex(pid===0?stakeBalance.toString():pid===1?stakeBalance1.toString():stakeBalance2.toString());
       setTxLoading(true)
       setTxConfirm(true)
 
@@ -352,7 +352,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       // })
 
       return contract.withdraw(pid,_amount, {
-        gasLimit: 8000000
+        gasLimit: 800000
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
