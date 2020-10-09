@@ -211,6 +211,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const [txId, setTxId] = useState<string>("")
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
   const [txLoading, setTxLoading] = useState<boolean>(false)
+  const [pid, setPid] = useState<number>(0)
 
   const onChange = (e: any) => {
     setAmount(e)
@@ -226,15 +227,24 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   const getLpBalance = useSingleCallResult(lpcontract, 'balanceOf', [account ?? undefined])
 
-  const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account ?? undefined])
+  const getStakeBalance0 = useSingleCallResult(contract, 'userInfo', [0, account ?? undefined])
+  const getStakeBalance1 = useSingleCallResult(contract, 'userInfo', [1, account ?? undefined])
+  const getStakeBalance2 = useSingleCallResult(contract, 'userInfo', [2, account ?? undefined])
 
-  const getTokenBalance = useSingleCallResult(contract, 'pendingPizza', [token&&token.pid, account ?? undefined])
+  const getTokenBalance0 = useSingleCallResult(contract, 'pendingLef', [0, account ?? undefined])
+  const getTokenBalance1 = useSingleCallResult(contract, 'pendingLef', [1, account ?? undefined])
+  const getTokenBalance2 = useSingleCallResult(contract, 'pendingLef', [2, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
 
-  const tokenBalance=getTokenBalance && getTokenBalance.result && getTokenBalance.result[0]
-  const stakeBalance=getStakeBalance && getStakeBalance.result&& getStakeBalance.result[0]
+  const tokenBalance=getTokenBalance0 && getTokenBalance0.result && getTokenBalance0.result[0]
+  const tokenBalance1=getTokenBalance1 && getTokenBalance1.result && getTokenBalance1.result[0]
+  const tokenBalance2=getTokenBalance2 && getTokenBalance2.result && getTokenBalance2.result[0]
+
+  const stakeBalance=getStakeBalance0 && getStakeBalance0.result&& getStakeBalance0.result[1]
+  const stakeBalance1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[1]
+  const stakeBalance2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[1]
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
 
@@ -287,7 +297,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   }
 
   // 质押
-  const stakeHandel= async ()=>{
+  const stakeHandel= async (pid:number)=>{
     const Web3 = require('web3');
 
     let web3 = new Web3(window.ethereum);
@@ -302,13 +312,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
-        return contract.estimateGas.deposit(token && token.pid,_amount)
-      })
+      // const estimatedGas = await contract.estimateGas.deposit(pid,_amount).catch(() => {
+      //   return contract.estimateGas.deposit(pid,_amount)
+      // })
+      //
+      // console.log("estimatedGas====",estimatedGas)
 
-      console.log("estimatedGas====",estimatedGas)
-
-      return contract.deposit(token && token.pid,_amount, {
+      return contract.deposit(pid,_amount, {
         gasLimit: 8000000
       })
         .then((response: TransactionResponse) => {
@@ -328,7 +338,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   }
 
   // 赎回
-  const harvestHandel= async ()=>{
+  const harvestHandel= async (pid:number)=>{
     if(contract){
       const Web3 = require('web3');
       let web3 = new Web3(window.ethereum);
@@ -336,13 +346,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      const estimatedGas = await contract.estimateGas.withdraw(token && token.pid,_amount).catch(() => {
-        // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.withdraw(token && token.pid,_amount)
-      })
+      // const estimatedGas = await contract.estimateGas.withdraw(pid,_amount).catch(() => {
+      //   // general fallback for tokens who restrict approval amounts
+      //   return contract.estimateGas.withdraw(pid,_amount)
+      // })
 
-      return contract.withdraw(token && token.pid,_amount, {
-        gasLimit: calculateGasMargin(estimatedGas)
+      return contract.withdraw(pid,_amount, {
+        gasLimit: 8000000
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -380,7 +390,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(0):console.log("000")}>
                         {t("Harvest")}
                       </a>
                     }
@@ -389,7 +399,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                          {t("Approval")}
-                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(0)}}>
                         {t("stake")}
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
                         {t("Approval")}
@@ -407,9 +417,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>10天</RowItemTitle>
-                  <RowItemSubTitle>我的质押:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我的质押:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18)}</RowItemSubTitle>
 
-                  <RowItemSubTitle>我的收益:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我的收益:{format(tokenBalance1&&tokenBalance1.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
@@ -421,7 +431,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(1):console.log("000")}>
                         {t("Harvest")}
                       </a>
                     }
@@ -433,7 +443,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                          {t("Approval")}
-                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(1)}}>
                         {t("stake")}
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
                         {t("Approval")}
@@ -453,8 +463,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>25天</RowItemTitle>
-                  <RowItemSubTitle>我的质押:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
-                  <RowItemSubTitle>我的收益:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我的质押:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我的收益:{format(tokenBalance2&&tokenBalance2.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
@@ -466,7 +476,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel():console.log("000")}>
+                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(2):console.log("000")}>
                         {t("Harvest")}
                       </a>
                     }
@@ -478,7 +488,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                          {t("Approval")}
-                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(2)}}>
                         {t("stake")}
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
                         {t("Approval")}
@@ -516,7 +526,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
           <div
             className="cancle clickableButton"
-            onClick={stakeHandel}
+            onClick={()=>stakeHandel(pid)}
           >
             {t("stake")}
           </div>

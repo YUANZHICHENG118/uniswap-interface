@@ -16,11 +16,11 @@ export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
 // 空头合约
 export const AIR_POOL_ADDRESS = '0xee26e5F2F6F8695369Fec045dA1c4B4514C65cD7'
 
-export const POOL_ADDRESS = '0xdFBDB4C579eF4B1b20726f0FE1840cA783C7c809'
+export const POOL_ADDRESS = '0xe0aFBBae92E43FC89298339558Cb949e2edB3988'
 export const mainToken = {
   name:"Lef ",
   symbol: 'LEF',
-  address:'0xa5313C57Ec36396BE3031Ed41ccA21B396362301',
+  address:'0xDFcdD3c3Baa91594a6ea361a099600687087D998',
   decimals:18,
   icon: '🦆'
 }
@@ -33,16 +33,6 @@ export const supportedPools = [
     tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
     name: 'Donald LEF',
     symbol: 'LEF-ETH',
-    tokenSymbol: 'LEF',
-    decimals:18,
-    icon: '🦆',
-  },
-  {
-    pid: 0,
-    lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
-    tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    name: 'Donald LEF',
-    symbol: 'LEF-USDT',
     tokenSymbol: 'LEF',
     decimals:18,
     icon: '🦆',
