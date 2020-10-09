@@ -319,7 +319,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       // console.log("estimatedGas====",estimatedGas)
 
       return contract.deposit(pid,_amount, {
-        gasLimit: 8000000
+        gasLimit: 800000
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
