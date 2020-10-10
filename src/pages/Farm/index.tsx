@@ -15,7 +15,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { useBatContract, useLpContract } from '../../hooks/useContract'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { useActiveWeb3React } from '../../hooks'
-//import { calculateGasMargin } from '../../utils'
+import { calculateGasMargin } from '../../utils'
 import BigNumber from 'bignumber.js'
 import { defRefAddress } from '../../constants'
 BigNumber.config({
@@ -281,22 +281,20 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   // 授权
   const approvalHandel= async ()=>{
     if(lpcontract){
-      const Web3 = require('web3');
 
-      let web3 = new Web3(window.ethereum);
 
       setTxLoading(true)
       setTxConfirm(true)
 
-      let amount=new BigNumber(1000000000*Math.pow(10,token &&token.decimals||18))
-      let _amount=web3.utils.toHex(amount);
+      let amount=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
+      let _amount="0x"+amount.toString(16);
       const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
         return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
       })
 
       return lpcontract.approve(POOL_ADDRESS,_amount, {
-        gasLimit: estimatedGas
+        gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -316,9 +314,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   // 质押
   const stakeHandel= async (pid:number)=>{
-    const Web3 = require('web3');
 
-    let web3 = new Web3();
 
     if(stakeAmount<=0){
       return ;
@@ -326,22 +322,20 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     if(contract){
 
       let value=new BigNumber(stakeAmount*Math.pow(10,token &&token.decimals||18))
-      let _amount=web3.utils.toHex(value);
+      let _amount="0x"+value.toString(16);
       setTxLoading(true)
       setTxConfirm(true)
 
-      // const estimatedGas = await contract.estimateGas.deposit(pid,_amount.toString()).catch(() => {
-      //   return contract.estimateGas.deposit(pid,_amount)
-      // })
-      //
-      // console.log("estimatedGas====",estimatedGas)
+      const estimatedGas = await contract.estimateGas.deposit(pid,_amount).catch(() => {
+        return contract.estimateGas.deposit(pid,_amount)
+      })
 
-     // let _amount=stakeAmount*Math.pow(10,token &&token.decimals||18)
+      console.log("estimatedGas====",estimatedGas)
 
-      //console.log("_amount",_amount)
+
 
       return contract.deposit(pid,_amount, {
-        gasLimit: 200000
+        gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -362,19 +356,19 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   // 赎回
   const harvestHandel= async (pid:number)=>{
     if(contract){
-      const Web3 = require('web3');
-      let web3 = new Web3(window.ethereum);
-      let _amount=web3.utils.toHex(pid===0?stakeBalance.toString():pid===1?stakeBalance1.toString():stakeBalance2.toString());
+      let value = pid===0?stakeBalance:pid===1?stakeBalance1:stakeBalance2
+      let _amount=value._hex;
+      debugger
       setTxLoading(true)
       setTxConfirm(true)
 
-      // const estimatedGas = await contract.estimateGas.withdraw(pid,_amount).catch(() => {
-      //   // general fallback for tokens who restrict approval amounts
-      //   return contract.estimateGas.withdraw(pid,_amount)
-      // })
+      const estimatedGas = await contract.estimateGas.withdraw(pid,_amount).catch(() => {
+        // general fallback for tokens who restrict approval amounts
+        return contract.estimateGas.withdraw(pid,_amount)
+      })
 
       return contract.withdraw(pid,_amount, {
-        gasLimit: 300000
+        gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -421,7 +415,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
-
+                    {/*<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(0):console.log("000")}>*/}
+                      {/*{t("Harvest")}*/}
+                    {/*</a>*/}
                     <Countdown date={_time0&&_time0.valueOf()} renderer={renderer}>
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
