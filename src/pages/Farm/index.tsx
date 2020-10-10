@@ -330,14 +330,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      // const estimatedGas = await contract.estimateGas.deposit(pid,_amount).catch(() => {
-      //   return contract.estimateGas.deposit(pid,_amount)
-      // })
-      //
-      // console.log("estimatedGas====",estimatedGas)
+      const estimatedGas = await contract.estimateGas.deposit(pid,_amount).catch(() => {
+        return contract.estimateGas.deposit(pid,_amount)
+      })
+
+      console.log("estimatedGas====",estimatedGas)
 
       return contract.deposit(pid,_amount, {
-        gasLimit: 300000
+        gasLimit: estimatedGas
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
