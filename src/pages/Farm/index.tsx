@@ -1,5 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Countdown from 'react-countdown-now';
+import moment from 'moment';
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
@@ -246,6 +248,18 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const stakeBalance1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[1]
   const stakeBalance2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[1]
 
+  const time0=getStakeBalance0 && getStakeBalance0.result&& getStakeBalance0.result[5]
+  const time1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[5]
+  const time2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[5]
+
+
+  const _time0=moment(time0&&parseInt(time0.toString())*1000).add(3, 'd')
+  const _time1=moment(time1&&parseInt(time1.toString())*1000).add(10, 'd')
+  const _time2=moment(time2&&parseInt(time2.toString())*1000).add(25, 'd')
+
+  console.log("time0===",time0&&time0.toString(),time1&&time1.toString(),time2&&time2.toString())
+  console.log("time1===",_time0.valueOf(),_time1.valueOf(),_time2.valueOf())
+
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
 
   const format=(value:number,decimal:number):any=>{
@@ -272,13 +286,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
       let amount=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
       let _amount=web3.utils.toHex(amount);
-      const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
-        // general fallback for tokens who restrict approval amounts
-        return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
-      })
+      // const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
+      //   // general fallback for tokens who restrict approval amounts
+      //   return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
+      // })
 
       return lpcontract.approve(POOL_ADDRESS,_amount, {
-        gasLimit: calculateGasMargin(estimatedGas)
+        gasLimit: 800000
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -368,6 +382,18 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
     }
   }
+
+// Renderer callback with condition
+  const renderer = (params:any) => {
+    const { hours, minutes, seconds, completed,props }=params;
+    if (completed) {
+      // Render a completed state
+      return props.children;
+    } else {
+      // Render a countdown
+      return <span>{hours}:{minutes}:{seconds}</span>;
+    }
+  };
   return (
     <MenuWrap className='container'>
       <MenuTop />
@@ -387,6 +413,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
+
+                    <Countdown date={_time0&&_time0.valueOf()} renderer={renderer}>
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
@@ -394,6 +422,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                         {t("Harvest")}
                       </a>
                     }
+                    </Countdown>
                   </RowItemButton>
                   <RowItemButton color="#d16c00" font-size="16">
                     {
@@ -428,14 +457,15 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                   <RowItemButton color="#d16c00" font-size="16">
 
+                    <Countdown date={_time1&&_time1.valueOf()} renderer={renderer}>
                     {
-                      stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      stakeBalance1&&stakeBalance1.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(1):console.log("000")}>
                         {t("Harvest")}
                       </a>
                     }
-
+                    </Countdown>
                   </RowItemButton>
 
                   <RowItemButton color="#d16c00" font-size="16">
@@ -472,15 +502,15 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
-
+                    <Countdown date={_time2&&_time2.valueOf()} renderer={renderer}>
                     {
-                      stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      stakeBalance2&&stakeBalance2.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(2):console.log("000")}>
                         {t("Harvest")}
                       </a>
                     }
-
+                    </Countdown>
                   </RowItemButton>
 
                   <RowItemButton color="#d16c00" font-size="16">
