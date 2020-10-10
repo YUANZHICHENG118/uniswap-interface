@@ -18,6 +18,7 @@ import { useActiveWeb3React } from '../../hooks'
 //import { calculateGasMargin } from '../../utils'
 import BigNumber from 'bignumber.js'
 import { defRefAddress } from '../../constants'
+import { calculateGasMargin } from '../../utils'
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
   DECIMAL_PLACES: 80,
@@ -330,14 +331,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      // const estimatedGas = await contract.estimateGas.deposit(pid,_amount).catch(() => {
-      //   return contract.estimateGas.deposit(pid,_amount)
-      // })
-      //
-      // console.log("estimatedGas====",estimatedGas)
+      const estimatedGas = await contract.estimateGas.deposit(pid,_amount).catch(() => {
+        return contract.estimateGas.deposit(pid,_amount)
+      })
+
+      console.log("estimatedGas====",estimatedGas)
 
       return contract.deposit(pid,_amount, {
-        gasLimit: 600000
+        gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
