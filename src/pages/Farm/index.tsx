@@ -17,6 +17,7 @@ import { useSingleCallResult } from '../../state/multicall/hooks'
 import { useActiveWeb3React } from '../../hooks'
 //import { calculateGasMargin } from '../../utils'
 import BigNumber from 'bignumber.js'
+import { defRefAddress } from '../../constants'
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
   DECIMAL_PLACES: 80,
@@ -224,6 +225,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   const contract = useBatContract(POOL_ADDRESS, true)
 
+  const isUserExists = useSingleCallResult(contract, 'isUserExists', [account || defRefAddress])
 
   const allowance = useSingleCallResult(lpcontract, 'allowance', [account ?? undefined, POOL_ADDRESS])
 
@@ -261,7 +263,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   console.log("time1===",_time0.valueOf(),_time1.valueOf(),_time2.valueOf())
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
+  const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
 
+  console.log("isReg====",isReg)
   const format=(value:number,decimal:number):any=>{
     if(value){
       value=value/Math.pow(10,decimal)
@@ -333,7 +337,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       // console.log("estimatedGas====",estimatedGas)
 
       return contract.deposit(pid,_amount, {
-        gasLimit: 800000
+        gasLimit: 214252
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -366,7 +370,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       // })
 
       return contract.withdraw(pid,_amount, {
-        gasLimit: 800000
+        gasLimit: 214252
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
