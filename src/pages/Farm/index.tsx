@@ -284,15 +284,15 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      let amount=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
+      let amount=new BigNumber(1000000000*Math.pow(10,token &&token.decimals||18))
       let _amount=web3.utils.toHex(amount);
-      // const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
-      //   // general fallback for tokens who restrict approval amounts
-      //   return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
-      // })
+      const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
+        // general fallback for tokens who restrict approval amounts
+        return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
+      })
 
       return lpcontract.approve(POOL_ADDRESS,_amount, {
-        gasLimit: 800000
+        gasLimit: estimatedGas
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
