@@ -16,7 +16,7 @@ export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
 // 空头合约
 export const AIR_POOL_ADDRESS = '0xee26e5F2F6F8695369Fec045dA1c4B4514C65cD7'
 
-export const POOL_ADDRESS = '0xe0aFBBae92E43FC89298339558Cb949e2edB3988'
+export const POOL_ADDRESS = '0xFb19BB515a676d4751e8dF198eAE58aD8297F6CE'
 export const mainToken = {
   name:"Lef ",
   symbol: 'LEF',
