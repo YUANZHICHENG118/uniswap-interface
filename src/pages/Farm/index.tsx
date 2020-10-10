@@ -15,7 +15,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { useBatContract, useLpContract } from '../../hooks/useContract'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { useActiveWeb3React } from '../../hooks'
-import { calculateGasMargin } from '../../utils'
+//import { calculateGasMargin } from '../../utils'
 import BigNumber from 'bignumber.js'
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
