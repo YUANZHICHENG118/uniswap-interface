@@ -318,7 +318,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const stakeHandel= async (pid:number)=>{
     const Web3 = require('web3');
 
-    let web3 = new Web3(window.ethereum);
+    let web3 = new Web3();
 
     if(stakeAmount<=0){
       return ;
@@ -335,6 +335,10 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       // })
       //
       // console.log("estimatedGas====",estimatedGas)
+
+     // let _amount=stakeAmount*Math.pow(10,token &&token.decimals||18)
+
+      //console.log("_amount",_amount)
 
       return contract.deposit(pid,_amount, {
         gasLimit: 200000
