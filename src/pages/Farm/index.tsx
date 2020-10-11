@@ -438,11 +438,11 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>3天</RowItemTitle>
-                  <RowItemSubTitle>我的质押:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我提供的:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
 
                   <RowItemSubTitle>我的收益:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
                   <RowItemSubTitle>
-                    <div className="kdcQzs">质押 {mainToken && mainToken.symbol} LP Token</div>
+                    <div className="kdcQzs">{t("deposit")} {mainToken && mainToken.symbol} LP Token</div>
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
@@ -492,13 +492,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>10天</RowItemTitle>
-                  <RowItemSubTitle>我的质押:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我提供的:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18)}</RowItemSubTitle>
 
                   <RowItemSubTitle>我的收益:{format(tokenBalance1&&tokenBalance1.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
-                    <div className="kdcQzs">质押 {mainToken && mainToken.symbol} LP Token</div>
+                    <div className="kdcQzs">{t("deposit")} {mainToken && mainToken.symbol} LP Token</div>
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
@@ -549,12 +549,12 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>25天</RowItemTitle>
-                  <RowItemSubTitle>我的质押:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>我提供的:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18)}</RowItemSubTitle>
                   <RowItemSubTitle>我的收益:{format(tokenBalance2&&tokenBalance2.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
-                    <div className="kdcQzs">质押 {mainToken && mainToken.symbol} LP Token</div>
+                    <div className="kdcQzs">{t("deposit")} {mainToken && mainToken.symbol} LP Token</div>
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
