@@ -63,7 +63,7 @@ export const BodyWrapper = styled.section`
       padding: 20px 40px;
       border-radius: 5px;
       .pool-content {
-        color: #ffcb68;
+        color: #b4c148;
         word-wrap: break-word;
         word-break: normal;
         font-size: 16px;
@@ -86,7 +86,7 @@ export const BodyWrapper = styled.section`
         color: ${({ theme }) => theme.text1};
       }
       .sushi-balance {
-        color: #ffcb68;
+        color: #b4c148;
         display: inline-block;
       }
     }

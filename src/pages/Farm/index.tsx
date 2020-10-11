@@ -123,7 +123,7 @@ const RowItem = styled.div`
     background: ${({ theme }) => theme.bg1};
     border-width: 1px;
     border-style: solid;
-    border-color: #000;
+    border-color: #cab3b3;
     border-image: initial;
     border-radius: 12px;
     flex: 1 1 0%;
@@ -168,8 +168,8 @@ const RowItemSubTitle = styled.div`
 
 const RowItemButton = styled.div`
   align-items: center;
-  background-color: #130f09;
-  color: rgb(209, 108, 0);
+  background-color: #8a80bf;
+  color: #fff;
   cursor: pointer;
   display: flex;
   font-size: 16px;

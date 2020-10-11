@@ -41,23 +41,23 @@ export function colors(darkMode: boolean): Colors {
     black,
 
     // text
-    text1: darkMode ? '#FFFFFF' : '#000000',
+    text1: darkMode ? '#000000' : '#000000',
     text2: darkMode ? '#C3C5CB' : '#565A69',
     text3: darkMode ? '#6C7284' : '#888D9B',
     text4: darkMode ? '#565A69' : '#C3C5CB',
     text5: darkMode ? '#000000' : '#EDEEF2',
 
     // backgrounds / greys
-    bg1: darkMode ? '#212429' : '#FFFFFF',
-    bg2: darkMode ? '#000000' : '#F7F8FA',
-    bg3: darkMode ? '#40444F' : '#EDEEF2',
+    bg1: darkMode ? '#8ca8d8' : '#FFFFFF',
+    bg2: darkMode ? '#d9edf8' : '#F7F8FA',
+    bg3: darkMode ? '#cbd0de' : '#EDEEF2',
     bg4: darkMode ? '#565A69' : '#CED0D9',
     bg5: darkMode ? '#6C7284' : '#888D9B',
 
     //specialty colors
     modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
-    middleBG: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+    middleBG: darkMode ? '#d3eaf8' : 'rgba(0,0,0,0.1)',
 
     //primary colors
     primary1: darkMode ? '#f8b300' : '#ff007a',
