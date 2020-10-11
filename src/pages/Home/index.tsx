@@ -57,7 +57,7 @@ export default function Home() {
         <h3>{t('greet-small', { label: mainContract.symbol })}</h3>
         <h3>
           {t('contract-verified', { name: mainContract.symbol })}
-          <a href={`https://tronscan.org/#/contract/${mainContract.address}`} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '10px' }}>{t('here')}</a>
+          <a href={`http://www.cocktailswap.io/cock.pdf`} target="_blank" rel="noopener noreferrer" style={{ marginLeft: '10px' }}>{t('here')}</a>
         </h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>{t('token_info')}</h3>
         <h3 style={{ color: 'rgb(91, 38, 57)', fontWeight: 700 }}>
