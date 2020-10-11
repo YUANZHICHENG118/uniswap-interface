@@ -110,7 +110,7 @@ export default function App() {
         </AppWrapper>
       </HashRouter>
       <SecWrapper>
-        <img src={require("../assets/images/sec.png")}/>
+        <a href={"http://www.cocktailswap.io/cock.pdf"} target="_blank"> <img src={require("../assets/images/sec.png")}/></a>
       </SecWrapper>
     </Suspense>
   )
