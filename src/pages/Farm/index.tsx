@@ -253,15 +253,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   // 授权
   const approvalHandel= async ()=>{
     if(lpcontract){
-      const Web3 = require('web3');
 
-      let web3 = new Web3(window.ethereum);
 
       setTxLoading(true)
       setTxConfirm(true)
 
-      let amount=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
-      let _amount=web3.utils.toHex(amount);
+      let value=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
+      let _amount="0x"+value.toString(16);
       const estimatedGas = await lpcontract.estimateGas.approve(POOL_ADDRESS,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
         return lpcontract.estimateGas.approve(POOL_ADDRESS,_amount)
@@ -288,19 +286,19 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   // 质押
   const stakeHandel= async ()=>{
-    const Web3 = require('web3');
 
-    let web3 = new Web3(window.ethereum);
 
     if(stakeAmount<=0){
       return ;
     }
     if(contract){
 
+
       let value=new BigNumber(stakeAmount*Math.pow(10,token &&token.decimals||18))
-      let _amount=web3.utils.toHex(value);
+      let _amount="0x"+value.toString(16);
       setTxLoading(true)
       setTxConfirm(true)
+
 
       const estimatedGas = await contract.estimateGas.deposit(token && token.pid,_amount).catch(() => {
         return contract.estimateGas.deposit(token && token.pid,_amount)
@@ -309,7 +307,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       console.log("estimatedGas====",estimatedGas)
 
       return contract.deposit(token && token.pid,_amount, {
-        gasLimit: 8000000
+        gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
@@ -330,9 +328,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   // 赎回
   const harvestHandel= async ()=>{
     if(contract){
-      const Web3 = require('web3');
-      let web3 = new Web3(window.ethereum);
-      let _amount=web3.utils.toHex(stakeBalance.toString());
+
+      let _amount=stakeBalance._hex;
       setTxLoading(true)
       setTxConfirm(true)
 
