@@ -303,9 +303,9 @@ export default function Xpool(props: { refAddress: any }) {
         </div>
         <div className="income">
           <div className="row row-cols-1 row-cols-lg-2 m-n1">
-            <XpoolItem title={`${t("index5")} 3天`} token={token} amount={format(totalStake0&&totalStake0.toString(),token&&token.decimals||18)}/>
-            <XpoolItem title={`${t("index5")} 10天`} token={token} amount={format(totalStake1&&totalStake1.toString(),token&&token.decimals||18)}/>
-            <XpoolItem title={`${t("index5")} 25天`} token={token} amount={format(totalStake2&&totalStake2.toString(),token&&token.decimals||18)}/>
+            <XpoolItem title={`${t("index5")}(3天)`} token={token} amount={format(totalStake0&&totalStake0.toString(),token&&token.decimals||18)}/>
+            <XpoolItem title={`${t("index5")}(10天)`} token={token} amount={format(totalStake1&&totalStake1.toString(),token&&token.decimals||18)}/>
+            <XpoolItem title={`${t("index5")}(25天)`} token={token} amount={format(totalStake2&&totalStake2.toString(),token&&token.decimals||18)}/>
 
 
             <BodyWrapper>
