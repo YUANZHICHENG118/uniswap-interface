@@ -122,8 +122,7 @@ const RowItem = styled.div`
     flex-direction: column;
     background: ${({ theme }) => theme.bg1};
     border-width: 1px;
-    border-style: solid;
-    border-color: #cab3b3;
+   
     border-image: initial;
     border-radius: 12px;
     flex: 1 1 0%;
@@ -152,7 +151,7 @@ const RowItemLogo = styled.span.attrs({
   margin: 0px auto 16px;
 `
 const RowItemTitle = styled.h4`
-  color: #efe7e7;
+  color: #000;
   font-size: 24px;
   font-weight: 700;
   margin: 8px 0px 0px;
@@ -162,7 +161,7 @@ const RowItemSubTitle = styled.div`
   margin-top: 8px;
   text-align: center;
   .kdcQzs {
-    color: #efe7e7;
+    color: #000;
   }
 `
 
@@ -254,6 +253,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const time1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[5]
   const time2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[5]
 
+  console.log("time0===",time0)
 
   const _time0=moment(time0&&parseInt(time0.toString())*1000).add(3, 'd')
   const _time1=moment(time1&&parseInt(time1.toString())*1000).add(10, 'd')
@@ -447,15 +447,15 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                   <RowItemButton color="#d16c00" font-size="16">
 
-                    <Countdown date={_time0&&_time0.valueOf()} renderer={renderer}>
+
                     {
-                      stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      stakeBalance&&stakeBalance.toString()==="0"||!account||!time0?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(0):console.log("000")}>
+                      </span>: <Countdown date={_time0&&_time0.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(0):console.log("000")}>
                         {t("Harvest")}
-                      </a>
+                      </a></Countdown>
                     }
-                    </Countdown>
+
                   </RowItemButton>
 
                   <RowItemButton color="#d16c00" font-size="16">
@@ -503,15 +503,15 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                   <RowItemButton color="#d16c00" font-size="16">
 
-                    <Countdown date={_time1&&_time1.valueOf()} renderer={renderer}>
+
                     {
-                      stakeBalance1&&stakeBalance1.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      stakeBalance1&&stakeBalance1.toString()==="0"||!account||!time1?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(1):console.log("000")}>
+                      </span>:<Countdown date={_time1&&_time1.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(1):console.log("000")}>
                         {t("Harvest")}
-                      </a>
+                      </a></Countdown>
                     }
-                    </Countdown>
+
                   </RowItemButton>
                   <RowItemButton color="#d16c00" font-size="16">
 
@@ -558,15 +558,15 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   </RowItemSubTitle>
 
                   <RowItemButton color="#d16c00" font-size="16">
-                    <Countdown date={_time2&&_time2.valueOf()} renderer={renderer}>
+
                     {
-                      stakeBalance2&&stakeBalance2.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      stakeBalance2&&stakeBalance2.toString()==="0"||!account||!time2?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(2):console.log("000")}>
+                      </span>: <Countdown date={_time2&&_time2.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(2):console.log("000")}>
                         {t("Harvest")}
-                      </a>
+                      </a></Countdown>
                     }
-                    </Countdown>
+
                   </RowItemButton>
                   <RowItemButton color="#d16c00" font-size="16">
 

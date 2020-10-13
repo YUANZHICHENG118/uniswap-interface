@@ -38,8 +38,7 @@ const RowItem = styled.div`
     flex-direction: column;
     background: ${({ theme }) => theme.bg1};
     border-width: 1px;
-    border-style: solid;
-    border-color: #000;
+    
     border-image: initial;
     border-radius: 12px;
     flex: 1 1 0%;
@@ -68,7 +67,7 @@ const RowItemLogo = styled.span.attrs({
   margin: 0px auto 16px;
 `
 const RowItemTitle = styled.h4`
-  color: #efe7e7;
+  color: #000;
   font-size: 24px;
   font-weight: 700;
   margin: 8px 0px 0px;
@@ -78,7 +77,7 @@ const RowItemSubTitle = styled.div`
   margin-top: 8px;
   text-align: center;
   .kdcQzs {
-    color: #efe7e7;
+    color: #000;
   }
 `
 const RowItemBottom = styled.div`
