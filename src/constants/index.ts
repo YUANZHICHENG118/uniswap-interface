@@ -10,13 +10,13 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const HOST = 'https://www.lef.net'
+export const HOST = 'http://202.46.44.8'
 export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
 
 // 空头合约
 export const AIR_POOL_ADDRESS = '0xee26e5F2F6F8695369Fec045dA1c4B4514C65cD7'
 
-export const POOL_ADDRESS = '0xb6E44c0aA36b4825fEfaA571C75D9322dbAE5A48'
+export const POOL_ADDRESS = '0xf6d37894BFfFC0d5380C67E4aB7e5D13541A64aB'
 export const mainToken = {
   name:"Lef ",
   symbol: 'LEF',

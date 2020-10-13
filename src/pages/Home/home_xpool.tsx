@@ -86,7 +86,8 @@ export const BodyWrapper = styled.section`
         color: ${({ theme }) => theme.text1};
       }
       .sushi-balance {
-        color: #b4c148;
+        color: #439a1ff7;
+        font-weight:700;
         display: inline-block;
       }
     }
@@ -150,6 +151,8 @@ export default function Xpool(props: { refAddress: any }) {
   const getTokenBalance = useSingleCallResult(tokenContract, 'balanceOf', [account??undefined])
 
 
+  const pendingAllLef = useSingleCallResult(contract, 'pendingAllLef', [account??undefined])
+
   const getTotalReward = useSingleCallResult(contract, 'allLefAmount', [account??undefined])
   const getUser = useSingleCallResult(contract, 'users', [account??undefined])
 
@@ -184,6 +187,8 @@ export default function Xpool(props: { refAddress: any }) {
   // 实时查询推荐人可以获取的所有推荐平台币奖励
   const totalRefReward=getRefReward && getRefReward.result&&getRefReward.result[0]
 
+  console.log("totalRefReward===",totalRefReward,totalRefReward&&totalRefReward.toString())
+
   // 直接推荐人
   const refUserCount=getRefUserCount && getRefUserCount.result&&getRefUserCount.result[0]
   // 间接推荐人
@@ -192,10 +197,13 @@ export default function Xpool(props: { refAddress: any }) {
   // vip 等级
   const vipLeval=getVipLeval && getVipLeval.result&&getVipLeval.result[0]
   // 待领取推人奖励
-  const refUserAmount=getUser && getUser.result&&getUser.result[6]
+  const refUserAmount=getUser && getUser.result&&getUser.result[2]
 
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
   const isRefReg = isRefUserExists && isRefUserExists.result && isRefUserExists.result[0]
+  const _pendingAllLef = pendingAllLef && pendingAllLef.result && pendingAllLef.result[0]
+
+
 
   const format=(value:number,decimal:number):any=>{
     if(value){
@@ -260,7 +268,6 @@ export default function Xpool(props: { refAddress: any }) {
 
     if (contract) {
 
-
       const estimatedGas = await contract.estimateGas.drawReferPending(account).catch(() => {
         // general fallback for tokens who restrict approval amounts
         return contract.estimateGas.drawReferPending(account)
@@ -312,7 +319,7 @@ export default function Xpool(props: { refAddress: any }) {
 
             <XpoolItem title={t("index18")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
 
-            <XpoolItem title={t("index19")} token={mainToken} amount={format(100,mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index19")} token={mainToken} amount={format(_pendingAllLef&&_pendingAllLef.toString(),mainToken&&mainToken.decimals||18)}/>
 
 
           </div>
@@ -336,12 +343,12 @@ export default function Xpool(props: { refAddress: any }) {
               <div className="col p-1">
                 <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
                   <h5>{t("index20")}</h5>
-                  <span className="total-lock show-data">{t("index21")}:{refUserCount&&refUserCount.toString()} {t("index22")}:{refUserCount1&&refUserCount1.toString()}</span>&nbsp;
+                  <span className="total-lock show-data">{t("index21")}:{format(refUserCount&&refUserCount.toString(),token.decimals||18)} {t("index22")}:{format(refUserCount1&&refUserCount1.toString(),token.decimals||18)}</span>&nbsp;
                 </div>
               </div>
             </BodyWrapper>
             <XpoolItem title={t("index12")} token={mainToken} amount={format(refUserAmount&&refUserAmount.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>refUserAmount&&refUserAmount.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
-            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),18)}/>
           </div>
           <div className="my-1 pt-1">
             <div className="pool-wrapper ">
