@@ -58,7 +58,7 @@ const WalletBox = styled.div`
   margin:10px auto;
   h2 {
     text-align: center;
-    color: #fff;
+    color: #000;
     font-size: 18px;
     font-weight: 500;
     margin:20px auto;
@@ -418,13 +418,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
 // Renderer callback with condition
   const renderer = (params:any) => {
-    const { hours, minutes, seconds, completed,props }=params;
+    const {days, hours, minutes, seconds, completed,props }=params;
+    console.log("params=====",params)
     if (completed) {
       // Render a completed state
       return props.children;
     } else {
       // Render a countdown
-      return <span>{hours}:{minutes}:{seconds}</span>;
+      return <span>{days}天 {hours}:{minutes}:{seconds}</span>;
     }
   };
   return (
@@ -461,7 +462,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemButton color="#d16c00" font-size="16">
 
                       {
-                        stakeBalance&&stakeBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                        tokenBalance&&tokenBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("getReward")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestReward(0):console.log("000")}>
                           {t("getReward")}
@@ -493,7 +494,6 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>10天</RowItemTitle>
                   <RowItemSubTitle>我提供的:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18)}</RowItemSubTitle>
-
                   <RowItemSubTitle>我的收益:{format(tokenBalance1&&tokenBalance1.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
@@ -516,7 +516,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemButton color="#d16c00" font-size="16">
 
                     {
-                      stakeBalance1&&stakeBalance1.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      tokenBalance1&&tokenBalance1.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("getReward")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestReward(1):console.log("000")}>
                         {t("getReward")}
@@ -571,7 +571,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemButton color="#d16c00" font-size="16">
 
                     {
-                      stakeBalance2&&stakeBalance2.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      tokenBalance2&&tokenBalance2.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("getReward")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestReward(2):console.log("000")}>
                         {t("getReward")}
