@@ -282,6 +282,10 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const approvalHandel= async ()=>{
     if(lpcontract){
 
+      if(!isReg){
+        alert("您还未注册，请先注册")
+        return;
+      }
 
       setTxLoading(true)
       setTxConfirm(true)
