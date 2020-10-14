@@ -352,7 +352,7 @@ export default function Xpool(props: { refAddress: any }) {
             {/*<XpoolItem title={t("index13")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),18)}/>*/}
           </div>
           <div className="my-1 pt-1">
-            <div className="pool-wrapper ">
+            <div className="pool-wrapper">
               {
                 isReg ? <a href="javascript:void(0)"
                            className="btn btn-default pool-width btn-radius withdraw  active-{mainToken.symbol}">
