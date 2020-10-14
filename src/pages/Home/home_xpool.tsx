@@ -166,6 +166,18 @@ export default function Xpool(props: { refAddress: any }) {
   const totalStake2=getTotalStake2 && getTotalStake2.result&& getTotalStake2.result[4]
 
 
+  const getVip1 = useSingleCallResult(contract, 'vipPoolInfo', [1])
+  const getVip2 = useSingleCallResult(contract, 'vipPoolInfo', [2])
+  const getVip3 = useSingleCallResult(contract, 'vipPoolInfo', [3])
+
+
+  const vip1=getVip1 && getVip1.result&& getVip1.result[3]
+  const vip2=getVip2 && getVip2.result&& getVip2.result[3]
+  const vip3=getVip3 && getVip3.result&& getVip3.result[3]
+
+  const totalVip=parseInt(vip1)+parseInt(vip2)+parseInt(vip3)
+
+
 // 直接推荐人
   const getRefUserCount = useSingleCallResult(contract, 'getReferAmount', [account??undefined,0])
   // 间接推荐人
@@ -312,8 +324,8 @@ export default function Xpool(props: { refAddress: any }) {
             <BodyWrapper>
               <div className="col p-1">
                 <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
-                  <h5>{`APR (${t("index7")})`}</h5>
-                  <span className="total-lock show-data">{`${t("index701")}`}</span>&nbsp;
+                  <h5>{t("totalVip")}</h5>
+                  <span className="total-lock show-data">{totalVip||"0.0000"}</span>&nbsp;
                 </div>
               </div>
             </BodyWrapper>
