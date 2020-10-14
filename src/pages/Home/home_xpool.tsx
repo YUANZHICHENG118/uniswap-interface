@@ -199,6 +199,7 @@ export default function Xpool(props: { refAddress: any }) {
   // 待领取推人奖励
   const refUserAmount=getUser && getUser.result&&getUser.result[2]
 
+  console.log("===refUserAmount,",refUserAmount)
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
   const isRefReg = isRefUserExists && isRefUserExists.result && isRefUserExists.result[0]
   const _pendingAllLef = pendingAllLef && pendingAllLef.result && pendingAllLef.result[0]
@@ -338,7 +339,7 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </div>
           </div>
-          <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
+          <div className="row row-cols-1 row-cols-lg-2 m-n1">
             <BodyWrapper>
               <div className="col p-1">
                 <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
@@ -347,8 +348,8 @@ export default function Xpool(props: { refAddress: any }) {
                 </div>
               </div>
             </BodyWrapper>
-            <XpoolItem title={t("index12")} token={mainToken} amount={format(refUserAmount&&refUserAmount.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>refUserAmount&&refUserAmount.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
-            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),18)}/>
+            <XpoolItem title={t("index12")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>totalRefReward&&totalRefReward.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
+            {/*<XpoolItem title={t("index13")} token={mainToken} amount={format(totalRefReward&&totalRefReward.toString(),18)}/>*/}
           </div>
           <div className="my-1 pt-1">
             <div className="pool-wrapper ">
