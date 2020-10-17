@@ -183,7 +183,7 @@ export default function Xpool(props: { refAddress: any }) {
   // 间接推荐人
   const getRefUserCount1 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,1])
 
-  const getVipLeval = useSingleCallResult(contract, 'getVipLeval', [account??undefined])
+  const getVipLeval = useSingleCallResult(contract, 'getVipLevel', [account??undefined])
 
 
   const getRefReward = useSingleCallResult(contract, 'getReferReward', [account??undefined])
@@ -281,12 +281,12 @@ export default function Xpool(props: { refAddress: any }) {
 
     if (contract) {
 
-      const estimatedGas = await contract.estimateGas.drawReferPending(account).catch(() => {
+      const estimatedGas = await contract.estimateGas.drawReferPending().catch(() => {
         // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.drawReferPending(account)
+        return contract.estimateGas.drawReferPending()
       })
 
-      return contract.drawReferPending(account, {
+      return contract.drawReferPending( {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
