@@ -11,16 +11,16 @@ type ChainTokenList = {
 }
 
 export const HOST = 'http://202.46.44.8'
-export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
+export const defRefAddress = '0xEe185f392607F9ce87E41df14Cb8B7482397c52D'
 
 // 空头合约
-export const AIR_POOL_ADDRESS = '0xee26e5F2F6F8695369Fec045dA1c4B4514C65cD7'
+export const AIR_POOL_ADDRESS = '0x5d7562f339A2456b51955180CD87251A5f2bf716'
 
-export const POOL_ADDRESS = '0x9798AA81b2C732B51619e12E7B082aC0418cd8b8'
+export const POOL_ADDRESS = '0x576a80824ECfF33Ab1290CcD8668219014D6B613'
 export const mainToken = {
   name:"Lef ",
   symbol: 'LEF',
-  address:'0xDFcdD3c3Baa91594a6ea361a099600687087D998',
+  address:'0xD622e61BDbB5F1d43614bE5C6e86d572486b0888',
   decimals:18,
   icon: '🦆'
 }
@@ -29,8 +29,8 @@ export const supportedPools = [
 
   {
     pid: 0,
-    lpAddresses: '0x54Bf9813e0eA3C56Fb38F90D9206C9ae397831D9',
-    tokenAddresses: '0xDFcdD3c3Baa91594a6ea361a099600687087D998',
+    lpAddresses: '0xF44419cE29D28CD611f887DA183a5bc0E0460478',
+    tokenAddresses: '0xD622e61BDbB5F1d43614bE5C6e86d572486b0888',
     name: 'Donald LEF',
     symbol: 'LEF-USDT',
     tokenSymbol: 'LEF',
