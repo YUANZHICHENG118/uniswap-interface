@@ -78,7 +78,7 @@ const RowItemSubTitle = styled.div`
   margin-top: 8px;
   text-align: center;
   .kdcQzs {
-    color: #efe7e7;
+    color: #000;
   }
 `
 
