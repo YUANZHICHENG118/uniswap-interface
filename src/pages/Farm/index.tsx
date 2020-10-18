@@ -249,9 +249,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const stakeBalance1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[1]
   const stakeBalance2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[1]
 
-  const time0=getStakeBalance0 && getStakeBalance0.result&& getStakeBalance0.result[5]
-  const time1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[5]
-  const time2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[5]
+  const time0=getStakeBalance0 && getStakeBalance0.result&& getStakeBalance0.result[4]
+  const time1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[4]
+  const time2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[4]
 
   console.log("time0===",time0)
 
