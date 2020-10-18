@@ -266,11 +266,12 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
 
   console.log("isReg====",isReg)
-  const format=(value:number,decimal:number):any=>{
+  const format=(value:number,decimal:number,t?:number):any=>{
+    if(!t) t=4;
     if(value){
       value=value/Math.pow(10,decimal)
     }
-    return value&&value.toFixed(4) ||"0.0000"
+    return value&&value.toFixed(t) ||"0.0000"
   }
 
   console.log("stakeBalance===",stakeBalance)
@@ -443,7 +444,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>3{t("day")}</RowItemTitle>
-                  <RowItemSubTitle>{t("mystake")}:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("mystake")}:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
 
                   <RowItemSubTitle>{t("myreward")}:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
                   <RowItemSubTitle>
@@ -497,7 +498,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>10{t("day")}</RowItemTitle>
-                  <RowItemSubTitle>{t("mystake")}:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("mystake")}:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
                   <RowItemSubTitle>{t("myreward")}:{format(tokenBalance1&&tokenBalance1.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
@@ -553,7 +554,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>25{t("day")}</RowItemTitle>
-                  <RowItemSubTitle>{t("mystake")}:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("mystake")}:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
                   <RowItemSubTitle>{t("myreward")}:{format(tokenBalance2&&tokenBalance2.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
@@ -606,7 +607,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       <Modal isOpen={visibleModal} onDismiss={()=>setVisibleModal(false)} minHeight={20} maxHeight={390} >
         <WalletBox>
           <h2>
-            {format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)} {token && token.symbol} LP Avaliable
+            {format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8)} {token && token.symbol} LP Avaliable
           </h2>
           <InputRow style={true ? { padding: '0', borderRadius: '8px' } : {}} selected={false}>
             <>

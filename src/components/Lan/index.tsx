@@ -81,8 +81,8 @@ export default function Menu() {
 
   useOnClickOutside(node, open ? toggle : undefined)
   useEffect(() => {
-    const lang = localStorage.getItem('i18nextLng') || 'en'
-    change(lang)
+    //const lang = localStorage.getItem('i18nextLng') || 'en'
+    change("en")
   }, [])
   const change=(lan:string)=>{
     setCurLang(lan)
