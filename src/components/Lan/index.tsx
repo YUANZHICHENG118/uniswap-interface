@@ -61,7 +61,7 @@ const MenuFlyout = styled.span`
 const MenuItem = styled.div`
   flex: 1;
   padding: 0.5rem 0.5rem;
-  color: ${({ theme }) => theme.text2};
+  color: #000;
   :hover {
     color: ${({ theme }) => theme.text1};
     cursor: pointer;
