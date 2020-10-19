@@ -276,7 +276,7 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
           setBalance(data.balance / Math.pow(10, tokens.decimals))
         })
       } else {
-        balanceOf(tokens.address, tokens.lp).then((data: any) => {
+        balanceOf(tokens.lp?tokens.poolAddress:tokens.address, tokens.lp).then((data: any) => {
           console.log("data=====",data,tokens.decimals)
           setBalance(data / Math.pow(10, tokens.decimals))
         })
