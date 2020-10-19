@@ -232,16 +232,21 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const getStakeBalance1 = useSingleCallResult(contract, 'userInfo', [1, account ?? undefined])
   const getStakeBalance2 = useSingleCallResult(contract, 'userInfo', [2, account ?? undefined])
 
-  const getTokenBalance0 = useSingleCallResult(contract, 'pendingLef', [0, account ?? undefined])
-  const getTokenBalance1 = useSingleCallResult(contract, 'pendingLef', [1, account ?? undefined])
-  const getTokenBalance2 = useSingleCallResult(contract, 'pendingLef', [2, account ?? undefined])
+  // const getTokenBalance0 = useSingleCallResult(contract, 'pendingLef', [0, account ?? undefined])
+  // const getTokenBalance1 = useSingleCallResult(contract, 'pendingLef', [1, account ?? undefined])
+  // const getTokenBalance2 = useSingleCallResult(contract, 'pendingLef', [2, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
 
-  const tokenBalance=getTokenBalance0 && getTokenBalance0.result && getTokenBalance0.result[0]
-  const tokenBalance1=getTokenBalance1 && getTokenBalance1.result && getTokenBalance1.result[0]
-  const tokenBalance2=getTokenBalance2 && getTokenBalance2.result && getTokenBalance2.result[0]
+  // const tokenBalance=getTokenBalance0 && getTokenBalance0.result && getTokenBalance0.result[0]
+  // const tokenBalance1=getTokenBalance1 && getTokenBalance1.result && getTokenBalance1.result[0]
+  // const tokenBalance2=getTokenBalance2 && getTokenBalance2.result && getTokenBalance2.result[0]
+
+
+  const tokenBalance="0"
+  const tokenBalance1="0"
+  const tokenBalance2="0"
 
   const stakeBalance=getStakeBalance0 && getStakeBalance0.result&& getStakeBalance0.result[1]
   const stakeBalance1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[1]
@@ -441,7 +446,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemTitle>3{t("day")}</RowItemTitle>
                   <RowItemSubTitle>{t("mystake")}:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
 
-                  <RowItemSubTitle>{t("myreward")}:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("myreward")}:{format(0,mainToken.decimals||18)}</RowItemSubTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">{t("deposit")} {mainToken && mainToken.symbol} LP Token</div>
                   </RowItemSubTitle>
@@ -494,7 +499,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>10{t("day")}</RowItemTitle>
                   <RowItemSubTitle>{t("mystake")}:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
-                  <RowItemSubTitle>{t("myreward")}:{format(tokenBalance1&&tokenBalance1.toString(),mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("myreward")}:{format(0,mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
@@ -550,7 +555,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>25{t("day")}</RowItemTitle>
                   <RowItemSubTitle>{t("mystake")}:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
-                  <RowItemSubTitle>{t("myreward")}:{format(tokenBalance2&&tokenBalance2.toString(),mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("myreward")}:{format(0,mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
