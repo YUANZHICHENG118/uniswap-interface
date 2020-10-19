@@ -401,8 +401,8 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
       </Column>
       <div
         className="button harvestAndUnstake clickableButton "
-        onClick={() => (stakeBalance > 0 && earnedBalance > 0 ? handelExit() : console.error('not balance'))}
-        style={{ color: stakeBalance > 0 && earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
+        onClick={() => (earnedBalance > 0 ? handelExit() : console.error('not balance'))}
+        style={{ color:  earnedBalance > 0 ? '' : 'rgba(209, 0, 75, 0.333)' }}
       >
         {t('HarUnst')}
       </div>
