@@ -5,7 +5,6 @@ import moment from 'moment';
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
-import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 //import { MaxUint256 } from '@ethersproject/constants'
 import Modal from '../../components/Modal'
 import { Input as NumericalInput } from '../../components/NumericalInput'
@@ -206,8 +205,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   } = props
   const {t}=useTranslation()
   const { account } = useActiveWeb3React()
-  const { activate, active }=useWeb3ReactCore()
-  console.log("useWeb3ReactCore===",activate,active)
+
   const [visibleModal, setVisibleModal] = useState<boolean>(false)
   const [stakeAmount, setAmount] = useState<number>(0)
   const [txId, setTxId] = useState<string>("")
@@ -253,14 +251,11 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const time1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[4]
   const time2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[4]
 
-  console.log("time0===",time0)
 
   const _time0=moment(time0&&parseInt(time0.toString())*1000).add(3, 'd')
   const _time1=moment(time1&&parseInt(time1.toString())*1000).add(10, 'd')
   const _time2=moment(time2&&parseInt(time2.toString())*1000).add(25, 'd')
 
-  console.log("time0===",time0&&time0.toString(),time1&&time1.toString(),time2&&time2.toString())
-  console.log("time1===",_time0.valueOf(),_time1.valueOf(),_time2.valueOf())
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
