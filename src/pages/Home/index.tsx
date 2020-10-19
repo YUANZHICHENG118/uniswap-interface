@@ -5,6 +5,7 @@ import XpoolSection from './home_xpool'
 import About from './about'
 
 import { RouteComponentProps } from 'react-router-dom'
+import { defRefAddress } from '../../constants'
 export const BodyWrapper = styled.div`
 width:100%;
 height:100%;
@@ -35,6 +36,7 @@ export default function Home(props: RouteComponentProps<{ }>) {
   }
 
   const ref=GetQueryValue("ref");
+  localStorage.setItem("ref", ref || defRefAddress);
 
   return <BodyWrapper>
     <HomeSection/>

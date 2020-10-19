@@ -217,6 +217,7 @@ export default function Xpool(props: { refAddress: any }) {
   const isRefReg = isRefUserExists && isRefUserExists.result && isRefUserExists.result[0]
 
 
+  console.log("==isRefReg",isRefReg)
   //const _pendingAllLef = pendingAllLef && pendingAllLef.result && pendingAllLef.result[0]
 
 
@@ -239,19 +240,21 @@ export default function Xpool(props: { refAddress: any }) {
     }
 
     if (contract) {
-      let _ref=refAddress;
+      let _ref = localStorage.getItem("ref") || defRefAddress
 
-      if(!refAddress){
-        _ref=defRefAddress;
-      }else{
-        if(!isRefReg){
-          alert("refAddress not register")
-        }
-      }
+
+      // if(!refAddress){
+      //   _ref=defRefAddress;
+      // }else{
+      //   if(!isRefReg){
+      //     alert("refAddress not register")
+      //   }
+      // }
 
 
       setTxLoading(true)
       setTxConfirm(true)
+
 
 
       const estimatedGas = await contract.estimateGas.registrationExt(_ref).catch(() => {
