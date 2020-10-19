@@ -182,7 +182,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   key: 'COCK_TRX',
   symbol: 'COCKTAIL/TRX',
   earn: 'COCK',
-  decimals: 18,
+  decimals: 6,
   earnDecimals: 18,
   coming: false,
   lp: true,
@@ -197,7 +197,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   symbol: 'JFI/TRX',
   earn: 'COCK',
-  decimals: 18,
+  decimals: 6,
   earnDecimals: 18,
   coming: false,
   lp: true,
@@ -212,7 +212,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
 
   symbol: 'SUN/TRX',
   earn: 'COCK',
-  decimals: 18,
+  decimals: 6,
   earnDecimals: 18,
   coming: false,
   lp: true,
