@@ -377,14 +377,23 @@ export default function Menu(props: RouteComponentProps<{ symbol: string }>) {
                   tokens && tokens.lp ? `${tokens.symbol} LP ${t('stake')}` : `${tokens && tokens.symbol} ${t('stake')}`
                 ]}
               >
-                <div
-                  slot="button"
-                  className={allowStake ? 'button clickableButton selectbtn' : 'button clickableButton select'}
-                  onClick={() => (allowStake ? setVisibleModal(true) : handelApprove())}
-                >
-                  {allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}
-                  {allowStake && <span className="hasbg"></span>}
-                </div>
+                {
+                  tokens && !tokens.lp?<div
+                    slot="button"
+                    className={'button clickableButton select'}
+                    style={{ color: 'rgba(209, 0, 75, 0.333)' }}
+                  >
+                    {t('stake')}
+                  </div>:<div
+                    slot="button"
+                    className={allowStake ? 'button clickableButton selectbtn' : 'button clickableButton select'}
+                    onClick={() => (allowStake ? setVisibleModal(true) : handelApprove())}
+                  >
+                    {allowStake ? `${t('stake')}` : `${t('Approve')} ${symbol}`}
+                    {allowStake && <span className="hasbg"></span>}
+                  </div>
+                }
+
               </ItemWrap>
             </DetailItem>
           </Col>
