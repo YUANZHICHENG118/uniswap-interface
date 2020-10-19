@@ -188,7 +188,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: true,
 
   apy: 'infinity',
-  address: 'TE7BRt9GxPoossd1Csyidnai8q4EjsXKs4',
+  address: 'TCWxwQhsphTT2rGmhLHcq46Z6LHssYp67A',
   poolAddress: 'TJFfeZ5CPTAASQidxsWnRfmjBAmJW53aJP',
   exAddress: 'TCWxwQhsphTT2rGmhLHcq46Z6LHssYp67A'
 }, {
@@ -203,7 +203,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: true,
 
   apy: 'infinity',
-  address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
+  address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
   poolAddress: 'TBe56bbcPZSSM4du6q1u6HtzjB7y7ccz1a',
   exAddress: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE'
 }, {
@@ -218,7 +218,7 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   lp: true,
 
   apy: 'infinity',
-  address: 'TKkeiboTkxXKJpbmVFbv4a8ov5rAfRDMf9',
+  address: 'TUEYcyPAqc4hTg1fSuBCPc18vGWcJDECVw',
   poolAddress: 'TDzhqfU4cdpXzwTcR2MKYnAVxd96GuRATG',
   exAddress: 'TUEYcyPAqc4hTg1fSuBCPc18vGWcJDECVw'
 }]
