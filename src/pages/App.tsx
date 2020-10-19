@@ -58,8 +58,8 @@ const SecWrapper = styled.div`
   height: 100px;
 width: 100%;
 position: fixed;
-bottom: 0;
-right:0;
+bottom: 50px;
+right:50px;
 text-align:right
 `
 
