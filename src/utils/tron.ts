@@ -184,13 +184,13 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TEHQqgsjLZgFVJuXiF6srBC7yv7ewApeJo',
-  poolAddress: 'TShP1uAcn3VF2eTpzzNkanmq9CJ6JHWFy9',
-  exAddress: ''
+  address: 'TE7BRt9GxPoossd1Csyidnai8q4EjsXKs4',
+  poolAddress: 'TJFfeZ5CPTAASQidxsWnRfmjBAmJW53aJP',
+  exAddress: 'TCWxwQhsphTT2rGmhLHcq46Z6LHssYp67A'
 }, {
   logo: 'jfitrx',
   key: 'JFI_TRX',
@@ -199,12 +199,12 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE',
-  poolAddress: 'TLuVHVPKhDUfo4TcPnwgYYqCzyZhK7xjiq',
+  address: 'TN7zQd2oCCguSQykZ437tZzLEaGJ7EGyha',
+  poolAddress: 'TBe56bbcPZSSM4du6q1u6HtzjB7y7ccz1a',
   exAddress: 'TA6NMuj45t5yn4SkhqjCmabYGZ1jw3n7EE'
 }, {
   logo: 'suntrx',
@@ -214,13 +214,13 @@ const contractAddress: ITokens[] = process.env.REACT_APP_DEV === '0' ? [{
   earn: 'COCK',
   decimals: 6,
   earnDecimals: 18,
-  coming: true,
+  coming: false,
   lp: true,
 
   apy: 'infinity',
-  address: 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t',
-  poolAddress: 'TFUUtF4zHhjjMJMF9YcDFPr65CJFFhkia2',
-  exAddress: ''
+  address: 'TKkeiboTkxXKJpbmVFbv4a8ov5rAfRDMf9',
+  poolAddress: 'TDzhqfU4cdpXzwTcR2MKYnAVxd96GuRATG',
+  exAddress: 'TUEYcyPAqc4hTg1fSuBCPc18vGWcJDECVw'
 }]
 
 export function contractList(): ITokens[] {
