@@ -5,6 +5,7 @@ import moment from 'moment';
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
+import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 //import { MaxUint256 } from '@ethersproject/constants'
 import Modal from '../../components/Modal'
 import { Input as NumericalInput } from '../../components/NumericalInput'
@@ -205,7 +206,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   } = props
   const {t}=useTranslation()
   const { account } = useActiveWeb3React()
-
+  const { activate, active }=useWeb3ReactCore()
+  console.log("useWeb3ReactCore===",activate,active)
   const [visibleModal, setVisibleModal] = useState<boolean>(false)
   const [stakeAmount, setAmount] = useState<number>(0)
   const [txId, setTxId] = useState<string>("")
@@ -232,21 +234,16 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const getStakeBalance1 = useSingleCallResult(contract, 'userInfo', [1, account ?? undefined])
   const getStakeBalance2 = useSingleCallResult(contract, 'userInfo', [2, account ?? undefined])
 
-  // const getTokenBalance0 = useSingleCallResult(contract, 'pendingLef', [0, account ?? undefined])
-  // const getTokenBalance1 = useSingleCallResult(contract, 'pendingLef', [1, account ?? undefined])
-  // const getTokenBalance2 = useSingleCallResult(contract, 'pendingLef', [2, account ?? undefined])
+  const getTokenBalance0 = useSingleCallResult(contract, 'pendingLef', [0, account ?? undefined])
+  const getTokenBalance1 = useSingleCallResult(contract, 'pendingLef', [1, account ?? undefined])
+  const getTokenBalance2 = useSingleCallResult(contract, 'pendingLef', [2, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
 
-  // const tokenBalance=getTokenBalance0 && getTokenBalance0.result && getTokenBalance0.result[0]
-  // const tokenBalance1=getTokenBalance1 && getTokenBalance1.result && getTokenBalance1.result[0]
-  // const tokenBalance2=getTokenBalance2 && getTokenBalance2.result && getTokenBalance2.result[0]
-
-
-  const tokenBalance="0"
-  const tokenBalance1="0"
-  const tokenBalance2="0"
+  const tokenBalance=getTokenBalance0 && getTokenBalance0.result && getTokenBalance0.result[0]
+  const tokenBalance1=getTokenBalance1 && getTokenBalance1.result && getTokenBalance1.result[0]
+  const tokenBalance2=getTokenBalance2 && getTokenBalance2.result && getTokenBalance2.result[0]
 
   const stakeBalance=getStakeBalance0 && getStakeBalance0.result&& getStakeBalance0.result[1]
   const stakeBalance1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[1]
@@ -256,11 +253,14 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const time1=getStakeBalance1 && getStakeBalance1.result&& getStakeBalance1.result[4]
   const time2=getStakeBalance2 && getStakeBalance2.result&& getStakeBalance2.result[4]
 
+  console.log("time0===",time0)
 
   const _time0=moment(time0&&parseInt(time0.toString())*1000).add(3, 'd')
   const _time1=moment(time1&&parseInt(time1.toString())*1000).add(10, 'd')
   const _time2=moment(time2&&parseInt(time2.toString())*1000).add(25, 'd')
 
+  console.log("time0===",time0&&time0.toString(),time1&&time1.toString(),time2&&time2.toString())
+  console.log("time1===",_time0.valueOf(),_time1.valueOf(),_time2.valueOf())
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
@@ -446,7 +446,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemTitle>3{t("day")}</RowItemTitle>
                   <RowItemSubTitle>{t("mystake")}:{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
 
-                  <RowItemSubTitle>{t("myreward")}:{format(0,mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("myreward")}:{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemSubTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">{t("deposit")} {mainToken && mainToken.symbol} LP Token</div>
                   </RowItemSubTitle>
@@ -466,13 +466,13 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                   <RowItemButton color="#d16c00" font-size="16">
 
-                      {
-                        tokenBalance&&tokenBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                    {
+                      tokenBalance&&tokenBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("getReward")}
                       </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestReward(0):console.log("000")}>
-                          {t("getReward")}
-                        </a>
-                      }
+                        {t("getReward")}
+                      </a>
+                    }
 
                   </RowItemButton>
 
@@ -499,7 +499,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>10{t("day")}</RowItemTitle>
                   <RowItemSubTitle>{t("mystake")}:{format(stakeBalance1&&stakeBalance1.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
-                  <RowItemSubTitle>{t("myreward")}:{format(0,mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("myreward")}:{format(tokenBalance1&&tokenBalance1.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
@@ -555,7 +555,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                   <RowItemTitle>25{t("day")}</RowItemTitle>
                   <RowItemSubTitle>{t("mystake")}:{format(stakeBalance2&&stakeBalance2.toString(),token&&token.decimals||18,8)}</RowItemSubTitle>
-                  <RowItemSubTitle>{t("myreward")}:{format(0,mainToken.decimals||18)}</RowItemSubTitle>
+                  <RowItemSubTitle>{t("myreward")}:{format(tokenBalance2&&tokenBalance2.toString(),mainToken.decimals||18)}</RowItemSubTitle>
 
 
                   <RowItemSubTitle>
