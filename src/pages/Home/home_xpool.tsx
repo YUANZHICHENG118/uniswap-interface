@@ -151,9 +151,9 @@ export default function Xpool(props: { refAddress: any }) {
   const getTokenBalance = useSingleCallResult(tokenContract, 'balanceOf', [account??undefined])
 
 
-  //const pendingAllLef = useSingleCallResult(contract, 'pendingAllLef', [account??undefined])
+  const pendingAllLef = useSingleCallResult(contract, 'pendingAllLef', [account??undefined])
 
- // const getTotalReward = useSingleCallResult(contract, 'allLefAmount', [account??undefined])
+  const getTotalReward = useSingleCallResult(contract, 'allLefAmount', [account??undefined])
   const getUser = useSingleCallResult(contract, 'users', [account??undefined])
 
   const getTotalStake0 = useSingleCallResult(contract, 'poolInfo', [0])
@@ -194,7 +194,7 @@ export default function Xpool(props: { refAddress: any }) {
   const tokenBalance=getTokenBalance && getTokenBalance.result&& getTokenBalance.result[0]
 
   // 矿池总收益
-  //const totalReward=getTotalReward && getTotalReward.result&& getTotalReward.result[0]
+  const totalReward=getTotalReward && getTotalReward.result&& getTotalReward.result[0]
 
 
   // 实时查询推荐人可以获取的所有推荐平台币奖励
@@ -218,7 +218,7 @@ export default function Xpool(props: { refAddress: any }) {
 
 
   console.log("==isRefReg",isRefReg)
-  //const _pendingAllLef = pendingAllLef && pendingAllLef.result && pendingAllLef.result[0]
+  const _pendingAllLef = pendingAllLef && pendingAllLef.result && pendingAllLef.result[0]
 
 
 
@@ -337,11 +337,9 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </BodyWrapper>
 
-            {/*<XpoolItem title={t("index18")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>*/}
-            <XpoolItem title={t("index18")} token={mainToken} amount={format(0,mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index18")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
 
-            {/*<XpoolItem title={t("index19")} token={mainToken} amount={format(_pendingAllLef&&_pendingAllLef.toString(),mainToken&&mainToken.decimals||18)}/>*/}
-            <XpoolItem title={t("index19")} token={mainToken} amount={format(0,mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index19")} token={mainToken} amount={format(_pendingAllLef&&_pendingAllLef.toString(),mainToken&&mainToken.decimals||18)}/>
 
 
           </div>
