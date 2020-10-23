@@ -277,6 +277,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   console.log("stakeBalance===",stakeBalance)
 
   useEffect(()=>{
+    setPid(0)
   },[])
 
   // 授权
@@ -476,17 +477,17 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
                   </RowItemButton>
 
-                  {/*<RowItemButton color="#d16c00" font-size="16">*/}
-                    {/*{*/}
-                      {/*!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >*/}
-                         {/*{t("Approval")}*/}
-                      {/*</span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(0)}}>*/}
-                        {/*{t("stake")}*/}
-                      {/*</a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>*/}
-                        {/*{t("Approval")}*/}
-                      {/*</a>*/}
-                    {/*}*/}
-                  {/*</RowItemButton>*/}
+                  <RowItemButton color="#d16c00" font-size="16">
+                    {
+                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                         {t("Approval")}
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{console.log("111")}}>
+                        {t("stake")}
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                        {t("Approval")}
+                      </a>
+                    }
+                  </RowItemButton>
                 </FlexCenter>
               </RowItemBox>
             </div>
@@ -529,18 +530,18 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     }
 
                   </RowItemButton>
-                  {/*<RowItemButton color="#d16c00" font-size="16">*/}
+                  <RowItemButton color="#d16c00" font-size="16">
 
-                    {/*{*/}
-                      {/*!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >*/}
-                         {/*{t("Approval")}*/}
-                      {/*</span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(1)}}>*/}
-                        {/*{t("stake")}*/}
-                      {/*</a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>*/}
-                        {/*{t("Approval")}*/}
-                      {/*</a>*/}
-                    {/*}*/}
-                  {/*</RowItemButton>*/}
+                    {
+                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                         {t("Approval")}
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{console.log("111")}}>
+                        {t("stake")}
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                        {t("Approval")}
+                      </a>
+                    }
+                  </RowItemButton>
 
                 </FlexCenter>
               </RowItemBox>
@@ -584,18 +585,18 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     }
 
                   </RowItemButton>
-                  {/*<RowItemButton color="#d16c00" font-size="16">*/}
+                  <RowItemButton color="#d16c00" font-size="16">
 
-                    {/*{*/}
-                      {/*!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >*/}
-                         {/*{t("Approval")}*/}
-                      {/*</span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(2)}}>*/}
-                        {/*{t("stake")}*/}
-                      {/*</a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>*/}
-                        {/*{t("Approval")}*/}
-                      {/*</a>*/}
-                    {/*}*/}
-                  {/*</RowItemButton>*/}
+                    {
+                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                         {t("Approval")}
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{console.log("111")}}>
+                        {t("stake")}
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                        {t("Approval")}
+                      </a>
+                    }
+                  </RowItemButton>
 
                 </FlexCenter>
               </RowItemBox>
