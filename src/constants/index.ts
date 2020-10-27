@@ -10,7 +10,7 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const HOST = 'http://www.ringswap.org'
+export const HOST = 'https://www.ringswap.org'
 export const defRefAddress = '0xEe185f392607F9ce87E41df14Cb8B7482397c52D'
 
 // 空头合约
