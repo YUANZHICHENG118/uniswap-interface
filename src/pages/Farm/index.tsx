@@ -277,6 +277,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   console.log("stakeBalance===",stakeBalance)
 
   useEffect(()=>{
+    setPid(0)
   },[])
 
   // 授权
@@ -480,7 +481,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                          {t("Approval")}
-                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{setVisibleModal(true);setPid(0)}}>
+                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>{console.log("111")}}>
                         {t("stake")}
                       </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
                         {t("Approval")}
