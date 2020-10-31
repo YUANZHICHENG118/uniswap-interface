@@ -72,6 +72,13 @@ const StyledNavLink = styled(NavLink)`
     color: rgb(209, 108, 0);
 }
 `
+const NavTitle=styled.a`
+   font-weight: 700;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-decoration: none;
+    color: rgb(170, 149, 133);
+`
 
 const HeaderElementWrap = styled.div`
   display: flex;
@@ -213,6 +220,7 @@ export default function Header() {
           <StyledNavLink to={'/menu'}>{t('pizza')}</StyledNavLink>
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
           <StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>
+          <NavTitle  href={"javascript:void(0)"} onClick={()=>{alert("敬请等待")}}>NFT</NavTitle>
 
 
         </NavElements>

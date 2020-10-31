@@ -260,7 +260,7 @@ export default function Xpool(props: { refAddress: any }) {
           <div className="title_default_light title_border text-center">
             <h4 className="wow animation animated fadeInUp">{mainToken.name} POOL</h4>
             <p className="wow animation animated fadeInUp " data-wow-animation="fadeInUp" data-wow-delay="0.4s">
-              {t("index3")} {mainToken.symbol}, {t("index4")} {mainToken.symbol}
+              {t("index3")} {mainToken.symbol}, {t("index4")} {mainToken.symbol} <a href={"/PizzaSwap.pdf"} target={"_blank"}>{t("audit")}</a>
             </p>
           </div>
         </div>
