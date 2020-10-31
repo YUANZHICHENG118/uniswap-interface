@@ -46,29 +46,30 @@ export const supportedPools = [
     decimals:18,
     icon: '🦆',
     available:true
-  },
-  {
-    pid: 2,
-    lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
-    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
-    name: 'Donald PZ',
-    symbol: 'PZ-MOON',
-    tokenSymbol: 'PIZZA',
-    decimals:18,
-    icon: '🦆',
-    available:false
-  },
-  {
-    pid: 3,
-    lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
-    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
-    name: 'Donald PZ',
-    symbol: 'PZ-NFT',
-    tokenSymbol: 'PIZZA',
-    decimals:18,
-    icon: '🦆',
-    available:false
   }
+  // ,
+  // {
+  //   pid: 2,
+  //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
+  //   tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+  //   name: 'Donald PZ',
+  //   symbol: 'PZ-MOON',
+  //   tokenSymbol: 'PIZZA',
+  //   decimals:18,
+  //   icon: '🦆',
+  //   available:false
+  // },
+  // {
+  //   pid: 3,
+  //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
+  //   tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+  //   name: 'Donald PZ',
+  //   symbol: 'PZ-NFT',
+  //   tokenSymbol: 'PIZZA',
+  //   decimals:18,
+  //   icon: '🦆',
+  //   available:false
+  // }
 ]
 
 export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
