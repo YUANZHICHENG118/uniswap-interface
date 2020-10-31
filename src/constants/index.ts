@@ -11,14 +11,14 @@ type ChainTokenList = {
 }
 
 export const HOST = 'https://www.pizzaswap.net'
-export const defRefAddress = '0x0513Dc7403e074F5C77368eE2819fA3A65b5cf80'
+export const defRefAddress = '0x49e7EC51dC974980ad87D1e509357E0A27a0A68E'
 
 
-export const POOL_ADDRESS = '0xdFBDB4C579eF4B1b20726f0FE1840cA783C7c809'
+export const POOL_ADDRESS = '0x1574F551Cf43BAa51007A49df6dbC6dD0f3ac709'
 export const mainToken = {
   name:"Pizza ",
   symbol: 'PZ',
-  address:'0x6A6C7Cf41CEe2D51E42e8F99DAfC920362fE6c06',
+  address:'0xb02899b895ad5dd975784adde42c92362503a025',
   decimals:18,
   icon: '🦆'
 }
@@ -26,24 +26,48 @@ export const mainToken = {
 export const supportedPools = [
 
   {
-    pid: 0,
-    lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
-    tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
+    pid: 1,
+    lpAddresses: '0x1CE0a1CA7Cc9ed7f5eEE0A94a3665E64767EC9Ea',
+    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
     name: 'Donald PZ',
     symbol: 'PZ-ETH',
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
+    available:true
   },
   {
     pid: 0,
-    lpAddresses: '0x1c5DEe94a34D795f9EEeF830B68B80e44868d316',
-    tokenAddresses: '0x6b175474e89094c44da98b954eedeac495271d0f',
+    lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
+    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
     name: 'Donald PZ',
     symbol: 'PZ-USDT',
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
+    available:true
+  },
+  {
+    pid: 2,
+    lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
+    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+    name: 'Donald PZ',
+    symbol: 'PZ-MOON',
+    tokenSymbol: 'PIZZA',
+    decimals:18,
+    icon: '🦆',
+    available:false
+  },
+  {
+    pid: 3,
+    lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
+    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+    name: 'Donald PZ',
+    symbol: 'PZ-NFT',
+    tokenSymbol: 'PIZZA',
+    decimals:18,
+    icon: '🦆',
+    available:false
   }
 ]
 

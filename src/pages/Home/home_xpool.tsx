@@ -92,30 +92,30 @@ export const BodyWrapper = styled.section`
     }
   }
 `
-
-const StyledBalanceMax = styled.button`
-  height: 28px;
-  background-color: ${({ theme }) => theme.primary5};
-  border: 1px solid ${({ theme }) => theme.primary5};
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-
-  font-weight: 500;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  color: ${({ theme }) => theme.primaryText1};
-  :hover {
-    border: 1px solid ${({ theme }) => theme.primary1};
-  }
-  :focus {
-    border: 1px solid ${({ theme }) => theme.primary1};
-    outline: none;
-  }
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    margin-right: 0.5rem;
-  `};
-`
+//
+// const StyledBalanceMax = styled.button`
+//   height: 28px;
+//   background-color: ${({ theme }) => theme.primary5};
+//   border: 1px solid ${({ theme }) => theme.primary5};
+//   border-radius: 0.5rem;
+//   font-size: 0.875rem;
+//
+//   font-weight: 500;
+//   cursor: pointer;
+//   margin-right: 0.5rem;
+//   color: ${({ theme }) => theme.primaryText1};
+//   :hover {
+//     border: 1px solid ${({ theme }) => theme.primary1};
+//   }
+//   :focus {
+//     border: 1px solid ${({ theme }) => theme.primary1};
+//     outline: none;
+//   }
+//
+//   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+//     margin-right: 0.5rem;
+//   `};
+// `
 
 /**
  * The styled container element that wraps the content of most pages and the tabs.
@@ -149,19 +149,19 @@ export default function Xpool(props: { refAddress: any }) {
   const getLpBalance = useSingleCallResult(lpcontract, 'balanceOf', [POOL_ADDRESS])
   const getLpBalance1 = useSingleCallResult(lpcontract1, 'balanceOf', [POOL_ADDRESS])
   const getTokenBalance = useSingleCallResult(tokenContract, 'balanceOf', [account??undefined])
-  const getTotalReward = useSingleCallResult(contract, 'totalReward', [account??undefined])
-  const getTotalRef = useSingleCallResult(contract, 'users', [account??undefined])
-  const getNotRef = useSingleCallResult(contract, 'refer_pending', [account??undefined])
+  //const getTotalReward = useSingleCallResult(contract, 'totalReward', [account??undefined])
+  //const getTotalRef = useSingleCallResult(contract, 'users', [account??undefined])
+ // const getNotRef = useSingleCallResult(contract, 'refer_pending', [account??undefined])
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const lpBalance1=getLpBalance1 && getLpBalance1.result&& getLpBalance1.result[0]
   const tokenBalance=getTokenBalance && getTokenBalance.result&& getTokenBalance.result[0]
-  const totalReward=getTotalReward && getTotalReward.result&& getTotalReward.result[0]
+ // const totalReward=getTotalReward && getTotalReward.result&& getTotalReward.result[0]
 
   // 待领取
-  const notRef=getNotRef && getNotRef.result&& getNotRef.result[0]
-  // 领取合计
-  const totalRef=getTotalRef && getTotalRef.result&& getTotalRef.result[3]
+  // const notRef=getNotRef && getNotRef.result&& getNotRef.result[0]
+  // // 领取合计
+  // const totalRef=getTotalRef && getTotalRef.result&& getTotalRef.result[3]
 
 
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
@@ -222,35 +222,35 @@ export default function Xpool(props: { refAddress: any }) {
   }
 
   // 领取奖励
-  const receiveRef= async ()=>{
-    if(!account){
-      alert("connect to wallet")
-      return ;
-    }
-
-    if (contract) {
-
-
-      const estimatedGas = await contract.estimateGas.getReferPending(account).catch(() => {
-        // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.getReferPending(account)
-      })
-
-      return contract.getReferPending(account, {
-        gasLimit: calculateGasMargin(estimatedGas)
-      })
-        .then((response: TransactionResponse) => {
-          setTxConfirm(true)
-          setTxId(response.hash)
-          console.log('response====', response)
-        })
-        .catch((error: Error) => {
-          console.debug('Failed to reg token', error)
-          throw error
-        })
-
-    }
-  }
+  // const receiveRef= async ()=>{
+  //   if(!account){
+  //     alert("connect to wallet")
+  //     return ;
+  //   }
+  //
+  //   if (contract) {
+  //
+  //
+  //     const estimatedGas = await contract.estimateGas.getReferPending(account).catch(() => {
+  //       // general fallback for tokens who restrict approval amounts
+  //       return contract.estimateGas.getReferPending(account)
+  //     })
+  //
+  //     return contract.getReferPending(account, {
+  //       gasLimit: calculateGasMargin(estimatedGas)
+  //     })
+  //       .then((response: TransactionResponse) => {
+  //         setTxConfirm(true)
+  //         setTxId(response.hash)
+  //         console.log('response====', response)
+  //       })
+  //       .catch((error: Error) => {
+  //         console.debug('Failed to reg token', error)
+  //         throw error
+  //       })
+  //
+  //   }
+  // }
 
 
   return (
@@ -293,11 +293,11 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </div>
           </div>
-          <div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">
-            <XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>
-            <XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>
-            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>
-          </div>
+          {/*<div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">*/}
+            {/*<XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>*/}
+            {/*<XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>*/}
+            {/*<XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>*/}
+          {/*</div>*/}
           <div className="my-1 pt-1">
             <div className="pool-wrapper ">
               {

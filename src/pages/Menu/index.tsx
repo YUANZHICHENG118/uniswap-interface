@@ -81,24 +81,24 @@ const RowItemSubTitle = styled.div`
     color: #efe7e7;
   }
 `
-const RowItemBottom = styled.div`
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  color: rgb(170, 149, 132);
-  width: 100%;
-  margin-top: 12px;
-  line-height: 32px;
-  font-size: 13px;
-  text-align: center;
-  border-radius: 8px;
-  background: rgb(74 73 72);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(230, 220, 213);
-  border-image: initial;
-  padding: 0px 12px;
-`
+// const RowItemBottom = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   box-sizing: border-box;
+//   color: rgb(170, 149, 132);
+//   width: 100%;
+//   margin-top: 12px;
+//   line-height: 32px;
+//   font-size: 13px;
+//   text-align: center;
+//   border-radius: 8px;
+//   background: rgb(74 73 72);
+//   border-width: 1px;
+//   border-style: solid;
+//   border-color: rgb(230, 220, 213);
+//   border-image: initial;
+//   padding: 0px 12px;
+// `
 const RowItemButton = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.primary5};
@@ -151,14 +151,19 @@ export default function Menu() {
                       <div className="kdcQzs">{t("earn")} {item.tokenSymbol}</div>
                     </RowItemSubTitle>
                     <RowItemButton color="#d16c00" font-size="16">
-                      <a className="sc-AxirZ kRQAGp" href={`/#/Farm/${item.symbol}`}>
-                        Select
-                      </a>
+                      {
+                        item.available?<a className="sc-AxirZ kRQAGp" href={`/#/Farm/${item.symbol}`}>
+                          Select
+                        </a>:<a className="sc-AxirZ kRQAGp" style={{backgroundColor:'#999',color:'#fff', borderRadius:'5px'}} href={"javascript:void(0)"}>
+                          Select
+                        </a>
+                      }
+
                     </RowItemButton>
-                    <RowItemBottom>
-                      <span>APY</span>
-                      <span>0.00%</span>
-                    </RowItemBottom>
+                    {/*<RowItemBottom>*/}
+                      {/*<span>APY</span>*/}
+                      {/*<span>0.00%</span>*/}
+                    {/*</RowItemBottom>*/}
                   </FlexCenter>
                 </RowItemBox>
               </div>
