@@ -11,7 +11,7 @@ type ChainTokenList = {
 }
 
 export const HOST = 'https://www.pizzaswap.net'
-export const defRefAddress = '0x49e7EC51dC974980ad87D1e509357E0A27a0A68E'
+export const defRefAddress = '0x49e39fb0cb1461597436d67119d982ffa0e56688'
 
 
 export const POOL_ADDRESS = '0x1574F551Cf43BAa51007A49df6dbC6dD0f3ac709'
