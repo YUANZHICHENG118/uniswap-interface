@@ -242,7 +242,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
     if(value){
       value=value/Math.pow(10,decimal)
     }
-    return value&&value.toFixed(d||4) ||"0.0000"
+    return value&&value.toFixed(d||4) || parseFloat("0").toFixed(d||4)
   }
 
   console.log("stakeBalance===",stakeBalance)
