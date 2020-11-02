@@ -234,7 +234,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
 
   const tokenBalance=getTokenBalance && getTokenBalance.result && getTokenBalance.result[0]
-  const stakeBalance=getStakeBalance && getStakeBalance.result&& getStakeBalance.result[0]
+  const stakeBalance=getStakeBalance && getStakeBalance.result&& getStakeBalance.result[1]
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
 
