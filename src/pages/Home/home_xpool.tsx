@@ -152,8 +152,8 @@ export default function Xpool(props: { refAddress: any }) {
   //const getTotalReward = useSingleCallResult(contract, 'totalReward', [account??undefined])
  // const getNotRef = useSingleCallResult(contract, 'refer_pending', [account??undefined])
 
-  const getTotalRef1 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,1])
-  const getTotalRef2 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,2])
+  const getTotalRef1 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,0])
+  const getTotalRef2 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,1])
 
 
   const getReferCount = useSingleCallResult(contract, 'getReferCount', [account??undefined])
