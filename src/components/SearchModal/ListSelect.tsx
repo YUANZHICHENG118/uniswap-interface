@@ -365,11 +365,7 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
       <Separator />
 
       <ListContainer>
-        {sortedLists.map(listUrl => {
-
-          console.log("listUrl====",listUrl)
-          return listUrl==="tokens.uniswap.eth"?<ListRow key={listUrl} listUrl={listUrl} onBack={onBack}/>:""
-        })}
+        {sortedLists.map(listUrl => <ListRow key={listUrl} listUrl={listUrl} onBack={onBack}/>)}
       </ListContainer>
       <Separator />
 
