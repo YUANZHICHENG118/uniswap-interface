@@ -25,6 +25,11 @@
         "internalType": "address",
         "name": "_defaultReferAddr",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_projectAddress",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -300,6 +305,25 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getReferCount",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_pid",
         "type": "uint256"
@@ -484,6 +508,19 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "projectAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -704,11 +741,6 @@
       {
         "internalType": "uint256",
         "name": "referReward",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "totalReward",
         "type": "uint256"
       },
       {

@@ -150,8 +150,14 @@ export default function Xpool(props: { refAddress: any }) {
   const getLpBalance1 = useSingleCallResult(lpcontract1, 'balanceOf', [POOL_ADDRESS])
   const getTokenBalance = useSingleCallResult(tokenContract, 'balanceOf', [account??undefined])
   //const getTotalReward = useSingleCallResult(contract, 'totalReward', [account??undefined])
-  //const getTotalRef = useSingleCallResult(contract, 'users', [account??undefined])
  // const getNotRef = useSingleCallResult(contract, 'refer_pending', [account??undefined])
+
+  const getTotalRef1 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,1])
+  const getTotalRef2 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,2])
+
+
+  const getReferCount = useSingleCallResult(contract, 'getReferCount', [account??undefined])
+
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const lpBalance1=getLpBalance1 && getLpBalance1.result&& getLpBalance1.result[0]
@@ -161,7 +167,8 @@ export default function Xpool(props: { refAddress: any }) {
   // 待领取
   // const notRef=getNotRef && getNotRef.result&& getNotRef.result[0]
   // // 领取合计
-  // const totalRef=getTotalRef && getTotalRef.result&& getTotalRef.result[3]
+   const totalRef1=getTotalRef1 && getTotalRef1.result&& getTotalRef1.result[0]
+  const totalRef2=getTotalRef2 && getTotalRef2.result&& getTotalRef2.result[0]
 
 
   const isReg = isUserExists && isUserExists.result && isUserExists.result[0]
@@ -293,11 +300,27 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </div>
           </div>
-          {/*<div className="my-1 row row-cols-1 row-cols-lg-3 m-n1">*/}
-            {/*<XpoolItem title={t("index11")} token={mainToken} amount={format(totalReward&&totalReward.toString(),mainToken&&mainToken.decimals||18)}/>*/}
-            {/*<XpoolItem title={t("index12")} token={mainToken} amount={format(notRef&&notRef.toString(),mainToken&&mainToken.decimals||18)} btn={<>&nbsp;<StyledBalanceMax onClick={()=>notRef&&notRef.toString()==="0"?console.log("notRef"):receiveRef()}>{t("index14")}</StyledBalanceMax></>}/>*/}
-            {/*<XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef&&totalRef.toString(),mainToken&&mainToken.decimals||18)}/>*/}
-          {/*</div>*/}
+          <div className="my-1 row row-cols-1 row-cols-lg-4 m-n1">
+
+            <div className="col p-1">
+              <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
+                <h5>{t("index11")}</h5>
+                <span className="total-lock show-data">{parseInt(getReferCount && getReferCount.result&& getReferCount.result[0]||0)}</span>
+              </div>
+            </div>
+
+            <div className="col p-1">
+              <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
+                <h5>{t("index12")}</h5>
+                <span className="total-lock show-data">{parseInt(getReferCount && getReferCount.result&& getReferCount.result[1]||0)}</span>
+              </div>
+            </div>
+
+
+            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef1&&totalRef1.toString(),mainToken&&mainToken.decimals||18)}/>
+            <XpoolItem title={t("index131")} token={mainToken} amount={format(totalRef2&&totalRef2.toString(),mainToken&&mainToken.decimals||18)}/>
+
+          </div>
           <div className="my-1 pt-1">
             <div className="pool-wrapper ">
               {
