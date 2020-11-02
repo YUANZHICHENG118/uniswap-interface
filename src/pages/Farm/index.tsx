@@ -363,9 +363,9 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       setTxLoading(true)
       setTxConfirm(true)
 
-      const estimatedGas = await contract.estimateGas.withdraw(token && token.pid).catch(() => {
+      const estimatedGas = await contract.estimateGas.getReward(token && token.pid).catch(() => {
         // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.withdraw(token && token.pid)
+        return contract.estimateGas.getReward(token && token.pid)
       })
 
       return contract.getReward(token && token.pid, {
