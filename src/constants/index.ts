@@ -47,18 +47,18 @@ export const supportedPools = [
     icon: '🦆',
     available:true
   }
-  // ,
-  // {
-  //   pid: 2,
-  //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
-  //   tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
-  //   name: 'Donald PZ',
-  //   symbol: 'PZ-MOON',
-  //   tokenSymbol: 'PIZZA',
-  //   decimals:18,
-  //   icon: '🦆',
-  //   available:false
-  // },
+  ,
+  {
+    pid: 2,
+    lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
+    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+    name: 'Donald PZ',
+    symbol: 'PZ-MOON',
+    tokenSymbol: 'PIZZA',
+    decimals:18,
+    icon: '🦆',
+    available:true
+  },
   // {
   //   pid: 3,
   //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
