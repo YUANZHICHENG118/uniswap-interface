@@ -437,7 +437,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
               <RowItemBox>
                 <FlexCenter>
                   <RowItemLogo><img src={require(`../../assets/images/lp/${token&&token.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
-                  <RowItemTitle>{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18)}</RowItemTitle>
+                  <RowItemTitle>{format(stakeBalance&&stakeBalance.toString(),token&&token.decimals||18,8)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">{token && token.symbol} LP Staked</div>
                   </RowItemSubTitle>
@@ -479,7 +479,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 }}
               />
               {account  && (
-                <StyledBalanceMax onClick={()=>setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18))}>MAX</StyledBalanceMax>
+                <StyledBalanceMax onClick={()=>setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8))}>MAX</StyledBalanceMax>
               )}
             </>
 
