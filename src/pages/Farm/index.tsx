@@ -238,11 +238,11 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
 
-  const format=(value:number,decimal:number):any=>{
+  const format=(value:number,decimal:number,d?:number):any=>{
     if(value){
       value=value/Math.pow(10,decimal)
     }
-    return value&&value.toFixed(4) ||"0.0000"
+    return value&&value.toFixed(d||4) ||"0.0000"
   }
 
   console.log("stakeBalance===",stakeBalance)
@@ -467,7 +467,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       <Modal isOpen={visibleModal} onDismiss={()=>setVisibleModal(false)} minHeight={20} maxHeight={390} >
         <WalletBox>
           <h2>
-            {format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)} {token && token.symbol} LP Avaliable
+            {format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8)} {token && token.symbol} LP Avaliable
           </h2>
           <InputRow style={true ? { padding: '0', borderRadius: '8px' } : {}} selected={false}>
             <>
