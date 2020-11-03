@@ -24,17 +24,7 @@ export const mainToken = {
 }
 
 export const supportedPools = [
-  {
-    pid: 0,
-    lpAddresses: '0xa83818Bfd163c0Ce33Ee3147a3688a205499DCC8',
-    tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
-    name: 'Donald PZ',
-    symbol: 'PZ-USDT',
-    tokenSymbol: 'PIZZA',
-    decimals:18,
-    icon: '🦆',
-    available:true
-  },{
+ {
     pid: 1,
     lpAddresses: '0xeE991052F02BccfB3758B80b5A17D629ca81808A',
     tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
@@ -46,6 +36,17 @@ export const supportedPools = [
     available:true
   }
   ,
+  {
+    pid: 0,
+    lpAddresses: '0xa83818Bfd163c0Ce33Ee3147a3688a205499DCC8',
+    tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
+    name: 'Donald PZ',
+    symbol: 'PZ-USDT',
+    tokenSymbol: 'PIZZA',
+    decimals:18,
+    icon: '🦆',
+    available:true
+  },
   {
     pid: 2,
     lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
