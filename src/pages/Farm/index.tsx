@@ -395,7 +395,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
               <RowItemBox>
                 <FlexCenter>
                   <RowItemLogo><img src={require("../../assets/images/lp/pz.png")} height={75}></img></RowItemLogo>
-                  <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18)}</RowItemTitle>
+                  <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),mainToken.decimals||18,8)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>
                   </RowItemSubTitle>
