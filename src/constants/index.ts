@@ -11,37 +11,35 @@ type ChainTokenList = {
 }
 
 export const HOST = 'https://www.pizzaswap.net'
-export const defRefAddress = '0x49e7ec51dc974980ad87d1e509357e0a27a0a68e'
+export const defRefAddress = '0x49e39fB0CB1461597436d67119d982FFa0E56688'
 
 
-export const POOL_ADDRESS = '0xF16C366683b57eA9cd2bA8A1964D110cBAf5dFe9'
+export const POOL_ADDRESS = '0xC1C83369f3F7662bC72370ac98Bd93644EDcf92C'
 export const mainToken = {
   name:"Pizza ",
   symbol: 'PZ',
-  address:'0xb02899b895ad5dd975784adde42c92362503a025',
+  address:'0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
   decimals:18,
   icon: '🦆'
 }
 
 export const supportedPools = [
-
   {
-    pid: 1,
-    lpAddresses: '0x1CE0a1CA7Cc9ed7f5eEE0A94a3665E64767EC9Ea',
-    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+    pid: 0,
+    lpAddresses: '0xa83818Bfd163c0Ce33Ee3147a3688a205499DCC8',
+    tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
     name: 'Donald PZ',
-    symbol: 'PZ-ETH',
+    symbol: 'PZ-USDT',
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
     available:true
-  },
-  {
-    pid: 0,
-    lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
-    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+  },{
+    pid: 1,
+    lpAddresses: '0xeE991052F02BccfB3758B80b5A17D629ca81808A',
+    tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
     name: 'Donald PZ',
-    symbol: 'PZ-USDT',
+    symbol: 'PZ-ETH',
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
@@ -51,7 +49,7 @@ export const supportedPools = [
   {
     pid: 2,
     lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
-    tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+    tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
     name: 'Donald PZ',
     symbol: 'PZ-MOON',
     tokenSymbol: 'PIZZA',
@@ -62,7 +60,7 @@ export const supportedPools = [
   // {
   //   pid: 3,
   //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
-  //   tokenAddresses: '0xb02899b895ad5dd975784adde42c92362503a025',
+  //   tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
   //   name: 'Donald PZ',
   //   symbol: 'PZ-NFT',
   //   tokenSymbol: 'PIZZA',
