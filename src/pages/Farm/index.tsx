@@ -284,6 +284,10 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
 
   }
 
+  const setm=(max:number)=>{
+    return max*0.97
+  }
+
   // 质押
   const stakeHandel= async ()=>{
 
@@ -480,7 +484,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 }}
               />
               {account  && (
-                <StyledBalanceMax onClick={()=>setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,7))}>MAX</StyledBalanceMax>
+                <StyledBalanceMax onClick={()=>setAmount(format(setm(lpBalance&&lpBalance.toString()),token&&token.decimals||18,8))}>MAX</StyledBalanceMax>
               )}
             </>
 
