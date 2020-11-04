@@ -357,34 +357,34 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   }
 
   // 领取奖励
-  const getRewardHandel= async ()=>{
-    if(contract){
-
-      setTxLoading(true)
-      setTxConfirm(true)
-
-      const estimatedGas = await contract.estimateGas.getReward(token && token.pid).catch(() => {
-        // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.getReward(token && token.pid)
-      })
-
-      return contract.getReward(token && token.pid, {
-        gasLimit: calculateGasMargin(estimatedGas)
-      })
-        .then((response: TransactionResponse) => {
-          setTxLoading(false)
-
-          setTxConfirm(true)
-          setTxId(response.hash)
-          console.log("stake response====",response)
-        })
-        .catch((error: Error) => {
-          console.debug('Failed to stake token', error)
-          throw error
-        })
-
-    }
-  }
+  // const getRewardHandel= async ()=>{
+  //   if(contract){
+  //
+  //     setTxLoading(true)
+  //     setTxConfirm(true)
+  //
+  //     const estimatedGas = await contract.estimateGas.getReward(token && token.pid).catch(() => {
+  //       // general fallback for tokens who restrict approval amounts
+  //       return contract.estimateGas.getReward(token && token.pid)
+  //     })
+  //
+  //     return contract.getReward(token && token.pid, {
+  //       gasLimit: calculateGasMargin(estimatedGas)
+  //     })
+  //       .then((response: TransactionResponse) => {
+  //         setTxLoading(false)
+  //
+  //         setTxConfirm(true)
+  //         setTxId(response.hash)
+  //         console.log("stake response====",response)
+  //       })
+  //       .catch((error: Error) => {
+  //         console.debug('Failed to stake token', error)
+  //         throw error
+  //       })
+  //
+  //   }
+  // }
   return (
     <MenuWrap className='container'>
       <MenuTop />
@@ -399,19 +399,19 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {mainToken && mainToken.symbol}</div>
                   </RowItemSubTitle>
-                  <RowItemButton color="#d16c00" font-size="16">
+                  {/*<RowItemButton color="#d16c00" font-size="16">*/}
 
 
 
-                    {
-                      tokenBalance&&tokenBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
-                        {t("index14")}
-                      </span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?getRewardHandel():console.log("000")}>
-                        {t("index14")}
-                      </a>
-                    }
+                    {/*{*/}
+                      {/*tokenBalance&&tokenBalance.toString()==="0"||!account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >*/}
+                        {/*{t("index14")}*/}
+                      {/*</span>:<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?getRewardHandel():console.log("000")}>*/}
+                        {/*{t("index14")}*/}
+                      {/*</a>*/}
+                    {/*}*/}
 
-                  </RowItemButton>
+                  {/*</RowItemButton>*/}
                   <RowItemButton color="#d16c00" font-size="16">
 
 
