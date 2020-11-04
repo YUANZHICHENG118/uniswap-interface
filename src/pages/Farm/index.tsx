@@ -304,7 +304,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
         return contract.estimateGas.deposit(token && token.pid,_amount)
       })
 
-      console.log("estimatedGas====",estimatedGas)
+      // console.log("estimatedGas====",estimatedGas)
+
 
       return contract.deposit(token && token.pid,_amount, {
         gasLimit: calculateGasMargin(estimatedGas)
@@ -479,7 +480,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                 }}
               />
               {account  && (
-                <StyledBalanceMax onClick={()=>setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8))}>MAX</StyledBalanceMax>
+                <StyledBalanceMax onClick={()=>setAmount(format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,7))}>MAX</StyledBalanceMax>
               )}
             </>
 
