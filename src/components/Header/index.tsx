@@ -86,13 +86,13 @@ ${({ theme }) => theme.mediaWidth.upToExtraSmall`
   }
   
 `
-const NavTitle=styled.a`
-   font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
-`
+// const NavTitle=styled.a`
+//    font-weight: 700;
+//     padding-left: 16px;
+//     padding-right: 16px;
+//     text-decoration: none;
+//     color: rgb(170, 149, 133);
+// `
 
 // const TitleText = styled(Row)`
 //   width: fit-content;
@@ -213,7 +213,7 @@ export default function Header() {
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
           <StyledNavLink  to={'/air'} >{t('bear')}</StyledNavLink>
           <StyledNavLink  to={'/about'}>{t('about')}</StyledNavLink>
-          <NavTitle target={"_blank"} href={"http://202.46.44.8:8081/"}>V1</NavTitle>
+          {/*<NavTitle target={"_blank"} href={"http://202.46.44.8:8081/"}>V1</NavTitle>*/}
 
         </NavElements>
         <HeaderControls>
