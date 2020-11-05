@@ -213,6 +213,8 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
   const [txLoading, setTxLoading] = useState<boolean>(false)
 
   const onChange = (e: any) => {
+    let b=format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8);
+    if(e>=b) e=(b*0.97).toFixed(8);
     setAmount(e)
   }
   const token = supportedPools.find(x => x.symbol === symbol)
@@ -296,6 +298,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
       return ;
     }
     if(contract){
+
 
 
       let value=new BigNumber(stakeAmount*Math.pow(10,token &&token.decimals||18))

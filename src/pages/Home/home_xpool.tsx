@@ -305,14 +305,14 @@ export default function Xpool(props: { refAddress: any }) {
             <div className="col p-1">
               <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
                 <h5>{t("index11")}</h5>
-                <span className="total-lock show-data">{parseInt(getReferCount && getReferCount.result&& getReferCount.result[0]||0)}</span>
+                <span className="total-lock show-data">{parseInt(getReferCount && getReferCount.result&& getReferCount.result[0][0]||0)}</span>
               </div>
             </div>
 
             <div className="col p-1">
               <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
                 <h5>{t("index12")}</h5>
-                <span className="total-lock show-data">{parseInt(getReferCount && getReferCount.result&& getReferCount.result[1]||0)}</span>
+                <span className="total-lock show-data">{parseInt(getReferCount && getReferCount.result&& getReferCount.result[0][1]||0)}</span>
               </div>
             </div>
 
