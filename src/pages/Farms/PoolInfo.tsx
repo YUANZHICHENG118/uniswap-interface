@@ -105,7 +105,7 @@ export default function PoolInfo(props: any) {
   const { token } = props
 
   const [data, setData] = useState<number>()
-  const [end, setEnd] = useState<boolean>(false)
+  const [end, setEnd] = useState<boolean>(true)
   const [_startTime, setStartTime] = useState<number>()
   const [start, setStart] = useState<boolean>(false)
 
