@@ -316,9 +316,21 @@ export default function Xpool(props: { refAddress: any }) {
               </div>
             </div>
 
+            <div className="col p-1">
+              <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
+                <h5>{t("index13")}</h5>
+                <span className="total-lock show-data">{format(totalRef1&&totalRef1.toString(),mainToken&&mainToken.decimals||18)} LP</span>
+              </div>
+            </div>
 
-            <XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef1&&totalRef1.toString(),mainToken&&mainToken.decimals||18)}/>
-            <XpoolItem title={t("index131")} token={mainToken} amount={format(totalRef2&&totalRef2.toString(),mainToken&&mainToken.decimals||18)}/>
+            <div className="col p-1">
+              <div className="wow bg-white-tran radius_box token_sale_box_white text_white text-center animation animated fadeInUp">
+                <h5>{t("index131")}</h5>
+                <span className="total-lock show-data">{format(totalRef2&&totalRef2.toString(),mainToken&&mainToken.decimals||18)} LP</span>
+              </div>
+            </div>
+            {/*<XpoolItem title={t("index13")} token={mainToken} amount={format(totalRef1&&totalRef1.toString(),mainToken&&mainToken.decimals||18)}/>*/}
+            {/*<XpoolItem title={t("index131")} token={mainToken} amount={format(totalRef2&&totalRef2.toString(),mainToken&&mainToken.decimals||18)}/>*/}
 
           </div>
           <div className="my-1 pt-1">
