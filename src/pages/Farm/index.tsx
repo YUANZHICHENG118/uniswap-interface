@@ -458,7 +458,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       stakeBalance&&stakeBalance.toString()==="0"||!account||!time0?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>: <Countdown date={_time0&&_time0.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(0):console.log("000")}>
+                      </span>: <Countdown date={_time0&&_time0.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>console.log("000")}>
                         {t("Harvest")}
                       </a></Countdown>
                     }
@@ -513,7 +513,7 @@ export default function Farm(props: RouteComponentProps<{ symbol: string }>) {
                     {
                       stakeBalance1&&stakeBalance1.toString()==="0"||!account||!time1?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
                         {t("Harvest")}
-                      </span>:<Countdown date={_time1&&_time1.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?harvestHandel(1):console.log("000")}>
+                      </span>:<Countdown date={_time1&&_time1.valueOf()} renderer={renderer}><a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>console.log("000")}>
                         {t("Harvest")}
                       </a></Countdown>
                     }
