@@ -22,7 +22,7 @@ import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redir
 import Home from './Home'
 import Menu from './Menu'
 import About from './About'
-
+import Subscription from './Subscription'
 import Swap from './Swap'
 import Farm from './Farm'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
@@ -79,6 +79,7 @@ export default function App() {
                 <Route exact strict path="/home" component={Home} />
                 <Route exact strict path="/Menu" component={Menu} />
                 <Route exact strict path="/about" component={About} />
+                <Route exact strict path="/subscription" component={Subscription} />
 
                 <Route exact strict path="/Farm/:symbol" component={Farm} />
 
