@@ -72,3 +72,7 @@ export const TradeWrapper = styled.div`
 
 }
 `
+
+export const SubscriptionItems=styled.div`
+
+`

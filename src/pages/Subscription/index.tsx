@@ -5,7 +5,8 @@ import LogoDark from '../../assets/images/logo.png'
 import Wordmark from '../../assets/images/logoTitle.png'
 import WordmarkDark from '../../assets/images/logoTitle.png'
 import { useDarkModeManager } from '../../state/user/hooks'
-import {TradeWrapper} from './styled';
+import {TradeWrapper,SubscriptionItems} from './styled';
+import SubscriptionListItem from './components/subscriptionListItem';
 export const BodyWrapper = styled.div`
 .btn-default{
     width: 200px;
@@ -142,5 +143,14 @@ export default function Subscription() {
         </div>
       </div>
     </TradeWrapper>
+    <SubscriptionItems>
+      <SubscriptionListItem title='我的资产'>
+        <div className="head">
+
+        </div>
+      </SubscriptionListItem>
+      <SubscriptionListItem title='推荐奖励'></SubscriptionListItem>
+      <SubscriptionListItem title='成为超级合伙人'></SubscriptionListItem>
+    </SubscriptionItems>
   </BodyWrapper>
 }
