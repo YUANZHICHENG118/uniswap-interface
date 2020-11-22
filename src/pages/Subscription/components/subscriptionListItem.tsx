@@ -20,6 +20,7 @@ export const SubscriptionItemWrapper = styled.div`
     border: 2px solid #333333;
     padding:44px 0 56px;
  }
+ 
 `
 
 export default function SubscriptionListItem({title, children }: {title:string, children: React.ReactNode }) {

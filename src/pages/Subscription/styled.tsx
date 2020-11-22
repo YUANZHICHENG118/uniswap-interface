@@ -76,3 +76,48 @@ export const TradeWrapper = styled.div`
 export const SubscriptionItems=styled.div`
 
 `
+export const AccountWrap=styled.div`
+  display:flex;
+  justify-content: space-around;
+  .divider{
+    width:1px;
+    background:#343434;
+  }
+  .left,.right{
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+  }
+  .left{
+    .number{
+      font-size: 60px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      color: #EBAA00;
+      margin-top:20px;
+      display:inline-block;
+    }
+    .unit{
+      font-size: 18px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color:rgba(255,255,255,0.6)
+    }
+}
+.right{
+ .address{
+    font-size: 21px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #FFB800;
+    margin:16px 0 32px;
+ }
+ .btn-default{
+   width:100%;
+ }
+}
+`
+export const InviteWrap=styled.div`
+
+`
