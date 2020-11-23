@@ -4,11 +4,18 @@ import Modal from '../../../components/Modal'
 
 export const Wrapper=styled.div`
 padding:30px 4%;
+display:flex;
+flex-direction:column;
+width:100%;
+.text-center{
+text-align:center;
+}
 .title{
-font-size: 28px;
-font-family: PingFangSC-Medium, PingFang SC;
-font-weight: 500;
-color: #FFFFFF;
+  font-size: 28px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin-bottom:22px;
 }
 .btn-default{
     width: 100%;
@@ -27,6 +34,12 @@ color: #FFFFFF;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 16px;
     border: 1px solid #666666;
+    padding:27px 4% 23px;
+    margin-bottom:30px;
+  }
+  .down-arrow{
+   margin-bottom:30px;
+   font-size:30px;
   }
 
 `
@@ -37,10 +50,20 @@ interface SubscriptionModalProps {
 export default function AppBody({ isOpen,onDismiss }: SubscriptionModalProps) {
   return <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
     <Wrapper>
-     <div className="title">认购</div>
-      <div className="bg-item"></div>
-      <div className="down-arrow"></div>
-      <div className="bg-item"></div>
+     <div className="title text-center">认购</div>
+      <div className="bg-item">
+        <div>从</div>
+        <div>
+          <span className="left"></span>
+        </div>
+      </div>
+      <div className="down-arrow text-center">↓</div>
+      <div className="bg-item">
+        <div>至</div>
+        <div>
+          <span className="left"></span>
+        </div>
+      </div>
       <div className="btnbox">
         <button className='btn btn-default'>兑换</button>
       </div>
