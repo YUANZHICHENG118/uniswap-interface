@@ -73,12 +73,13 @@ export const TradeWrapper = styled.div`
 }
 `
 
-export const SubscriptionItems=styled.div`
+export const SubscriptionItems = styled.div`
 
 `
-export const AccountWrap=styled.div`
+export const AccountWrap = styled.div`
   display:flex;
   justify-content: space-around;
+  padding:44px 0 56px;
   .divider{
     width:1px;
     background:#343434;
@@ -118,6 +119,53 @@ export const AccountWrap=styled.div`
  }
 }
 `
-export const InviteWrap=styled.div`
+export const InviteWrap = styled.div`
+
+`
+export const PartnerWrap = styled.div`
+  display:flex;
+  .partner-item{
+     width:50%;
+    border-radius: 18px;
+    padding:50px 58px;
+    .content{
+     margin:30px 0 47px;
+     .tip{
+        font-size: 16px;
+        font-family: PingFang-SC-Heavy, PingFang-SC;
+        font-weight: 800;
+        color: #999999;
+      span{
+        color:#EBAA00;
+      }
+     }
+    }
+    .advantage{
+      margin:20px 0;
+      .advantage-item{
+        font-size: 24px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color:rgba(255,255,255,0.65);
+        line-height:50px;
+        .big{
+        font-size: 36px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #EBAA00;
+        margin-left:10px;
+        }
+      }
+    }
+    .title{
+      font-size: 36px;
+      font-family: PingFang-SC-Heavy, PingFang-SC;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+   &:hover{
+     background: linear-gradient(313deg, rgba(97, 94, 94, 0.03) 0%, rgba(255, 255, 255, 0.16) 100%);
+   }
+  }
 
 `

@@ -18,7 +18,6 @@ export const SubscriptionItemWrapper = styled.div`
     margin-top:48px;
     border-radius: 16px;
     border: 2px solid #333333;
-    padding:44px 0 56px;
  }
  
 `

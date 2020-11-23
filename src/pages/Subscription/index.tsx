@@ -5,7 +5,7 @@ import LogoDark from '../../assets/images/logo.png'
 import Wordmark from '../../assets/images/logoTitle.png'
 import WordmarkDark from '../../assets/images/logoTitle.png'
 import { useDarkModeManager } from '../../state/user/hooks'
-import {TradeWrapper,SubscriptionItems,AccountWrap} from './styled';
+import {TradeWrapper,SubscriptionItems,AccountWrap,InviteWrap,PartnerWrap} from './styled';
 import SubscriptionListItem from './components/subscriptionListItem';
 export const BodyWrapper = styled.div`
 .btn-default{
@@ -159,10 +159,48 @@ export default function Subscription() {
         </AccountWrap>
       </SubscriptionListItem>
       <SubscriptionListItem title='推荐奖励'>
-        <div></div>
+        <InviteWrap>
+          <div>推荐邀请人</div>
+          <div>
+            Search name or paste address（邀请人地址
+            <button>复制</button>
+          </div>
+          <div>
+            直接推荐收益为 <span>20%</span>
+            ，间接收益为 <span>15%</span>
+          </div>
+        </InviteWrap>
       </SubscriptionListItem>
       <SubscriptionListItem title='成为超级合伙人'>
-        <div></div>
+        <PartnerWrap>
+          <div className="partner-item">
+            <div className='title'>加入我们</div>
+            <div className='advantage'>
+              <div className='advantage-item'><span>收益</span><span className='big'>15 <i>%</i></span></div>
+              <div className='advantage-item'><span>代数</span><span className='big'>无限代</span></div>
+              <div className='advantage-item'><span>仅需支付</span><span className='big'>2 ETH</span></div>
+            </div>
+            <button className='btn btn-default'>成为超级合伙人</button>
+          </div>
+          <div className="partner-item">
+            <div className='title'>我的合伙人收益</div>
+            <div className='content'>
+              <div>
+                <div>可提取推荐奖励</div>
+                <div>
+                  <span><b>0.000</b>ETH</span>
+                  <span>收益明细 &gt;</span>
+                </div>
+
+              </div>
+              <div className='tip'>
+                <span>PZS</span>
+                <span>可提取推荐奖励</span>
+              </div>
+            </div>
+            <button className='btn btn-default'>提取</button>
+          </div>
+        </PartnerWrap>
       </SubscriptionListItem>
     </SubscriptionItems>
   </BodyWrapper>
