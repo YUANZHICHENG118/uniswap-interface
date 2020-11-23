@@ -130,12 +130,25 @@ export const PartnerWrap = styled.div`
     padding:50px 58px;
     .content{
      margin:30px 0 47px;
+     .profit{
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 16px;
+        opacity: 0.6;
+        border: 1px solid #666666;
+        .head{
+          font-size: 21px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: rgba(255,255,255,.7);
+        }
+     }
      .tip{
         font-size: 16px;
         font-family: PingFang-SC-Heavy, PingFang-SC;
         font-weight: 800;
         color: #999999;
-      span{
+        margin-top:7px;
+      .themeColor{
         color:#EBAA00;
       }
      }

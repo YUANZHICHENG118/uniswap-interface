@@ -188,8 +188,8 @@ export default function Subscription() {
           <div className="partner-item">
             <div className='title'>我的合伙人收益</div>
             <div className='content'>
-              <div>
-                <div>可提取推荐奖励</div>
+              <div className="profit">
+                <div className='head'>可提收益</div>
                 <div>
                   <span><b>0.000</b>ETH</span>
                   <span>收益明细 &gt;</span>
@@ -197,7 +197,7 @@ export default function Subscription() {
 
               </div>
               <div className='tip'>
-                <span>PZS</span>
+                <span className="themeColor">PZS</span>
                 <span>可提取推荐奖励</span>
               </div>
             </div>
