@@ -147,7 +147,7 @@ export default function Subscription() {
       </div>
       <HistoryWrap className='history'>
         <div className="head">
-          <span></span>
+          <span className='circle-icon'><i/><i/><i/></span>
           <span>最近交易记录</span>
         </div>
         <div className="history-table">

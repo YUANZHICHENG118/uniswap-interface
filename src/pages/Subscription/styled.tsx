@@ -6,7 +6,6 @@ export const TradeWrapper = styled.div`
 .history{
   background: rgba(0, 0, 0, 0.6);
   border-radius: 14px;
-  opacity: 0.6;
   border: 1px solid #666666;
   margin-left:100px;
 .table-tr{
@@ -19,16 +18,6 @@ export const TradeWrapper = styled.div`
   color:#EBAA00;
   font-weight:600;
 }
-.head{
-  border-bottom:1px solid #ddd;
-  display:flex;
-  justify-content:space-between;
-  font-size: 18px;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: rgba(255,255,255,.65);
-  line-height:50px;
-  }
 }
 .countDown{
   h3{
@@ -45,7 +34,6 @@ export const TradeWrapper = styled.div`
 .time-item{
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.01) 100%);
   border-radius: 10px;
-  opacity: 0.5;
   display:flex;
   flex-direction:column;
   margin-right:17px;
@@ -145,7 +133,7 @@ export const PartnerWrap = styled.div`
   .partner-item{
      width:50%;
      border-radius: 18px;
-     padding:50px 58px;
+     padding:50px 5%;
     .content{
       margin:30px 0 47px;
       .profit{
@@ -158,6 +146,7 @@ export const PartnerWrap = styled.div`
           font-size: 16px;
           color:rgba(255,255,255,.7);
           align-items:flex-end;
+          margin-top:15px;
         .value{
           font-size: 42px;
         }
@@ -175,6 +164,7 @@ export const PartnerWrap = styled.div`
         font-weight: 800;
         color: #999999;
         margin-top:7px;
+        padding-left:8%;
      }
     }
     .advantage{
@@ -184,7 +174,7 @@ export const PartnerWrap = styled.div`
         font-family: PingFangSC-Medium, PingFang SC;
         font-weight: 500;
         color:rgba(255,255,255,0.65);
-        line-height:50px;
+        line-height:55px;
         img{
           width:35px;
           margin-right:10px;
@@ -270,6 +260,35 @@ export const SummaryWrap=styled.div`
 export const HistoryWrap=styled.div`
   padding:12px 3% 25px;
   width:50%;
+  .head{
+    border-bottom:1px solid #ddd;
+    display:flex;
+    justify-content:space-between;
+    font-size: 18px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: rgba(255,255,255,.65);
+    line-height:50px;
+    .circle-icon{
+      i{
+        width: 12px;
+        height: 12px;
+        border-radius:50%;
+        display:inline-block;
+        margin-right:10px;
+        &:first-child{
+          background:#D95852;
+        }
+        &:nth-child(2){
+          background:#D8A62B;
+        }
+        &:last-child{
+          background:#36B649;
+          margin-right:0px;
+        }
+      }
+    }
+  }
   .table-head{
    padding:20px 0;
   }
