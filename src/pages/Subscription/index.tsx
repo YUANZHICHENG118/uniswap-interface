@@ -31,8 +31,8 @@ export default function Subscription() {
   const [isDark] = useDarkModeManager()
   return <BodyWrapper className='container'>
     <div className="logo-box">
-      <img src={isDark ? LogoDark : Logo} height={92} alt=""/>
-      <img style={{ marginLeft: '4px', marginTop: '4px' }} height={92} src={isDark ? WordmarkDark : Wordmark}
+      <img src={isDark ? LogoDark : Logo} height={100} alt=""/>
+      <img style={{ marginLeft: '14px'}} height={80} src={isDark ? WordmarkDark : Wordmark}
            alt="logo"/>
     </div>
     <div className="statistic">
