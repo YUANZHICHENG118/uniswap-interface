@@ -441,6 +441,7 @@ export const BodyWrapper = styled.div`
     display:inline-flex;
     align-items: center;
     justify-content: center;
+    cursor:pointer;
   }
   .logo-box{
     text-align:center;

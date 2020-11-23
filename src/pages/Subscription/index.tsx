@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 
 import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
@@ -8,6 +8,7 @@ import checkIcon from '../../assets/images/subscription/check.png'
 import ArrowWhite from '../../assets/images/subscription/arrow-white.png'
 
 import Copy from '../../components/AccountDetails/Copy'
+import SubscriptionModal from './components/subscriptionModal'
 import { useDarkModeManager } from '../../state/user/hooks'
 
 import {
@@ -23,6 +24,10 @@ import SubscriptionListItem from './components/subscriptionListItem'
 
 
 export default function Subscription() {
+  const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
+  const handleSubscriptionDismiss = useCallback(()=>{
+    setSubscriptionModal(false);
+  },[setSubscriptionModal])
   const [isDark] = useDarkModeManager()
   return <BodyWrapper className='container'>
     <div className="logo-box">
@@ -42,7 +47,7 @@ export default function Subscription() {
         </div>
       </div>
       <div className="btn-box">
-        <span className="btn-default btn-radius">认购</span>
+        <span className="btn-default btn-radius" onClick={()=>setSubscriptionModal(true)}>认购</span>
       </div>
       <div className="getmore">
         <span>了解详情 &gt;</span>
@@ -200,5 +205,9 @@ export default function Subscription() {
         </PartnerWrap>
       </SubscriptionListItem>
     </SubscriptionItems>
+    <SubscriptionModal
+      isOpen={showSubscriptionModal}
+      onDismiss={handleSubscriptionDismiss}
+    />
   </BodyWrapper>
 }

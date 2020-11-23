@@ -13,6 +13,7 @@ export const BodyWrapper = styled.div`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
    width:90%;
   `};
+  
 `
 
 /**
