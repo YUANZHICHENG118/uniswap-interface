@@ -10,9 +10,13 @@ import ArrowWhite from '../../assets/images/subscription/arrow-white.png'
 
 import Copy from '../../components/AccountDetails/Copy'
 import { useDarkModeManager } from '../../state/user/hooks'
-import {TradeWrapper,SubscriptionItems,AccountWrap,InviteWrap,PartnerWrap} from './styled';
+import {TradeWrapper,SubscriptionItems,AccountWrap,InviteWrap,PartnerWrap,SummaryWrap,GatherWrap,HistoryWrap} from './styled';
 import SubscriptionListItem from './components/subscriptionListItem';
 export const BodyWrapper = styled.div`
+  .flex-column{
+    display:flex;
+    flex-direction:column;
+  }
   .flex-between{
     display:flex;
     justify-content: space-between;
@@ -95,7 +99,7 @@ export const BodyWrapper = styled.div`
 
 export default function Subscription() {
   const [isDark] = useDarkModeManager()
-  return <BodyWrapper>
+  return <BodyWrapper className='container'>
     <div className="logo-box">
       <img src={isDark ? LogoDark : Logo} height={92} alt=""/>
       <img style={{ marginLeft: '4px', marginTop: '4px' }} height={92} src={isDark ? WordmarkDark : Wordmark}
@@ -119,7 +123,7 @@ export default function Subscription() {
         <span>了解详情 &gt;</span>
       </div>
     </div>
-    <TradeWrapper>
+    <TradeWrapper className='flex-between'>
       <div className='countDown'>
         <h3>认购倒计时</h3>
         <div className="time-box">
@@ -141,29 +145,29 @@ export default function Subscription() {
           </div>
         </div>
       </div>
-      <div className='history'>
+      <HistoryWrap className='history'>
         <div className="head">
           <span></span>
           <span>最近交易记录</span>
         </div>
         <div className="history-table">
           <div className='table-tr table-head'>
-            <span>VALUE</span>
-            <span>DATE</span>
-            <span>TX</span>
+            <span className="value">VALUE</span>
+            <span className='date'>DATE</span>
+            <span className='tx'>TX</span>
           </div>
           {
             [1,1,1,1,1].map(()=>{
              return <div className='table-tr'>
-                <span>+5 <i>PZS</i></span>
-                <span>2020-07-20 20:00</span>
-                <span>0x81b7e08f65bdf5648606c89998a9cc8164397647</span>
+                <span  className="value">+5 <i>PZS</i></span>
+                <span className='date'>2020-07-20 20:00</span>
+                <span  className='tx'>0x81b7e08f65bdf5648606c</span>
               </div>
             })
           }
 
         </div>
-      </div>
+      </HistoryWrap>
     </TradeWrapper>
     <SubscriptionItems>
       <SubscriptionListItem title='我的资产'>
@@ -195,7 +199,27 @@ export default function Subscription() {
           </div>
         </InviteWrap>
         <PartnerWrap className='border-wrap'>
-          <div className="partner-item"></div>
+          <div className="partner-item">
+            <div className='white-title'> <img src={ArrowWhite} alt=""/>推荐统计</div>
+            <GatherWrap className='gather-box'>
+              <div className="value"><span>16529</span> <span className='unit'>ETH</span></div>
+              <div className="label">累计收益</div>
+            </GatherWrap>
+            <SummaryWrap className="Summary flex-between">
+              <div className="summary-item flex-column">
+                <span className='summary-item-value'>1659</span>
+                <span className="summary-item-label">直接推荐</span>
+              </div>
+              <div className="summary-item flex-column">
+                <span className='summary-item-value'>1659</span>
+                <span className="summary-item-label">间接推荐</span>
+              </div>
+              <div className="summary-item flex-column">
+                <span className='summary-item-value'>16529</span>
+                <span className="summary-item-label">团队总人数</span>
+              </div>
+            </SummaryWrap>
+          </div>
           <div className="partner-item">
             <div className='white-title'> <img src={ArrowWhite} alt=""/>我的佣金</div>
             <div className='content'>

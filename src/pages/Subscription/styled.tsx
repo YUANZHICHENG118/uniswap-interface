@@ -8,7 +8,6 @@ export const TradeWrapper = styled.div`
   border-radius: 14px;
   opacity: 0.6;
   border: 1px solid #666666;
-  padding:20px;
   margin-left:100px;
 .table-tr{
   font-size: 14px;
@@ -204,4 +203,92 @@ export const PartnerWrap = styled.div`
    }
   }
 
+`
+export const GatherWrap=styled.div`
+  margin-top:30px;
+  margin-bottom:28px;
+  .value{
+    font-size: 60px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #EBAA00;
+    position:relative;
+    padding-bottom:8px;
+    &:after{
+    content:'';
+     position:absolute;
+     width: 50px;
+     height: 2px;
+     background: #EBAA00;
+     display:inline-block;
+      bottom:0;
+      left:0;
+    }
+    .unit{
+      font-size: 18px;
+      color: rgba(255,255,255,.7);
+    }
+  }
+  .label{
+    font-size: 21px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: rgba(255,255,255,.7);
+    margin-top:10px;
+  }
+`;
+export const SummaryWrap=styled.div`
+.summary-item{
+  .summary-item-value{
+    font-size: 42px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #FFFFFF;
+    position:relative;
+    padding-bottom:8px
+    &:after{
+      content:'';
+      width: 50px;
+      height: 2px;
+      background: #EBAA00;
+      display:inline-block;
+      position:absolute;
+      bottom:0;
+      left:0;
+    }
+  }
+  .summary-item-label{
+    font-size: 18px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color:rgba(255,255,255,.6);
+    margin-top:10px;
+  }
+}
+
+`
+export const HistoryWrap=styled.div`
+  padding:12px 3% 25px;
+  width:50%;
+  .table-head{
+   padding:20px 0;
+  }
+  .table-tr{
+    line-height:30px;
+    i{
+      font-style: normal;
+    }
+    span{
+      display:inline-block;
+    }
+    .value{
+      width:20%;
+    }
+    .date{
+     width:40%;
+    }
+    .tx{
+      width:40%
+    }
+  }
 `
