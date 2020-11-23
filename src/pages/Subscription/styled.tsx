@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-
+import leftBg from '../../assets/images/subscription/leftBg.png';
+import rightBg from '../../assets/images/subscription/rightbg.png';
 export const TradeWrapper = styled.div`
   display:flex;
   margin-top:168px;
@@ -7,7 +8,6 @@ export const TradeWrapper = styled.div`
   background: rgba(0, 0, 0, 0.6);
   border-radius: 14px;
   border: 1px solid #666666;
-  margin-left:100px;
 .table-tr{
   font-size: 14px;
   font-family: PingFangSC-Regular, PingFang SC;
@@ -310,4 +310,96 @@ export const HistoryWrap=styled.div`
       width:40%
     }
   }
+`
+export const LeftWithBg=styled.div`
+background:url(${leftBg}) no-repeat left top;
+
+`
+export const RightWithBg=styled.div`
+background:url(${rightBg}) no-repeat left top;
+`
+export const BodyWrapper = styled.div`
+  .flex-column{
+    display:flex;
+    flex-direction:column;
+  }
+  .flex-between{
+    display:flex;
+    justify-content: space-between;
+  }
+  .themeColor{
+    color:#EBAA00;
+  }
+  .white-title{
+    font-size: 36px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: #FFFFFF;
+    img{
+      margin-right:15px;
+      width:25px;
+    }
+  }
+  .btn-default{
+    width: 200px;
+    height: 47px;
+    background: linear-gradient(270deg, #E6A600 0%, #FFB800 100%);
+    border-radius: 39px;
+    font-size:18px;
+    color: #333333;
+    font-weight: 600;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-box{
+    text-align:center;  
+  }
+  .statistic{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    .getmore{
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+      margin-top:10px;
+    }
+    .btn-box{
+      margin-top:30px;
+    }
+    .process{
+        margin-top:30px;
+        width:500px;
+        max-width:100%;
+      .outer{
+        height: 12px;
+        border-radius: 6px;
+        border: 2px solid #FFFFFF;
+        position:relative;
+      }
+      .inner{
+        background: #FFFFFF;
+        box-shadow: 0px 0px 16px 4px rgba(255, 255, 255, 0.86);
+        border-radius: 6px;
+        height:100%;
+        position:absolute;
+      }
+    } 
+  .number-box{
+    font-size: 21px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color:rgba(255,255,255,.7);
+    margin-top:70px;
+    .number{
+      font-size: 48px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      color: #EBAA00;
+      margin-right:10px;
+    }
+  }
+}
 `
