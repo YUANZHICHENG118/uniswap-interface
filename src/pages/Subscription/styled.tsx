@@ -126,11 +126,11 @@ export const PartnerWrap = styled.div`
   display:flex;
   .partner-item{
      width:50%;
-    border-radius: 18px;
-    padding:50px 58px;
+     border-radius: 18px;
+     padding:50px 58px;
     .content{
-     margin:30px 0 47px;
-     .profit{
+      margin:30px 0 47px;
+      .profit{
         background: rgba(0, 0, 0, 0.6);
         border-radius: 16px;
         opacity: 0.6;
@@ -179,6 +179,10 @@ export const PartnerWrap = styled.div`
       font-family: PingFang-SC-Heavy, PingFang-SC;
       font-weight: 800;
       color: #FFFFFF;
+      img{
+        margin-right:15px;
+        width:25px;
+      }
     }
    &:hover{
      background: linear-gradient(313deg, rgba(97, 94, 94, 0.03) 0%, rgba(255, 255, 255, 0.16) 100%);

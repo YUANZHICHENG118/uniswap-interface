@@ -6,6 +6,7 @@ import LogoDark from '../../assets/images/logo.png'
 import Wordmark from '../../assets/images/logoTitle.png'
 import WordmarkDark from '../../assets/images/logoTitle.png'
 import checkIcon from '../../assets/images/subscription/check.png'
+import ArrowWhite from '../../assets/images/subscription/arrow-white.png'
 
 import { useDarkModeManager } from '../../state/user/hooks'
 import {TradeWrapper,SubscriptionItems,AccountWrap,InviteWrap,PartnerWrap} from './styled';
@@ -148,7 +149,7 @@ export default function Subscription() {
     </TradeWrapper>
     <SubscriptionItems>
       <SubscriptionListItem title='我的资产'>
-        <AccountWrap>
+        <AccountWrap  className='border-wrap'>
           <div className="left">
             <div>您已拥有</div>
             <div><span className="number">16519</span> <span className='unit'>PZS</span></div>
@@ -162,7 +163,7 @@ export default function Subscription() {
         </AccountWrap>
       </SubscriptionListItem>
       <SubscriptionListItem title='推荐奖励'>
-        <InviteWrap>
+        <InviteWrap  className='border-wrap'>
           <div>推荐邀请人</div>
           <div>
             Search name or paste address（邀请人地址
@@ -173,11 +174,35 @@ export default function Subscription() {
             ，间接收益为 <span>15%</span>
           </div>
         </InviteWrap>
+        <PartnerWrap className='border-wrap'>
+          <div className="partner-item"></div>
+          <div className="partner-item">
+            <div className='title'> <img src={ArrowWhite} alt=""/>我的佣金</div>
+            <div className='content'>
+              <div className="profit">
+                <div className='head'>可提佣金</div>
+                <div>
+                  <span><b>0.000</b>ETH</span>
+                  <span>佣金明细 &gt;</span>
+                </div>
+
+              </div>
+              <div className='tip'>
+                <span className="themeColor">PZS</span>
+                <span>可提取推荐奖励</span>
+              </div>
+            </div>
+            <button className='btn btn-default'>提取</button>
+          </div>
+        </PartnerWrap>
       </SubscriptionListItem>
       <SubscriptionListItem title='成为超级合伙人'>
-        <PartnerWrap>
+        <PartnerWrap  className='border-wrap'>
           <div className="partner-item">
-            <div className='title'>加入我们</div>
+            <div className='title'>
+              <img src={ArrowWhite} alt=""/>
+              加入我们
+            </div>
             <div className='advantage'>
               <div className='advantage-item'><img src={checkIcon} alt=""/><span>收益</span><span className='big'>15 <i>%</i></span></div>
               <div className='advantage-item'><img src={checkIcon} alt=""/><span>代数</span><span className='big'>无限代</span></div>
@@ -186,7 +211,7 @@ export default function Subscription() {
             <button className='btn btn-default'>成为超级合伙人</button>
           </div>
           <div className="partner-item">
-            <div className='title'>我的合伙人收益</div>
+            <div className='title'> <img src={ArrowWhite} alt=""/>我的合伙人收益</div>
             <div className='content'>
               <div className="profit">
                 <div className='head'>可提收益</div>

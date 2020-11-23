@@ -28,8 +28,6 @@ export default function SubscriptionListItem({title, children }: {title:string, 
       <img src={arrow} width={20} alt=""/>
       {title}
     </div>
-    <div className="border-wrap">
      {children}
-    </div>
   </SubscriptionItemWrapper>
 }
