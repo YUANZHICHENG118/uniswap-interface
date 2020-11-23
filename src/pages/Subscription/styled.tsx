@@ -23,7 +23,8 @@ export const TradeWrapper = styled.div`
     margin-top:80px;
     padding:0 3%;
     .history{
-      margin-top:40px;
+      margin-top:0;
+      width:100%;
     }
   `};
 `
