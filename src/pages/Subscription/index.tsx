@@ -8,11 +8,29 @@ import WordmarkDark from '../../assets/images/logoTitle.png'
 import checkIcon from '../../assets/images/subscription/check.png'
 import ArrowWhite from '../../assets/images/subscription/arrow-white.png'
 
+import Copy from '../../components/AccountDetails/Copy'
 import { useDarkModeManager } from '../../state/user/hooks'
 import {TradeWrapper,SubscriptionItems,AccountWrap,InviteWrap,PartnerWrap} from './styled';
 import SubscriptionListItem from './components/subscriptionListItem';
 export const BodyWrapper = styled.div`
-.btn-default{
+  .flex-between{
+    display:flex;
+    justify-content: space-between;
+  }
+  .themeColor{
+    color:#EBAA00;
+  }
+  .white-title{
+    font-size: 36px;
+    font-family: PingFang-SC-Heavy, PingFang-SC;
+    font-weight: 800;
+    color: #FFFFFF;
+    img{
+      margin-right:15px;
+      width:25px;
+    }
+  }
+  .btn-default{
     width: 200px;
     height: 47px;
     background: linear-gradient(270deg, #E6A600 0%, #FFB800 100%);
@@ -23,41 +41,41 @@ export const BodyWrapper = styled.div`
     display:inline-flex;
     align-items: center;
     justify-content: center;
-}
-.logo-box{
-  text-align:center;  
-}
-.statistic{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  .getmore{
-    font-size: 16px;
-    font-family: PingFangSC-Semibold, PingFang SC;
-    font-weight: 600;
-    color: rgba(255,255,255,.7);
-    margin-top:10px;
   }
-  .btn-box{
-    margin-top:30px;
+  .logo-box{
+    text-align:center;  
   }
-  .process{
-    margin-top:30px;
-    width:500px;
-    .outer{
-    height: 12px;
-    border-radius: 6px;
-    border: 2px solid #FFFFFF;
-    position:relative;
+  .statistic{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    .getmore{
+      font-size: 16px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+      margin-top:10px;
     }
-    .inner{
-    background: #FFFFFF;
-    box-shadow: 0px 0px 16px 4px rgba(255, 255, 255, 0.86);
-    border-radius: 6px;
-    height:100%;
-    position:absolute;
+    .btn-box{
+      margin-top:30px;
     }
-  }
+    .process{
+        margin-top:30px;
+        width:500px;
+      .outer{
+        height: 12px;
+        border-radius: 6px;
+        border: 2px solid #FFFFFF;
+        position:relative;
+      }
+      .inner{
+        background: #FFFFFF;
+        box-shadow: 0px 0px 16px 4px rgba(255, 255, 255, 0.86);
+        border-radius: 6px;
+        height:100%;
+        position:absolute;
+      }
+    } 
   .number-box{
     font-size: 21px;
     font-family: PingFangSC-Regular, PingFang SC;
@@ -164,25 +182,27 @@ export default function Subscription() {
       </SubscriptionListItem>
       <SubscriptionListItem title='推荐奖励'>
         <InviteWrap  className='border-wrap'>
-          <div>推荐邀请人</div>
-          <div>
+          <div className='white-title'> <img src={ArrowWhite} alt=""/> 推荐邀请人</div>
+          <div className='invite-address flex-between'>
             Search name or paste address（邀请人地址
-            <button>复制</button>
+            <button className='btn btn-default' style={{height:'100%'}}>
+              <Copy toCopy={'222'}>复制</Copy>
+            </button>
           </div>
-          <div>
-            直接推荐收益为 <span>20%</span>
-            ，间接收益为 <span>15%</span>
+          <div className='invite-tip'>
+            直接推荐收益为 <span className='themeColor'>20%</span>
+            ，间接收益为 <span className='themeColor'>15%</span>
           </div>
         </InviteWrap>
         <PartnerWrap className='border-wrap'>
           <div className="partner-item"></div>
           <div className="partner-item">
-            <div className='title'> <img src={ArrowWhite} alt=""/>我的佣金</div>
+            <div className='white-title'> <img src={ArrowWhite} alt=""/>我的佣金</div>
             <div className='content'>
               <div className="profit">
                 <div className='head'>可提佣金</div>
-                <div>
-                  <span><b>0.000</b>ETH</span>
+                <div className='flex-between profit-detail'>
+                  <span><b  className="value themeColor">0.000</b> ETH</span>
                   <span>佣金明细 &gt;</span>
                 </div>
 
@@ -192,14 +212,14 @@ export default function Subscription() {
                 <span>可提取推荐奖励</span>
               </div>
             </div>
-            <button className='btn btn-default'>提取</button>
+            <button className='btn btn-default' style={{width:'100%'}}>提取</button>
           </div>
         </PartnerWrap>
       </SubscriptionListItem>
       <SubscriptionListItem title='成为超级合伙人'>
         <PartnerWrap  className='border-wrap'>
           <div className="partner-item">
-            <div className='title'>
+            <div className='white-title'>
               <img src={ArrowWhite} alt=""/>
               加入我们
             </div>
@@ -208,25 +228,24 @@ export default function Subscription() {
               <div className='advantage-item'><img src={checkIcon} alt=""/><span>代数</span><span className='big'>无限代</span></div>
               <div className='advantage-item'><img src={checkIcon} alt=""/><span>仅需支付</span><span className='big'>2 ETH</span></div>
             </div>
-            <button className='btn btn-default'>成为超级合伙人</button>
+            <button className='btn btn-default' style={{width:'100%'}}>成为超级合伙人</button>
           </div>
           <div className="partner-item">
-            <div className='title'> <img src={ArrowWhite} alt=""/>我的合伙人收益</div>
+            <div className='white-title'> <img src={ArrowWhite} alt=""/>我的合伙人收益</div>
             <div className='content'>
               <div className="profit">
                 <div className='head'>可提收益</div>
-                <div>
-                  <span><b>0.000</b>ETH</span>
+                <div className='flex-between profit-detail'>
+                  <span><b className='themeColor value'>0.000</b> ETH</span>
                   <span>收益明细 &gt;</span>
                 </div>
-
               </div>
               <div className='tip'>
                 <span className="themeColor">PZS</span>
                 <span>可提取推荐奖励</span>
               </div>
             </div>
-            <button className='btn btn-default'>提取</button>
+            <button className='btn btn-default' style={{width:'100%'}}>提取</button>
           </div>
         </PartnerWrap>
       </SubscriptionListItem>

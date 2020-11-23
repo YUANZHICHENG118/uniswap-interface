@@ -120,7 +120,26 @@ export const AccountWrap = styled.div`
 }
 `
 export const InviteWrap = styled.div`
-
+    padding:56px 80px;
+    .invite-tip{
+      font-weight: 500;
+      color: #999999;
+      font-size: 24px;
+      margin-top:30px;
+    }
+    .invite-address{
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 32px;
+      border: 2px solid #323232;
+      height:64px;
+      line-height:64px;
+      padding-left:20px;
+      margin-top:36px;
+      font-size: 28px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color:rgba(255,255,255,.7)
+    }
 `
 export const PartnerWrap = styled.div`
   display:flex;
@@ -133,8 +152,17 @@ export const PartnerWrap = styled.div`
       .profit{
         background: rgba(0, 0, 0, 0.6);
         border-radius: 16px;
-        opacity: 0.6;
+        padding:27px 36px 20px;
         border: 1px solid #666666;
+        .profit-detail{
+          font-family: DINAlternate-Bold, DINAlternate;
+          font-size: 16px;
+          color:rgba(255,255,255,.7);
+          align-items:flex-end;
+        .value{
+          font-size: 42px;
+        }
+        }
         .head{
           font-size: 21px;
           font-family: PingFangSC-Semibold, PingFang SC;
@@ -148,13 +176,10 @@ export const PartnerWrap = styled.div`
         font-weight: 800;
         color: #999999;
         margin-top:7px;
-      .themeColor{
-        color:#EBAA00;
-      }
      }
     }
     .advantage{
-      margin:20px 0;
+      margin:20px 0 47px;
       .advantage-item{
         font-size: 24px;
         font-family: PingFangSC-Medium, PingFang SC;
@@ -167,21 +192,11 @@ export const PartnerWrap = styled.div`
         }
         .big{
         font-size: 36px;
-        font-family: PingFangSC-Semibold, PingFang SC;
+        font-family: DINAlternate-Bold, DINAlternate;
         font-weight: 600;
         color: #EBAA00;
         margin-left:10px;
         }
-      }
-    }
-    .title{
-      font-size: 36px;
-      font-family: PingFang-SC-Heavy, PingFang-SC;
-      font-weight: 800;
-      color: #FFFFFF;
-      img{
-        margin-right:15px;
-        width:25px;
       }
     }
    &:hover{
