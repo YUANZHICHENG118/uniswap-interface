@@ -220,4 +220,31 @@ body {
       theme.bg1
     )} 100%)`};
 }
+.flex-between{
+  display:flex;
+  justify-content: space-between;
+}
+.align-center{
+ align-items:center;
+}
+.themeColor{
+  color:#EBAA00;
+}
+.flex-column{
+  display:flex;
+  flex-direction:column;
+}
+.btn-default{
+  width: 200px;
+  height: 47px;
+  background: linear-gradient(270deg, #E6A600 0%, #FFB800 100%);
+  border-radius: 39px;
+  font-size:18px;
+  color: #333333;
+  font-weight: 600;
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor:pointer;
+}
 `

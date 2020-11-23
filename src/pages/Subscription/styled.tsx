@@ -403,17 +403,6 @@ export const RightWithBg=styled.div`
 background:url(${rightBg}) no-repeat left top;
 `
 export const BodyWrapper = styled.div`
-  .flex-column{
-    display:flex;
-    flex-direction:column;
-  }
-  .flex-between{
-    display:flex;
-    justify-content: space-between;
-  }
-  .themeColor{
-    color:#EBAA00;
-  }
   .white-title{
     font-size: 36px;
     font-family: PingFang-SC-Heavy, PingFang-SC;
@@ -429,19 +418,6 @@ export const BodyWrapper = styled.div`
         width:20px;
       }
   `};
-  }
-  .btn-default{
-    width: 200px;
-    height: 47px;
-    background: linear-gradient(270deg, #E6A600 0%, #FFB800 100%);
-    border-radius: 39px;
-    font-size:18px;
-    color: #333333;
-    font-weight: 600;
-    display:inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor:pointer;
   }
   .logo-box{
     text-align:center;
