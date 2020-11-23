@@ -49,7 +49,7 @@ export default function Subscription() {
       </div>
     </div>
     <TradeWrapper className='flex-between row'>
-      <div className='countDown col-xs-12 '>
+      <div className='countDown col-lg-6  '>
         <h3>认购倒计时</h3>
         <div className="time-box">
           <div className='time-item'>
@@ -70,7 +70,7 @@ export default function Subscription() {
           </div>
         </div>
       </div>
-      <HistoryWrap className='history col-xs-12 '>
+      <HistoryWrap className='history col-lg-6 '>
         <div className="head">
           <span className='circle-icon'><i/><i/><i/></span>
           <span>最近交易记录</span>
@@ -112,7 +112,7 @@ export default function Subscription() {
         <InviteWrap className='border-wrap'>
           <div className='white-title'><img src={ArrowWhite} alt=""/> 推荐邀请人</div>
           <div className='invite-address flex-between'>
-            Search name or paste address（邀请人地址
+            <input type="text" value='Search name or paste address（邀请人地址'/>
             <button className='btn btn-default' style={{ height: '100%' }}>
               <Copy toCopy={'222'}>复制</Copy>
             </button>
@@ -123,7 +123,7 @@ export default function Subscription() {
           </div>
         </InviteWrap>
         <PartnerWrap className='border-wrap'>
-          <div className="partner-item">
+          <div className="partner-item col-lg-6">
             <div className='white-title'><img src={ArrowWhite} alt=""/>推荐统计</div>
             <GatherWrap className='gather-box'>
               <div className="value"><span>16529</span> <span className='unit'>ETH</span></div>
@@ -144,7 +144,7 @@ export default function Subscription() {
               </div>
             </SummaryWrap>
           </div>
-          <div className="partner-item">
+          <div className="partner-item col-lg-6">
             <div className='white-title'><img src={ArrowWhite} alt=""/>我的佣金</div>
             <div className='content'>
               <div className="profit">
@@ -165,7 +165,7 @@ export default function Subscription() {
       </SubscriptionListItem>
       <SubscriptionListItem title='成为超级合伙人'>
         <PartnerWrap className='border-wrap'>
-          <div className="partner-item">
+          <div className="partner-item col-lg-6">
             <div className='white-title'>
               <img src={ArrowWhite} alt=""/>
               加入我们
@@ -180,7 +180,7 @@ export default function Subscription() {
             </div>
             <button className='btn btn-default' style={{ width: '100%' }}>成为超级合伙人</button>
           </div>
-          <div className="partner-item">
+          <div className="partner-item col-lg-6">
             <div className='white-title'><img src={ArrowWhite} alt=""/>我的合伙人收益</div>
             <div className='content'>
               <div className="profit">

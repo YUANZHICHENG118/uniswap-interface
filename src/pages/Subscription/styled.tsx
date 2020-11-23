@@ -4,21 +4,29 @@ import rightBg from '../../assets/images/subscription/rightbg.png';
 export const TradeWrapper = styled.div`
   display:flex;
   margin-top:168px;
-.history{
+  .history{
   background: rgba(0, 0, 0, 0.6);
   border-radius: 14px;
   border: 1px solid #666666;
-.table-tr{
-  font-size: 14px;
-  font-family: PingFangSC-Regular, PingFang SC;
-  font-weight: 400;
-  color: #CCCCCC;
-}
-.table-tr.table-head{
-  color:#EBAA00;
-  font-weight:600;
-}
-}
+  .table-tr{
+    font-size: 14px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #CCCCCC;
+  }
+  .table-tr.table-head{
+    color:#EBAA00;
+    font-weight:600;
+  }
+  }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    margin-top:80px;
+    padding:0 3%;
+    .history{
+      margin-top:40px;
+    }
+  `};
+
 .countDown{
   h3{
     font-size: 21px;
@@ -54,6 +62,12 @@ export const TradeWrapper = styled.div`
     font-weight: 400;
     color: #999999;
   }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+  padding: 10px 15px;
+  .number{
+    font-size: 30px;
+  }
+  `};
 }
 
 
@@ -67,6 +81,7 @@ export const AccountWrap = styled.div`
   display:flex;
   justify-content: space-around;
   padding:44px 0 56px;
+
   .divider{
     width:1px;
     background:#343434;
@@ -100,11 +115,27 @@ export const AccountWrap = styled.div`
     font-weight: 400;
     color: #FFB800;
     margin:16px 0 32px;
+    word-break: break-all;
  }
  .btn-default{
    width:100%;
  }
 }
+${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    flex-direction:column;
+    padding:20px 3%;
+    .divider{
+      height: 1px;
+      width: 70%;
+      margin: 20px auto;
+    }
+    .right{
+      font-size:21px;
+      .address{
+        font-size:16px;
+      }
+    }
+`};
 `
 export const InviteWrap = styled.div`
     padding:56px 80px;
@@ -114,6 +145,14 @@ export const InviteWrap = styled.div`
       font-size: 24px;
       margin-top:30px;
     }
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      padding:30px 3%;
+      .invite-tip{
+        font-size: 18px;
+        margin-top: 15px;
+      }
+  `};
+    
     .invite-address{
       background: rgba(0, 0, 0, 0.6);
       border-radius: 32px;
@@ -125,13 +164,21 @@ export const InviteWrap = styled.div`
       font-size: 28px;
       font-family: PingFangSC-Semibold, PingFang SC;
       font-weight: 600;
-      color:rgba(255,255,255,.7)
+      color:rgba(255,255,255,.7);
+      input{
+       background:none;
+       outline:0;
+       border:0;
+       flex:1;
+       color: inherit;
+       width:40%;
+      }
     }
 `
 export const PartnerWrap = styled.div`
   display:flex;
+  flex-wrap:wrap;
   .partner-item{
-     width:50%;
      border-radius: 18px;
      padding:50px 5%;
     .content{
@@ -141,6 +188,9 @@ export const PartnerWrap = styled.div`
         border-radius: 16px;
         padding:27px 36px 20px;
         border: 1px solid #666666;
+         ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+          padding:15px 3% 15px;
+        `};
         .profit-detail{
           font-family: DINAlternate-Bold, DINAlternate;
           font-size: 16px;
@@ -180,12 +230,25 @@ export const PartnerWrap = styled.div`
           margin-right:10px;
         }
         .big{
-        font-size: 36px;
-        font-family: DINAlternate-Bold, DINAlternate;
-        font-weight: 600;
-        color: #EBAA00;
-        margin-left:10px;
+          font-size: 36px;
+          font-family: DINAlternate-Bold, DINAlternate;
+          font-weight: 600;
+          color: #EBAA00;
+          margin-left:10px;
+          i{
+           font-style:normal;
+          }
         }
+         ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+         font-size: 21px;
+         line-height:45px;
+         img{
+           width:30px;
+         }
+         .big{
+          font-size: 28px;
+          }
+      `};
       }
     }
    &:hover{
@@ -219,6 +282,12 @@ export const GatherWrap=styled.div`
       color: rgba(255,255,255,.7);
     }
   }
+   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+     .value{
+      font-size: 50px;
+     }
+  `};
+
   .label{
     font-size: 21px;
     font-family: PingFangSC-Regular, PingFang SC;
@@ -229,6 +298,13 @@ export const GatherWrap=styled.div`
 `;
 export const SummaryWrap=styled.div`
 .summary-item{
+  .summary-item-label{
+      font-size: 18px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color:rgba(255,255,255,.6);
+      margin-top:10px;
+    }
   .summary-item-value{
     font-size: 42px;
     font-family: DINAlternate-Bold, DINAlternate;
@@ -247,13 +323,14 @@ export const SummaryWrap=styled.div`
       left:0;
     }
   }
-  .summary-item-label{
-    font-size: 18px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color:rgba(255,255,255,.6);
-    margin-top:10px;
-  }
+   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+   .summary-item-value{
+      font-size: 32px;
+   }
+   .summary-item-label{
+      font-size: 16px;
+   }
+  `};
 }
 
 `
@@ -288,9 +365,16 @@ export const HistoryWrap=styled.div`
         }
       }
     }
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      line-height:40px;
+      font-size: 16px;
+  `};
   }
   .table-head{
    padding:20px 0;
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      padding:10px 0;
+  `};
   }
   .table-tr{
     line-height:30px;
@@ -335,10 +419,16 @@ export const BodyWrapper = styled.div`
     font-family: PingFang-SC-Heavy, PingFang-SC;
     font-weight: 800;
     color: #FFFFFF;
-    img{
+     img{
       margin-right:15px;
       width:25px;
     }
+     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+     font-size: 25px;
+      img{
+        width:20px;
+      }
+  `};
   }
   .btn-default{
     width: 200px;
@@ -353,7 +443,7 @@ export const BodyWrapper = styled.div`
     justify-content: center;
   }
   .logo-box{
-    text-align:center;  
+    text-align:center;
   }
   .statistic{
     display:flex;
@@ -386,7 +476,7 @@ export const BodyWrapper = styled.div`
         height:100%;
         position:absolute;
       }
-    } 
+    }
   .number-box{
     font-size: 21px;
     font-family: PingFangSC-Regular, PingFang SC;
