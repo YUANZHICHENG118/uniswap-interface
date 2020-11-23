@@ -148,6 +148,10 @@ export const PartnerWrap = styled.div`
         font-weight: 500;
         color:rgba(255,255,255,0.65);
         line-height:50px;
+        img{
+          width:35px;
+          margin-right:10px;
+        }
         .big{
         font-size: 36px;
         font-family: PingFangSC-Semibold, PingFang SC;

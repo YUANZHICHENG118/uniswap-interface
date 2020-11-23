@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
 import Wordmark from '../../assets/images/logoTitle.png'
 import WordmarkDark from '../../assets/images/logoTitle.png'
+import checkIcon from '../../assets/images/subscription/check.png'
+
 import { useDarkModeManager } from '../../state/user/hooks'
 import {TradeWrapper,SubscriptionItems,AccountWrap,InviteWrap,PartnerWrap} from './styled';
 import SubscriptionListItem from './components/subscriptionListItem';
@@ -176,9 +179,9 @@ export default function Subscription() {
           <div className="partner-item">
             <div className='title'>加入我们</div>
             <div className='advantage'>
-              <div className='advantage-item'><span>收益</span><span className='big'>15 <i>%</i></span></div>
-              <div className='advantage-item'><span>代数</span><span className='big'>无限代</span></div>
-              <div className='advantage-item'><span>仅需支付</span><span className='big'>2 ETH</span></div>
+              <div className='advantage-item'><img src={checkIcon} alt=""/><span>收益</span><span className='big'>15 <i>%</i></span></div>
+              <div className='advantage-item'><img src={checkIcon} alt=""/><span>代数</span><span className='big'>无限代</span></div>
+              <div className='advantage-item'><img src={checkIcon} alt=""/><span>仅需支付</span><span className='big'>2 ETH</span></div>
             </div>
             <button className='btn btn-default'>成为超级合伙人</button>
           </div>
