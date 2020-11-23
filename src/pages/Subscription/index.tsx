@@ -18,7 +18,8 @@ import {
   AccountWrap,
   InviteWrap,
   PartnerWrap,
-  SummaryWrap, GatherWrap, HistoryWrap
+  SummaryWrap, GatherWrap, HistoryWrap,
+  CountDownWrap
 } from './styled'
 import SubscriptionListItem from './components/subscriptionListItem'
 
@@ -35,9 +36,30 @@ export default function Subscription() {
       <img style={{ marginLeft: '14px'}} height={80} src={isDark ? WordmarkDark : Wordmark}
            alt="logo"/>
     </div>
+    <CountDownWrap>
+      <h3>第一期认购倒计时</h3>
+      <div className="time-box">
+        <div className='time-item flex-column'>
+          <span className='number'>06</span>
+          <span className="unit">days</span>
+        </div>
+        <div className='time-item flex-column'>
+          <span className='number'>09</span>
+          <span className="unit">hours</span>
+        </div>
+        <div className='time-item flex-column'>
+          <span className='number'>14</span>
+          <span className="unit">min</span>
+        </div>
+        <div className='time-item flex-column'>
+          <span className='number'>06</span>
+          <span className="unit">sec</span>
+        </div>
+      </div>
+    </CountDownWrap>
     <div className="statistic">
       <div className="number-box">
-        <span>总剩余数量：</span>
+        <span>剩余PZS：</span>
         <span className='number'>99513</span>
         <span>Pzs</span>
       </div>
@@ -54,28 +76,7 @@ export default function Subscription() {
       </div>
     </div>
     <TradeWrapper className='flex-between row'>
-      <div className='countDown col-lg-6  '>
-        <h3>认购倒计时</h3>
-        <div className="time-box">
-          <div className='time-item'>
-            <span className='number'>06</span>
-            <span className="unit">days</span>
-          </div>
-          <div className='time-item'>
-            <span className='number'>09</span>
-            <span className="unit">hours</span>
-          </div>
-          <div className='time-item'>
-            <span className='number'>14</span>
-            <span className="unit">min</span>
-          </div>
-          <div className='time-item'>
-            <span className='number'>06</span>
-            <span className="unit">sec</span>
-          </div>
-        </div>
-      </div>
-      <HistoryWrap className='history col-lg-6 '>
+      <HistoryWrap className='history'>
         <div className="head">
           <span className='circle-icon'><i/><i/><i/></span>
           <span>最近交易记录</span>

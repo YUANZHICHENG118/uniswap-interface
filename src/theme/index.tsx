@@ -238,7 +238,7 @@ body {
   width: 200px;
   height: 47px;
   background: linear-gradient(270deg, #E6A600 0%, #FFB800 100%);
-  border-radius: 39px;
+  border-radius: 39px!important;
   font-size:18px;
   color: #333333;
   font-weight: 600;
