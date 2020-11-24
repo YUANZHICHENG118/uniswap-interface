@@ -139,6 +139,11 @@ export const InviteWrap = styled.div`
       flex: 1;
       color: inherit;
     }
+    .btn{
+     height:64px;
+     line-height:64px;
+     padding:0;
+    }
     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
      font-size: 20px;
      height: auto;
@@ -519,4 +524,35 @@ export const CountDownWrap = styled.div`
       }
   `};
   }
+`
+export const CommissionWrapper = styled.div`
+  padding:45px 50px 60px;
+  width:100%;
+  .commission-table{
+    overflow:auto;
+    thead{
+      font-size:18px;
+      margin-bottom:20px;
+    }
+    tbody{
+     font-size:16px;
+     line-height:30px;
+    }
+    .profit{
+      min-width:130px;
+    }
+    .type{
+      min-width:100px;
+    }
+    .time{
+      min-width:180px;
+    }
+  }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    padding:25px 20px 30px;
+    .commission-table{
+     margin-top:30px;
+    }
+  `};
+  
 `
