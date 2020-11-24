@@ -152,9 +152,12 @@ export const PartnerWrap = styled.div`
           color:rgba(255,255,255,.7);
           align-items:flex-end;
           margin-top:15px;
-        .value{
-          font-size: 42px;
-        }
+          a{
+           color:unset;
+          }
+          .value{
+            font-size: 42px;
+          }
         }
         .head{
           font-size: 21px;
