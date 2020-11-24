@@ -131,14 +131,39 @@ export const InviteWrap = styled.div`
     font-family: PingFangSC-Semibold, PingFang SC;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.7);
+    flex-wrap:wrap;
     input {
       background: none;
       outline: 0;
       border: 0;
       flex: 1;
       color: inherit;
-      width: 40%;
     }
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+     font-size: 20px;
+     height: auto;
+     line-height:auto;
+     border:0;
+     padding:0;
+     flex-direction:column;
+     align-items:flex-end;
+     input{
+      border-radius: 32px;
+      border: 2px solid #323232;
+      padding:0 3%;
+      height: 40px;
+      line-height: 40px;
+      width: 100%;
+     }
+     .btn{
+        width: 100px;
+        height: 35px;
+        line-height: 35px;
+        padding: 0;
+        margin-top:10px;
+    }
+     }
+  `};
   }
 `
 export const PartnerWrap = styled.div`

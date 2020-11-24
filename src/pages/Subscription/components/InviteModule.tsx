@@ -6,8 +6,8 @@
 import React, { useState } from 'react'
 
 import { PartnerWrap, GatherWrap, SummaryWrap,InviteWrap } from '../styled'
-import Copy from '../../../components/AccountDetails/Copy'
 import SubscriptionListItem from './subscriptionListItem'
+import CopyBtn from './copyBtn'
 import checkIcon from '../../../assets/images/subscription/check.png'
 //佣金明细弹窗
 import CommissionModal from './commissionModal'
@@ -24,9 +24,7 @@ export default function InviteModule() {
       </div>
       <div className='invite-address flex-between'>
         <input type="text" value='我的推荐编码'/>
-        <button className='btn btn-default' style={{ height: '100%' }}>
-          <Copy toCopy={'222'}>复制</Copy>
-        </button>
+        <CopyBtn copyData={'2222'} title='复制'/>
       </div>
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
