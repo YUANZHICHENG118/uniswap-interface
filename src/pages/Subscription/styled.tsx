@@ -99,6 +99,18 @@ export const InviteWrap = styled.div`
       color: #999999;
       font-size: 24px;
       margin-top:30px;
+      display:flex;
+      img{
+        width:30px;
+      }
+      b{
+        font-size: 48px;
+        font-family: DINAlternate-Bold, DINAlternate;
+        margin:0 5px;
+      }
+      .invite-tip-opt{
+        margin-right:3%;
+      }
     }
     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
       padding:30px 3%;
@@ -366,22 +378,6 @@ export const RightWithBg=styled.div`
 background:url(${rightBg}) no-repeat left top;
 `
 export const BodyWrapper = styled.div`
-  .white-title{
-    font-size: 36px;
-    font-family: PingFang-SC-Heavy, PingFang-SC;
-    font-weight: 800;
-    color: #FFFFFF;
-     img{
-      margin-right:15px;
-      width:25px;
-    }
-     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-     font-size: 25px;
-      img{
-        width:20px;
-      }
-  `};
-  }
   .logo-box{
     text-align:center;
   }

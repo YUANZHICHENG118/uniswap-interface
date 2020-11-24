@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { PartnerWrap, GatherWrap, SummaryWrap,InviteWrap } from '../styled'
 import Copy from '../../../components/AccountDetails/Copy'
 import SubscriptionListItem from './subscriptionListItem'
+import checkIcon from '../../../assets/images/subscription/check.png'
 //佣金明细弹窗
 import CommissionModal from './commissionModal'
 import WhiteArrowTitle from './WhiteArrowTitle'
@@ -18,8 +19,8 @@ export default function InviteModule() {
     <InviteWrap className='border-wrap'>
       <WhiteArrowTitle title='推荐邀请人' />
       <div className='invite-tip'>
-        <div>直接推荐收益 <span className='themeColor'>20%</span></div>
-        <div>间接收益<span className='themeColor'>15%</span></div>
+        <div className='invite-tip-opt'><img src={checkIcon}/> 直接推荐收益 <span className='themeColor'><b>20</b>%</span></div>
+        <div><img src={checkIcon}/> 间接收益<span className='themeColor'><b>15</b>%</span></div>
       </div>
       <div className='invite-address flex-between'>
         <input type="text" value='我的推荐编码'/>
@@ -51,7 +52,9 @@ export default function InviteModule() {
         </SummaryWrap>
       </div>
       <div className="partner-item col-lg-6">
-        <WhiteArrowTitle title='我的佣金'/>
+        <WhiteArrowTitle title='我的佣金'>
+          <span className='tag btn-default btn'>升级为超级节点</span>
+        </WhiteArrowTitle>
         <div className='content'>
           <div className="profit">
             <div className='head'>可提佣金</div>
