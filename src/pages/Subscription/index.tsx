@@ -4,24 +4,22 @@ import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
 import Wordmark from '../../assets/images/logoTitle.png'
 import WordmarkDark from '../../assets/images/logoTitle.png'
-import checkIcon from '../../assets/images/subscription/check.png'
-import ArrowWhite from '../../assets/images/subscription/arrow-white.png'
 
 import SubscriptionModal from './components/subscriptionModal'
 import { useDarkModeManager } from '../../state/user/hooks'
 import InviteModule from './components/InviteModule'
+//我的资产
+import AssetsModule from './components/AssetsModule'
+//超级和伙人
+// import PartnerModule from './components/PartnerModule'
 
 import {
   BodyWrapper,
   TradeWrapper,
   SubscriptionItems,
-  AccountWrap,
-  PartnerWrap,
   HistoryWrap,
   CountDownWrap
 } from './styled'
-import SubscriptionListItem from './components/subscriptionListItem'
-
 
 export default function Subscription() {
   const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
@@ -99,66 +97,17 @@ export default function Subscription() {
       </HistoryWrap>
     </TradeWrapper>
     <SubscriptionItems>
-      <SubscriptionListItem title='我的资产'>
-        <AccountWrap className='border-wrap'>
-          <div className="left">
-            <div>您已拥有</div>
-            <div><span className="number">16519</span> <span className='unit'>PZS</span></div>
-          </div>
-          <div className='divider'/>
-          <div className="right">
-            <div>钱包地址</div>
-            <div className='address'>0xF42E48789013******D57b1b3f06650e</div>
-            <button className="btn btn-default">连接钱包</button>
-          </div>
-        </AccountWrap>
-      </SubscriptionListItem>
+      {/*我的资产*/}
+      <AssetsModule/>
       {/*推荐奖励*/}
       <InviteModule/>
-      {/*成为超级合伙人*/}
-      <SubscriptionListItem title='成为超级合伙人'>
-        <PartnerWrap className='border-wrap'>
-          <div className="partner-item col-lg-6">
-            <div className='white-title'>
-              <img src={ArrowWhite} alt=""/>
-              加入我们
-            </div>
-            <div className='advantage'>
-              <div className='advantage-item'><img src={checkIcon} alt=""/><span>收益</span><span
-                className='big'>15 <i>%</i></span></div>
-              <div className='advantage-item'><img src={checkIcon} alt=""/><span>代数</span><span
-                className='big'>无限代</span></div>
-              <div className='advantage-item'><img src={checkIcon} alt=""/><span>仅需支付</span><span
-                className='big'>2 ETH</span></div>
-            </div>
-            <button className='btn btn-default' style={{ width: '100%' }}>成为超级合伙人</button>
-          </div>
-          <div className="partner-item col-lg-6">
-            <div className='white-title'><img src={ArrowWhite} alt=""/>我的合伙人收益</div>
-            <div className='content'>
-              <div className="profit">
-                <div className='head'>可提收益</div>
-                <div className='flex-between profit-detail'>
-                  <span><b className='themeColor value'>0.000</b> ETH</span>
-                  <span>收益明细 &gt;</span>
-                </div>
-              </div>
-              <div className='tip'>
-                <span className="themeColor">PZS</span>
-                <span>可提取推荐奖励</span>
-              </div>
-            </div>
-            <button className='btn btn-default' style={{ width: '100%' }}>提取</button>
-          </div>
-        </PartnerWrap>
-      </SubscriptionListItem>
+      {/*成为超级合伙人-新设计图上没有这块了*/}
+      {/*<PartnerModule/>*/}
     </SubscriptionItems>
     {/*认购弹窗*/}
     <SubscriptionModal
       isOpen={showSubscriptionModal}
       onDismiss={handleSubscriptionDismiss}
     />
-
-
   </BodyWrapper>
 }

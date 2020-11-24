@@ -17,15 +17,15 @@ export default function InviteModule() {
   return <SubscriptionListItem title='推荐奖励'>
     <InviteWrap className='border-wrap'>
       <WhiteArrowTitle title='推荐邀请人' />
+      <div className='invite-tip'>
+        <div>直接推荐收益 <span className='themeColor'>20%</span></div>
+        <div>间接收益<span className='themeColor'>15%</span></div>
+      </div>
       <div className='invite-address flex-between'>
-        <input type="text" value='Search name or paste address（邀请人地址'/>
+        <input type="text" value='我的推荐编码'/>
         <button className='btn btn-default' style={{ height: '100%' }}>
           <Copy toCopy={'222'}>复制</Copy>
         </button>
-      </div>
-      <div className='invite-tip'>
-        直接推荐收益为 <span className='themeColor'>20%</span>
-        ，间接收益为 <span className='themeColor'>15%</span>
       </div>
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
