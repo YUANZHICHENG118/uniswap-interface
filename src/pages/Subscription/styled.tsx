@@ -567,3 +567,62 @@ export const CommissionWrapper = styled.div`
   `};
   
 `
+export const JoinUsWrapper=styled.div`
+  padding:45px 50px 60px;
+  width:100%;
+  .acquisition{
+    margin:40px 0;
+    font-size: 24px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color:rgba(255,255,255,.65);
+    display:flex;
+    align-items: flex-end;
+    .coinInfo{
+      font-size: 48px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      margin-bottom:-10px;
+      margin-left:5%;
+    }
+   .checkIcon{
+     margin-right:2%;
+     width:30px;
+     height:30px;
+     border-radius:50%;
+   }
+  }
+  .write-box{
+    height: 52px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 32px;
+    border: 2px solid #323232;
+    &:focus{
+      border:0;
+      outline:0;
+    }
+    input{
+      background:none;
+      border:0;
+      font-size: 24px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+      padding:0 6%;
+      &:hover,&:focus{
+       border:0;
+       outline:0;
+      }
+    }
+  }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    padding:25px 20px 30px;
+    flex-direction:column;
+    border:0;
+    input{
+      width:100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+  `};
+`
