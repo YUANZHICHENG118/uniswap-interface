@@ -41,20 +41,20 @@ export default function Subscription() {
       <h3>第一期认购倒计时</h3>
       <div className="time-box">
         <div className='time-item flex-column'>
-          <span className='number'>06</span>
-          <span className="unit">days</span>
+          <span className='number text-center'>06</span>
+          <span className="unit text-center">days</span>
         </div>
         <div className='time-item flex-column'>
-          <span className='number'>09</span>
-          <span className="unit">hours</span>
+          <span className='number text-center'>09</span>
+          <span className="unit text-center">hours</span>
         </div>
         <div className='time-item flex-column'>
-          <span className='number'>14</span>
-          <span className="unit">min</span>
+          <span className='number text-center'>14</span>
+          <span className="unit text-center">min</span>
         </div>
         <div className='time-item flex-column'>
-          <span className='number'>06</span>
-          <span className="unit">sec</span>
+          <span className='number text-center'>06</span>
+          <span className="unit text-center">sec</span>
         </div>
       </div>
     </CountDownWrap>

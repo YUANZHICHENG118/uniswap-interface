@@ -445,26 +445,43 @@ margin-top:60px;
     justify-content: center;
   }
   .time-item{
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border-radius: 10px;
-  margin-right:17px;
-  padding:22px 20px;
-  &:last-child{
-    margin-right:0;
-  }
-  .number{
-    font-size: 48px;
-    font-family: DINAlternate-Bold, DINAlternate;
-    font-weight: bold;
-    color: #EBAA00;
-    line-height: 56px;
-  }
-  .unit{
-    font-size: 21px;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #999999;
-  }
+    border-radius: 10px;
+    margin-right:13px;
+    &:last-child{
+      margin-right:0;
+    }
+    .number{
+      font-size: 78px;
+      width: 131px;
+      height: 121px;
+      background: #0F1C24;
+      box-shadow: 0px 5px 5px 0px #000000;
+      border-radius: 7px;
+      border: 1px solid #212121;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #FFFFFF;
+      position:relative;
+      &:after{
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        display: inline-block;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #101317;
+      }
+    }
+    .unit{
+      font-size: 21px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #999999;
+      margin-top:10px;
+    }
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
 
   padding: 10px 15px;
