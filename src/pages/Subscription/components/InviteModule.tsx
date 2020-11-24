@@ -10,14 +10,13 @@ import Copy from '../../../components/AccountDetails/Copy'
 import SubscriptionListItem from './subscriptionListItem'
 //佣金明细弹窗
 import CommissionModal from './commissionModal'
-import ArrowWhite from '../../../assets/images/subscription/arrow-white.png'
-
+import WhiteArrowTitle from './WhiteArrowTitle'
 export default function InviteModule() {
   const [showCommissionnModal, setCommissionModal] = useState<boolean>(false)
 
   return <SubscriptionListItem title='推荐奖励'>
     <InviteWrap className='border-wrap'>
-      <div className='white-title'><img src={ArrowWhite} alt=""/> 推荐邀请人</div>
+      <WhiteArrowTitle title='推荐邀请人' />
       <div className='invite-address flex-between'>
         <input type="text" value='Search name or paste address（邀请人地址'/>
         <button className='btn btn-default' style={{ height: '100%' }}>
@@ -31,7 +30,7 @@ export default function InviteModule() {
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
       <div className="partner-item col-lg-6">
-        <div className='white-title'><img src={ArrowWhite} alt=""/>推荐统计</div>
+        <WhiteArrowTitle title='推荐统计'/>
         <GatherWrap className='gather-box'>
           <div className="value"><span>16529</span> <span className='unit'>ETH</span></div>
           <div className="label">累计收益</div>
@@ -52,7 +51,7 @@ export default function InviteModule() {
         </SummaryWrap>
       </div>
       <div className="partner-item col-lg-6">
-        <div className='white-title'><img src={ArrowWhite} alt=""/>我的佣金</div>
+        <WhiteArrowTitle title='我的佣金'/>
         <div className='content'>
           <div className="profit">
             <div className='head'>可提佣金</div>
