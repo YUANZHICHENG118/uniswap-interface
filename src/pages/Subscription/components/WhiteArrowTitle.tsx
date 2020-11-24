@@ -22,7 +22,7 @@ export const Wrap = styled.div`
     width: 25px;
   }
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-     font-size: 25px;
+     font-size: 22px;
       img{
         width:20px;
       }

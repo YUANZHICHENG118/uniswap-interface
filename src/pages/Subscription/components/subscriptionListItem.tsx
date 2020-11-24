@@ -15,15 +15,18 @@ export const SubscriptionItemWrapper = styled.div`
     text-align:center;
      ${({ theme }) => theme.mediaWidth.upToExtraSmall`
      font-size: 26px;
-  `};
-  img{
-    margin-right:20px;
-  }
+    `};
+    img{
+      margin-right:20px;
+    }
  }
  .border-wrap{
     margin-top:48px;
     border-radius: 16px;
     border: 2px solid #333333;
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      margin-top:30px;
+    `};
  }
 
 `

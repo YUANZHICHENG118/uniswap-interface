@@ -89,6 +89,9 @@ export const AccountWrap = styled.div`
         font-size:16px;
       }
     }
+    .left,.right{
+      font-size:20px;
+  }
 `};
 `
 export const InviteWrap = styled.div`
@@ -115,37 +118,39 @@ export const InviteWrap = styled.div`
       padding:30px 3%;
       .invite-tip{
         font-size: 18px;
-        margin-top: 15px;
+        img {
+          width: 20px;
+        }
       }
   `};
 
   .invite-address {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 32px;
-    border: 2px solid #323232;
-    height: 64px;
-    line-height: 64px;
-    padding-left: 20px;
-    margin-top: 36px;
-    font-size: 28px;
-    font-family: PingFangSC-Semibold, PingFang SC;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.7);
-    flex-wrap:wrap;
-    input {
-      background: none;
-      outline: 0;
-      border: 0;
-      flex: 1;
-      color: inherit;
-    }
-    .btn{
-     height:64px;
-     line-height:64px;
-     padding:0;
-    }
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 32px;
+      border: 2px solid #323232;
+      height: 64px;
+      line-height: 64px;
+      padding-left: 20px;
+      margin-top: 36px;
+      font-size: 28px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      flex-wrap:wrap;
+      input {
+        background: none;
+        outline: 0;
+        border: 0;
+        flex: 1;
+        color: inherit;
+      }
+      .btn{
+         height:64px;
+         line-height:64px;
+         padding:0;
+      }
     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-     font-size: 20px;
+     font-size: 18px;
      height: auto;
      line-height:auto;
      border:0;
@@ -153,12 +158,12 @@ export const InviteWrap = styled.div`
      flex-direction:column;
      align-items:flex-end;
      input{
-      border-radius: 32px;
-      border: 2px solid #323232;
-      padding:0 3%;
-      height: 40px;
-      line-height: 40px;
-      width: 100%;
+        border-radius: 32px;
+        border: 2px solid #323232;
+        padding:0 3%;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
      }
      .btn{
         width: 100px;
@@ -184,9 +189,12 @@ export const PartnerWrap = styled.div`
         border-radius: 16px;
         padding: 27px 36px 20px;
         border: 1px solid #666666;
-        ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-          padding:15px 3% 15px;
-        `};
+        .head {
+          font-size: 21px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: rgba(255, 255, 255, 0.7);
+        }
         .profit-detail {
           font-family: DINAlternate-Bold, DINAlternate;
           font-size: 16px;
@@ -200,12 +208,15 @@ export const PartnerWrap = styled.div`
             font-size: 42px;
           }
         }
-        .head {
-          font-size: 21px;
-          font-family: PingFangSC-Semibold, PingFang SC;
-          font-weight: 600;
-          color: rgba(255, 255, 255, 0.7);
-        }
+        ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+          padding:15px 3% 15px;
+          .head {
+            font-size: 18px;
+          }
+          .profit-detail {
+            font-size: 14px;
+          }
+        `};
       }
       .tip {
         font-size: 16px;
