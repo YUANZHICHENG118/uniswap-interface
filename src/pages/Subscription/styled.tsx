@@ -294,6 +294,9 @@ export const HistoryWrap=styled.div`
   width:50%;
   max-width:100%;
   margin:0 auto;
+  .history-table{
+   overflow:auto;
+  }
   .head{
     border-bottom:1px solid #ddd;
     display:flex;

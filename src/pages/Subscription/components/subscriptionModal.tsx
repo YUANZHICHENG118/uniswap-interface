@@ -7,6 +7,7 @@ padding:30px 4%;
 display:flex;
 flex-direction:column;
 width:100%;
+overflow:auto;
 .summarize{
   margin-bottom:30px;
   font-size: 28px;
@@ -96,7 +97,7 @@ interface SubscriptionModalProps {
   isOpen: boolean
   onDismiss: () => void
 }
-export default function AppBody({ isOpen,onDismiss }: SubscriptionModalProps) {
+export default function SubscriptionModal({ isOpen,onDismiss }: SubscriptionModalProps) {
   return <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
     <Wrapper>
      <div className="title text-center">认购</div>

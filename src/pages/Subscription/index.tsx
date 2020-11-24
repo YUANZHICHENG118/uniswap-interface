@@ -9,6 +9,7 @@ import ArrowWhite from '../../assets/images/subscription/arrow-white.png'
 
 import Copy from '../../components/AccountDetails/Copy'
 import SubscriptionModal from './components/subscriptionModal'
+import CommissionModal from './components/commissionModal'
 import { useDarkModeManager } from '../../state/user/hooks'
 
 import {
@@ -206,9 +207,16 @@ export default function Subscription() {
         </PartnerWrap>
       </SubscriptionListItem>
     </SubscriptionItems>
+    {/*认购弹窗*/}
     <SubscriptionModal
       isOpen={showSubscriptionModal}
       onDismiss={handleSubscriptionDismiss}
     />
+    {/*佣金明细*/}
+    <CommissionModal
+      isOpen={false}
+      onDismiss={()=>{}}
+    />
+
   </BodyWrapper>
 }

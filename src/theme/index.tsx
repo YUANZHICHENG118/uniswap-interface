@@ -230,6 +230,9 @@ body {
 .themeColor{
   color:#EBAA00;
 }
+.greyColor{
+  color: #808080;
+}
 .flex-column{
   display:flex;
   flex-direction:column;
