@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Modal from '../../../components/Modal'
 import pizzaImg from '../../../assets/images/lp/pz.png'
+import TransactionConfirmationModal from '../../../components/TransactionConfirmationModal'
+import { TransactionResponse } from '@ethersproject/providers'
+import { useSubContract } from '../../../hooks/useContract'
+import { SUB_ADDRESS } from '../../../constants'
+import { useActiveWeb3React } from '../../../hooks'
+import { calculateGasMargin } from '../../../utils'
+
 export const Wrapper=styled.div`
 padding:30px 4%;
 display:flex;
@@ -60,44 +67,89 @@ text-align:center;
   }
 
 `
-export const AbsenteeismWrap=styled.div`
- .absenteeism-fee{
-  font-size: 24px;
-    span{
-      &:first-child{
-        color:rgba(255,255,255,.6);
-      }
-      &:last-child{
-        color:#fff;
-      }
-    }
-  }
-.absenteeisms{
-  margin-top:22px;
-  margin-bottom:30px;
-  .absenteeism{
-    width:47%;
-    padding:13px 3% 15px;
-    box-sizing:border-box;
-     font-weight: 500;
-    .value{
-      font-size: 21px;
-      color:#fff;
-    }
-    .unit{
-      color:rgba(255,255,255,.6);
-      font-size: 18px;
-    }
-  }
-}
-
-`
+// export const AbsenteeismWrap=styled.div`
+//  .absenteeism-fee{
+//   font-size: 24px;
+//     span{
+//       &:first-child{
+//         color:rgba(255,255,255,.6);
+//       }
+//       &:last-child{
+//         color:#fff;
+//       }
+//     }
+//   }
+// .absenteeisms{
+//   margin-top:22px;
+//   margin-bottom:30px;
+//   .absenteeism{
+//     width:47%;
+//     padding:13px 3% 15px;
+//     box-sizing:border-box;
+//      font-weight: 500;
+//     .value{
+//       font-size: 21px;
+//       color:#fff;
+//     }
+//     .unit{
+//       color:rgba(255,255,255,.6);
+//       font-size: 18px;
+//     }
+//   }
+// }
+//
+// `
 
 interface SubscriptionModalProps {
   isOpen: boolean
-  onDismiss: () => void
+  onDismiss: () => void,
+  periods:number
 }
-export default function SubscriptionModal({ isOpen,onDismiss }: SubscriptionModalProps) {
+export default function SubscriptionModal({ isOpen,onDismiss,periods }: SubscriptionModalProps) {
+
+  const [txConfirm, setTxConfirm] = useState<boolean>(false)
+  const [txLoading, setTxLoading] = useState<boolean>(false)
+  const [txId, setTxId] = useState<string>("")
+
+  const { account } = useActiveWeb3React()
+  const contract = useSubContract(SUB_ADDRESS, true)
+
+
+  // 认购
+  const deposit= async ()=>{
+    if(!account){
+      alert("connect to wallet")
+      return ;
+    }
+
+    if (contract) {
+
+      setTxLoading(true)
+
+      const estimatedGas = await contract.estimateGas.subscribe(periods).catch((e) => {
+        alert(e.message)
+        // general fallback for tokens who restrict approval amounts
+        return contract.estimateGas.subscribe(periods)
+      })
+
+      return contract.subscribe(periods, {
+        gasLimit: calculateGasMargin(estimatedGas)
+      })
+        .then((response: TransactionResponse) => {
+          setTxLoading(false)
+
+          setTxConfirm(true)
+          setTxId(response.hash)
+          console.log('response====', response)
+        })
+        .catch((error: Error) => {
+          console.debug('Failed to reg token', error)
+          throw error
+        })
+
+    }
+  }
+
   return <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
     <Wrapper>
      <div className="title text-center">认购</div>
@@ -122,27 +174,38 @@ export default function SubscriptionModal({ isOpen,onDismiss }: SubscriptionModa
           </div>
         </div>
       </div>
-      <AbsenteeismWrap>
-        <div className="flex-between absenteeism-fee">
-          <span>旷工费</span>
-          <span>0.011 ETH</span>
-        </div>
-        <div className="flex-between absenteeisms">
-          <div className="absenteeism flex-between">
-            <span className='value'>1546</span><span  className='unit'>gwei</span>
-          </div>
-          <div className="absenteeism flex-between">
-            <span  className='value'>1546</span><span  className='unit'>gas</span>
-          </div>
-        </div>
-      </AbsenteeismWrap>
+      {/*<AbsenteeismWrap>*/}
+        {/*<div className="flex-between absenteeism-fee">*/}
+          {/*<span>旷工费</span>*/}
+          {/*<span>0.011 ETH</span>*/}
+        {/*</div>*/}
+        {/*<div className="flex-between absenteeisms">*/}
+          {/*<div className="absenteeism flex-between">*/}
+            {/*<span className='value'>1546</span><span  className='unit'>gwei</span>*/}
+          {/*</div>*/}
+          {/*<div className="absenteeism flex-between">*/}
+            {/*<span  className='value'>1546</span><span  className='unit'>gas</span>*/}
+          {/*</div>*/}
+        {/*</div>*/}
+      {/*</AbsenteeismWrap>*/}
       <div className="summarize flex-between themeColor">
         <div className='coin-name'><span>ETH/PZS</span></div>
-        <div className='coin-percent'>1:1000</div>
+        <div className='coin-percent'>1:500</div>
       </div>
       <div className="btnbox">
-        <button className='btn btn-default' style={{width:'100%',borderRadius:'39px'}}>兑换</button>
+        <button className='btn btn-default' style={{width:'100%',borderRadius:'39px'}} onClick={deposit}>兑换</button>
       </div>
+
+
+
+      <TransactionConfirmationModal
+        isOpen={txConfirm}
+        onDismiss={()=>setTxConfirm(false)}
+        attemptingTxn={txLoading}
+        hash={txId}
+        content={()=><></>}
+        pendingText={"Loading"}
+      />
     </Wrapper>
   </Modal>
 }

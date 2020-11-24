@@ -9,7 +9,9 @@ import ERC20_ABI from '../constants/abis/erc20.json'
 import { MIGRATOR_ABI, MIGRATOR_ADDRESS } from '../constants/abis/migrator'
 import UNISOCKS_ABI from '../constants/abis/unisocks.json'
 import WETH_ABI from '../constants/abis/weth.json'
+import subscription from '../constants/abis/subscription.json'
 import BAT_ABI from '../constants/abis/bat.json'
+
 import LP_ABI from '../constants/abis/lp.json'
 
 import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
@@ -100,6 +102,9 @@ export function useBatContract(address?: string, withSignerIfPossible?: boolean)
   return useContract(address, BAT_ABI, withSignerIfPossible)
 }
 
+export function useSubContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
+  return useContract(address, subscription, withSignerIfPossible)
+}
 export function useLpContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
   return useContract(address, LP_ABI, withSignerIfPossible)
 }

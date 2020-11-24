@@ -4,6 +4,10 @@ import React from 'react'
 import Modal from '../../../components/Modal'
 import WhiteArrowTitle from './WhiteArrowTitle'
 import { CommissionWrapper } from '../styled'
+// import { useSingleCallResult } from '../../../state/multicall/hooks'
+// import { useSubContract } from '../../../hooks/useContract'
+// import { SUB_ADDRESS } from '../../../constants'
+// import { useActiveWeb3React } from '../../../hooks'
 
 interface CommissionModalProps {
   isOpen: boolean
@@ -11,6 +15,15 @@ interface CommissionModalProps {
 }
 
 export default function CommissionModal({ isOpen, onDismiss }: CommissionModalProps) {
+
+
+
+  // const { account } = useActiveWeb3React()
+  // const contract = useSubContract(SUB_ADDRESS, true)
+  // const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,account ?? undefined])
+  //
+
+
   return (
     <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
       <CommissionWrapper>

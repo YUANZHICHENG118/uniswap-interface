@@ -21,12 +21,28 @@ import {
   CountDownWrap
 } from './styled'
 
+import { SUB_ADDRESS,pzsToken } from '../../constants'
+import {useSubContract } from '../../hooks/useContract'
+import { useSingleCallResult } from '../../state/multicall/hooks'
+
 export default function Subscription() {
   const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
   const handleSubscriptionDismiss = useCallback(()=>{
     setSubscriptionModal(false);
   },[setSubscriptionModal])
   const [isDark] = useDarkModeManager()
+
+
+
+
+  const contract = useSubContract(SUB_ADDRESS, true)
+  const periodsData = useSingleCallResult(contract, 'underway')
+  const periods=periodsData.result?.[0]||0;
+
+  const globalData = useSingleCallResult(contract, 'getGlobalStats',[periods])
+
+  console.log("====",globalData)
+
   return <BodyWrapper className='container'>
     <div className="logo-box">
       <img src={isDark ? LogoDark : Logo} height={100} alt=""/>
@@ -34,7 +50,7 @@ export default function Subscription() {
            alt="logo"/>
     </div>
     <CountDownWrap>
-      <h3>第一期认购倒计时</h3>
+      <h3>第{periods+1}期认购倒计时</h3>
       <div className="time-box">
         <div className='time-item flex-column'>
           <span className='number text-center'>06</span>
@@ -57,7 +73,7 @@ export default function Subscription() {
     <div className="statistic">
       <div className="number-box">
         <span>剩余PZS：</span>
-        <span className='number'>99513</span>
+        <span className='number'>{globalData.result?.stats[7]/pzsToken.decimals}</span>
         <span>Pzs</span>
       </div>
       <div className='process'>
@@ -98,14 +114,15 @@ export default function Subscription() {
     </TradeWrapper>
     <SubscriptionItems>
       {/*我的资产*/}
-      <AssetsModule/>
+      <AssetsModule periods={periods} globalData={globalData}/>
       {/*推荐奖励*/}
-      <InviteModule/>
+      <InviteModule periods={periods} />
       {/*成为超级合伙人-新设计图上没有这块了*/}
       {/*<PartnerModule/>*/}
     </SubscriptionItems>
     {/*认购弹窗*/}
     <SubscriptionModal
+      periods={periods}
       isOpen={showSubscriptionModal}
       onDismiss={handleSubscriptionDismiss}
     />
