@@ -139,5 +139,9 @@
   "about6":"3. Pledge tokens to participate in mining",
   "about7":"4. Mining income gets 20% pz every day",
   "about8":"5. Direct push mining reward 10% pz, inter push reward 5% pz",
-  "about9":"6. Dig out the PZ manually click to harvest to the wallet, at the same time to deduct 10% of the PZ handling fee as the operation and community co award!"
+  "about9":"6. Dig out the PZ manually click to harvest to the wallet, at the same time to deduct 10% of the PZ handling fee as the operation and community co award!",
+  "subscription":"Subscription",
+  "subscription-count-down":"Countdown to first subscription",
+  "subscription-surplus":"Surplus",
+  "subscription-getMore":"For details"
 }

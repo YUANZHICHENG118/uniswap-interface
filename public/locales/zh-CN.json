@@ -123,5 +123,10 @@
   "about6":"3.质押令牌参与挖矿",
   "about7":"4.挖矿收益每日获得20%pz",
   "about8":"5.直推挖矿奖励10%pz间推奖励5%pz",
-  "about9":"6.挖出来的pz手动点击收割到钱包，同时要扣除10%的pz手续费用作运营和社区共献奖励！"
+  "about9":"6.挖出来的pz手动点击收割到钱包，同时要扣除10%的pz手续费用作运营和社区共献奖励！",
+  "subscription":"认购",
+  "subscription-count-down":"第一期认购倒计时",
+  "subscription-surplus":"剩余",
+  "subscription-getMore":"了解详情",
+  "":""
 }
