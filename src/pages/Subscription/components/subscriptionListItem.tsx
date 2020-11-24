@@ -14,7 +14,7 @@ export const SubscriptionItemWrapper = styled.div`
     color: #FFFFFF;
     text-align:center;
      ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-     font-size: 30px;
+     font-size: 26px;
   `};
   img{
     margin-right:20px;
