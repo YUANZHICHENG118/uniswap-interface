@@ -34,7 +34,7 @@ export default function CountDown() {
     }
     const timer=setInterval(()=>{
       updateTime()
-    },6000)
+    },1000)
 
     return () => {
       clearInterval(timer);

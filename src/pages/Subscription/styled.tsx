@@ -628,11 +628,11 @@ export const JoinUsWrapper=styled.div`
 `
 export const FlipClockWrap = styled.div`
   .fold {
-    animation: fold 6.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    animation: fold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
     transform-style: preserve-3d;
   }
   .unfold {
-    animation: unfold 6.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    animation: unfold 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
     transform-style: preserve-3d;
   }
   @keyframes fold {
@@ -691,13 +691,19 @@ export const FlipClockWrap = styled.div`
         transform: translateY(50%);
       }
     }
+    .upperCard span{
+     transform: translateY(50%);
+    }
+    .lowerCard span{
+     transform: translateY(-50%);
+    }
     .flipCard {
       display: flex;
       justify-content: center;
       position: absolute;
       left: 0;
-      width: 140px;
-      height: 60px;
+      width: 100%;
+      height: 50%;
       overflow: hidden;
       backface-visibility: hidden;
       span {
