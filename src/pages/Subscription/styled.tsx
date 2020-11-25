@@ -419,6 +419,33 @@ export const RightWithBg = styled.div`
   background: url(${rightBg}) no-repeat left top;
 `
 export const BodyWrapper = styled.div`
+  position:relative;
+  width:100%;
+  &:before{
+   content:"";
+   position:absolute;
+   background: url(${rightBg}) no-repeat left top 30%;
+   height:100%;
+   background-size:contain;
+   width:250px;
+   left:0;
+  }
+  &:after{
+   content:"";
+   position:absolute;
+   background: url(${leftBg}) no-repeat left top 65%;
+   height:100%;
+   background-size:contain;
+   width:250px;
+   right:0;
+   top:0;
+  }
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    &:before,&:after{
+      width:0;
+    }
+  `}
+  
   .logo-box {
     text-align: center;
     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
