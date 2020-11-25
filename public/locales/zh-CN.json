@@ -133,5 +133,17 @@
   "subscription-owed":"您已拥有",
   "subscription-wallet-address":"钱包地址",
   "subscription-recommendation":"推荐奖励",
-  "subscription-recommendation-invite":"推荐邀请人"
+  "subscription-recommendation-invite":"推荐邀请人",
+  "subscription-direct-invite":"直接推荐收益",
+  "subscription-indirect-invite":"间接收益",
+  "subscription-invite-statistics":"推荐统计",
+  "subscription-invite-allprofits":"累计收益",
+  "direct-recommendation":"直接推荐",
+  "indirect-recommendation":"间接推荐",
+  "my-Commission":"我的佣金",
+  "upgrade":"升级为超级节点",
+  "commission-payable":"可提佣金",
+  "detailed-commission":"佣金明细",
+  "extractable-rewards":"可提取推荐奖励",
+  "extract":"提取"
 }

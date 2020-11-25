@@ -149,5 +149,17 @@
   "subscription-owed":"You already have",
   "subscription-wallet-address":"Wallet address",
   "subscription-recommendation":"Recommendation Rewards",
-  "subscription-recommendation-invite":"Recommended Inviters"
+  "subscription-recommendation-invite":"Recommended Inviters",
+  "subscription-direct-invite":"Direct recommendation income",
+  "subscription-indirect-invite":"Indirect Benefits",
+  "subscription-invite-statistics":"Recommendation statistics",
+  "subscription-invite-allprofits":"Accumulated income",
+  "direct-recommendation":"Direct recommendation",
+  "indirect-recommendation":"Indirect recommendation",
+  "my-Commission":"My Commission",
+  "upgrade":"Upgrade to Super Node",
+  "commission-payable":"Commission payable",
+  "detailed-commission":"Detailed Commission",
+  "extractable-rewards":"Extractable Recommendation Rewards",
+  "extract":"Extract"
 }
