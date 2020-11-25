@@ -9,45 +9,50 @@ import { SUB_ADDRESS } from '../../../constants'
 import { useActiveWeb3React } from '../../../hooks'
 import { calculateGasMargin } from '../../../utils'
 
-export const Wrapper=styled.div`
-padding:30px 4%;
-display:flex;
-flex-direction:column;
-width:100%;
-overflow:auto;
-.summarize{
-  margin-bottom:30px;
-  font-size: 28px;
-  font-weight:500;
-}
-.text-center{
-text-align:center;
-}
-.title{
-  font-size: 28px;
-  font-family: PingFangSC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #FFFFFF;
-  margin-bottom:22px;
-}
-.bg-item,.absenteeism{
- background: rgba(0, 0, 0, 0.6);
- border-radius: 16px;
- border: 1px solid #666666;
-}
-  .bg-item{
-    padding:27px 4% 23px;
-    margin-bottom:30px;
-    .bg-item-bottom{
-      margin-top:18px;
-      align-items:flex-end;
-      .tag{
+export const Wrapper = styled.div`
+  padding: 30px 4%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: auto;
+  .content{
+     flex:1;
+     overflow:auto;
+  }
+  .summarize {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .title {
+    font-size: 28px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 22px;
+  }
+  .bg-item,
+  .absenteeism {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    border: 1px solid #666666;
+  }
+  .bg-item {
+    padding: 27px 4% 23px;
+    margin-bottom: 30px;
+    .bg-item-bottom {
+      margin-top: 18px;
+      align-items: flex-end;
+      .tag {
         width: 69px;
-        display:inline-block;
+        display: inline-block;
         height: 43px;
-        line-height:43px;
-        margin-right:20px;
-        background: #FFB800;
+        line-height: 43px;
+        margin-right: 20px;
+        background: #ffb800;
         border-radius: 10px;
         opacity: 0.7;
         font-size: 21px;
@@ -55,24 +60,23 @@ text-align:center;
         font-weight: 600;
         color: #000000;
       }
-      .left{
+      .left {
         font-size: 42px;
         font-weight: 600;
-        flex:1;
-        input{
-          background:none;
-          border:0;
-          outline:0;
-          width:100%;
+        flex: 1;
+        input {
+          background: none;
+          border: 0;
+          outline: 0;
+          width: 100%;
         }
       }
     }
   }
-  .down-arrow{
-   margin-bottom:30px;
-   font-size:30px;
+  .down-arrow {
+    margin-bottom: 30px;
+    font-size: 30px;
   }
-
 `
 // export const AbsenteeismWrap=styled.div`
 //  .absenteeism-fee{
@@ -109,39 +113,37 @@ text-align:center;
 
 interface SubscriptionModalProps {
   isOpen: boolean
-  onDismiss: () => void,
-  periods:number
+  onDismiss: () => void
+  periods: number
 }
-export default function SubscriptionModal({ isOpen,onDismiss,periods }: SubscriptionModalProps) {
-
+export default function SubscriptionModal({ isOpen, onDismiss, periods }: SubscriptionModalProps) {
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
   const [txLoading, setTxLoading] = useState<boolean>(false)
-  const [txId, setTxId] = useState<string>("")
+  const [txId, setTxId] = useState<string>('')
 
   const { account } = useActiveWeb3React()
   const contract = useSubContract(SUB_ADDRESS, true)
 
-
   // 认购
-  const deposit= async ()=>{
-    if(!account){
-      alert("connect to wallet")
-      return ;
+  const deposit = async () => {
+    if (!account) {
+      alert('connect to wallet')
+      return
     }
 
     if (contract) {
-
       setTxLoading(true)
 
-      const estimatedGas = await contract.estimateGas.subscribe(periods).catch((e) => {
+      const estimatedGas = await contract.estimateGas.subscribe(periods).catch(e => {
         alert(e.message)
         // general fallback for tokens who restrict approval amounts
         return contract.estimateGas.subscribe(periods)
       })
 
-      return contract.subscribe(periods, {
-        gasLimit: calculateGasMargin(estimatedGas)
-      })
+      return contract
+        .subscribe(periods, {
+          gasLimit: calculateGasMargin(estimatedGas)
+        })
         .then((response: TransactionResponse) => {
           setTxLoading(false)
 
@@ -153,70 +155,75 @@ export default function SubscriptionModal({ isOpen,onDismiss,periods }: Subscrip
           console.debug('Failed to reg token', error)
           throw error
         })
-
     }
   }
 
-  return <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
-    <Wrapper>
-     <div className="title text-center">认购</div>
-      <div className="bg-item">
-        <div>从</div>
-        <div  className='bg-item-bottom flex-between'>
-          <span className="left themeColor">
-            <input type="text" placeholder='1' className='themeColor'/>
-          </span>
-          <div className="right">
-            <span className="tag text-center">MAX</span>
-            <span>ETH</span>
+  return (
+    <Modal isOpen={isOpen} showCloseIcon={true} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
+      <Wrapper>
+        <div className="title text-center">认购</div>
+        <div className="content">
+          <div className="bg-item">
+            <div>从</div>
+            <div className="bg-item-bottom flex-between">
+              <span className="left themeColor">
+                <input type="text" placeholder="1" className="themeColor" />
+              </span>
+              <div className="right">
+                <span className="tag text-center">MAX</span>
+                <span>ETH</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="down-arrow text-center">↓</div>
-      <div className="bg-item">
-        <div>至</div>
-        <div className='bg-item-bottom flex-between '>
-          <span className="left themeColor">
-            <input type="text" placeholder='1000' className='themeColor'/>
-          </span>
-          <div className="right">
-            <img src={pizzaImg} width={20} alt=""/>
-            <span>&nbsp;PZS</span>
+          <div className="down-arrow text-center">↓</div>
+          <div className="bg-item">
+            <div>至</div>
+            <div className="bg-item-bottom flex-between ">
+              <span className="left themeColor">
+                <input type="text" placeholder="1000" className="themeColor" />
+              </span>
+              <div className="right">
+                <img src={pizzaImg} width={20} alt="" />
+                <span>&nbsp;PZS</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      {/*<AbsenteeismWrap>*/}
-        {/*<div className="flex-between absenteeism-fee">*/}
+          {/*<AbsenteeismWrap>*/}
+          {/*<div className="flex-between absenteeism-fee">*/}
           {/*<span>旷工费</span>*/}
           {/*<span>0.011 ETH</span>*/}
-        {/*</div>*/}
-        {/*<div className="flex-between absenteeisms">*/}
+          {/*</div>*/}
+          {/*<div className="flex-between absenteeisms">*/}
           {/*<div className="absenteeism flex-between">*/}
-            {/*<span className='value'>1546</span><span  className='unit'>gwei</span>*/}
+          {/*<span className='value'>1546</span><span  className='unit'>gwei</span>*/}
           {/*</div>*/}
           {/*<div className="absenteeism flex-between">*/}
-            {/*<span  className='value'>1546</span><span  className='unit'>gas</span>*/}
+          {/*<span  className='value'>1546</span><span  className='unit'>gas</span>*/}
           {/*</div>*/}
-        {/*</div>*/}
-      {/*</AbsenteeismWrap>*/}
-      <div className="summarize flex-between themeColor">
-        <div className='coin-name'><span>ETH/PZS</span></div>
-        <div className='coin-percent'>1:500</div>
-      </div>
-      <div className="btnbox">
-        <button className='btn btn-default' style={{width:'100%',borderRadius:'39px'}} onClick={deposit}>兑换</button>
-      </div>
+          {/*</div>*/}
+          {/*</AbsenteeismWrap>*/}
+          <div className="summarize flex-between themeColor">
+            <div className="coin-name">
+              <span>ETH/PZS</span>
+            </div>
+            <div className="coin-percent">1:500</div>
+          </div>
+          <div className="btnbox">
+            <button className="btn btn-default" style={{ width: '100%', borderRadius: '39px' }} onClick={deposit}>
+              兑换
+            </button>
+          </div>
+        </div>
 
-
-
-      <TransactionConfirmationModal
-        isOpen={txConfirm}
-        onDismiss={()=>setTxConfirm(false)}
-        attemptingTxn={txLoading}
-        hash={txId}
-        content={()=><></>}
-        pendingText={"Loading"}
-      />
-    </Wrapper>
-  </Modal>
+        <TransactionConfirmationModal
+          isOpen={txConfirm}
+          onDismiss={() => setTxConfirm(false)}
+          attemptingTxn={txLoading}
+          hash={txId}
+          content={() => <></>}
+          pendingText={'Loading'}
+        />
+      </Wrapper>
+    </Modal>
+  )
 }

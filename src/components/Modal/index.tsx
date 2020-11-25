@@ -6,7 +6,22 @@ import { isMobile } from 'react-device-detect'
 import '@reach/dialog/styles.css'
 import { transparentize } from 'polished'
 import { useGesture } from 'react-use-gesture'
-
+import { ReactComponent as Close } from '../../assets/images/x.svg'
+const CloseIcon = styled.div`
+  position: absolute;
+  right: 1rem;
+  top: 14px;
+  z-index:99;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+`
+const CloseColor = styled(Close)`
+  path {
+    stroke: ${({ theme }) => theme.text4};
+  }
+`
 const AnimatedDialogOverlay = animated(DialogOverlay)
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const StyledDialogOverlay = styled(AnimatedDialogOverlay)`
@@ -39,6 +54,7 @@ const StyledDialogContent = styled(({ minHeight, maxHeight,width, mobile, isOpen
     padding: 0px;
     width: 50vw;
     overflow: hidden;
+    position:relative;
     align-self: ${({ mobile }) => (mobile ? 'flex-end' : 'center')};
     max-width:${({ width }) => (width ? width : '420px')};
     ${({ maxHeight }) =>
@@ -78,6 +94,7 @@ interface ModalProps {
   maxHeight?: number
   width?:string | false
   initialFocusRef?: React.RefObject<any>
+  showCloseIcon?:boolean
   children?: React.ReactNode
 }
 
@@ -88,6 +105,7 @@ export default function Modal({
   width=false,
   maxHeight = 50,
   initialFocusRef,
+  showCloseIcon,
   children
 }: ModalProps) {
   const fadeTransition = useTransition(isOpen, null, {
@@ -130,6 +148,10 @@ export default function Modal({
               >
                 {/* prevents the automatic focusing of inputs on mobile by the reach dialog */}
                 {!initialFocusRef && isMobile ? <div tabIndex={1} /> : null}
+                {showCloseIcon&&<CloseIcon onClick={onDismiss}>
+                  <CloseColor />
+                </CloseIcon>
+                }
                 {children}
               </StyledDialogContent>
             </StyledDialogOverlay>

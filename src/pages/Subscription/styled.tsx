@@ -416,6 +416,16 @@ export const RightWithBg = styled.div`
 export const BodyWrapper = styled.div`
   .logo-box {
     text-align: center;
+    ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+     img{
+      &:first-child{
+        height:55px;
+      }
+       &:last-child{
+        height:45px;
+      }
+     }
+  `}
   }
   .statistic {
     display: flex;
@@ -574,7 +584,7 @@ export const CommissionWrapper = styled.div`
      margin-top:30px;
     }
   `};
-  
+
 `
 export const JoinUsWrapper=styled.div`
   padding:45px 50px 60px;
