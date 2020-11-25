@@ -54,6 +54,9 @@ export const AccountWrap = styled.div`
       color: #ebaa00;
       margin-top: 20px;
       display: inline-block;
+      ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+        font-size: 43px;
+      `}
     }
     .unit {
       font-size: 18px;
@@ -291,12 +294,6 @@ export const GatherWrap = styled.div`
       color: rgba(255, 255, 255, 0.7);
     }
   }
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-     .value{
-      font-size: 50px;
-     }
-  `};
-
   .label {
     font-size: 21px;
     font-family: PingFangSC-Regular, PingFang SC;
@@ -304,6 +301,14 @@ export const GatherWrap = styled.div`
     color: rgba(255, 255, 255, 0.7);
     margin-top: 10px;
   }
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+     .value{
+      font-size: 42px;
+     }
+     .label{
+      font-size: 18px;
+     }
+  `};
 `
 export const SummaryWrap = styled.div`
   .summary-item {
@@ -471,6 +476,9 @@ export const BodyWrapper = styled.div`
         font-weight: bold;
         color: #ebaa00;
         margin-right: 10px;
+        ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+         font-size: 40px; 
+        `}
       }
     }
   }
