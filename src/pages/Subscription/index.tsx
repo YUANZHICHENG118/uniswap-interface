@@ -53,7 +53,7 @@ export default function Subscription() {
     </div>
     <CountDownWrap>
       <h3>第{periods+1}期认购倒计时</h3>
-      <CountDown/>
+      <CountDown endDate='2020-11-27 24:00'/>
       {/*<div className="time-box">*/}
         {/*<div className='time-item flex-column'>*/}
           {/*<span className='number text-center'>06</span>*/}
