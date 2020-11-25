@@ -24,7 +24,15 @@ export const Wrap = styled.div`
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
      font-size: 22px;
       img{
-        width:20px;
+        width:16px;
+        margin-right: 1%;
+      }
+      .tag{
+        width:auto;
+        height:25px;
+        line-height:25px;
+        padding:0 3%;
+        font-size:12px;
       }
   `};
 `
