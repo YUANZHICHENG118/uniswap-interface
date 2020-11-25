@@ -440,7 +440,7 @@ export const BodyWrapper = styled.div`
    right:0;
    top:0;
   }
-  ${({ theme }) => theme.mediaWidth.upToSmall`
+  ${({ theme }) => theme.mediaWidth.upToLarge`
     &:before,&:after{
       width:0;
     }
