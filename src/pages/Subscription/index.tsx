@@ -4,8 +4,10 @@ import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
 import Wordmark from '../../assets/images/logoTitle.png'
 import WordmarkDark from '../../assets/images/logoTitle.png'
+import CountDown from './components/CountDown/CountDown'
 
 import SubscriptionModal from './components/subscriptionModal'
+import JoinUsModal from './components/joinUsModal'
 import { useDarkModeManager } from '../../state/user/hooks'
 import InviteModule from './components/InviteModule'
 //我的资产
@@ -51,24 +53,25 @@ export default function Subscription() {
     </div>
     <CountDownWrap>
       <h3>第{periods+1}期认购倒计时</h3>
-      <div className="time-box">
-        <div className='time-item flex-column'>
-          <span className='number text-center'>06</span>
-          <span className="unit text-center">days</span>
-        </div>
-        <div className='time-item flex-column'>
-          <span className='number text-center'>09</span>
-          <span className="unit text-center">hours</span>
-        </div>
-        <div className='time-item flex-column'>
-          <span className='number text-center'>14</span>
-          <span className="unit text-center">min</span>
-        </div>
-        <div className='time-item flex-column'>
-          <span className='number text-center'>06</span>
-          <span className="unit text-center">sec</span>
-        </div>
-      </div>
+      <CountDown/>
+      {/*<div className="time-box">*/}
+        {/*<div className='time-item flex-column'>*/}
+          {/*<span className='number text-center'>06</span>*/}
+          {/*<span className="unit text-center">days</span>*/}
+        {/*</div>*/}
+        {/*<div className='time-item flex-column'>*/}
+          {/*<span className='number text-center'>09</span>*/}
+          {/*<span className="unit text-center">hours</span>*/}
+        {/*</div>*/}
+        {/*<div className='time-item flex-column'>*/}
+          {/*<span className='number text-center'>14</span>*/}
+          {/*<span className="unit text-center">min</span>*/}
+        {/*</div>*/}
+        {/*<div className='time-item flex-column'>*/}
+          {/*<span className='number text-center'>06</span>*/}
+          {/*<span className="unit text-center">sec</span>*/}
+        {/*</div>*/}
+      {/*</div>*/}
     </CountDownWrap>
     <div className="statistic">
       <div className="number-box">
@@ -125,6 +128,11 @@ export default function Subscription() {
       periods={periods}
       isOpen={showSubscriptionModal}
       onDismiss={handleSubscriptionDismiss}
+    />
+    {/*加入我们的弹窗*/}
+    <JoinUsModal
+      isOpen={false}
+      onDismiss={()=>{}}
     />
   </BodyWrapper>
 }

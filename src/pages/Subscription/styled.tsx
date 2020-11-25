@@ -626,3 +626,114 @@ export const JoinUsWrapper=styled.div`
     
   `};
 `
+export const FlipClockWrap = styled.div`
+  .fold {
+    animation: fold 6.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    transform-style: preserve-3d;
+  }
+  .unfold {
+    animation: unfold 6.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    transform-style: preserve-3d;
+  }
+  @keyframes fold {
+    0% {
+      -webkit-transform: rotateX(0deg);
+      transform: rotateX(0deg);
+    }
+    100% {
+      -webkit-transform: rotateX(-180deg);
+      transform: rotateX(-180deg);
+    }
+  }
+  @keyframes unfold {
+    0% {
+      transform: rotateX(180deg);
+    }
+    100% {
+      transform: rotateX(0deg);
+    }
+  }
+  .flipUnitContainer {
+    display: block;
+    position: relative;
+    width: 140px;
+    height: 120px;
+    perspective: 300px;
+    background: #0F1C24;
+    border-radius: 7px;
+    box-shadow: 0px 5px 5px 0px #000000;
+    .upperCard {
+        align-items: flex-end;
+        border-bottom: 0.5px solid #101317;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+    .lowerCard {
+        align-items: flex-start;
+        border-top: 0.5px solid #101317;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    .upperCard,
+    .lowerCard {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+      border: 1px solid #212121;
+      span {
+        font-size: 78px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #fff;
+        transform: translateY(50%);
+      }
+    }
+    .flipCard {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      left: 0;
+      width: 140px;
+      height: 60px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      span {
+        font-size: 78px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #fff;
+      }
+      &.fold {
+        top: 0%;
+        align-items: flex-end;
+        transform-origin: 50% 100%;
+        transform: rotateX(0deg);
+        background-color: #0F1C24;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border: 0.5px solid #101317;
+        border-bottom: 0.5px solid #101317;
+        span {
+          transform: translateY(50%);
+        }
+      }
+      &.unfold {
+        top: 50%;
+        align-items: flex-start;
+        transform-origin: 50% 0%;
+        transform: rotateX(180deg);
+        background-color: #0F1C24;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border: 1px solid #101317;
+        border-top: 0.5px solid #101317;
+        span {
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+`
