@@ -143,5 +143,11 @@
   "subscription":"Subscription",
   "subscription-count-down":"Countdown to first subscription",
   "subscription-surplus":"Surplus",
-  "subscription-getMore":"For details"
+  "subscription-getMore":"For details",
+  "subscription-history":"Recent transaction records",
+  "subscription-assest":"My assets",
+  "subscription-owed":"You already have",
+  "subscription-wallet-address":"Wallet address",
+  "subscription-recommendation":"Recommendation Rewards",
+  "subscription-recommendation-invite":"Recommended Inviters"
 }

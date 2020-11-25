@@ -128,5 +128,10 @@
   "subscription-count-down":"第一期认购倒计时",
   "subscription-surplus":"剩余",
   "subscription-getMore":"了解详情",
-  "":""
+  "subscription-history":"最近交易记录",
+  "subscription-assest":"我的资产",
+  "subscription-owed":"您已拥有",
+  "subscription-wallet-address":"钱包地址",
+  "subscription-recommendation":"推荐奖励",
+  "subscription-recommendation-invite":"推荐邀请人"
 }
