@@ -4,10 +4,26 @@ import React from 'react'
 import Modal from '../../../components/Modal'
 import WhiteArrowTitle from './WhiteArrowTitle'
 import { CommissionWrapper } from '../styled'
+import styled from 'styled-components'
 // import { useSingleCallResult } from '../../../state/multicall/hooks'
 // import { useSubContract } from '../../../hooks/useContract'
 // import { SUB_ADDRESS } from '../../../constants'
 // import { useActiveWeb3React } from '../../../hooks'
+import { ReactComponent as Close } from '../../../assets/images/x.svg'
+const CloseIcon = styled.div`
+  position: absolute;
+  right: 1rem;
+  top: 14px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+`
+const CloseColor = styled(Close)`
+  path {
+    stroke: ${({ theme }) => theme.text4};
+  }
+`
 
 interface CommissionModalProps {
   isOpen: boolean
@@ -25,9 +41,12 @@ export default function CommissionModal({ isOpen, onDismiss }: CommissionModalPr
 
 
   return (
-    <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
+    <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90} width={'700px'}>
       <CommissionWrapper>
-        <WhiteArrowTitle title='我的佣金明细'/>
+        <CloseIcon onClick={onDismiss}>
+          <CloseColor />
+        </CloseIcon>
+        <WhiteArrowTitle title='我的佣金明细' className='arrowTitle'/>
         <div className="commission-table">
           <table>
             <thead>

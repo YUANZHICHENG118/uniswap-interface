@@ -492,8 +492,8 @@ export const CountDownWrap = styled.div`
     }
     .number {
       font-size: 78px;
-      width: 131px;
-      height: 121px;
+      width: 130px;
+      height: 120px;
       background: #0f1c24;
       box-shadow: 0px 5px 5px 0px #000000;
       border-radius: 7px;
@@ -502,14 +502,13 @@ export const CountDownWrap = styled.div`
       font-weight: 600;
       color: #ffffff;
       position: relative;
+      box-sizing:content-box;
       &:after {
         content: ' ';
         position: absolute;
         width: 100%;
         height: 1px;
         display: inline-block;
-        left: 0;
-        right: 0;
         top: 50%;
         transform: translateY(-50%);
         background: #101317;
@@ -539,11 +538,18 @@ export const CountDownWrap = styled.div`
 export const CommissionWrapper = styled.div`
   padding:45px 50px 60px;
   width:100%;
+  position:relative;
+  .arrowTitle{
+    font-size:26px;
+  }
   .commission-table{
     overflow:auto;
+    margin-top:30px;
     thead{
       font-size:18px;
-      margin-bottom:20px;
+      th{
+      padding:15px 0;
+      }
     }
     tbody{
      font-size:16px;
@@ -551,6 +557,9 @@ export const CommissionWrapper = styled.div`
     }
     .profit{
       min-width:130px;
+    }
+    .address{
+      min-width:220px;
     }
     .type{
       min-width:100px;
@@ -669,8 +678,8 @@ export const FlipClockWrap = styled.div`
     }
     .lowerCard {
         align-items: flex-start;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
       }
     .upperCard,
     .lowerCard {
@@ -696,12 +705,12 @@ export const FlipClockWrap = styled.div`
       height: 50%;
       overflow: hidden;
       backface-visibility: hidden;
+      background-color: #0F1C24;
       &.fold {
         top: 0%;
         align-items: flex-end;
         transform-origin: 50% 100%;
         transform: rotateX(0deg);
-        background-color: #0F1C24;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
         span {
@@ -713,7 +722,6 @@ export const FlipClockWrap = styled.div`
         align-items: flex-start;
         transform-origin: 50% 0%;
         transform: rotateX(180deg);
-        background-color: #0F1C24;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
         span {

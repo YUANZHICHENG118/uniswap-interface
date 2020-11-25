@@ -28,9 +28,9 @@ export const Wrap = styled.div`
       }
   `};
 `
-export default function InviteModule({ title, children }: { title: string; children?: React.ReactNode }) {
+export default function InviteModule({ title,className, children }: { title: string;className?:string, children?: React.ReactNode }) {
   return (
-    <Wrap>
+    <Wrap className={className}>
       <img src={ArrowWhite} alt="" /> {title}
       {children}
     </Wrap>
