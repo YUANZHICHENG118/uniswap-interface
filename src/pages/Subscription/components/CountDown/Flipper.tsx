@@ -41,7 +41,7 @@ export default function Flipper({ unit, className,digit,shuffle, ...rest }: { un
   },[shuffle])
 
   return (
-    <div {...rest} className={['flipUnitContainer', flipType, isFlipping ? 'go' : null].join(' ')}>
+    <div {...rest} className={['flipUnitContainer number', flipType, isFlipping ? 'go' : null].join(' ')}>
       <div className="upperCard">
         <span>{now}</span>
       </div>

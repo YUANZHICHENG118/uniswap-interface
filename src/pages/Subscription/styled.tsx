@@ -664,13 +664,11 @@ export const FlipClockWrap = styled.div`
     box-shadow: 0px 5px 5px 0px #000000;
     .upperCard {
         align-items: flex-end;
-        border-bottom: 0.5px solid #101317;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
     }
     .lowerCard {
         align-items: flex-start;
-        border-top: 0.5px solid #101317;
         border-bottom-left-radius: 3px;
         border-bottom-right-radius: 3px;
       }
@@ -682,14 +680,6 @@ export const FlipClockWrap = styled.div`
       width: 100%;
       height: 50%;
       overflow: hidden;
-      border: 1px solid #212121;
-      span {
-        font-size: 78px;
-        font-family: PingFangSC-Semibold, PingFang SC;
-        font-weight: 600;
-        color: #fff;
-        transform: translateY(50%);
-      }
     }
     .upperCard span{
      transform: translateY(50%);
@@ -706,12 +696,6 @@ export const FlipClockWrap = styled.div`
       height: 50%;
       overflow: hidden;
       backface-visibility: hidden;
-      span {
-        font-size: 78px;
-        font-family: PingFangSC-Semibold, PingFang SC;
-        font-weight: 600;
-        color: #fff;
-      }
       &.fold {
         top: 0%;
         align-items: flex-end;
@@ -720,8 +704,6 @@ export const FlipClockWrap = styled.div`
         background-color: #0F1C24;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
-        border: 0.5px solid #101317;
-        border-bottom: 0.5px solid #101317;
         span {
           transform: translateY(50%);
         }
@@ -734,8 +716,6 @@ export const FlipClockWrap = styled.div`
         background-color: #0F1C24;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
-        border: 1px solid #101317;
-        border-top: 0.5px solid #101317;
         span {
           transform: translateY(-50%);
         }
