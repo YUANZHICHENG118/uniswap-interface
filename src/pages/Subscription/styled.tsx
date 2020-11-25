@@ -348,7 +348,7 @@ export const SummaryWrap = styled.div`
 `
 export const HistoryWrap = styled.div`
   padding: 12px 3% 25px;
-  width: 50%;
+  min-width: 50%;
   max-width: 100%;
   margin: 0 auto;
   .history-table {
