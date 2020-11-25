@@ -675,26 +675,26 @@ export const FlipClockWrap = styled.div`
         align-items: flex-end;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
+        span{
+          transform: translateY(50%);
+        }
     }
     .lowerCard {
         align-items: flex-start;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
+        span{
+          transform: translateY(-50%);
+        }
       }
     .upperCard,
     .lowerCard {
-      display: flex;
-      position: relative;
-      justify-content: center;
-      width: 100%;
-      height: 50%;
-      overflow: hidden;
-    }
-    .upperCard span{
-     transform: translateY(50%);
-    }
-    .lowerCard span{
-     transform: translateY(-50%);
+        display: flex;
+        position: relative;
+        justify-content: center;
+        width: 100%;
+        height: 50%;
+        overflow: hidden;
     }
     .flipCard {
       display: flex;
@@ -724,6 +724,7 @@ export const FlipClockWrap = styled.div`
         transform: rotateX(180deg);
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
+        margin-left:-0.03px;
         span {
           transform: translateY(-50%);
         }
