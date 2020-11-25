@@ -58,6 +58,13 @@ text-align:center;
       .left{
         font-size: 42px;
         font-weight: 600;
+        flex:1;
+        input{
+          background:none;
+          border:0;
+          outline:0;
+          width:100%;
+        }
       }
     }
   }
@@ -156,7 +163,9 @@ export default function SubscriptionModal({ isOpen,onDismiss,periods }: Subscrip
       <div className="bg-item">
         <div>从</div>
         <div  className='bg-item-bottom flex-between'>
-          <span className="left themeColor">1</span>
+          <span className="left themeColor">
+            <input type="text" placeholder='1' className='themeColor'/>
+          </span>
           <div className="right">
             <span className="tag text-center">MAX</span>
             <span>ETH</span>
@@ -167,7 +176,9 @@ export default function SubscriptionModal({ isOpen,onDismiss,periods }: Subscrip
       <div className="bg-item">
         <div>至</div>
         <div className='bg-item-bottom flex-between '>
-          <span className="left themeColor">1000</span>
+          <span className="left themeColor">
+            <input type="text" placeholder='1000' className='themeColor'/>
+          </span>
           <div className="right">
             <img src={pizzaImg} width={20} alt=""/>
             <span>&nbsp;PZS</span>
