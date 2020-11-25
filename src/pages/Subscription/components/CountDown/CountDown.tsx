@@ -8,13 +8,16 @@ export default function CountDown() {
   const [Minutes,setMinutes]=useState({minutes:0,minutesShuffle:true})
   const [Seconds,setSeconds]=useState({seconds:0,secondsShuffle:true})
   useEffect(() => {
+    const end = Date.parse(new Date('2020-11-27 24:00').toString())
+    let now_time = Date.parse(new Date().toString());
+    const remaining = end - now_time;
+    console.log('lla',remaining)
+    // set time units
+    const days =  Math.floor((remaining / 1000 / 3600) / 24);
+    const hours =  Math.floor((remaining / 1000 / 3600) % 24);
+    const minutes =  Math.floor((remaining / 1000 / 60) % 60);
+    const seconds =  Math.floor(remaining / 1000 % 60);
     const updateTime=()=>{
-      const time = new Date();
-      // set time units
-      const days = time.getDay();
-      const hours = time.getHours();
-      const minutes = time.getMinutes();
-      const seconds = time.getSeconds();
       if (days !== Days.days) {
         const daysShuffle = !Days.daysShuffle;
         setDays({days,daysShuffle});

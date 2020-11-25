@@ -43,16 +43,16 @@ export default function Flipper({ unit, className,digit,shuffle, ...rest }: { un
   return (
     <div {...rest} className={['flipUnitContainer number', flipType, isFlipping ? 'go' : null].join(' ')}>
       <div className="upperCard">
-        <span>{now}</span>
-      </div>
-      <div className="lowerCard">
         <span>{beforeText}</span>
       </div>
+      <div className="lowerCard">
+        <span>{now}</span>
+      </div>
       <div className={`flipCard first ${animation1}`}>
-        <span>{digit1}</span>
+        <span>{digit2}</span>
       </div>
       <div className={`flipCard second  ${animation2}`}>
-        <span>{digit2}</span>
+        <span>{digit1}</span>
       </div>
     </div>
   )
