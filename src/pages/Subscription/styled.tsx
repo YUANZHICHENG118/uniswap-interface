@@ -422,6 +422,7 @@ export const BodyWrapper = styled.div`
   .logo-box {
     text-align: center;
     ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+     margin-top:30px;
      img{
       &:first-child{
         height:55px;

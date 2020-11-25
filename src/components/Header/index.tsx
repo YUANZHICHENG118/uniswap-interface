@@ -49,8 +49,11 @@ const NavElements = styled.nav`
   align-items: center;
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
     position:absolute;
-    //bottom:8px;
-    top:20px
+    top:20px;
+    width: 100%;
+    overflow: auto;
+    left: 0;
+    right: 0
  `};
 `
 //
@@ -157,6 +160,7 @@ const UniIcon = styled.div`
     img {
       margin-top:10px 
       width: 7.5rem;
+      display: none;
     }
   `};
 `
@@ -169,7 +173,7 @@ const HeaderControls = styled.div`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     //flex-direction: column;
     align-items: flex-end;
-    margin-top:30px
+    margin-top:45px;
   `};
 `
 
@@ -258,7 +262,7 @@ export default function Header() {
         </HeaderControls>
 
       </RowBetween>
-      {
+      {/*{
         isMobile?<HeaderElement>
           <Title href=".">
             <UniIcon>
@@ -269,7 +273,7 @@ export default function Header() {
             </TitleText>
           </Title>
         </HeaderElement>:null
-      }
+      }*/}
 
     </HeaderFrame>
   )
