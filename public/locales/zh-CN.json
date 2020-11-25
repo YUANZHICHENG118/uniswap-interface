@@ -145,5 +145,10 @@
   "commission-payable":"可提佣金",
   "detailed-commission":"佣金明细",
   "extractable-rewards":"可提取推荐奖励",
-  "extract":"提取"
+  "extract":"提取",
+  "my-detailed-commission":"我的佣金明细",
+  "commission-revenues":"佣金收益",
+  "converter-address":"兑换人地址",
+  "recommendType":"推荐类型",
+  "time":"时间"
 }

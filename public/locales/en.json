@@ -161,5 +161,10 @@
   "commission-payable":"Commission payable",
   "detailed-commission":"Detailed Commission",
   "extractable-rewards":"Extractable Recommendation Rewards",
-  "extract":"Extract"
+  "extract":"Extract",
+  "my-detailed-commission":"My Commission details",
+  "commission-revenues":"commission revenues",
+  "converter-address":"Converter Address",
+  "recommendType":"Types of Recommendations",
+  "time":"time"
 }
