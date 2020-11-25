@@ -166,5 +166,9 @@
   "commission-revenues":"commission revenues",
   "converter-address":"Converter Address",
   "recommendType":"Types of Recommendations",
-  "time":"time"
+  "time":"time",
+  "register":"register",
+  "joinus":"Join us",
+  "start-getting":"Start getting",
+  "write-code":"Please enter the recommender code"
 }

@@ -150,5 +150,9 @@
   "commission-revenues":"佣金收益",
   "converter-address":"兑换人地址",
   "recommendType":"推荐类型",
-  "time":"时间"
+  "time":"时间",
+  "register":"注册",
+  "joinus":"加入我们",
+  "start-getting":"开始获取",
+  "write-code":"请输入推荐人编码"
 }
