@@ -8,6 +8,7 @@ export default function CountDown({endDate}:{endDate:string}) {
   const [Minutes,setMinutes]=useState({minutes:0,minutesShuffle:true})
   const [Seconds,setSeconds]=useState({seconds:0,secondsShuffle:true})
   useEffect(() => {
+
     const end = Date.parse(new Date(endDate).toString())
     let now_time = Date.parse(new Date().toString());
     const remaining = end - now_time;
@@ -58,7 +59,7 @@ export default function CountDown({endDate}:{endDate:string}) {
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperMinute number" unit='minutes' digit={Minutes.minutes} shuffle={Minutes.minutesShuffle}/>
-        <span className="unit text-center">sec</span>
+        <span className="unit text-center">min</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperSecond number" unit='seconds' digit={Seconds.seconds} shuffle={Seconds.secondsShuffle}/>

@@ -13,7 +13,8 @@ type ChainTokenList = {
 export const HOST = 'https://www.pizzaswap.net'
 export const defRefAddress = '0x49e39fB0CB1461597436d67119d982FFa0E56688'
 
-export const SUB_ADDRESS='0xf1a19f71db38951723fa678e4e3ba883acfd42da'
+export const ethApi="https://api-ropsten.etherscan.io/api";
+export const SUB_ADDRESS='0x102dae99cbe3253a8229d11feac9b096668eee6d'
 export const POOL_ADDRESS = '0xC1C83369f3F7662bC72370ac98Bd93644EDcf92C'
 export const mainToken = {
   name:"Pizza ",

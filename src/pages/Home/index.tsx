@@ -28,6 +28,7 @@ export default function Home(props: RouteComponentProps<{ }>) {
     var reg = new RegExp("(^|&)" + queryName + "=([^&]*)(&|$)", "i");
     var r = search.substr(1).match(reg);
     if ( r != null ){
+      sessionStorage.setItem("ref", decodeURI(r[2]));//把data对应的值保存到sessionStorage
       return decodeURI(r[2]);
     }else{
       return null;

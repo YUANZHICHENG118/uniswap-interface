@@ -8,6 +8,8 @@ import { useSubContract } from '../../../hooks/useContract'
 import { SUB_ADDRESS } from '../../../constants'
 import { useActiveWeb3React } from '../../../hooks'
 import { calculateGasMargin } from '../../../utils'
+import BigNumber from 'bignumber.js'
+import { useETHBalances } from '../../../state/wallet/hooks'
 
 export const Wrapper = styled.div`
   padding: 30px 4%;
@@ -116,48 +118,68 @@ interface SubscriptionModalProps {
   onDismiss: () => void
   periods: number
 }
+
 export default function SubscriptionModal({ isOpen, onDismiss, periods }: SubscriptionModalProps) {
+
+  const { account } = useActiveWeb3React()
+
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
   const [txLoading, setTxLoading] = useState<boolean>(false)
   const [txId, setTxId] = useState<string>('')
+  const [amount, setAmount] = useState<any>(0)
+  const [tokenAmount, setTokenAmount] = useState<any>(0)
+  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
 
-  const { account } = useActiveWeb3React()
+
   const contract = useSubContract(SUB_ADDRESS, true)
 
+  const rate = 500
+  const change = (e: any) => {
+    setAmount(e.currentTarget.value)
+    setTokenAmount(e.currentTarget.value * rate)
+  }
   // 认购
   const deposit = async () => {
     if (!account) {
       alert('connect to wallet')
       return
     }
-
     if (contract) {
+      let value = new BigNumber(amount * Math.pow(10, 18))
+      let _amount = '0x' + value.toString(16)
       setTxLoading(true)
 
-      const estimatedGas = await contract.estimateGas.subscribe(periods).catch(e => {
-        alert(e.message)
-        // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.subscribe(periods)
-      })
+      debugger
+      const estimatedGas = await contract.estimateGas.subscribe
 
-      return contract
-        .subscribe(periods, {
-          gasLimit: calculateGasMargin(estimatedGas)
-        })
-        .then((response: TransactionResponse) => {
-          setTxLoading(false)
 
-          setTxConfirm(true)
-          setTxId(response.hash)
-          console.log('response====', response)
-        })
-        .catch((error: Error) => {
-          console.debug('Failed to reg token', error)
-          throw error
-        })
+      await estimatedGas([periods], { value: _amount })
+        .then(estimatedGasLimit =>
+          contract.subscribe([periods], {
+            value: _amount,
+            gasLimit: calculateGasMargin(estimatedGasLimit)
+          }).then((response: TransactionResponse) => {
+
+            setTxLoading(false)
+
+            setTxConfirm(true)
+            setTxId(response.hash)
+            console.log('response====', response)
+          })
+            .catch((error: Error) => {
+              console.debug('Failed to reg token', error)
+              throw error
+            }))
+
     }
   }
 
+  const max = () => {
+
+    setAmount(userEthBalance?.toFixed(4))
+    setTokenAmount(1)
+
+  }
   return (
     <Modal isOpen={isOpen} showCloseIcon={true} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
       <Wrapper>
@@ -167,10 +189,10 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
             <div>从</div>
             <div className="bg-item-bottom flex-between">
               <span className="left themeColor">
-                <input type="text" placeholder="1" className="themeColor" />
+                <input type="number" placeholder="1" value={amount} className="themeColor" onChange={change}/>
               </span>
               <div className="right">
-                <span className="tag text-center">MAX</span>
+                <span className="tag text-center" onClick={max}>MAX</span>
                 <span>ETH</span>
               </div>
             </div>
@@ -180,10 +202,11 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
             <div>至</div>
             <div className="bg-item-bottom flex-between ">
               <span className="left themeColor">
-                <input type="text" placeholder="1000" className="themeColor" />
+                <input type="text" placeholder={rate.toString()} disabled={true} className="themeColor"
+                       value={tokenAmount}/>
               </span>
               <div className="right">
-                <img src={pizzaImg} width={20} alt="" />
+                <img src={pizzaImg} width={20} alt=""/>
                 <span>&nbsp;PZS</span>
               </div>
             </div>
@@ -206,7 +229,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
             <div className="coin-name">
               <span>ETH/PZS</span>
             </div>
-            <div className="coin-percent">1:500</div>
+            <div className="coin-percent">1:{rate}</div>
           </div>
           <div className="btnbox">
             <button className="btn btn-default" style={{ width: '100%', borderRadius: '39px' }} onClick={deposit}>

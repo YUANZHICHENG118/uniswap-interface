@@ -1,4 +1,5 @@
-[{
+[
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -469,6 +470,21 @@
   },
   {
     "constant": true,
+    "inputs": [],
+    "name": "teamCountLimit",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
     "inputs": [
       {
         "internalType": "uint256",
@@ -573,6 +589,11 @@
         "internalType": "uint256",
         "name": "indirectCount",
         "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "teamCount",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -596,8 +617,8 @@
         "type": "uint256"
       }
     ],
-    "payable": true,
-    "stateMutability": "payable",
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   }
 ]

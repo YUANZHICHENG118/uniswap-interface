@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
@@ -14,12 +14,14 @@ import InviteModule from './components/InviteModule'
 import AssetsModule from './components/AssetsModule'
 //超级和伙人
 // import PartnerModule from './components/PartnerModule'
+import moment from 'moment';
 
 import { BodyWrapper, TradeWrapper, SubscriptionItems, HistoryWrap, CountDownWrap } from './styled'
 
-import { SUB_ADDRESS, pzsToken } from '../../constants'
+import { SUB_ADDRESS, pzsToken, ethApi, ethToken } from '../../constants'
 import { useSubContract } from '../../hooks/useContract'
 import { useSingleCallResult } from '../../state/multicall/hooks'
+import { useActiveWeb3React } from '../../hooks'
 
 export default function Subscription() {
   const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
@@ -27,15 +29,34 @@ export default function Subscription() {
     setSubscriptionModal(false)
   }, [setSubscriptionModal])
   const [isDark] = useDarkModeManager()
+  const [txList, setTxList] = useState<any>([])
+
 
   const contract = useSubContract(SUB_ADDRESS, true)
   const periodsData = useSingleCallResult(contract, 'underway')
-  const periods = periodsData.result?.[0] || 0
+  const periods = periodsData.result?.[0] || undefined
+  const { account } = useActiveWeb3React()
 
   const globalData = useSingleCallResult(contract, 'getGlobalStats', [periods])
+  const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,account ?? undefined])
 
-  console.log('====', globalData)
+  const initDate=()=>{
+    if(globalData.result){
+      return  moment(globalData.result?.stats[5].toNumber()*1000).add(globalData.result?.stats[2].toNumber(), 's').format("yyyy-MM-DD HH:mm:ss")
+    }
+    return ''
+  }
+  useEffect(()=>{
 
+    fetch(ethApi+"?module=account&action=txlist&address="+SUB_ADDRESS+"&startblock=0&endblock=99999999&sort=desc&apikey=").then((response) => {
+      return response.json()
+    }).then(data=>{
+      console.log("data====",data)
+      if(data&&data.result){
+        setTxList(data.result)
+      }
+    })
+  },[])
   return (
     <BodyWrapper>
       <div className="container">
@@ -45,17 +66,18 @@ export default function Subscription() {
         </div>
         <CountDownWrap>
           <h3>第{periods + 1}期认购倒计时</h3>
-          <CountDown endDate="2020-11-27 24:00" />
+          <CountDown endDate={initDate()} />
+
         </CountDownWrap>
         <div className="statistic">
           <div className="number-box">
-            <span>剩余PZS：</span>
+            <span>已认购PZS：</span>
             <span className="number">{globalData.result?.stats[7] / pzsToken.decimals}</span>
             <span>Pzs</span>
           </div>
           <div className="process">
             <div className="outer">
-              <div className="inner" style={{ width: '80%' }}></div>
+              <div className="inner" style={{ width: `${(globalData.result?.stats[7]/globalData.result?.stats[4])/pzsToken.decimals*100}%` }}></div>
             </div>
           </div>
           <div className="btn-box">
@@ -63,9 +85,9 @@ export default function Subscription() {
               认购
             </span>
           </div>
-          <div className="getmore">
-            <span>了解详情 &gt;</span>
-          </div>
+          {/*<div className="getmore">*/}
+            {/*<span>了解详情 &gt;</span>*/}
+          {/*</div>*/}
         </div>
         <TradeWrapper className="flex-between row">
           <HistoryWrap className="history">
@@ -83,17 +105,18 @@ export default function Subscription() {
                 <span className="date">DATE</span>
                 <span className="tx">TX</span>
               </div>
-              {[1, 1, 1, 1, 1].map(() => {
-                return (
-                  <div className="table-tr">
+              {txList.map((item:any,index:any) =>{
+                 return  item.to===SUB_ADDRESS&&index<6? <div key={index} className="table-tr">
                     <span className="value">
-                      <span className=" themeColor">+5</span> <i>PZS</i>
+                      <span className=" themeColor">+{item.value/ethToken.decimals*500}</span> <i>PZS</i>
                     </span>
-                    <span className="date">2020-07-20 20:00</span>
-                    <span className="tx">0x81b7e08f65bdf5648606c</span>
-                  </div>
-                )
-              })}
+                    <span className="date">{`${moment(item.timeStamp*1000).format("yyyy-MM-DD HH:mm:ss")}`}</span>
+                    <span className="tx">{item.hash.substring(0,10)}******{item.hash.substring(50,item.hash.length)}</span>
+                  </div>:''
+              }
+
+
+              )}
             </div>
           </HistoryWrap>
         </TradeWrapper>
@@ -108,7 +131,7 @@ export default function Subscription() {
         {/*认购弹窗*/}
         <SubscriptionModal periods={periods} isOpen={showSubscriptionModal} onDismiss={handleSubscriptionDismiss} />
         {/*加入我们的弹窗*/}
-        <JoinUsModal isOpen={false} onDismiss={() => {}} />
+        <JoinUsModal isOpen={userData.result?.stats[9].toNumber()===0} onDismiss={() => {}} periods={periods}/>
       </div>
     </BodyWrapper>
   )
