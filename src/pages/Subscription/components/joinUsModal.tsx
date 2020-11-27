@@ -11,7 +11,7 @@ import { useActiveWeb3React } from '../../../hooks'
 import TransactionConfirmationModal from '../../../components/TransactionConfirmationModal'
 import { TransactionResponse } from '@ethersproject/providers'
 import { calculateGasMargin } from '../../../utils'
-//import { useSingleCallResult } from '../../../state/multicall/hooks'
+import { useSingleCallResult } from '../../../state/multicall/hooks'
 
 interface JoinUsModalProps {
   isOpen: boolean
@@ -23,17 +23,15 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
   const [txLoading, setTxLoading] = useState<boolean>(false)
   const [txId, setTxId] = useState<string>("")
-  const [refUserId, setRefUserId] = useState<number>(1)
 
   const { account } = useActiveWeb3React()
   const contract = useSubContract(SUB_ADDRESS, true)
 
-  //const ref=sessionStorage.getItem("ref");
-  //const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,ref ?? undefined])
+  const ref=sessionStorage.getItem("ref");
+  const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,ref ?? undefined])
 
-  const getRefUserId=(e:any)=>{
-    setRefUserId(e.currentTarget.value)
-  }
+  console.log("refuser====",userData)
+
   // 升级为超级节点
   const reg= async ()=>{
     if(!account){
@@ -48,8 +46,7 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
       //   return ;
       // }
 
-      debugger
-      let refid="0x"+refUserId.toString(16);
+      let refid=userData.result?.stats[0];
       setTxLoading(true)
 
       const estimatedGas = await contract.estimateGas.regist(refid).catch((e) => {
@@ -88,8 +85,8 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
           </div>
         </div>
         <div className="write-box flex-between">
-          <input type="text" placeholder='请输入推荐人编码' onClick={getRefUserId}/>
-          <button className='btn btn-default' onClick={reg}>注册</button>
+          <input type="text" placeholder='请输入推荐人编码' disabled={true} value={userData.result?.stats[0]}/>
+          <button className='btn btn-default' onClick={reg} disabled={userData.result?.stats[0]>0?false:true}>注册</button>
         </div>
       </JoinUsWrapper>
       <TransactionConfirmationModal
