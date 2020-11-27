@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Modal from '../../../components/Modal'
-import pizzaImg from '../../../assets/images/lp/pz.png'
+import pizzaImg from '../../../assets/images/logo.png'
 import TransactionConfirmationModal from '../../../components/TransactionConfirmationModal'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useSubContract } from '../../../hooks/useContract'
@@ -133,7 +133,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
 
   const contract = useSubContract(SUB_ADDRESS, true)
 
-  const rate = 500
+  const rate = periods===0?1000:periods===1?800:500
   const change = (e: any) => {
     setAmount(e.currentTarget.value)
     setTokenAmount(e.currentTarget.value * rate)
@@ -174,7 +174,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
   const max = () => {
 
     setAmount(userEthBalance?.toFixed(4))
-    setTokenAmount(1)
+    setTokenAmount(userEthBalance?.multiply(rate.toString()).toFixed(4))
 
   }
   return (

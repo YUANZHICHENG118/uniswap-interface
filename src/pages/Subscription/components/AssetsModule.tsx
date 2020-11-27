@@ -26,7 +26,7 @@ export default function AssetsModule (props: { periods: number,globalData:any })
       <AccountWrap className='border-wrap'>
         <div className="left">
           <div>您已拥有</div>
-          <div><span className="number">{(userData.result?.stats[5]/1000000000000000000)*(globalData.result?.stats[3])}</span> <span className='unit'>PZS</span></div>
+          <div><span className="number">{((userData.result?.stats[5]||0)/1000000000000000000)*(globalData.result?.stats[3]||0)}</span> <span className='unit'>PZS</span></div>
 
         </div>
         <div className='divider'/>

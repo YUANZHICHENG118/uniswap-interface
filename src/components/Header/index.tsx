@@ -222,7 +222,7 @@ export default function Header() {
           <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
           <StyledNavLink to={'/menu'}>{t('pizza')}</StyledNavLink>
           <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
-          <StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>
+          {/*<StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>*/}
           <NavTitle  href={"javascript:void(0)"} onClick={()=>{alert(t('wait'))}}>NFT</NavTitle>
           {/*认购*/}
           <StyledNavLink  to={'/subscription'} >{t('subscription')}</StyledNavLink>

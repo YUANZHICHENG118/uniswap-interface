@@ -123,9 +123,9 @@ export default function InviteModule (props: { periods: number ,fee:any}) {
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
       <div className="partner-item col-lg-6">
-        <WhiteArrowTitle title='推荐统计'/>
+        <WhiteArrowTitle title='团队总人数'/>
         <GatherWrap className='gather-box'>
-          <div className="value"><span>{(userData.result?.stats[6]/ethToken.decimals)+(userData.result?.stats[7]/ethToken.decimals)}</span> <span className='unit'>ETH</span></div>
+          <div className="value"><span>{userData.result?.stats[2].toString()}</span> <span className='unit'>人</span></div>
           <div className="label">累计收益</div>
         </GatherWrap>
         <SummaryWrap className="Summary flex-between">
@@ -145,18 +145,25 @@ export default function InviteModule (props: { periods: number ,fee:any}) {
       </div>
       <div className="partner-item col-lg-6">
         <WhiteArrowTitle title='我的佣金'>
-          <span className='tag btn-default btn' onClick={nodeReg}>升级为超级节点</span>
+
+          {
+            userData.result?.stats[1].toNumber()===1?<span className='tag btn-default btn' >您已加入超级节点</span>:<span className='tag btn-default btn' onClick={nodeReg}>升级为超级节点</span>
+
+          }
+
+
+
         </WhiteArrowTitle>
         <div className='content'>
           <div className="profit">
             <div className='head'>可提佣金</div>
             <div className='flex-between profit-detail'>
-              <span><b className="value themeColor">{(userData.result?.stats[8]/ethToken.decimals)}</b> ETH</span>
+              <span><b className="value themeColor">{((userData.result?.stats[8]||0)/ethToken.decimals)}</b> ETH</span>
               <a href='javascript:;' onClick={()=>{setCommissionModal(true)}}>佣金明细 &gt;</a>
             </div>
           </div>
           <div className='tip'>
-            <span className="themeColor">PZS</span>
+            <span className="themeColor">ETH</span>
             <span>可提取推荐奖励</span>
           </div>
         </div>

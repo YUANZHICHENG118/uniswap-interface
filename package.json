@@ -107,8 +107,8 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "moment": "^2.19.1",
     "antd": "^4.6.3",
+    "moment": "^2.19.1",
     "web3": "^1.3.0"
   }
 }

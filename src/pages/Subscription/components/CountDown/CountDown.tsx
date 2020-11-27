@@ -51,19 +51,19 @@ export default function CountDown({endDate}:{endDate:string}) {
     <FlipClockWrap className="flipClock time-box">
       <div className="time-item flex-column">
         <Flipper className="flipperDay number" unit='days' digit={Days.days} shuffle={Days.daysShuffle} />
-        <span className="unit text-center">days</span>
+        <span className="unit text-center">天</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperHour number" unit='hours' digit={Hours.hours} shuffle={Hours.hoursShuffle}/>
-        <span className="unit text-center">hours</span>
+        <span className="unit text-center">小时</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperMinute number" unit='minutes' digit={Minutes.minutes} shuffle={Minutes.minutesShuffle}/>
-        <span className="unit text-center">min</span>
+        <span className="unit text-center">分</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperSecond number" unit='seconds' digit={Seconds.seconds} shuffle={Seconds.secondsShuffle}/>
-        <span className="unit text-center">sec</span>
+        <span className="unit text-center">秒</span>
       </div>
     </FlipClockWrap>
   )

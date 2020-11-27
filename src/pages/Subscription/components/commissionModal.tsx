@@ -40,15 +40,15 @@ export default function CommissionModal({ isOpen, onDismiss }: CommissionModalPr
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="profit">
-                  <span className="themeColor">+5612214</span>
-                  <span className="greyColor"> ETH</span>
-                </td>
-                <td>0x81b7e08f65bdf5A64……</td>
-                <td>直接推荐</td>
-                <td>2020-07-20 20:00</td>
-              </tr>
+              {/*<tr>*/}
+                {/*<td className="profit">*/}
+                  {/*<span className="themeColor">+5612214</span>*/}
+                  {/*<span className="greyColor"> ETH</span>*/}
+                {/*</td>*/}
+                {/*<td>0x81b7e08f65bdf5A64……</td>*/}
+                {/*<td>直接推荐</td>*/}
+                {/*<td>2020-07-20 20:00</td>*/}
+              {/*</tr>*/}
             </tbody>
           </table>
         </div>

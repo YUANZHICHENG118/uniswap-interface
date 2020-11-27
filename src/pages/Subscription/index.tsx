@@ -22,14 +22,13 @@ import { SUB_ADDRESS, pzsToken, ethApi, ethToken } from '../../constants'
 import { useSubContract } from '../../hooks/useContract'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { useActiveWeb3React } from '../../hooks'
-
 export default function Subscription() {
   const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
   const handleSubscriptionDismiss = useCallback(() => {
     setSubscriptionModal(false)
   }, [setSubscriptionModal])
   const [isDark] = useDarkModeManager()
-  const [txList, setTxList] = useState<any>([])
+  const [txList, setTxList] = useState<any[]>([])
 
 
   const contract = useSubContract(SUB_ADDRESS, true)
@@ -42,20 +41,46 @@ export default function Subscription() {
 
   const initDate=()=>{
     if(globalData.result){
-      return  moment(globalData.result?.stats[5].toNumber()*1000).add(globalData.result?.stats[2].toNumber(), 's').format("yyyy-MM-DD HH:mm:ss")
+     return moment(globalData.result?.stats[5].toNumber()*1000).add(globalData.result?.stats[2].toNumber(), 's').format("yyyy-MM-DD HH:mm:ss")
     }
-    return ''
+    return "2020-12-30 00:00:00"
   }
   useEffect(()=>{
+  //  console.log("======1111",Web3Utils.hexToUtf8(""))
+  //   const Web3EthAbi = require('web3-eth-abi');
+  //
+  //   console.log("======1111",Web3EthAbi.decodeLog([{
+  //       type: 'address',
+  //       name: 'user'
+  //     },{
+  //       type: 'address',
+  //       name: 'subAddress'
+  //     },{
+  //       type: 'uint256',
+  //       name: 'partnerAward',
+  //       indexed: true
+  //     }
+  //     ,{
+  //       type: 'uint8',
+  //       name: 'awardType',
+  //       indexed: true
+  //     }],
+  //     '0x00000000000000000000000000000000000000000000000000d529ae9e8600000000000000000000000000000000000000000000000000000000000000000001',
+  //     ['0x000000000000000000000000514c51818be9270e4f9a9e790cabfc4d7e8136d2', '0x00000000000000000000000096f673ef8c7584ad53cc9fc3dbc281965fbfe6a4'])
+  // );
+
+
+
 
     fetch(ethApi+"?module=account&action=txlist&address="+SUB_ADDRESS+"&startblock=0&endblock=99999999&sort=desc&apikey=").then((response) => {
       return response.json()
     }).then(data=>{
       console.log("data====",data)
       if(data&&data.result){
-        setTxList(data.result)
+        setTxList(data.result||[])
       }
     })
+
   },[])
   return (
     <BodyWrapper>
@@ -65,14 +90,14 @@ export default function Subscription() {
           <img style={{ marginLeft: '14px' }} height={80} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
         </div>
         <CountDownWrap>
-          <h3>第{periods + 1}期认购倒计时</h3>
+          <h3>第{(periods||0) + 1}期认购倒计时</h3>
           <CountDown endDate={initDate()} />
 
         </CountDownWrap>
         <div className="statistic">
           <div className="number-box">
             <span>已认购PZS：</span>
-            <span className="number">{globalData.result?.stats[7] / pzsToken.decimals}</span>
+            <span className="number">{(globalData.result?.stats[7] ||0) / pzsToken.decimals}</span>
             <span>Pzs</span>
           </div>
           <div className="process">
@@ -105,7 +130,7 @@ export default function Subscription() {
                 <span className="date">DATE</span>
                 <span className="tx">TX</span>
               </div>
-              {txList.map((item:any,index:any) =>{
+              {txList&&txList.map((item:any,index:any) =>{
                  return  item.to===SUB_ADDRESS&&index<10&&item.value>0? <div key={index} className="table-tr">
                     <span className="value">
                       <span className=" themeColor">+{item.value/ethToken.decimals*500}</span> <i>PZS</i>
