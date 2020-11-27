@@ -6,7 +6,7 @@
 import React, { useState } from 'react'
 import TransactionConfirmationModal from '../../../components/TransactionConfirmationModal'
 import { TransactionResponse } from '@ethersproject/providers'
-//import BigNumber from 'bignumber.js'
+import BigNumber from 'bignumber.js'
 
 import { PartnerWrap, GatherWrap, SummaryWrap,InviteWrap } from '../styled'
 import SubscriptionListItem from './subscriptionListItem'
@@ -21,10 +21,10 @@ import { useSingleCallResult } from '../../../state/multicall/hooks'
 import { useSubContract } from '../../../hooks/useContract'
 import { calculateGasMargin } from '../../../utils'
 
-export default function InviteModule (props: { periods: number }) {
+export default function InviteModule (props: { periods: number ,fee:any}) {
   const {
-    periods
-
+    periods,
+    fee
   } = props
 
 
@@ -38,37 +38,35 @@ export default function InviteModule (props: { periods: number }) {
   const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,account ?? undefined])
 
 
-  // 升级为超级节点
-  const nodeReg= async ()=>{
-    if(!account){
-      alert("connect to wallet")
-      return ;
+  // 认购
+  const nodeReg = async () => {
+    if (!account) {
+      alert('connect to wallet')
+      return
     }
-
     if (contract) {
-
+      let value = new BigNumber((fee/ethToken.decimals)* Math.pow(10, 18))
+      let _amount ='0x' + value.toString(16)
       setTxLoading(true)
 
-      const estimatedGas = await contract.estimateGas.applyForPartner(periods).catch((e) => {
-        alert(e.message)
-        // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.applyForPartner(periods)
-      })
+      const estimatedGas = await contract.estimateGas.applyForPartner
+      await estimatedGas([periods], { value: _amount })
+        .then(estimatedGasLimit =>
+          contract.applyForPartner([periods], {
+            value: _amount,
+            gasLimit: calculateGasMargin(estimatedGasLimit)
+          }).then((response: TransactionResponse) => {
 
-      return contract.applyForPartner(periods, {
-        gasLimit: calculateGasMargin(estimatedGas)
-      })
-        .then((response: TransactionResponse) => {
-          setTxLoading(false)
+            setTxLoading(false)
 
-          setTxConfirm(true)
-          setTxId(response.hash)
-          console.log('response====', response)
-        })
-        .catch((error: Error) => {
-          console.debug('Failed to reg token', error)
-          throw error
-        })
+            setTxConfirm(true)
+            setTxId(response.hash)
+            console.log('response====', response)
+          })
+            .catch((error: Error) => {
+              console.debug('Failed to reg token', error)
+              throw error
+            }))
 
     }
   }

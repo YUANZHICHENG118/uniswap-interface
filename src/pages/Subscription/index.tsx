@@ -124,7 +124,7 @@ export default function Subscription() {
           {/*我的资产*/}
           <AssetsModule periods={periods} globalData={globalData} />
           {/*推荐奖励*/}
-          <InviteModule periods={periods} />
+          <InviteModule periods={periods} fee={globalData.result?.stats[6]}/>
           {/*成为超级合伙人-新设计图上没有这块了*/}
           {/*<PartnerModule/>*/}
         </SubscriptionItems>

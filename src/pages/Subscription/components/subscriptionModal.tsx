@@ -149,10 +149,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
       let _amount = '0x' + value.toString(16)
       setTxLoading(true)
 
-      debugger
       const estimatedGas = await contract.estimateGas.subscribe
-
-
       await estimatedGas([periods], { value: _amount })
         .then(estimatedGasLimit =>
           contract.subscribe([periods], {
