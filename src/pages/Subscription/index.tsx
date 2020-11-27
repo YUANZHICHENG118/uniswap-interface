@@ -41,7 +41,8 @@ export default function Subscription() {
 
   const initDate=()=>{
     if(globalData.result){
-     return moment(globalData.result?.stats[5].toNumber()*1000).add(globalData.result?.stats[2].toNumber(), 's').format("yyyy-MM-DD HH:mm:ss")
+
+      return moment(globalData.result?.stats[5].toNumber()*1000).add(globalData.result?.stats[2].toNumber(), 's').format("yyyy-MM-DD HH:mm:ss")
     }
     return "2020-12-30 00:00:00"
   }

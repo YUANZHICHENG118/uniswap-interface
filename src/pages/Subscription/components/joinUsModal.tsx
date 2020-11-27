@@ -45,6 +45,7 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
       //   return ;
       // }
 
+
       let refid=userData.result?.stats[0]||1;
       setTxLoading(true)
 
