@@ -45,7 +45,7 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
       //   return ;
       // }
 
-      let refid=userData.result?.stats[0];
+      let refid=userData.result?.stats[0]||1;
       setTxLoading(true)
 
       const estimatedGas = await contract.estimateGas.regist(refid).catch((e) => {

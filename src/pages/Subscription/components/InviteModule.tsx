@@ -123,18 +123,25 @@ export default function InviteModule (props: { periods: number ,fee:any}) {
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
       <div className="partner-item col-lg-6">
-        <WhiteArrowTitle title='团队总人数'/>
+        <WhiteArrowTitle title='累计总收益'/>
         <GatherWrap className='gather-box'>
-          <div className="value"><span>{userData.result?.stats[2].toString()}</span> <span className='unit'>人</span></div>
+          <div className="value"><span>{((userData.result?.stats[6]/ethToken.decimals)+(userData.result?.stats[7]/ethToken.decimals)).toFixed(2)}</span> <span className='unit'>ETH</span></div>
           <div className="label">累计收益</div>
         </GatherWrap>
+
+        <GatherWrap className='gather-box'>
+          <div className="value"><span>{userData.result?.stats[2].toString()}</span> <span className='unit'>人</span></div>
+          <div className="label">团队总人数</div>
+        </GatherWrap>
+
+
         <SummaryWrap className="Summary flex-between">
           <div className="summary-item flex-column">
-            <span className='summary-item-value'>{userData.result?.stats[3].toString()}</span>
+            <span className='summary-item-value'>{userData.result?.stats[3].toString()}人</span>
             <span className="summary-item-label">直接推荐</span>
           </div>
           <div className="summary-item flex-column">
-            <span className='summary-item-value'>{userData.result?.stats[4].toString()}</span>
+            <span className='summary-item-value'>{userData.result?.stats[4].toString()}人</span>
             <span className="summary-item-label">间接推荐</span>
           </div>
           {/*<div className="summary-item flex-column">*/}
