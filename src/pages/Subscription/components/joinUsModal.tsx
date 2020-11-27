@@ -30,7 +30,6 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
   const ref=sessionStorage.getItem("ref");
   const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,ref ?? undefined])
 
-  console.log("refuser====",userData)
 
   // 升级为超级节点
   const reg= async ()=>{
@@ -85,8 +84,8 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
           </div>
         </div>
         <div className="write-box flex-between">
-          <input type="text" placeholder='请输入推荐人编码' disabled={true} value={userData.result?.stats[0]}/>
-          <button className='btn btn-default' onClick={reg} disabled={userData.result?.stats[0]>0?false:true}>注册</button>
+          <input type="text" placeholder='请输入推荐人编码' disabled={true} value={userData.result?.stats[0]||1}/>
+          <button className='btn btn-default' onClick={reg}>注册</button>
         </div>
       </JoinUsWrapper>
       <TransactionConfirmationModal

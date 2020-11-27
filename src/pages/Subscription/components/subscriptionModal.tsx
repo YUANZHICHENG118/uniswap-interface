@@ -183,7 +183,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
         <div className="title text-center">认购</div>
         <div className="content">
           <div className="bg-item">
-            <div>从</div>
+            <div>从{userEthBalance?.toFixed(6)}</div>
             <div className="bg-item-bottom flex-between">
               <span className="left themeColor">
                 <input type="number" placeholder="1" value={amount} className="themeColor" onChange={change}/>
