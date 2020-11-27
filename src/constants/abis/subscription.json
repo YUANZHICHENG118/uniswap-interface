@@ -1,5 +1,4 @@
-[
-  {
+[{
     "inputs": [
       {
         "internalType": "address",
@@ -227,21 +226,6 @@
     ],
     "payable": false,
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "config",
-    "outputs": [
-      {
-        "internalType": "contract PZSConfig",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "payable": false,
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -532,6 +516,32 @@
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "addList",
+        "type": "address[]"
+      },
+      {
+        "internalType": "address",
+        "name": "referAddress",
+        "type": "address"
+      }
+    ],
+    "name": "upgrade",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

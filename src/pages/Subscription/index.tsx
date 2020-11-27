@@ -33,7 +33,7 @@ export default function Subscription() {
 
   const contract = useSubContract(SUB_ADDRESS, true)
   const periodsData = useSingleCallResult(contract, 'underway')
-  const periods = periodsData.result?.[0] || undefined
+  const periods = periodsData.result?.[0]
   const { account } = useActiveWeb3React()
 
   const globalData = useSingleCallResult(contract, 'getGlobalStats', [periods])
