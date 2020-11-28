@@ -117,8 +117,8 @@ export default function InviteModule (props: { periods: number ,fee:any}) {
         <div><img src={checkIcon}/> 间接收益<span className='themeColor'><b>15</b>%</span></div>
       </div>
       <div className='invite-address flex-between'>
-        <input type="text" value={`${HOST}/#/Home?ref=${account || ''}`}/>
-        <CopyBtn copyData={`${HOST}/#/Home?ref=${account || ''}`} title='复制'/>
+        <input type="text" value={`${HOST}/#/subscription?ref=${account || ''}`}/>
+        <CopyBtn copyData={`${HOST}/#/subscription?ref=${account || ''}`} title='复制'/>
       </div>
     </InviteWrap>
     <PartnerWrap className='border-wrap'>

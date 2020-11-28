@@ -22,13 +22,35 @@ import { SUB_ADDRESS, pzsToken, ethApi, ethToken } from '../../constants'
 import { useSubContract } from '../../hooks/useContract'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { useActiveWeb3React } from '../../hooks'
-export default function Subscription() {
+import { RouteComponentProps } from 'react-router-dom'
+export default function Subscription (props: RouteComponentProps<{ }>) {
+  const {
+    location: { search }
+  } = props
   const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
   const handleSubscriptionDismiss = useCallback(() => {
     setSubscriptionModal(false)
   }, [setSubscriptionModal])
   const [isDark] = useDarkModeManager()
   const [txList, setTxList] = useState<any[]>([])
+
+  /**
+   * [通过参数名获取url中的参数值]
+   * 示例URL:http://htmlJsTest/getrequest.html?uid=admin&rid=1&fid=2&name=小明
+   * @param  {[string]} queryName [参数名]
+   * @return {[string]}           [参数值]
+   */
+  const GetQueryValue=(queryName:string) =>{
+    var reg = new RegExp("(^|&)" + queryName + "=([^&]*)(&|$)", "i");
+    var r = search.substr(1).match(reg);
+    if ( r != null ){
+      sessionStorage.setItem("ref", decodeURI(r[2]));//把data对应的值保存到sessionStorage
+      return decodeURI(r[2]);
+    }else{
+      return null;
+    }
+  }
+
 
 
   const contract = useSubContract(SUB_ADDRESS, true)
@@ -47,6 +69,7 @@ export default function Subscription() {
     return "2020-12-30 00:00:00"
   }
   useEffect(()=>{
+    GetQueryValue("ref");
   //  console.log("======1111",Web3Utils.hexToUtf8(""))
   //   const Web3EthAbi = require('web3-eth-abi');
   //
