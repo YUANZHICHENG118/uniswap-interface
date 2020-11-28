@@ -18,7 +18,7 @@ export default function CountDown({endDate}:{endDate:string}) {
     const minutes =  Math.floor((remaining / 1000 / 60) % 60);
     const seconds =  Math.floor(remaining / 1000 % 60);
     const updateTime=()=>{
-      console.log("days===",days,Days.days)
+      //console.log("days===",days,Days.days)
       if (days !== Days.days) {
         const daysShuffle = !Days.daysShuffle;
         setDays({days,daysShuffle});
