@@ -155,7 +155,7 @@ export default function Subscription (props: RouteComponentProps<{ }>) {
                 <span className="tx">TX</span>
               </div>
               {txList&&txList.map((item:any,index:any) =>{
-                 return  item.to===SUB_ADDRESS&&index<10&&item.value>0? <div key={index} className="table-tr">
+                 return  item.to.toLowerCase()===SUB_ADDRESS.toLowerCase()&&index<10&&item.value>0? <div key={index} className="table-tr">
                     <span className="value">
                       <span className=" themeColor">+{item.value/ethToken.decimals*500}</span> <i>PZS</i>
                     </span>
