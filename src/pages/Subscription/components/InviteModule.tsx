@@ -20,8 +20,9 @@ import { useActiveWeb3React } from '../../../hooks'
 import { useSingleCallResult } from '../../../state/multicall/hooks'
 import { useSubContract } from '../../../hooks/useContract'
 import { calculateGasMargin } from '../../../utils'
+import { useETHBalances } from '../../../state/wallet/hooks'
 
-export default function InviteModule (props: { periods: number ,fee:any}) {
+export default function InviteModule (props: { periods: number ,fee:any }) {
   const {
     periods,
     fee
@@ -36,12 +37,18 @@ export default function InviteModule (props: { periods: number ,fee:any}) {
   const { account } = useActiveWeb3React()
   const contract = useSubContract(SUB_ADDRESS, true)
   const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,account ?? undefined])
+  const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
 
 
   // 认购
   const nodeReg = async () => {
     if (!account) {
       alert('connect to wallet')
+      return
+    }
+
+    if(userEthBalance?.lessThan((fee/ethToken.decimals).toString())){
+      alert('余额不足')
       return
     }
     if (contract) {
@@ -171,7 +178,7 @@ export default function InviteModule (props: { periods: number ,fee:any}) {
           </div>
           <div className='tip'>
             <span className="themeColor">ETH</span>
-            <span>可提取推荐奖励</span>
+            <span>可提取推荐奖励(提币扣0.005手续费)</span>
           </div>
         </div>
         <button className='btn btn-default' style={{ width: '100%' }} onClick={draw}>提取</button>
