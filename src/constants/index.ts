@@ -15,7 +15,7 @@ export const defRefAddress = '0x49e39fB0CB1461597436d67119d982FFa0E56688'
 
 // main
 export const ethApi="https://api.etherscan.io/api";
-export const SUB_ADDRESS='0x66b1012f689305abf28577d5300740f6117ca30'
+export const SUB_ADDRESS='0x66B1012F689305aBf28577d5300740f6117ca30C'
 
 // export const ethApi="https://api-ropsten.etherscan.io/api";
 // export const SUB_ADDRESS='0x102dae99cbe3253a8229d11feac9b096668eee6d'
