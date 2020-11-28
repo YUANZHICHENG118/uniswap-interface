@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'antd'
-import { mainToken } from '../../constants/index'
+import { pzsToken ,mainToken} from '../../constants/index'
 import Copy from '../../components/AccountDetails/Copy'
 import { useTranslation } from 'react-i18next'
 import { isMobile } from 'react-device-detect'
@@ -79,16 +79,16 @@ export default function HomeSection() {
         <div className="certificate">
           <div className="wow blue_dark_bg banner_token col-lg-6">
 
-            <span>{mainToken.symbol}{t("index2")}:</span>
+            <span>{pzsToken.symbol}{t("index2")}:</span>
             <span className="code">
-               <a href={`https://etherscan.io/address/${mainToken.address}`}
+               <a href={`https://etherscan.io/address/${pzsToken.address}`}
                   className="token-url" target="_blank" rel="noopener noreferrer">
                  {
-                   isMobile?<span style={{fontSize:12}}>{mainToken.address}</span>:<span >{mainToken.address}</span>
+                   isMobile?<span style={{fontSize:12}}>{pzsToken.address}</span>:<span >{pzsToken.address}</span>
                  }
 
                </a>
-                <Copy toCopy={mainToken.address}>
+                <Copy toCopy={pzsToken.address}>
                   </Copy>
 
               </span>

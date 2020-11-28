@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import BigNumber from 'bignumber.js'
-import { POOL_ADDRESS, HOST, mainToken,defRefAddress,supportedPools } from '../../constants/index'
+import { POOL_ADDRESS, HOST, mainToken,defRefAddress,supportedPools,pzsToken } from '../../constants/index'
 import TransactionConfirmationModal from '../../components/TransactionConfirmationModal'
 
 import XpoolItem from './xpoolItem'
@@ -135,6 +135,7 @@ export default function Xpool(props: { refAddress: any }) {
 
   const token=supportedPools[0];
   const token1=supportedPools[1];
+  const token2=supportedPools[2];
 
   const lpcontract = useLpContract(token && token.lpAddresses, true)
   const lpcontract1 = useLpContract(token1 && token1.lpAddresses, true)
@@ -152,6 +153,11 @@ export default function Xpool(props: { refAddress: any }) {
   //const getTotalReward = useSingleCallResult(contract, 'totalReward', [account??undefined])
  // const getNotRef = useSingleCallResult(contract, 'refer_pending', [account??undefined])
 
+  const pzscontract = useTokenContract(pzsToken && pzsToken.address, true)
+
+  const getPzsBalance1 = useSingleCallResult(pzscontract, 'balanceOf', [POOL_ADDRESS])
+
+  console.log("getPzsBalance1====",getPzsBalance1)
   const getTotalRef1 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,0])
   const getTotalRef2 = useSingleCallResult(contract, 'getReferAmount', [account??undefined,1])
 
@@ -161,6 +167,8 @@ export default function Xpool(props: { refAddress: any }) {
 
   const lpBalance=getLpBalance && getLpBalance.result&& getLpBalance.result[0]
   const lpBalance1=getLpBalance1 && getLpBalance1.result&& getLpBalance1.result[0]
+
+
   const tokenBalance=getTokenBalance && getTokenBalance.result&& getTokenBalance.result[0]
  // const totalReward=getTotalReward && getTotalReward.result&& getTotalReward.result[0]
 
@@ -275,6 +283,10 @@ export default function Xpool(props: { refAddress: any }) {
           <div className="row row-cols-1 row-cols-lg-2 m-n1">
             <XpoolItem title={`${token.symbol} ${t("index5")}`} token={token} amount={format(lpBalance&&lpBalance.toString(),token&&token.decimals||18)}/>
             <XpoolItem title={`${token1.symbol} ${t("index5")}`} token={token1} amount={format(lpBalance1&&lpBalance1.toString(),token1&&token1.decimals||18)}/>
+            <XpoolItem title={`${pzsToken.symbol} ${t("index501")}`} token={token2} amount={getPzsBalance1.result?.[0]/pzsToken.decimals}/>
+
+
+
             <XpoolItem title={t("index6")} token={mainToken} amount={9000}/>
 
             <BodyWrapper>
