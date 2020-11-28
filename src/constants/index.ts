@@ -76,7 +76,7 @@ export const supportedPools = [
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
-    available:true
+    available:false
   },
   // {
   //   pid: 3,
