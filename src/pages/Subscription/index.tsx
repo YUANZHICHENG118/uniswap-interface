@@ -136,7 +136,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
         <div className="statistic">
           <div className="number-box">
             <span>已认购PZS：</span>
-            <span className="number">{(globalData.result?.stats[7] || 0) / pzsToken.decimals}</span>
+            <span className="number">{((globalData.result?.stats[7] || 0) / pzsToken.decimals).toFixed(2)}</span>
             <span>Pzs</span>
           </div>
           <div className="process">
