@@ -53,6 +53,7 @@ export const supportedPools = [
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
+   lp:true,
     available:true
   }
   ,
@@ -65,18 +66,21 @@ export const supportedPools = [
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
+    lp:true,
+
     available:true
   },
   {
-    pid: 2,
+    pid: 3,
     lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
     tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
     name: 'Donald PZ',
-    symbol: 'PZ-PZS',
+    symbol: 'PZS',
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
-    available:false
+    lp:false,
+    available:true
   },
   // {
   //   pid: 3,

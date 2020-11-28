@@ -147,12 +147,12 @@ export default function Menu() {
                     <RowItemLogo><img src={require(`../../assets/images/lp/${item.symbol.toLowerCase()}.png`)} height={75}></img></RowItemLogo>
                     <RowItemTitle>{item.name}</RowItemTitle>
                     <RowItemSubTitle>
-                      <div className="kdcQzs">{t("deposit")} {item.symbol} LP</div>
+                      <div className="kdcQzs">{t("deposit")} {item.symbol} {item.lp?"LP":""}</div>
                       <div className="kdcQzs">{t("earn")} {item.tokenSymbol}</div>
                     </RowItemSubTitle>
                     <RowItemButton color="#d16c00" font-size="16">
                       {
-                        item.available?<a className="sc-AxirZ kRQAGp" href={`/#/Farm/${item.symbol}`}>
+                        item.available?<a className="sc-AxirZ kRQAGp" href={item.lp?`/#/Farm/${item.symbol}`:`/#/Farm/token/${item.symbol}`}>
                           Select
                         </a>:<a className="sc-AxirZ kRQAGp" style={{backgroundColor:'#999',color:'#fff', borderRadius:'5px'}} href={"javascript:void(0)"}>
                           Select
