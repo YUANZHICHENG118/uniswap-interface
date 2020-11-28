@@ -180,7 +180,7 @@ export default function Subscription (props: RouteComponentProps<{ }>) {
         {/*认购弹窗*/}
         <SubscriptionModal periods={periods} isOpen={showSubscriptionModal} onDismiss={handleSubscriptionDismiss} />
         {/*加入我们的弹窗*/}
-        <JoinUsModal isOpen={userData.result?.stats[9].toNumber()===1} onDismiss={() => {}} periods={periods}/>
+        <JoinUsModal isOpen={userData.result?.stats[9].toNumber()===0} onDismiss={() => {}} periods={periods}/>
       </div>
     </BodyWrapper>
   )
