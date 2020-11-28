@@ -63,8 +63,8 @@ export default function Subscription (props: RouteComponentProps<{ }>) {
 
   const initDate=()=>{
     if(globalData.result){
-
-      return moment(globalData.result?.stats[5].toNumber()*1000).add(globalData.result?.stats[2].toNumber(), 's').format("yyyy-MM-DD HH:mm:ss")
+     // console.log("====",moment(globalData.result?.stats[5].toNumber()*1000).add((globalData.result?.stats[2].toNumber()), 's').format("YYYY-MM-DD HH:mm:ss"))
+      return moment(globalData.result?.stats[5].toNumber()*1000).add((globalData.result?.stats[2].toNumber()), 's').format("YYYY-MM-DD HH:mm:ss")
     }
     return "2020-12-30 00:00:00"
   }
@@ -180,7 +180,7 @@ export default function Subscription (props: RouteComponentProps<{ }>) {
         {/*认购弹窗*/}
         <SubscriptionModal periods={periods} isOpen={showSubscriptionModal} onDismiss={handleSubscriptionDismiss} />
         {/*加入我们的弹窗*/}
-        <JoinUsModal isOpen={userData.result?.stats[9].toNumber()===0} onDismiss={() => {}} periods={periods}/>
+        <JoinUsModal isOpen={userData.result?.stats[9].toNumber()===1} onDismiss={() => {}} periods={periods}/>
       </div>
     </BodyWrapper>
   )
