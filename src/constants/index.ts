@@ -37,7 +37,7 @@ export const ethToken = {
 export const pzsToken = {
   name:"pzs ",
   symbol: 'PZS',
-  address:'0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
+  address:'0x205BB454CfF5ece04A102D7449313ebb934014e8',
   decimals:1000000000000000000,
   icon: '🦆'
 }
