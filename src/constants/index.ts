@@ -14,7 +14,8 @@ export const HOST = 'https://www.pizzaswap.net'
 export const defRefAddress = '0x49e39fB0CB1461597436d67119d982FFa0E56688'
 
 // main
-export const ethApi="https://api.etherscan.io/api";
+//export const ethApi="https://mainnet.infura.io/v3/06fca9a79923403492775e750c1917b8";
+export const ethApi="https://api-cn.etherscan.com/api";
 export const SUB_ADDRESS='0x66B1012F689305aBf28577d5300740f6117ca30C'
 
 // export const ethApi="https://api-ropsten.etherscan.io/api";
@@ -69,9 +70,9 @@ export const supportedPools = [
   {
     pid: 2,
     lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
-    tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
+    tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
     name: 'Donald PZ',
-    symbol: 'PZ-MOON',
+    symbol: 'PZ-PZS',
     tokenSymbol: 'PIZZA',
     decimals:18,
     icon: '🦆',
