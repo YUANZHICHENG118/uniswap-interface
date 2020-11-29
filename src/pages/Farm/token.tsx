@@ -290,7 +290,7 @@ export default function FarmToken(props: RouteComponentProps<{ symbol: string }>
     return max*0.97
   }
 
-  // 质押
+  // 质押1
   const stakeHandel= async ()=>{
 
 
