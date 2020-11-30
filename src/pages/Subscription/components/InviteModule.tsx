@@ -21,6 +21,7 @@ import { useSingleCallResult } from '../../../state/multicall/hooks'
 import { useSubContract } from '../../../hooks/useContract'
 import { calculateGasMargin } from '../../../utils'
 import { useETHBalances } from '../../../state/wallet/hooks'
+import { useTranslation } from 'react-i18next'
 
 export default function InviteModule (props: { periods: number ,fee:any }) {
   const {
@@ -28,6 +29,7 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
     fee
   } = props
 
+  const {t}=useTranslation();
 
   const [showCommissionnModal, setCommissionModal] = useState<boolean>(false)
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
@@ -116,40 +118,40 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
 
     }
   }
-  return <SubscriptionListItem title='推荐奖励'>
+  return <SubscriptionListItem title={t("subscription-recommendation")}>
     <InviteWrap className='border-wrap'>
-      <WhiteArrowTitle title='推荐邀请人' />
+      <WhiteArrowTitle title={t("subscription-recommendation-invite")} />
       <div className='invite-tip'>
-        <div className='invite-tip-opt'><img src={checkIcon}/> 直接推荐收益 <span className='themeColor'><b>20</b>%</span></div>
-        <div><img src={checkIcon}/> 间接收益<span className='themeColor'><b>15</b>%</span></div>
+        <div className='invite-tip-opt'><img src={checkIcon}/>{t("subscription-direct-invite")} <span className='themeColor'><b>20</b>%</span></div>
+        <div><img src={checkIcon}/>{t("subscription-indirect-invite")} <span className='themeColor'><b>15</b>%</span></div>
       </div>
       <div className='invite-address flex-between'>
         <input type="text" value={`${HOST}/#/subscription?ref=${account || ''}`}/>
-        <CopyBtn copyData={`${HOST}/#/subscription?ref=${account || ''}`} title='复制'/>
+        <CopyBtn copyData={`${HOST}/#/subscription?ref=${account || ''}`} title='Copy'/>
       </div>
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
       <div className="partner-item col-lg-6">
-        <WhiteArrowTitle title='累计总收益'/>
+        <WhiteArrowTitle title={t("subscription-invite-allprofits-1")}/>
         <GatherWrap className='gather-box'>
           <div className="value"><span>{(((userData.result?.stats[6]||0)/ethToken.decimals)+((userData.result?.stats[7]||0)/ethToken.decimals)).toFixed(2)}</span> <span className='unit'>ETH</span></div>
-          <div className="label">累计收益</div>
+          <div className="label">{t("subscription-invite-allprofits")}</div>
         </GatherWrap>
 
         <GatherWrap className='gather-box'>
           <div className="value"><span>{userData.result?.stats[2].toString()}</span> <span className='unit'>人</span></div>
-          <div className="label">团队总人数</div>
+          <div className="label">{t("subscription-invite-allprofits-2")}</div>
         </GatherWrap>
 
 
         <SummaryWrap className="Summary flex-between">
           <div className="summary-item flex-column">
             <span className='summary-item-value'>{userData.result?.stats[3].toString()||0}人</span>
-            <span className="summary-item-label">直接推荐</span>
+            <span className="summary-item-label">{t("direct-recommendation")}</span>
           </div>
           <div className="summary-item flex-column">
             <span className='summary-item-value'>{userData.result?.stats[4].toString()||0}人</span>
-            <span className="summary-item-label">间接推荐</span>
+            <span className="summary-item-label">{t("indirect-recommendation")}</span>
           </div>
           {/*<div className="summary-item flex-column">*/}
             {/*<span className='summary-item-value'>16529</span>*/}
@@ -158,10 +160,10 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
         </SummaryWrap>
       </div>
       <div className="partner-item col-lg-6">
-        <WhiteArrowTitle title='我的佣金'>
+        <WhiteArrowTitle title={t("my-Commission")}>
 
           {
-            userData.result?.stats[1].toNumber()===1?<span className='tag btn-default btn' >您已加入超级节点</span>:<span className='tag btn-default btn' onClick={nodeReg}>升级为超级节点</span>
+            userData.result?.stats[1].toNumber()===1?<span className='tag btn-default btn' >{t("upgrade1")}</span>:<span className='tag btn-default btn' onClick={nodeReg}>{t("upgrade")}</span>
 
           }
 
@@ -170,18 +172,18 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
         </WhiteArrowTitle>
         <div className='content'>
           <div className="profit">
-            <div className='head'>可提佣金</div>
+            <div className='head'>{t("commission-payable")}</div>
             <div className='flex-between profit-detail'>
               <span><b className="value themeColor">{((userData.result?.stats[8]||0)/ethToken.decimals)}</b> ETH</span>
-              <a href='javascript:;' onClick={()=>{setCommissionModal(true)}}>佣金明细 &gt;</a>
+              <a href='javascript:;' onClick={()=>{setCommissionModal(true)}}>{t("detailed-commission")} &gt;</a>
             </div>
           </div>
           <div className='tip'>
             <span className="themeColor">ETH</span>
-            <span>可提取推荐奖励(提币扣0.005手续费)</span>
+            <span>{t("extractable-rewards")}</span>
           </div>
         </div>
-        <button className='btn btn-default' style={{ width: '100%' }} onClick={draw}>提取</button>
+        <button className='btn btn-default' style={{ width: '100%' }} onClick={draw}>{t("extract")}</button>
       </div>
     </PartnerWrap>
     {/*佣金明细*/}

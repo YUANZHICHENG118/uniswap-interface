@@ -9,6 +9,7 @@ import { ethApi, ethToken, SUB_ADDRESS } from '../../../constants'
 // import { useSubContract } from '../../../hooks/useContract'
 // import { SUB_ADDRESS } from '../../../constants'
 // import { useActiveWeb3React } from '../../../hooks'
+import { useTranslation } from 'react-i18next'
 
 import moment from 'moment';
 import web3Utils from 'web3-utils'
@@ -19,6 +20,7 @@ interface CommissionModalProps {
 }
 
 export default function CommissionModal({ isOpen, onDismiss }: CommissionModalProps) {
+  const {t}=useTranslation();
 
   const [txList, setTxList] = useState<any[]>()
 
@@ -54,15 +56,15 @@ export default function CommissionModal({ isOpen, onDismiss }: CommissionModalPr
   return (
     <Modal isOpen={isOpen} showCloseIcon={true} onDismiss={onDismiss} minHeight={false} maxHeight={90} width={'700px'}>
       <CommissionWrapper>
-        <WhiteArrowTitle title='我的佣金明细' className='arrowTitle'/>
+        <WhiteArrowTitle title={t("detailed-commission")} className='arrowTitle'/>
         <div className="commission-table">
           <table>
             <thead>
               <tr>
-                <th className="themeColor profit">佣金收益</th>
-                <th className="themeColor address">兑换人地址</th>
-                <th className="themeColor type">推荐类型</th>
-                <th className="themeColor time">时间</th>
+                <th className="themeColor profit">{t("commission-revenues")}</th>
+                <th className="themeColor address">{t("converter-address")}</th>
+                <th className="themeColor type">{t("recommendType")}</th>
+                <th className="themeColor time">{t("time")}</th>
               </tr>
             </thead>
             <tbody>

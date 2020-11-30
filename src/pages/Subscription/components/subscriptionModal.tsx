@@ -10,6 +10,7 @@ import { useActiveWeb3React } from '../../../hooks'
 import { calculateGasMargin } from '../../../utils'
 import BigNumber from 'bignumber.js'
 import { useETHBalances } from '../../../state/wallet/hooks'
+import { useTranslation } from 'react-i18next'
 
 export const Wrapper = styled.div`
   padding: 30px 4%;
@@ -120,6 +121,7 @@ interface SubscriptionModalProps {
 }
 
 export default function SubscriptionModal({ isOpen, onDismiss, periods }: SubscriptionModalProps) {
+  const {t}=useTranslation();
 
   const { account } = useActiveWeb3React()
 
@@ -180,7 +182,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
   return (
     <Modal isOpen={isOpen} showCloseIcon={true} onDismiss={onDismiss} minHeight={false} maxHeight={90}>
       <Wrapper>
-        <div className="title text-center">认购</div>
+        <div className="title text-center">{t("subscription")}</div>
         <div className="content">
           <div className="bg-item">
             <div>从{userEthBalance?.toFixed(6)}</div>
@@ -196,7 +198,7 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
           </div>
           <div className="down-arrow text-center">↓</div>
           <div className="bg-item">
-            <div>至</div>
+            <div>{t("to")}</div>
             <div className="bg-item-bottom flex-between ">
               <span className="left themeColor">
                 <input type="text" placeholder={rate.toString()} disabled={true} className="themeColor"
@@ -230,7 +232,8 @@ export default function SubscriptionModal({ isOpen, onDismiss, periods }: Subscr
           </div>
           <div className="btnbox">
             <button className="btn btn-default" style={{ width: '100%', borderRadius: '39px' }} onClick={deposit}>
-              兑换
+
+              {t("earn")}
             </button>
           </div>
         </div>

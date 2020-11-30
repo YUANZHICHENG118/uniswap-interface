@@ -23,15 +23,25 @@ import { useSubContract } from '../../hooks/useContract'
 import { useSingleCallResult } from '../../state/multicall/hooks'
 import { useActiveWeb3React } from '../../hooks'
 import { RouteComponentProps } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export default function Subscription(props: RouteComponentProps<{}>) {
   const {
     location: { search }
   } = props
+  const {t}=useTranslation();
+
   const [showSubscriptionModal, setSubscriptionModal] = useState<boolean>(false)
   const handleSubscriptionDismiss = useCallback(() => {
     setSubscriptionModal(false)
   }, [setSubscriptionModal])
+
+
+  // const [showJoinModal, setJoinModal] = useState<boolean>(false)
+  // const handleJoinDismiss = useCallback(() => {
+  //   setJoinModal(false)
+  // }, [showJoinModal])
+
   const [isDark] = useDarkModeManager()
   const [txList, setTxList] = useState<any[]>([])
 
@@ -70,6 +80,8 @@ export default function Subscription(props: RouteComponentProps<{}>) {
     return '2020-12-30 00:00:00'
   }
   useEffect(() => {
+
+
     GetQueryValue('ref')
     //  console.log("======1111",Web3Utils.hexToUtf8(""))
     //   const Web3EthAbi = require('web3-eth-abi');
@@ -129,13 +141,13 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           <img style={{ marginLeft: '14px' }} height={80} src={isDark ? WordmarkDark : Wordmark} alt="logo"/>
         </div>
         <CountDownWrap>
-          <h3>第{(periods || 0) + 1}期认购倒计时</h3>
+          <h3>{t("subscription-count-down",{num:(periods || 0) + 1})}</h3>
           <CountDown endDate={initDate()}/>
 
         </CountDownWrap>
         <div className="statistic">
           <div className="number-box">
-            <span>已认购PZS：</span>
+            <span>{t("subscription-after")}PZS：</span>
             <span className="number">{((globalData.result?.stats[7] || 0) / pzsToken.decimals).toFixed(2)}</span>
             <span>Pzs</span>
           </div>
@@ -147,7 +159,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           </div>
           <div className="btn-box">
             <span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>
-              认购
+              {t("subscription")}
             </span>
           </div>
           {/*<div className="getmore">*/}
@@ -162,7 +174,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
                 <i/>
                 <i/>
               </span>
-              <span>最近交易记录</span>
+              <span>{t("subscription-history")}</span>
             </div>
             <div className="history-table">
               <div className="table-tr table-head">
@@ -196,8 +208,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
         {/*认购弹窗*/}
         <SubscriptionModal periods={periods} isOpen={showSubscriptionModal} onDismiss={handleSubscriptionDismiss}/>
         {/*加入我们的弹窗*/}
-        <JoinUsModal isOpen={userData.result?.stats[9].toNumber() === 0} onDismiss={() => {
-        }} periods={periods}/>
+        <JoinUsModal isOpen={userData.result?.stats[9].toNumber() === 0} onDismiss={()=>{}} periods={periods}/>
       </div>
     </BodyWrapper>
   )

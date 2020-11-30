@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Flipper from './Flipper'
 import {FlipClockWrap} from '../../styled'
+import { useTranslation } from 'react-i18next'
 
 export default function CountDown({endDate}:{endDate:string}) {
+  const {t}=useTranslation();
+
   const [Days,setDays]=useState({days:0,daysShuffle:true});
   const [Hours,setHours]=useState({hours:0,hoursShuffle:true})
   const [Minutes,setMinutes]=useState({minutes:0,minutesShuffle:true})
@@ -52,19 +55,19 @@ export default function CountDown({endDate}:{endDate:string}) {
     <FlipClockWrap className="flipClock time-box">
       <div className="time-item flex-column">
         <Flipper className="flipperDay number" unit='days' digit={Days.days} shuffle={Days.daysShuffle} />
-        <span className="unit text-center">天</span>
+        <span className="unit text-center">{t("d")}</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperHour number" unit='hours' digit={Hours.hours} shuffle={Hours.hoursShuffle}/>
-        <span className="unit text-center">小时</span>
+        <span className="unit text-center">{t("h")}</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperMinute number" unit='minutes' digit={Minutes.minutes} shuffle={Minutes.minutesShuffle}/>
-        <span className="unit text-center">分</span>
+        <span className="unit text-center">{t("m")}</span>
       </div>
       <div className="time-item flex-column">
         <Flipper className="flipperSecond number" unit='seconds' digit={Seconds.seconds} shuffle={Seconds.secondsShuffle}/>
-        <span className="unit text-center">秒</span>
+        <span className="unit text-center">{t("s")}</span>
       </div>
     </FlipClockWrap>
   )

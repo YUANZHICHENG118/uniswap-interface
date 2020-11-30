@@ -5,8 +5,11 @@ import SubscriptionListItem from './subscriptionListItem'
 import {PartnerWrap}  from '../styled'
 import checkIcon from '../../../assets/images/subscription/check.png'
 import WhiteArrowTitle from './WhiteArrowTitle'
+//import { useTranslation } from 'react-i18next'
 
 export default function PartnerModule() {
+  //const {t}=useTranslation();
+
   return (
     <SubscriptionListItem title='成为超级合伙人'>
       <PartnerWrap className='border-wrap'>

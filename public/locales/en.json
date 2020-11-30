@@ -143,6 +143,7 @@
   "about8":"5. Direct push mining reward 10% pz, inter push reward 5% pz",
   "about9":"6. Dig out the PZ manually click to harvest to the wallet, at the same time to deduct 10% of the PZ handling fee as the operation and community co award!",
   "subscription":"Subscription",
+  "subscription-after":"Subscription Success",
   "subscription-count-down":"Countdown to first subscription",
   "subscription-surplus":"Surplus",
   "subscription-getMore":"For details",
@@ -150,16 +151,23 @@
   "subscription-assest":"My assets",
   "subscription-owed":"You already have",
   "subscription-wallet-address":"Wallet address",
+  "subscription-wallet-link":"Wallet Link",
+
   "subscription-recommendation":"Recommendation Rewards",
   "subscription-recommendation-invite":"Recommended Inviters",
   "subscription-direct-invite":"Direct recommendation income",
   "subscription-indirect-invite":"Indirect Benefits",
   "subscription-invite-statistics":"Recommendation statistics",
+  "subscription-invite-allprofits-1":"Total income",
+  "subscription-invite-allprofits-2":"Total User",
+
   "subscription-invite-allprofits":"Accumulated income",
   "direct-recommendation":"Direct recommendation",
   "indirect-recommendation":"Indirect recommendation",
   "my-Commission":"My Commission",
-  "upgrade":"Upgrade to Super Node",
+  "upgrade":"Upgrade Super Node",
+  "upgrade1":"You are super node",
+
   "commission-payable":"Commission payable",
   "detailed-commission":"Detailed Commission",
   "extractable-rewards":"Extractable Recommendation Rewards",
@@ -172,5 +180,9 @@
   "register":"register",
   "joinus":"Join us",
   "start-getting":"Start getting",
-  "write-code":"Please enter the recommender code"
+  "write-code":"Please enter the recommender code",
+  "d":"D",
+  "h":"H",
+  "m":"M",
+  "s":"S"
 }

@@ -12,6 +12,7 @@ import TransactionConfirmationModal from '../../../components/TransactionConfirm
 import { TransactionResponse } from '@ethersproject/providers'
 import { calculateGasMargin } from '../../../utils'
 import { useSingleCallResult } from '../../../state/multicall/hooks'
+import { useTranslation } from 'react-i18next'
 
 interface JoinUsModalProps {
   isOpen: boolean
@@ -19,6 +20,7 @@ interface JoinUsModalProps {
   periods:number
 }
 export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalProps){
+  const {t}=useTranslation();
 
   const [txConfirm, setTxConfirm] = useState<boolean>(false)
   const [txLoading, setTxLoading] = useState<boolean>(false)
@@ -76,17 +78,17 @@ export default  function JoinUsModal({ isOpen, onDismiss,periods }: JoinUsModalP
   return (
     <Modal isOpen={isOpen} onDismiss={onDismiss} minHeight={false} maxHeight={90} width={'600px'}>
       <JoinUsWrapper>
-        <WhiteArrowTitle title='加入我们'/>
+        <WhiteArrowTitle title={t("joinus")}/>
         <div className='acquisition'>
           <img src={checkIcon} className='checkIcon' alt=""/>
-          <span>开始获取</span>
+          <span>{t("start-getting")}</span>
           <div className='coinInfo'>
             <span className='themeColor'>PZS</span>
           </div>
         </div>
         <div className="write-box flex-between">
-          <input type="text" placeholder='必须有推人才可注册' disabled={true} value={userData.result?.stats[0]||''}/>
-          <button className='btn btn-default' onClick={reg} disabled={userData.result?.stats[0]?false:true}>注册</button>
+          <input type="text" placeholder={t("write-code")} disabled={true} value={userData.result?.stats[0]||''}/>
+          <button className='btn btn-default' onClick={reg} disabled={userData.result?.stats[0]?false:true}>{t("register")}</button>
         </div>
       </JoinUsWrapper>
       <TransactionConfirmationModal
