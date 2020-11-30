@@ -132,7 +132,7 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
     </InviteWrap>
     <PartnerWrap className='border-wrap'>
       <div className="partner-item col-lg-6">
-        <WhiteArrowTitle title={t("subscription-invite-allprofits-1")}/>
+        <WhiteArrowTitle title={t("subscription-invite-total")}/>
         <GatherWrap className='gather-box'>
           <div className="value"><span>{(((userData.result?.stats[6]||0)/ethToken.decimals)+((userData.result?.stats[7]||0)/ethToken.decimals)).toFixed(2)}</span> <span className='unit'>ETH</span></div>
           <div className="label">{t("subscription-invite-allprofits")}</div>
@@ -140,7 +140,7 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
 
         <GatherWrap className='gather-box'>
           <div className="value"><span>{userData.result?.stats[2].toString()}</span> <span className='unit'>人</span></div>
-          <div className="label">{t("subscription-invite-allprofits-2")}</div>
+          <div className="label">{t("subscription-team-total")}</div>
         </GatherWrap>
 
 
