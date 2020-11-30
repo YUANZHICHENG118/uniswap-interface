@@ -144,7 +144,7 @@
   "about9":"6. Dig out the PZ manually click to harvest to the wallet, at the same time to deduct 10% of the PZ handling fee as the operation and community co award!",
   "subscription":"Subscription",
   "subscription-after":"Subscription Success",
-  "subscription-count-down":"Countdown to first subscription",
+  "subscription-count-down":"Countdown to {{num}} subscription",
   "subscription-surplus":"Surplus",
   "subscription-getMore":"For details",
   "subscription-history":"Recent transaction records",
