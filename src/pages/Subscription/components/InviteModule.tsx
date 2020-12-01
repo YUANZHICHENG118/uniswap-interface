@@ -58,9 +58,11 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
       let _amount ='0x' + value.toString(16)
       setTxLoading(true)
 
+      debugger
       const estimatedGas = await contract.estimateGas.applyForPartner
       await estimatedGas([periods], { value: _amount })
-        .then(estimatedGasLimit =>
+        .then(estimatedGasLimit =>{
+          debugger
           contract.applyForPartner([periods], {
             value: _amount,
             gasLimit: calculateGasMargin(estimatedGasLimit)
@@ -75,7 +77,7 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
             .catch((error: Error) => {
               console.debug('Failed to reg token', error)
               throw error
-            }))
+            })})
 
     }
   }

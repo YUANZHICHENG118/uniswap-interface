@@ -39,7 +39,7 @@ export default function Home(props: RouteComponentProps<{ }>) {
 
   return <BodyWrapper>
     <HomeSection/>
-    <XpoolSection refAddress={ref}/>
+    <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
     <About></About>
   </BodyWrapper>
 }
