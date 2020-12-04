@@ -10,9 +10,9 @@ export default function Flipper({ unit, className,digit,shuffle, ...rest }: { un
 
   const before = useMemo(()=>{
     if (unit !== "hours") {
-      return digit === 0 ? 59 : (digit);
+      return digit === 0 ? 0 : (digit);
     } else {
-      return digit === 0 ? 23 : (digit);
+      return digit === 0 ? 0 : (digit);
     }
   },[digit]);
 
