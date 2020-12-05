@@ -158,9 +158,15 @@ export default function Subscription(props: RouteComponentProps<{}>) {
             </div>
           </div>
           <div className="btn-box">
-            <span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>
+
+            {
+              periods===255?<span style={{color:'#999'}} className="btn-default btn-radius">
+              {t("subscription")}
+            </span>:<span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>
               {t("subscription")}
             </span>
+            }
+
           </div>
           {/*<div className="getmore">*/}
           {/*<span>了解详情 &gt;</span>*/}
