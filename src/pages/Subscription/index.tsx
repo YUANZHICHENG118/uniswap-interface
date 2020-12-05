@@ -105,7 +105,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
         </div>
         <CountDownWrap>
           {/*<h3>{t("subscription-count-down",{num:(periods || 0) + 1})}</h3>*/}
-          <h3>{t("subscription-count-down",{num:2})}</h3>
+          <h3>第2期认购倒计时开始</h3>
 
           <CountDown endDate={initDate()}/>
 
@@ -132,7 +132,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           <div className="btn-box">
 
             {
-              periods===255?<span style={{color:'#999'}} className="btn-default btn-radius">
+              periods===255?<span  className="btn-default btn-radius" style={{background:'#999'}}>
               {t("subscription")}
             </span>:<span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>
               {t("subscription")}
