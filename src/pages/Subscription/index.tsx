@@ -73,54 +73,17 @@ export default function Subscription(props: RouteComponentProps<{}>) {
   const userData = useSingleCallResult(contract, 'getPersonalStats', [periods, account ?? undefined])
 
   const initDate = () => {
-    if (globalData.result) {
-      // console.log("====",moment(globalData.result?.stats[5].toNumber()*1000).add((globalData.result?.stats[2].toNumber()), 's').format("YYYY-MM-DD HH:mm:ss"))
-      return moment(globalData.result?.stats[5].toNumber() * 1000).add((globalData.result?.stats[2].toNumber()), 's').format('YYYY-MM-DD HH:mm:ss')
-    }
-    return '2020-12-30 00:00:00'
+    // if (globalData.result) {
+    //   return moment(globalData.result?.stats[5].toNumber() * 1000).add((globalData.result?.stats[2].toNumber()), 's').format('YYYY-MM-DD HH:mm:ss')
+    // }
+    return '2020-12-12 12:00:00'
   }
+
+  console.log("periods====",periods)
   useEffect(() => {
 
 
     GetQueryValue('ref')
-    //  console.log("======1111",Web3Utils.hexToUtf8(""))
-    //   const Web3EthAbi = require('web3-eth-abi');
-    //
-    //   console.log("======1111",Web3EthAbi.decodeLog([{
-    //       type: 'address',
-    //       name: 'user'
-    //     },{
-    //       type: 'address',
-    //       name: 'subAddress'
-    //     },{
-    //       type: 'uint256',
-    //       name: 'partnerAward',
-    //       indexed: true
-    //     }
-    //     ,{
-    //       type: 'uint8',
-    //       name: 'awardType',
-    //       indexed: true
-    //     }],
-    //     '0x00000000000000000000000000000000000000000000000000d529ae9e8600000000000000000000000000000000000000000000000000000000000000000001',
-    //     ['0x000000000000000000000000514c51818be9270e4f9a9e790cabfc4d7e8136d2', '0x00000000000000000000000096f673ef8c7584ad53cc9fc3dbc281965fbfe6a4'])
-    // );
-
-
-    // fetch(ethApi, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     'jsonrpc': '2.0',
-    //     'method': 'eth_getTransactionReceipt',
-    //     'params': [SUB_ADDRESS],
-    //     'id': 1
-    //   })
-    // }).then(res => res.json()).then(json => {
-    //   debugger
-    // })
 
 
     fetch(ethApi + '?module=account&action=txlist&address=' + SUB_ADDRESS + '&startblock=0&endblock=99999999&sort=desc&apikey=D15U6EVP8CX89EFZ7FW9GC51AUT2IWYD11').then((response) => {
@@ -141,14 +104,23 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           <img style={{ marginLeft: '14px' }} height={80} src={isDark ? WordmarkDark : Wordmark} alt="logo"/>
         </div>
         <CountDownWrap>
-          <h3>{t("subscription-count-down",{num:(periods || 0) + 1})}</h3>
+          {/*<h3>{t("subscription-count-down",{num:(periods || 0) + 1})}</h3>*/}
+          <h3>{t("subscription-count-down",{num:2})}</h3>
+
           <CountDown endDate={initDate()}/>
+
+
 
         </CountDownWrap>
         <div className="statistic">
           <div className="number-box">
-            <span>{t("subscribed")} PZS：</span>
-            <span className="number">{((globalData.result?.stats[7] || 0) / pzsToken.decimals).toFixed(2)}</span>
+            {/*<span>{t("subscribed")} PZS：</span>*/}
+            {/*<span className="number">{((globalData.result?.stats[7] || 0) / pzsToken.decimals).toFixed(2)}</span>*/}
+
+
+            <span>剩余认购PZS：</span>
+            <span className="number">1000000</span>
+
             <span>Pzs</span>
           </div>
           <div className="process">
