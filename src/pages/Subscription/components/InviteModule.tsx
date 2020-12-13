@@ -3,7 +3,7 @@
  *
  */
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TransactionConfirmationModal from '../../../components/TransactionConfirmationModal'
 import { TransactionResponse } from '@ethersproject/providers'
 import BigNumber from 'bignumber.js'
@@ -36,12 +36,25 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
   const [txLoading, setTxLoading] = useState<boolean>(false)
   const [txId, setTxId] = useState<string>("")
 
+  const [num, setNum] = useState<number>(0)
+
+
   const { account } = useActiveWeb3React()
   const contract = useSubContract(SUB_ADDRESS, true)
   const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,account ?? undefined])
+
+  const userData1 = useSingleCallResult(contract, 'getPersonalStats',[(periods||1)-1,account ?? undefined])
+
+  const userData2 = useSingleCallResult(contract, 'getPersonalStats',[(periods||1)+1,account ?? undefined])
+
+  const userData3 = useSingleCallResult(contract, 'getPersonalStats',[num,account ?? undefined])
+
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
 
 
+  useEffect(()=>{
+    setNum(periods)
+  },[periods])
   // 认购
   const nodeReg = async () => {
     if (!account) {
@@ -58,7 +71,6 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
       let _amount ='0x' + value.toString(16)
       setTxLoading(true)
 
-      debugger
       const estimatedGas = await contract.estimateGas.applyForPartner
       await estimatedGas([periods], { value: _amount })
         .then(estimatedGasLimit =>{
@@ -97,13 +109,13 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
 
       setTxLoading(true)
 
-      const estimatedGas = await contract.estimateGas.withdrawAward(periods).catch((e) => {
+      const estimatedGas = await contract.estimateGas.withdrawAward(num).catch((e) => {
         alert(e.message)
         // general fallback for tokens who restrict approval amounts
-        return contract.estimateGas.withdrawAward(periods)
+        return contract.estimateGas.withdrawAward(num)
       })
 
-      return contract.withdrawAward(periods, {
+      return contract.withdrawAward(num, {
         gasLimit: calculateGasMargin(estimatedGas)
       })
         .then((response: TransactionResponse) => {
@@ -120,6 +132,7 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
 
     }
   }
+
   return <SubscriptionListItem title={t("subscription-recommendation")}>
     <InviteWrap className='border-wrap'>
       <WhiteArrowTitle title={t("subscription-recommendation-invite")} />
@@ -136,7 +149,7 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
       <div className="partner-item col-lg-6">
         <WhiteArrowTitle title={t("subscription-invite-total")} />
         <GatherWrap className='gather-box'>
-          <div className="value"><span>{(((userData.result?.stats[6]||0)/ethToken.decimals)+((userData.result?.stats[7]||0)/ethToken.decimals)).toFixed(2)}</span> <span className='unit'>ETH</span></div>
+          <div className="value"><span>{((((userData.result?.stats[6]||0)/ethToken.decimals)+((userData.result?.stats[7]||0)/ethToken.decimals))+(((userData1.result?.stats[6]||0)/ethToken.decimals)+((userData1.result?.stats[7]||0)/ethToken.decimals))+(((userData2.result?.stats[6]||0)/ethToken.decimals)+((userData2.result?.stats[7]||0)/ethToken.decimals))).toFixed(2)}</span> <span className='unit'>ETH</span></div>
           <div className="label">{t("subscription-invite-allprofits")}</div>
         </GatherWrap>
 
@@ -174,9 +187,10 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
         </WhiteArrowTitle>
         <div className='content'>
           <div className="profit">
-            <div className='head'>{t("commission-payable")}</div>
+            <div className='head'>{t("commission-payable")}<a href={"javascript:void(0)"} className={num===0?"active":''} onClick={()=>setNum(0)}>1</a><a href={"javascript:void(0)"} onClick={()=>setNum(1)} className={num===1?"active":''}>2</a><a href={"javascript:void(0)"} className={num===2?"active":''} onClick={()=>setNum(2)}>3</a></div>
+
             <div className='flex-between profit-detail'>
-              <span><b className="value themeColor">{((userData.result?.stats[8]||0)/ethToken.decimals)}</b> ETH</span>
+              <span><b className="value themeColor">{((userData3.result?.stats[8]||0)/ethToken.decimals)}</b> ETH</span>
               <a href='javascript:;' onClick={()=>{setCommissionModal(true)}}>{t("detailed-commission")} &gt;</a>
             </div>
           </div>

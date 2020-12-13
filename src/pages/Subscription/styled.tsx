@@ -197,6 +197,16 @@ export const PartnerWrap = styled.div`
           font-family: PingFangSC-Semibold, PingFang SC;
           font-weight: 600;
           color: rgba(255, 255, 255, 0.7);
+          a{
+            margin-right:10px
+            padding:5px 8px;
+            color:#fff;
+            border: 1px solid #c5c54a; 
+          }
+          a.active{
+            color:#000;
+            background: linear-gradient(270deg,#E6A600 0%,#FFB800 100%);
+          }
         }
         .profit-detail {
           font-family: DINAlternate-Bold, DINAlternate;
