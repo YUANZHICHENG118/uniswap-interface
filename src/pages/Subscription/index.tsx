@@ -114,7 +114,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
         </CountDownWrap>
         <div className="statistic">
           <div className="number-box">
-            <span>{t("subscribed")} PZS：</span>
+            {/*<span>{t("subscribed")} PZS：</span>*/}
             <span>剩余认购PZS：</span>
             <span className="number">{(500000-((globalData.result?.stats[7] || 0) / pzsToken.decimals)).toFixed(2)}</span>
 
