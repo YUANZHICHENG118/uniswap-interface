@@ -43,9 +43,9 @@ export default function InviteModule (props: { periods: number ,fee:any }) {
   const contract = useSubContract(SUB_ADDRESS, true)
   const userData = useSingleCallResult(contract, 'getPersonalStats',[periods,account ?? undefined])
 
-  const userData1 = useSingleCallResult(contract, 'getPersonalStats',[(periods||1)-1,account ?? undefined])
+  const userData1 = useSingleCallResult(contract, 'getPersonalStats',[0,account ?? undefined])
 
-  const userData2 = useSingleCallResult(contract, 'getPersonalStats',[(periods||1)+1,account ?? undefined])
+  const userData2 = useSingleCallResult(contract, 'getPersonalStats',[1,account ?? undefined])
 
   const userData3 = useSingleCallResult(contract, 'getPersonalStats',[num,account ?? undefined])
 

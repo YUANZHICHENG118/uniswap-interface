@@ -72,8 +72,10 @@ export default function Subscription(props: RouteComponentProps<{}>) {
   const globalData = useSingleCallResult(contract, 'getGlobalStats', [periods])
   const userData = useSingleCallResult(contract, 'getPersonalStats', [periods, account ?? undefined])
 
+  console.log("globalData===",globalData)
   const initDate = () => {
     if (globalData.result) {
+      console.log("globalData",globalData)
       return moment(globalData.result?.stats[5].toNumber() * 1000).add((globalData.result?.stats[2].toNumber()), 's').format('YYYY-MM-DD HH:mm:ss')
     }
     return '2020-12-22 12:00:00'
