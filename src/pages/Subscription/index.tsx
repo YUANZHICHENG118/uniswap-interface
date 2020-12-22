@@ -73,9 +73,9 @@ export default function Subscription(props: RouteComponentProps<{}>) {
   const userData = useSingleCallResult(contract, 'getPersonalStats', [periods, account ?? undefined])
 
   const initDate = () => {
-    // if (globalData.result) {
-    //   return moment(globalData.result?.stats[5].toNumber() * 1000).add((globalData.result?.stats[2].toNumber()), 's').format('YYYY-MM-DD HH:mm:ss')
-    // }
+    if (globalData.result) {
+      return moment(globalData.result?.stats[5].toNumber() * 1000).add((globalData.result?.stats[2].toNumber()), 's').format('YYYY-MM-DD HH:mm:ss')
+    }
     return '2020-12-22 12:00:00'
   }
 
@@ -104,8 +104,8 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           <img style={{ marginLeft: '14px' }} height={80} src={isDark ? WordmarkDark : Wordmark} alt="logo"/>
         </div>
         <CountDownWrap>
-          {/*<h3>{t("subscription-count-down",{num:(periods || 0) + 1})}</h3>*/}
-          <h3>第3期认购倒计时开始</h3>
+          <h3>{t("subscription-count-down",{num:(periods || 0) + 1})}</h3>
+          {/*<h3>第3期认购倒计时开始</h3>*/}
 
           <CountDown endDate={initDate()}/>
 
@@ -114,13 +114,13 @@ export default function Subscription(props: RouteComponentProps<{}>) {
         </CountDownWrap>
         <div className="statistic">
           <div className="number-box">
-            {/*<span>{t("subscribed")} PZS：</span>*/}
-            {/*<span>剩余认购PZS：</span>*/}
-            {/*<span className="number">{(1000000-((globalData.result?.stats[7] || 0) / pzsToken.decimals)).toFixed(2)}</span>*/}
-
-
+            <span>{t("subscribed")} PZS：</span>
             <span>剩余认购PZS：</span>
-            <span className="number">500000</span>
+            <span className="number">{(500000-((globalData.result?.stats[7] || 0) / pzsToken.decimals)).toFixed(2)}</span>
+
+
+            {/*<span>剩余认购PZS：</span>*/}
+            {/*<span className="number">500000</span>*/}
 
             <span>Pzs</span>
           </div>
@@ -133,7 +133,7 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           <div className="btn-box">
 
             {
-              periods===255||periods===1?<span  className="btn-default btn-radius" style={{background:'#999'}}>
+              periods===255?<span  className="btn-default btn-radius" style={{background:'#999'}}>
               {t("subscription")}
             </span>:<span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>
               {t("subscription")}
