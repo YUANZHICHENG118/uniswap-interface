@@ -115,12 +115,12 @@ export default function Subscription(props: RouteComponentProps<{}>) {
         <div className="statistic">
           <div className="number-box">
             {/*<span>{t("subscribed")} PZS：</span>*/}
-            <span>剩余认购PZS：</span>
-            <span className="number">{(500000-((globalData.result?.stats[7] || 0) / pzsToken.decimals)).toFixed(2)}</span>
-
-
             {/*<span>剩余认购PZS：</span>*/}
-            {/*<span className="number">500000</span>*/}
+            {/*<span className="number">{(500000-((globalData.result?.stats[7] || 0) / pzsToken.decimals)).toFixed(2)}</span>*/}
+
+
+            <span>剩余认购PZS：</span>
+            <span className="number">0</span>
 
             <span>Pzs</span>
           </div>
