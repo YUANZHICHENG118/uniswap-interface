@@ -225,7 +225,7 @@ export default function Header() {
           {/*<StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>*/}
           <NavTitle  href={"javascript:void(0)"} onClick={()=>{alert(t('wait'))}}>NFT</NavTitle>
           {/*认购*/}
-          <StyledNavLink  to={'/subscription'} >{t('subscription')}</StyledNavLink>
+          {/*<StyledNavLink  to={'/subscription'} >{t('subscription')}</StyledNavLink>*/}
 
         </NavElements>
         {/*<LogoElements>*/}
