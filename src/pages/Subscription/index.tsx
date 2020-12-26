@@ -132,13 +132,13 @@ export default function Subscription(props: RouteComponentProps<{}>) {
           </div>
           <div className="btn-box">
 
-            {
-              periods===255?<span  className="btn-default btn-radius" style={{background:'#999'}}>
-              {t("subscription")}
-            </span>:<span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>
-              {t("subscription")}
-            </span>
-            }
+            {/*{*/}
+              {/*periods===255?<span  className="btn-default btn-radius" style={{background:'#999'}}>*/}
+              {/*{t("subscription")}*/}
+            {/*</span>:<span className="btn-default btn-radius" onClick={() => setSubscriptionModal(true)}>*/}
+              {/*{t("subscription")}*/}
+            {/*</span>*/}
+            {/*}*/}
 
           </div>
           {/*<div className="getmore">*/}

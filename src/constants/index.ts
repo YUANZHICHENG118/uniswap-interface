@@ -83,6 +83,18 @@ export const supportedPools = [
     available:true
   },
   // {
+  //   pid: 4,
+  //   lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
+  //   tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
+  //   name: 'Donald PZ',
+  //   symbol: 'PZS',
+  //   tokenSymbol: 'PIZZA',
+  //   decimals:18,
+  //   icon: '🦆',
+  //   lp:false,
+  //   available:true
+  // },
+  // {
   //   pid: 3,
   //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
   //   tokenAddresses: '0x4a6431be40c1aA36EaEE17CE5010DDdaF23F77A4',
