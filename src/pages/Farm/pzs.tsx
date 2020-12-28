@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
-import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 //import { MaxUint256 } from '@ethersproject/constants'
 import Modal from '../../components/Modal'
 import { Input as NumericalInput } from '../../components/NumericalInput'
@@ -204,8 +203,6 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
   } = props
   const {t}=useTranslation()
   const { account } = useActiveWeb3React()
-  const { activate, active }=useWeb3ReactCore()
-  console.log("useWeb3ReactCore===",activate,active)
   const [visibleModal, setVisibleModal] = useState<boolean>(false)
   const [stakeAmount, setAmount] = useState<number>(0)
   const [txId, setTxId] = useState<string>("")
@@ -213,8 +210,8 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
   const [txLoading, setTxLoading] = useState<boolean>(false)
 
   const onChange = (e: any) => {
-    let b=format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8);
-    if(e>=b) e=(b*0.97).toFixed(8);
+    // let b=format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8);
+    // if(e>=b) e=(b*0.97).toFixed(8);
     setAmount(e)
   }
   const token = supportedPools.find(x => x.symbol === symbol)
@@ -226,14 +223,19 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
 
   const allowance = useSingleCallResult(lpcontract, 'allowance', [account ?? undefined, PZS_ADDRESS])
 
+
   const getLpBalance = useSingleCallResult(lpcontract, 'balanceOf', [account ?? undefined])
+
 
   const getStakeBalance = useSingleCallResult(contract, 'userInfo', [token&&token.pid, account ?? undefined])
 
-  const getTokenBalance = useSingleCallResult(contract, 'pendingPizza', [token&&token.pid, account ?? undefined])
+
+  const getTokenBalance = useSingleCallResult(contract, 'pendingPizza', [0, account ?? undefined])
 
 
   const allow=allowance && allowance.result && allowance.result[0]&& allowance.result[0]['_hex']!="0x00"
+
+
 
   const tokenBalance=getTokenBalance && getTokenBalance.result && getTokenBalance.result[0]
   const stakeBalance=getStakeBalance && getStakeBalance.result&& getStakeBalance.result[1]

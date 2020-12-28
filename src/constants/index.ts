@@ -85,7 +85,7 @@ export const supportedPools = [
   },
   {
     pid: 0,
-    lpAddresses: '0x10334122EF6DDb3c0Cf84639d881b442c00Ab2e8',
+    lpAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
     tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
     name: 'Donald PZS',
     symbol: 'PZS',
