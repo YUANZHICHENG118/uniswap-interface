@@ -249,7 +249,6 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
     return value&&value.toFixed(d||4) || parseFloat("0").toFixed(d||4)
   }
 
-  console.log("stakeBalance===",stakeBalance)
 
   useEffect(()=>{
   },[])
@@ -405,7 +404,7 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
               <RowItemBox>
                 <FlexCenter>
                   <RowItemLogo><img src={require("../../assets/images/lp/pzs.png")} height={75}></img></RowItemLogo>
-                  <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),pzsToken.decimals||18,8)}</RowItemTitle>
+                  <RowItemTitle>{format(tokenBalance&&tokenBalance.toString(),18,8)}</RowItemTitle>
                   <RowItemSubTitle>
                     <div className="kdcQzs">Earn {pzsToken && pzsToken.symbol}</div>
                   </RowItemSubTitle>
