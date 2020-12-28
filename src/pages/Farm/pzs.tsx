@@ -214,7 +214,7 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
     // if(e>=b) e=(b*0.97).toFixed(8);
     setAmount(e)
   }
-  const token = supportedPools.find(x => x.symbol === symbol)
+  const token = supportedPools.find(x => x.tokenSymbol === symbol)
 
   const lpcontract = useTokenContract(token && token.tokenAddresses, true)
 
