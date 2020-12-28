@@ -210,8 +210,8 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
   const [txLoading, setTxLoading] = useState<boolean>(false)
 
   const onChange = (e: any) => {
-    // let b=format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8);
-    // if(e>=b) e=(b*0.97).toFixed(8);
+    let b=format(lpBalance&&lpBalance.toString(),token&&token.decimals||18,8);
+    if(e>=b) e=(b*0.97).toFixed(8);
     setAmount(e)
   }
   const token = supportedPools.find(x => x.tokenSymbol === symbol)
