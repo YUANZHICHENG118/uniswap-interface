@@ -152,7 +152,7 @@ export default function Menu() {
                     </RowItemSubTitle>
                     <RowItemButton color="#d16c00" font-size="16">
                       {
-                        item.available?<a className="sc-AxirZ kRQAGp" href={item.lp?`/#/Farm/${item.symbol}`:`/#/Farm/token/${item.symbol}`}>
+                        item.available?<a className="sc-AxirZ kRQAGp" href={item.lp?`/#/Farm/${item.symbol}`:item.tokenSymbol!="PZS"?`/#/Farm/token/${item.symbol}`:`/#/Farm/pzs/${item.symbol}`}>
                           Select
                         </a>:<a className="sc-AxirZ kRQAGp" style={{backgroundColor:'#999',color:'#fff', borderRadius:'5px'}} href={"javascript:void(0)"}>
                           Select

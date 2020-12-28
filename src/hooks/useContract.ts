@@ -11,6 +11,8 @@ import UNISOCKS_ABI from '../constants/abis/unisocks.json'
 import WETH_ABI from '../constants/abis/weth.json'
 import subscription from '../constants/abis/subscription.json'
 import BAT_ABI from '../constants/abis/bat.json'
+import PZS_ABI from '../constants/abis/pzs.json'
+
 
 import LP_ABI from '../constants/abis/lp.json'
 
@@ -100,6 +102,10 @@ export function useSocksController(): Contract | null {
 
 export function useBatContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
   return useContract(address, BAT_ABI, withSignerIfPossible)
+}
+
+export function usePzsContract(address?: string, withSignerIfPossible?: boolean): Contract | null {
+  return useContract(address, PZS_ABI, withSignerIfPossible)
 }
 
 export function useSubContract(address?: string, withSignerIfPossible?: boolean): Contract | null {

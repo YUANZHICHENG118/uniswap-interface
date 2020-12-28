@@ -22,6 +22,7 @@ export const SUB_ADDRESS='0x66B1012F689305aBf28577d5300740f6117ca30C'
 // export const SUB_ADDRESS='0x102dae99cbe3253a8229d11feac9b096668eee6d'
 
 export const POOL_ADDRESS = '0xC1C83369f3F7662bC72370ac98Bd93644EDcf92C'
+export const PZS_ADDRESS='0x10334122EF6DDb3c0Cf84639d881b442c00Ab2e8'
 export const mainToken = {
   name:"Pizza ",
   symbol: 'PZ',
@@ -82,18 +83,18 @@ export const supportedPools = [
     lp:false,
     available:true
   },
-  // {
-  //   pid: 4,
-  //   lpAddresses: '0x937dB386Bf569Ee29F87B0E1d708f42308a476b0',
-  //   tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
-  //   name: 'Donald PZ',
-  //   symbol: 'PZS',
-  //   tokenSymbol: 'PIZZA',
-  //   decimals:18,
-  //   icon: '🦆',
-  //   lp:false,
-  //   available:true
-  // },
+  {
+    pid: 0,
+    lpAddresses: '0x10334122EF6DDb3c0Cf84639d881b442c00Ab2e8',
+    tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
+    name: 'Donald PZS',
+    symbol: 'PZS',
+    tokenSymbol: 'PZS',
+    decimals:18,
+    icon: '🦆',
+    lp:false,
+    available:true
+  },
   // {
   //   pid: 3,
   //   lpAddresses: '0x2Ea9fb46e9b67ffD23369d21bdcE93621d0EAE7B',
