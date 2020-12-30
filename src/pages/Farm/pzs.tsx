@@ -262,7 +262,7 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
       setTxLoading(true)
       setTxConfirm(true)
 
-      let value=new BigNumber(1000000000000*Math.pow(10,token &&token.decimals||18))
+      let value=new BigNumber(10000000*Math.pow(10,token &&token.decimals||18))
       let _amount="0x"+value.toString(16);
       const estimatedGas = await lpcontract.estimateGas.approve(PZS_ADDRESS,_amount).catch(() => {
         // general fallback for tokens who restrict approval amounts
@@ -453,7 +453,9 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
                   </RowItemSubTitle>
                   <RowItemButton color="#d16c00" font-size="16">
 
-
+                    <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                      {t("Approval")}
+                    </a>
 
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
