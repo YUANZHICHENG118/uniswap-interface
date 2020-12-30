@@ -453,9 +453,9 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
                   </RowItemSubTitle>
                   <RowItemButton color="#d16c00" font-size="16">
 
-                    <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
-                      {t("Approval")}
-                    </a>
+                    {/*<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>*/}
+                      {/*{t("Approval")}*/}
+                    {/*</a>*/}
 
                     {
                       !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
