@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import HomeSection from './home_section'
 import XpoolSection from './home_xpool'
 import About from './about'
+import TopEquipment from './top-equipment'
 
 import { RouteComponentProps } from 'react-router-dom'
 export const BodyWrapper = styled.div`
@@ -38,8 +39,11 @@ export default function Home(props: RouteComponentProps<{ }>) {
   const ref=GetQueryValue("ref");
 
   return <BodyWrapper>
-    <HomeSection/>
-    <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
-    <About></About>
+    <div className="container">
+      <TopEquipment/>
+      <HomeSection/>
+      <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
+      <About></About>
+    </div>
   </BodyWrapper>
 }
