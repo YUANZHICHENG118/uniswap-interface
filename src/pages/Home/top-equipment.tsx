@@ -8,7 +8,7 @@ import copyImg from '../../assets/images/copy.png'
 import { MarioWrapper } from './styles'
 //components
 import AddressContent from './modules/address_content'
-import EquipmentContent from './modules/top_equipment'
+import EquipmentContent from './modules/equipment_content'
 export default function AppBody() {
   return (
     <MarioWrapper>

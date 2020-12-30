@@ -151,3 +151,26 @@ export const EquipmentWrap = styled.div`
     color: rgba(255, 255, 255, 0.5);
   }
 `
+export const Title1Wrap = styled.div`
+  justify-content: center;
+  margin:80px 0 60px;
+  img {
+    margin-right: 10px;
+    height:65px;
+    width:auto;
+  }
+  .title-top {
+    font-size: 36px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #333647;
+    line-height: 50px;
+  }
+  span {
+    font-size: 16px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #676767;
+    line-height: 22px;
+  }
+`

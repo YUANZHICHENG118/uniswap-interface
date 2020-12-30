@@ -4,7 +4,10 @@ import HomeSection from './home_section'
 import XpoolSection from './home_xpool'
 import About from './about'
 import TopEquipment from './top-equipment'
-
+//选择设备
+import HomeChoose from './home-choose'
+//团队奖励
+import TeamReward from './Team_reward'
 import { RouteComponentProps } from 'react-router-dom'
 export const BodyWrapper = styled.div`
 width:100%;
@@ -41,8 +44,10 @@ export default function Home(props: RouteComponentProps<{ }>) {
   return <BodyWrapper>
     <div className="container">
       <TopEquipment/>
-      <HomeSection/>
-      <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
+      <HomeChoose/>
+      <TeamReward/>
+      {/*<HomeSection/>*/}
+      {/*<XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>*/}
       <About></About>
     </div>
   </BodyWrapper>

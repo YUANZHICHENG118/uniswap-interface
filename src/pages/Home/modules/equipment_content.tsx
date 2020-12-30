@@ -20,7 +20,7 @@ export default function EquipmentContent() {
           <span className="deadline">到期日</span>
           <span className="themeColor">2020/08/23</span>
         </div>
-        <div><button class="btn btn-default" style={{'height':'48px'}}>升级设备</button></div>
+        <div><button className="btn btn-default" style={{'height':'48px'}}>升级设备</button></div>
       </div>
 
     </EquipmentWrap>
