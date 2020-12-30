@@ -1,4 +1,3 @@
-import { transparentize } from 'polished'
 import React, { useMemo } from 'react'
 import styled, {
   ThemeProvider as StyledComponentsThemeProvider,
@@ -212,13 +211,6 @@ html {
 
 body {
   min-height: 100vh;
-  background-position: 0 -30vh;
-  background-repeat: no-repeat;
-  background-image: ${({ theme }) =>
-    `radial-gradient(50% 50% at 50% 50%, ${transparentize(0.9, theme.primary1)} 0%, ${transparentize(
-      1,
-      theme.bg1
-    )} 100%)`};
 }
 .flex-between{
   display:flex;
@@ -228,7 +220,7 @@ body {
  align-items:center;
 }
 .themeColor{
-  color:#EBAA00;
+  color:#FFCF07;
 }
 .greyColor{
   color: #808080;
@@ -240,8 +232,8 @@ body {
 .btn-default{
   width: 200px;
   height: 47px;
-  background: linear-gradient(270deg, #E6A600 0%, #FFB800 100%);
-  border-radius: 39px!important;
+background: linear-gradient(270deg, #FFD53A 0%, #FFAA1B 100%);
+border-radius: 24px!important;
   font-size:18px;
   color: #333333;
   font-weight: 600;
