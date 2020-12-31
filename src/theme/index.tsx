@@ -59,7 +59,7 @@ export function colors(darkMode: boolean): Colors {
     middleBG: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
 
     //primary colors
-    primary1: darkMode ? '#f8b300' : '#ff007a',
+    primary1: darkMode ? '#f8b300' : '#FFCF07',
     primary2: darkMode ? '#3680E7' : '#FF8CC3',
     primary3: darkMode ? '#4D8FEA' : '#FF99C9',
     primary4: darkMode ? '#f8b300' : '#F6DDE8',
@@ -232,8 +232,8 @@ body {
 .btn-default{
   width: 200px;
   height: 47px;
-background: linear-gradient(270deg, #FFD53A 0%, #FFAA1B 100%);
-border-radius: 24px!important;
+  background: linear-gradient(270deg, #FFD53A 0%, #FFAA1B 100%);
+  border-radius: 24px!important;
   font-size:18px;
   color: #333333;
   font-weight: 600;
@@ -241,5 +241,10 @@ border-radius: 24px!important;
   align-items: center;
   justify-content: center;
   cursor:pointer;
+}
+.item-button{
+  padding:0;
+  height:48px;
+  border-radius:24px;
 }
 `

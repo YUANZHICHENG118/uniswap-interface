@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 // import HomeSection from './home_section'
-// import XpoolSection from './home_xpool'
+import XpoolSection from './home_xpool'
 import About from './about'
 import TopEquipment from './top-equipment'
 //选择设备
@@ -14,6 +14,7 @@ export const BodyWrapper = styled.div`
   height: 100%;
   .bgwrap {
     background: linear-gradient(90deg, #5b5f76 0%, #2e3141 100%);
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.5);
   }
 `
 /**
@@ -50,7 +51,7 @@ export default function Home(props: RouteComponentProps<{}>) {
         <HomeChoose />
         <TeamReward />
         {/*<HomeSection/>*/}
-        {/*<XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>*/}
+        <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
         <About></About>
       </div>
     </BodyWrapper>

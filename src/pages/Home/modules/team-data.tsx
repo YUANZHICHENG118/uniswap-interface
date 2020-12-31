@@ -1,27 +1,37 @@
 import React from 'react'
+//components
+import TeamDataItem from './TeamDataItem'
+import { ButtonWhite } from '../../../components/Button'
 //style
-import {TeamDataWrap} from '../styles'
-import {TeamDataItemWrap} from '../styles'
+import { TeamDataWrap } from '../styles'
 
-export default function TeamData(){
+export default function TeamData() {
   return (
-    <TeamDataWrap className='bgwrap team-item'>
-      team data
+    <TeamDataWrap className="bgwrap team-item">
+      <header className="text-center text-white">我的团队数据</header>
       <div className="row">
-        <div className='col-4'>
-          <TeamDataItemWrap className='item1'>
-            <div className='title'>认购金额</div>
-            <div className='middle'>
-              <b>130</b>
-              <span>USDT</span>
-            </div>
-          </TeamDataItemWrap>
+        <div className="col-4">
+          <TeamDataItem className="item1" >
+            <dl>
+              <dt>组员地址</dt>
+              <dd>jlljoo3n4o1on*****2949IODj2399</dd>
+            </dl>
+          </TeamDataItem>
         </div>
-        <div className='col-4'>
-          <TeamDataItemWrap className='item2'>2</TeamDataItemWrap>
+        <div className="col-4">
+          <TeamDataItem className="item2" >
+            <dl>
+              <dt>组员地址</dt>
+              <dd>jlljoo3n4o1on*****2949IODj2399</dd>
+            </dl>
+          </TeamDataItem>
         </div>
-        <div className='col-4'>
-          <TeamDataItemWrap className='item3'>3</TeamDataItemWrap>
+        <div className="col-4">
+          <TeamDataItem className="item3">
+            <ButtonWhite className="item-button" style={{ width: '60%', margin: 'auto' }}>
+              激活组员
+            </ButtonWhite>
+          </TeamDataItem>
         </div>
       </div>
     </TeamDataWrap>

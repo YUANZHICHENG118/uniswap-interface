@@ -257,6 +257,12 @@ export const TeamRewardWrap = styled.div`
     border-radius: 21px;
     padding: 53px 5% 44px;
     margin: 13px 0;
+    header {
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+    }
   }
 `
 
@@ -278,6 +284,9 @@ export const TeamDataItemWrap = styled.div`
   background-position: left bottom;
   height: 180px;
   padding-left: 5%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   .title {
     font-size: 18px;
     font-family: PingFang-SC-Bold, PingFang-SC;
@@ -300,8 +309,23 @@ export const TeamDataItemWrap = styled.div`
       font-weight: 400;
       color: #1a1c5c;
       line-height: 22px;
-      opacity:60%;
-      margin-left:10px;
+      opacity: 60%;
+      margin-left: 10px;
+    }
+  }
+  dl {
+    font-family: PingFang-SC-Bold, PingFang-SC;
+    color: #323232;
+    font-weight: bold;
+    dt {
+      font-size: 18px;
+      line-height: 25px;
+    }
+    dd {
+      font-size: 14px;
+      line-height: 20px;
+      margin-top:12px;
+      opacity:50%;
     }
   }
 `
