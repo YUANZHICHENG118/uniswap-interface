@@ -1,5 +1,8 @@
 import styled from 'styled-components'
-
+//images-bg
+import item1Bg from '../../assets/images/home/teambg1.png'
+import item2Bg from '../../assets/images/home/teambg2.png'
+import item3Bg from '../../assets/images/home/teambg3.png'
 export const MarioWrapper = styled.div`
   position: relative;
   .content-box {
@@ -179,9 +182,99 @@ export const ChooseWrap = styled.div`
     background: linear-gradient(90deg, #5b5f76 0%, #2e3141 100%);
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.31);
     border-radius: 24px;
-    padding:20px 3%;
-    margin-bottom:28px;
+    padding: 30px 10% 40px;
+    margin: 14px 0;
   }
 `
-export const ChooseItemWrap= styled.div`
+export const ChooseItemWrap = styled.div`
+  .head {
+    .left {
+      font-size: 24px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      line-height: 28px;
+      text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.31);
+      position: relative;
+      padding-left: 20px;
+      img {
+        position: absolute;
+        left: -30px;
+        top: -20px;
+      }
+    }
+    .right {
+      font-size: 24px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      line-height: 28px;
+      span {
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        line-height: 16px;
+        text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  .middle {
+    font-family: PingFang-SC-Regular, PingFang-SC;
+    margin: 31px 0;
+    .name {
+      font-size: 16px;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 22px;
+      text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.31);
+    }
+    .rate {
+      margin: 12px 0;
+      b {
+        font-size: 48px;
+        font-family: DINAlternate-Bold, DINAlternate;
+        line-height: 56px;
+        text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.31);
+      }
+      span {
+        font-size: 21px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.67);
+        line-height: 29px;
+        text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.31);
+      }
+    }
+    .time {
+      font-size: 21px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 25px;
+      text-shadow: 0px 2px 24px rgba(0, 0, 0, 0.31);
+    }
+  }
+`
+export const TeamRewardWrap = styled.div`
+  .team-item {
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 21px;
+    padding: 53px 5% 44px;
+    margin: 13px 0;
+  }
+`
+
+export const TeamDataWrap = styled.div`
+  .item1 {
+    background-image: url(${item1Bg});
+  }
+  .item2 {
+    background-image: url(${item2Bg});
+  }
+  .item3 {
+    background-image: url(${item3Bg});
+  }
+`
+export const TeamRuleWrap = styled.div``
+export const TeamDataItemWrap = styled.div`
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background-position:left bottom;
+  height:180px;
 `
