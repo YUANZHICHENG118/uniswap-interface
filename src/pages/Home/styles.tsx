@@ -300,7 +300,8 @@ export const TeamDataItemWrap = styled.div`
       font-weight: 400;
       color: #1a1c5c;
       line-height: 22px;
-      opacity：60%;
+      opacity:60%;
+      margin-left:10px;
     }
   }
 `
