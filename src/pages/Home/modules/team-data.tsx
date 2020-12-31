@@ -9,6 +9,35 @@ export default function TeamData() {
   return (
     <TeamDataWrap className="bgwrap team-item">
       <header className="text-center text-white">我的团队数据</header>
+      <div className='row teamInfo'>
+        <div className='col-lg-4 col-xs-6'>
+          <dl>
+            <dt>
+              <b>4</b>
+              <span>%</span>
+            </dt>
+            <dd>我的团队收益率</dd>
+          </dl>
+        </div>
+        <div className='col-lg-4 col-xs-6'>
+          <dl>
+            <dt>
+              <b className='themeColor'>18877</b>
+              <span>USDT</span>
+            </dt>
+            <dd>我的团队奖励</dd>
+          </dl>
+        </div>
+        <div className='col-lg-4 col-xs-6'>
+          <dl>
+            <dt>
+              <b>18877</b>
+              <span>USDT</span>
+            </dt>
+            <dd>我的团队总认购</dd>
+          </dl>
+        </div>
+      </div>
       <div className="row no-gutters">
         <div className="col-lg-4 col-xs-6">
           <TeamDataItem className="item1" >

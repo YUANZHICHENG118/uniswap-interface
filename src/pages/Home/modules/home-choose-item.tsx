@@ -5,7 +5,7 @@ import smallDevice from '../../../assets/images/mario/small-device.png'
 import { ChooseItemWrap } from '../styles'
 export default function HomeChoose() {
   return (
-    <ChooseItemWrap className="col-md-4 col-lg-3 col-xs-6  ">
+    <ChooseItemWrap className="col-lg-3 col-sm-4 col-xs-6  ">
       <div className="item text-center">
         <div className="head flex-between align-items-center">
           <div className="left themeColor">

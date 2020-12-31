@@ -220,7 +220,7 @@ body {
  align-items:center;
 }
 .themeColor{
-  color:#FFCF07;
+  color:#FFCF07!important;
 }
 .greyColor{
   color: #808080;
@@ -231,6 +231,7 @@ body {
 }
 .btn-default{
   width: 200px;
+  max-width:100%;
   height: 47px;
   background: linear-gradient(270deg, #FFD53A 0%, #FFAA1B 100%);
   border-radius: 24px!important;

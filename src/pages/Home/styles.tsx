@@ -276,6 +276,38 @@ export const TeamDataWrap = styled.div`
   .item3 {
     background-image: url(${item3Bg});
   }
+  .teamInfo {
+    margin-bottom:30px;
+    dl {
+      text-align: center;
+      dt {
+        b {
+          font-size: 60px;
+          font-family: DINAlternate-Bold, DINAlternate;
+          font-weight: bold;
+          color: #ffffff;
+          line-height: 70px;
+          margin-right:10px;
+        }
+        span {
+          font-size: 21px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #8b8b8c;
+          line-height: 29px;
+        }
+      }
+      dd {
+        font-size: 18px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #ffffff;
+        line-height: 25px;
+        opacity: 50%;
+        margin-top: 6px;
+      }
+    }
+  }
 `
 export const TeamRuleWrap = styled.div``
 export const TeamDataItemWrap = styled.div`
@@ -283,7 +315,7 @@ export const TeamDataItemWrap = styled.div`
   background-repeat: no-repeat;
   background-position: left bottom;
   height: 220px;
-  padding:30px 10%;
+  padding: 30px 10%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -296,7 +328,7 @@ export const TeamDataItemWrap = styled.div`
     opacity: 80%;
   }
   .middle {
-   margin:12px 0;
+    margin: 12px 0;
     b {
       font-size: 48px;
       font-family: DINAlternate-Bold, DINAlternate;
@@ -325,8 +357,8 @@ export const TeamDataItemWrap = styled.div`
     dd {
       font-size: 14px;
       line-height: 20px;
-      margin-top:12px;
-      opacity:50%;
+      margin-top: 12px;
+      opacity: 50%;
     }
   }
 `
