@@ -23,6 +23,7 @@ export const SUB_ADDRESS='0x66B1012F689305aBf28577d5300740f6117ca30C'
 
 export const POOL_ADDRESS = '0xC1C83369f3F7662bC72370ac98Bd93644EDcf92C'
 export const PZS_ADDRESS='0x10334122EF6DDb3c0Cf84639d881b442c00Ab2e8'
+export const PZSS_ADDRESS='0x42669036fA54e8355D5C2a8b7313f81A1e0cd83d'
 export const mainToken = {
   name:"Pizza ",
   symbol: 'PZ',
@@ -52,7 +53,9 @@ export const supportedPools = [
     name: 'Donald PZ',
     symbol: 'PZ-ETH',
     tokenSymbol: 'PIZZA',
-    decimals:18,
+   tag:false,
+
+   decimals:18,
     icon: '🦆',
    lp:true,
     available:true
@@ -65,6 +68,8 @@ export const supportedPools = [
     name: 'Donald PZ',
     symbol: 'PZ-USDT',
     tokenSymbol: 'PIZZA',
+    tag:false,
+
     decimals:18,
     icon: '🦆',
     lp:true,
@@ -78,6 +83,8 @@ export const supportedPools = [
     name: 'Donald PZ',
     symbol: 'PZS',
     tokenSymbol: 'PIZZA',
+    tag:false,
+
     decimals:18,
     icon: '🦆',
     lp:false,
@@ -87,9 +94,24 @@ export const supportedPools = [
     pid: 0,
     lpAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
     tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
-    name: 'Donald PZS',
+    name: 'Donald PZS V1',
     symbol: 'PZS',
     tokenSymbol: 'PZS',
+    tag:false,
+
+    decimals:18,
+    icon: '🦆',
+    lp:false,
+    available:true
+  },
+  {
+    pid: 0,
+    lpAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
+    tokenAddresses: '0x205BB454CfF5ece04A102D7449313ebb934014e8',
+    name: 'Donald PZS V2',
+    symbol: 'PZS',
+    tokenSymbol: 'PZS',
+    tag:true,
     decimals:18,
     icon: '🦆',
     lp:false,

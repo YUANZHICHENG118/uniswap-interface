@@ -27,6 +27,7 @@ import Swap from './Swap'
 import Farm from './Farm'
 import FarmToken from './Farm/token'
 import FarmTokenPzs from './Farm/pzs'
+import FarmTokenPzss from './Farm/pzss'
 
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 
@@ -87,6 +88,7 @@ export default function App() {
                 <Route exact strict path="/Farm/:symbol" component={Farm} />
                 <Route exact strict path="/Farm/token/:symbol" component={FarmToken} />
                 <Route exact strict path="/Farm/pzs/:symbol" component={FarmTokenPzs} />
+                <Route exact strict path="/Farm/pzss/:symbol" component={FarmTokenPzss} />
 
                 <Route exact strict path="/swap" component={Swap} />
                 <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />

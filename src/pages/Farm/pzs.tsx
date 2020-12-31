@@ -451,23 +451,26 @@ export default function FarmTokenPzs(props: RouteComponentProps<{ symbol: string
                   <RowItemSubTitle>
                     <div className="kdcQzs">{token && token.symbol}  Staked</div>
                   </RowItemSubTitle>
-                  <RowItemButton color="#d16c00" font-size="16">
+
+                  {true?null:<RowItemButton color="#d16c00" font-size="16">
 
                     {/*<a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>*/}
-                      {/*{t("Approval")}*/}
+                    {/*{t("Approval")}*/}
                     {/*</a>*/}
 
                     {
-                      !account?<span className="sc-AxirZ kRQAGp" style={{color:'#999'}} >
+                      true ? <span className="sc-AxirZ kRQAGp" style={{ color: '#999' }}>
                          {t("Approval")}
-                      </span>: allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>setVisibleModal(true)}>
+                      </span> : allow ? <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'}
+                                           onClick={() => setVisibleModal(true)}>
                         {t("stake")}
-                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'} onClick={()=>account?approvalHandel():console.log("111")}>
+                      </a> : <a className="sc-AxirZ kRQAGp" href={'javascript:void(0)'}
+                                onClick={() => account ? approvalHandel() : console.log("111")}>
                         {t("Approval")}
                       </a>
                     }
                   </RowItemButton>
-
+                  }
                 </FlexCenter>
               </RowItemBox>
             </div>
