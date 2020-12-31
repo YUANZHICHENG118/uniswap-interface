@@ -17,19 +17,17 @@ export default function AppBody() {
         <img src={marioImg} className="marioImg" alt="" />
       </div>
       <div className="content-box">
-        <EquipmentContent>
-          <div>我的设备收益</div>
-        </EquipmentContent>
+        <EquipmentContent />
         <div className="address">
           <AddressContent>
             {/*地址*/}
-            <div class="address-text">
+            <div className="address-text">
               <input type="text" disabled value="jlljoo3n4o1on2949IODj2399" />
               <img src={copyImg} alt="" />
             </div>
             <div className="joinTeam row">
               <div className="col-6 remark">复制地址加入团队，开始获得Super Mario ETH2.0 高额收益</div>
-              <button className="col-5 button" type="primary">
+              <button className="col-5 button">
                 连接钱包
               </button>
             </div>

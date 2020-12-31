@@ -274,7 +274,33 @@ export const TeamDataWrap = styled.div`
 export const TeamRuleWrap = styled.div``
 export const TeamDataItemWrap = styled.div`
   background-size: 100% 100%;
-  background-repeat:no-repeat;
-  background-position:left bottom;
-  height:180px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  height: 180px;
+  padding-left: 5%;
+  .title {
+    font-size: 18px;
+    font-family: PingFang-SC-Bold, PingFang-SC;
+    font-weight: bold;
+    color: #323232;
+    line-height: 25px;
+    opacity: 80%;
+  }
+  .middle {
+    b {
+      font-size: 48px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-weight: bold;
+      color: #393b7b;
+      line-height: 56px;
+    }
+    span {
+      font-size: 16px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #1a1c5c;
+      line-height: 22px;
+      opacity：60%;
+    }
+  }
 `

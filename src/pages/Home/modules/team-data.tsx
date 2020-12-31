@@ -9,7 +9,13 @@ export default function TeamData(){
       team data
       <div className="row">
         <div className='col-4'>
-          <TeamDataItemWrap className='item1'>1</TeamDataItemWrap>
+          <TeamDataItemWrap className='item1'>
+            <div className='title'>认购金额</div>
+            <div className='middle'>
+              <b>130</b>
+              <span>USDT</span>
+            </div>
+          </TeamDataItemWrap>
         </div>
         <div className='col-4'>
           <TeamDataItemWrap className='item2'>2</TeamDataItemWrap>
