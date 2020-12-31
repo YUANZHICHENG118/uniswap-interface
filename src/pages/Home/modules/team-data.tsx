@@ -10,7 +10,7 @@ export default function TeamData() {
     <TeamDataWrap className="bgwrap team-item">
       <header className="text-center text-white">我的团队数据</header>
       <div className="row no-gutters">
-        <div className="col-4">
+        <div className="col-lg-4 col-xs-6">
           <TeamDataItem className="item1" >
             <dl>
               <dt>组员地址</dt>
@@ -18,7 +18,7 @@ export default function TeamData() {
             </dl>
           </TeamDataItem>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4 col-xs-6">
           <TeamDataItem className="item2" >
             <dl>
               <dt>组员地址</dt>
@@ -26,7 +26,7 @@ export default function TeamData() {
             </dl>
           </TeamDataItem>
         </div>
-        <div className="col-4">
+        <div className="col-lg-4 col-xs-6">
           <TeamDataItem className="item3">
             <ButtonWhite className="item-button" style={{ width: '60%', margin: 'auto' }}>
               激活组员

@@ -296,6 +296,7 @@ export const TeamDataItemWrap = styled.div`
     opacity: 80%;
   }
   .middle {
+   margin:12px 0;
     b {
       font-size: 48px;
       font-family: DINAlternate-Bold, DINAlternate;
