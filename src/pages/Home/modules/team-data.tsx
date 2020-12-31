@@ -9,7 +9,7 @@ export default function TeamData() {
   return (
     <TeamDataWrap className="bgwrap team-item">
       <header className="text-center text-white">我的团队数据</header>
-      <div className="row">
+      <div className="row no-gutters">
         <div className="col-4">
           <TeamDataItem className="item1" >
             <dl>

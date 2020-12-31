@@ -282,8 +282,8 @@ export const TeamDataItemWrap = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: left bottom;
-  height: 180px;
-  padding-left: 5%;
+  height: 220px;
+  padding:30px 10%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
