@@ -153,11 +153,11 @@ export const EquipmentWrap = styled.div`
 `
 export const Title1Wrap = styled.div`
   justify-content: center;
-  margin:80px 0 60px;
+  margin: 80px 0 60px;
   img {
     margin-right: 10px;
-    height:65px;
-    width:auto;
+    height: 65px;
+    width: auto;
   }
   .title-top {
     font-size: 36px;
@@ -173,4 +173,15 @@ export const Title1Wrap = styled.div`
     color: #676767;
     line-height: 22px;
   }
+`
+export const ChooseWrap = styled.div`
+  .item {
+    background: linear-gradient(90deg, #5b5f76 0%, #2e3141 100%);
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.31);
+    border-radius: 24px;
+    padding:20px 3%;
+    margin-bottom:28px;
+  }
+`
+export const ChooseItemWrap= styled.div`
 `
