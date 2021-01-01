@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import item1Bg from '../../assets/images/home/teambg1.png'
 import item2Bg from '../../assets/images/home/teambg2.png'
 import item3Bg from '../../assets/images/home/teambg3.png'
+import shareNg from '../../assets/images/home/sharebg.png'
 export const MarioWrapper = styled.div`
   position: relative;
   .content-box {
@@ -251,11 +252,52 @@ export const ChooseItemWrap = styled.div`
     }
   }
 `
+export const TeamRuleWrap = styled.div`
+  .header {
+    h3 {
+      font-size: 36px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 50px;
+      margin-bottom: 24px;
+    }
+    .remark {
+      div {
+        font-size: 16px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.58);
+        line-height: 22px;
+        position: relative;
+        padding-left: 30px;
+        :before {
+          content: '';
+          position: absolute;
+          display: inline-block;
+          width: 19px;
+          height: 19px;
+          left: 0;
+          border-radius: 50%;
+          background-color: ${({ theme }) => theme.primary1};
+        }
+        ${({ theme }) => theme.mediaWidth.upToSmall`
+          padding-left: 20px;
+          :before {
+            width: 10px;
+            height: 10px;
+          }
+        `}
+      }
+    }
+  }
+`
+
 export const TeamRewardWrap = styled.div`
   .team-item {
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.5);
     border-radius: 21px;
-    padding: 53px 5% 44px;
+    padding: 53px 3% 44px;
     margin: 13px 0;
     header {
       margin-bottom: 30px;
@@ -265,7 +307,6 @@ export const TeamRewardWrap = styled.div`
     }
   }
 `
-
 export const TeamDataWrap = styled.div`
   .item1 {
     background-image: url(${item1Bg});
@@ -277,7 +318,7 @@ export const TeamDataWrap = styled.div`
     background-image: url(${item3Bg});
   }
   .teamInfo {
-    margin-bottom:30px;
+    margin-bottom: 30px;
     dl {
       text-align: center;
       dt {
@@ -287,7 +328,7 @@ export const TeamDataWrap = styled.div`
           font-weight: bold;
           color: #ffffff;
           line-height: 70px;
-          margin-right:10px;
+          margin-right: 10px;
         }
         span {
           font-size: 21px;
@@ -309,7 +350,6 @@ export const TeamDataWrap = styled.div`
     }
   }
 `
-export const TeamRuleWrap = styled.div``
 export const TeamDataItemWrap = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -360,5 +400,100 @@ export const TeamDataItemWrap = styled.div`
       margin-top: 12px;
       opacity: 50%;
     }
+  }
+`
+export const ShareWrap = styled.div``
+export const ShareItem = styled.div`
+  background: linear-gradient(90deg, #ffb707 0%, #ffce00 100%) linear-gradient(90deg, #f5f6f6 0%, #fcfcfc 100%);
+  box-shadow: 0px 2px 14px 0px rgba(83, 86, 157, 0.29);
+  border-radius: 27px;
+  margin: 20px 0;
+  padding: 2.5rem 3% 2.5rem 0;
+  .left {
+  .rates{
+     padding-right:8%;
+  }
+    .tag {
+      background: url(${shareNg}) no-repeat left top;
+      width: 320px;
+      height: 107px;
+      padding: 0 3% 13px 25px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      left: -16px;
+      position: relative;
+      b {
+        font-size: 60px;
+        font-family: DINAlternate-Bold, DINAlternate;
+        line-height: 70px;
+        margin-right: 2%;
+      }
+      dl {
+        text-align: left;
+        margin: 0;
+        dt {
+          font-size: 24px;
+          font-family: PingFangSC-Semibold, PingFang SC;
+          font-weight: 600;
+          color: #ffffff;
+          line-height: 33px;
+        }
+        dd {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 20px;
+          opacity: 70%;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+`
+export const RateItemWrap = styled.div`
+  text-align: center;
+  position:relative;
+  margin-top:2rem;
+  :after{
+    content:"";
+    position:absolute;
+    right:0;
+    width:1px;
+    height:90%;
+    top:50%;
+    transform:translateY(-50%);
+    background:#000;
+    opacity:10%;
+  }
+  :last-child{
+   :after{
+   content:none;
+   }
+  }
+  .value {
+    b {
+      font-size: 48px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      color: #1a1c5c;
+      line-height: 56px;
+    }
+    span {
+      opacity: 50%;
+      font-size: 21px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #323232;
+      line-height: 29px;
+    }
+  }
+  .desc {
+    font-size: 18px;
+    font-family: PingFang-SC-Bold, PingFang-SC;
+    font-weight: bold;
+    color: #1a1c5c;
+    line-height: 25px;
+    opacity: 40%;
   }
 `

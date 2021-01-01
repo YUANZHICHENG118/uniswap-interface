@@ -9,6 +9,8 @@ import HomeChoose from './home-choose'
 //团队奖励
 import TeamReward from './Team_reward'
 import { RouteComponentProps } from 'react-router-dom'
+//分享奖励
+import ShareReward from './home_share'
 export const BodyWrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -50,6 +52,7 @@ export default function Home(props: RouteComponentProps<{}>) {
         <TopEquipment />
         <HomeChoose />
         <TeamReward />
+        <ShareReward/>
         {/*<HomeSection/>*/}
         <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
         <About></About>
