@@ -659,7 +659,30 @@ export const NoticeWrap = styled.div`
     line-height: 30px;
   }
 `
-export const SubscriptionWrap=styled.div`
-.middle{
-}
+export const SubscriptionWrap = styled.div`
+  .middle {
+  }
+`
+export const ProgressIdentify = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: space-around;
+  width:100%;
+  .item {
+    b {
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-size:2rem;
+    }
+    .line {
+      width: 2px;
+      height: 40px;
+      margin:1.5rem 0;
+    }
+    .unit {
+      font-size: 14px;
+      color: #fff;
+      opacity: 70%;
+    }
+  }
 `

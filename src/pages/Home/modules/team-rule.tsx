@@ -1,6 +1,8 @@
 import React from 'react'
 //style
-import {TeamRuleWrap, SubscriptionWrap} from '../styles'
+import {TeamRuleWrap, SubscriptionWrap, ProgressIdentify} from '../styles'
+//components
+import ProgressIdentifyItem from './progress-identify-item'
 
 export default function TeamRule(){
   return (
@@ -17,17 +19,26 @@ export default function TeamRule(){
             <h6 className='text-white'>可获得团队奖励收益率</h6>
           </div>
           <div className='middle row align-items-center'>
-            <h5 className='col-lg-3 mt-2 mb-0'> <b className='themeColor'>实时团队总认购</b></h5>
-            <div className='col-lg-9 mt-2'>
-              <div className="progress">
+            <h5 className='col-lg-2 mt-3 mb-0'> <b className='themeColor'>实时团队总认购</b></h5>
+            <div className='col-lg-10 mt-3'>
+              <div className="progress relative">
                 <div className="progress-bar" role="progressbar" aria-valuenow={60} aria-valuemin={0} aria-valuemax={100}
                      style={{width: '40%'}}>
                   <span className="sr-only">40% 完成</span>
                 </div>
+                {/*标识*/}
+                <ProgressIdentify className='row progress-identify'>
+                  <ProgressIdentifyItem top={1} bottom={3000}/>
+                  <ProgressIdentifyItem top={2} bottom={5000}/>
+                  <ProgressIdentifyItem top={3} bottom={9000}/>
+                  <ProgressIdentifyItem top={4} bottom={15000}/>
+                  <ProgressIdentifyItem top={5} bottom={20000}/>
+                  <ProgressIdentifyItem top={6} bottom={30000}/>
+                </ProgressIdentify>
               </div>
             </div>
           </div>
-          <div className='bottom mt-3'>
+          <div className='bottom mt-4'>
             <h6 className='text-white'>团队总认购数</h6>
           </div>
         </SubscriptionWrap>
