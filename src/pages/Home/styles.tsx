@@ -570,21 +570,24 @@ export const ProfitWrap = styled.div`
 export const MyProfitWrap = styled.div``
 
 export const MyProfitItemWrap = styled.div`
-  padding:7rem 5rem 5rem;
-  .divider{
-   width:100%;
-   height:1px;
-   background:#fff;
-   opacity:20%;
-   margin:4rem 0;
+  padding: 7rem 5rem 5rem;
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    opacity: 20%;
+    margin: 4rem 0;
   }
   .inner-option {
+    .extract-btn {
+      margin: 4rem 0 3rem;
+    }
     .content {
       b {
         font-size: 60px;
         font-family: DINAlternate-Bold, DINAlternate;
         line-height: 70px;
-        margin-right:1rem;
+        margin-right: 1rem;
       }
       span {
         font-size: 21px;
@@ -599,7 +602,7 @@ export const MyProfitItemWrap = styled.div`
     background-size: 100% 100%;
   }
   &.right {
-    height:fit-content;
+    height: fit-content;
     background: url(${profitRightBg}) no-repeat;
     background-size: 100% 100%;
   }

@@ -39,11 +39,11 @@ export default function MyProfit() {
                 <b className="themeColor">16633</b>
                 <span className="grey">USDT</span>
               </div>
-              <div>
-                <button className='btn btn-default'><b>提取收益</b></button>
+              <div className='extract-btn' >
+                <button className='btn btn-default' style={{width:'100%'}}><b>提取收益</b></button>
               </div>
-              <div className='themeColor'>
-                <span>取款明细</span>
+              <div className='themeColor text-right'>
+                <b>取款明细 <span style={{fontSize:'12px'}}>►</span></b>
               </div>
             </div>
           </MyProfitItemWrap>
