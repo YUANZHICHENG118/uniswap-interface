@@ -29,8 +29,26 @@ export const MarioWrapper = styled.div`
       height: 80%;
       top: 50%;
       transform: translateY(-50%);
-      width: 45%;
+      width: 100%;
     }
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+     height:auto;
+     margin-top:0;
+     .address{
+        position:relative;
+        width:100%;
+        padding:5%;
+     .address-content{
+        position: unset;
+        width: 100%;
+        transform: inherit;
+     }
+     }
+     .equipment {
+     position:relative;
+     height:auto;
+     }
+   `}
   }
   .marioImg {
     width: 283px;
@@ -42,6 +60,11 @@ export const MarioWrapper = styled.div`
     margin-right: 47px;
     position: relative;
     top: -40px;
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+     width: 100%;
+     height:auto;
+     top:0;
+   `}
   }
 
   .address {
@@ -76,12 +99,8 @@ export const MarioWrapper = styled.div`
   .joinTeam {
     display: flex;
     justify-content: space-between;
-    margin-top: 46px;
     .button {
-      border: 0;
-      outline: 0;
       height: 48px;
-      background: #ffffff;
       box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.08);
       border-radius: 24px;
       color: #333647;
@@ -113,9 +132,6 @@ export const MarioWrapper = styled.div`
       border: none;
     }
   }
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-width:90%;
-`};
 `
 export const EquipmentWrap = styled.div`
   padding: 41px;
@@ -282,6 +298,8 @@ export const TeamRuleWrap = styled.div`
           height: 19px;
           left: 0;
           border-radius: 50%;
+          top: 50%;
+          transform: translateY(-50%);
           background-color: ${({ theme }) => theme.primary1};
         }
         ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -619,6 +637,10 @@ export const NoticeWrap = styled.div`
   transform: translateY(-50%);
   z-index: 2;
   height: 325px;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+     position:relative;
+     margin-right:0;
+   `}
   .content {
     font-size: 14px;
     font-family: PingFang-SC-Bold, PingFang-SC;
@@ -634,6 +656,6 @@ export const NoticeWrap = styled.div`
     font-family: PingFang-SC-Bold, PingFang-SC;
     font-weight: bold;
     color: #393b7b;
-    line-height:30px;
+    line-height: 30px;
   }
 `
