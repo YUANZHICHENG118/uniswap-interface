@@ -51,7 +51,16 @@ export default function ShareReward() {
                 <b className="themeColor">16633</b>
                 <span>USDT</span>
               </div>
-              <div></div>
+              <div className='bottom row'>
+                <div className='bottom-item col-5'>
+                  <div><b className='grey'>我的直接分享收益</b></div>
+                  <div><span className='value'>812.00</span><span className='grey'>USDT</span></div>
+                </div>
+                <div className='bottom-item col-6 offset-1'>
+                  <div><b className='grey'>我的直接分享收益</b></div>
+                  <div><span className='value'>812.00</span><span className='grey'>USDT</span></div>
+                </div>
+              </div>
             </ProfitWrap>
           </div>
         </ShareItem>
@@ -101,6 +110,10 @@ export default function ShareReward() {
               <div className="middle">
                 <b className="themeColor">16633</b>
                 <span>USDT</span>
+              </div>
+              <div className='bottom flex-between'>
+                <p className='tip'>当被分享者获得收益时，您也将获得不同比例收益</p>
+                <button className="btn btn-default">升级设备</button>
               </div>
             </ProfitWrap>
           </div>

@@ -501,6 +501,45 @@ export const ProfitWrap = styled.div`
   box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.5);
   border-radius: 16px;
   padding: 2rem 5%;
+  .bottom {
+    margin-top: 30px;
+    .bottom-item {
+      position: relative;
+      :last-child {
+        :after {
+          content: none;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1px;
+        height: 90%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        opacity: 20%;
+      }
+      .value {
+        font-size: 24px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #ffffff;
+        line-height: 33px;
+        margin-right: 10px;
+      }
+    }
+    .tip {
+      font-size: 14px;
+      font-family: PingFangSC-Semibold, PingFang SC;
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 20px;
+      opacity: 70%;
+      margin-right: 7%;
+    }
+  }
   .title {
     font-size: 24px;
     font-family: PingFangSC-Semibold, PingFang SC;
