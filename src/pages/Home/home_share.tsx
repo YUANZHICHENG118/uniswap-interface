@@ -8,12 +8,12 @@ import smallDevice from '../../assets/images/mario/small-device.png'
 //components
 import Title1 from './modules/title1'
 // /styles
-import { ShareWrap, ShareItem, RateItemWrap } from './styles'
+import { ShareWrap, ShareItem, RateItemWrap, ProfitWrap } from './styles'
 export default function ShareReward() {
   return (
     <ShareWrap>
       <Title1 imgType="1" title="分享奖励" subTitle="显示你的收益，并可将利润提取到钱包" />
-      <div className='flex-column'>
+      <div className="flex-column">
         <ShareItem className="flex-between row no-gutters">
           <div className="left col-6">
             <div className="tag">
@@ -40,11 +40,19 @@ export default function ShareReward() {
               </RateItemWrap>
             </div>
           </div>
-          <div className="bgwrap col-6 ">
-            <div className="title">
-              <img src={smallDevice} alt="" />
-              我的分享收益
-            </div>
+          {/*我的分享收益*/}
+          <div className="col-6">
+            <ProfitWrap className="bgwrap">
+              <div className="title">
+                <img src={smallDevice} alt="" />
+                我的分享收益
+              </div>
+              <div className="middle">
+                <b className="themeColor">16633</b>
+                <span>USDT</span>
+              </div>
+              <div></div>
+            </ProfitWrap>
           </div>
         </ShareItem>
         <ShareItem className="flex-between row no-gutters">
@@ -80,14 +88,21 @@ export default function ShareReward() {
               </RateItemWrap>
             </div>
           </div>
-          <div className="bgwrap col-6">
-            <div className="title flex-between">
-              <div>
-                <img src={smallDevice} alt="" />
-                我的分润收益
+          {/*我的分润收益*/}
+          <div className="col-6">
+            <ProfitWrap className="bgwrap">
+              <div className="title flex-between align-items-center">
+                <div>
+                  <img src={smallDevice} alt="" />
+                  我的分润收益
+                </div>
+                <div className="themeColor">LV .1</div>
               </div>
-              <div className="themeColor">LV .1</div>
-            </div>
+              <div className="middle">
+                <b className="themeColor">16633</b>
+                <span>USDT</span>
+              </div>
+            </ProfitWrap>
           </div>
         </ShareItem>
       </div>

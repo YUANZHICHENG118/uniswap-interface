@@ -410,9 +410,9 @@ export const ShareItem = styled.div`
   margin: 20px 0;
   padding: 2.5rem 3% 2.5rem 0;
   .left {
-  .rates{
-     padding-right:8%;
-  }
+    .rates {
+      padding-right: 8%;
+    }
     .tag {
       background: url(${shareNg}) no-repeat left top;
       width: 320px;
@@ -454,23 +454,23 @@ export const ShareItem = styled.div`
 `
 export const RateItemWrap = styled.div`
   text-align: center;
-  position:relative;
-  margin-top:2rem;
-  :after{
-    content:"";
-    position:absolute;
-    right:0;
-    width:1px;
-    height:90%;
-    top:50%;
-    transform:translateY(-50%);
-    background:#000;
-    opacity:10%;
+  position: relative;
+  margin-top: 2rem;
+  :after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1px;
+    height: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #000;
+    opacity: 10%;
   }
-  :last-child{
-   :after{
-   content:none;
-   }
+  :last-child {
+    :after {
+      content: none;
+    }
   }
   .value {
     b {
@@ -495,5 +495,32 @@ export const RateItemWrap = styled.div`
     color: #1a1c5c;
     line-height: 25px;
     opacity: 40%;
+  }
+`
+export const ProfitWrap = styled.div`
+  box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 2rem 5%;
+  .title {
+    font-size: 24px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 33px;
+  }
+  .middle {
+    b {
+      font-size: 48px;
+      font-family: DINAlternate-Bold, DINAlternate;
+      line-height: 56px;
+      margin-right: 10px;
+    }
+    span {
+      font-size: 21px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #c5c6cc;
+      line-height: 29px;
+    }
   }
 `
