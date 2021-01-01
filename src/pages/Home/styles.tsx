@@ -629,7 +629,6 @@ export const NoticeWrap = styled.div`
   background: linear-gradient(90deg, #f5f6f6 0%, #fcfcfc 100%);
   box-shadow: 0px 2px 14px 0px rgba(83, 86, 157, 0.29);
   border-radius: 16px;
-  padding: 3rem;
   margin-bottom: 3rem;
   margin-right: -2rem;
   position: absolute;

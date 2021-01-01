@@ -52,11 +52,11 @@ export default function ShareReward() {
                 <span>USDT</span>
               </div>
               <div className='bottom row'>
-                <div className='bottom-item col-5'>
+                <div className='bottom-item col-6 col-lg-5'>
                   <div><b className='grey'>我的直接分享收益</b></div>
                   <div><span className='value'>812.00</span><span className='grey'>USDT</span></div>
                 </div>
-                <div className='bottom-item col-6 offset-1'>
+                <div className='bottom-item col-6 offset-lg-1 offset-0'>
                   <div><b className='grey'>我的直接分享收益</b></div>
                   <div><span className='value'>812.00</span><span className='grey'>USDT</span></div>
                 </div>
