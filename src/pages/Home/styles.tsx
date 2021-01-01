@@ -4,6 +4,9 @@ import item1Bg from '../../assets/images/home/teambg1.png'
 import item2Bg from '../../assets/images/home/teambg2.png'
 import item3Bg from '../../assets/images/home/teambg3.png'
 import shareNg from '../../assets/images/home/sharebg.png'
+import profitLeftBg from '../../assets/images/home/profit-left-bg.png'
+import profitRightBg from '../../assets/images/home/profit-right-bg.png'
+
 export const MarioWrapper = styled.div`
   position: relative;
   .content-box {
@@ -561,5 +564,43 @@ export const ProfitWrap = styled.div`
       color: #c5c6cc;
       line-height: 29px;
     }
+  }
+`
+
+export const MyProfitWrap = styled.div``
+
+export const MyProfitItemWrap = styled.div`
+  padding:7rem 5rem 5rem;
+  .divider{
+   width:100%;
+   height:1px;
+   background:#fff;
+   opacity:20%;
+   margin:4rem 0;
+  }
+  .inner-option {
+    .content {
+      b {
+        font-size: 60px;
+        font-family: DINAlternate-Bold, DINAlternate;
+        line-height: 70px;
+        margin-right:1rem;
+      }
+      span {
+        font-size: 21px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        line-height: 29px;
+      }
+    }
+  }
+  &.left {
+    background: url(${profitLeftBg}) no-repeat;
+    background-size: 100% 100%;
+  }
+  &.right {
+    height:fit-content;
+    background: url(${profitRightBg}) no-repeat;
+    background-size: 100% 100%;
   }
 `
