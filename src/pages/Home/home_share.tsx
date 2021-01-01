@@ -15,7 +15,7 @@ export default function ShareReward() {
       <Title1 imgType="1" title="分享奖励" subTitle="显示你的收益，并可将利润提取到钱包" />
       <div className="flex-column">
         <ShareItem className="flex-between row no-gutters">
-          <div className="left col-6">
+          <div className="left col-12 col-lg-6">
             <div className="tag">
               <b className="themeColor">1</b>
               <dl>
@@ -23,7 +23,7 @@ export default function ShareReward() {
                 <dd>可获得直接分享和间接分享收益</dd>
               </dl>
             </div>
-            <div className="rates row no-gutters">
+            <div className="rates row no-gutters mb-5 mb-lg-0">
               <RateItemWrap className="col-6">
                 <div className="value">
                   <b>8</b>
@@ -31,7 +31,7 @@ export default function ShareReward() {
                 </div>
                 <div className="desc">直接分享</div>
               </RateItemWrap>
-              <RateItemWrap className="col-6">
+              <RateItemWrap className="col-6 pl-lg-0 ">
                 <div className="value">
                   <b>4</b>
                   <span>%</span>
@@ -41,7 +41,7 @@ export default function ShareReward() {
             </div>
           </div>
           {/*我的分享收益*/}
-          <div className="col-lg-6 col-xs-12">
+          <div className="col-lg-6 col-12 pl-lg-0  pl-2 pl-sm-4">
             <ProfitWrap className="bgwrap">
               <div className="title">
                 <img src={smallDevice} alt="" />
@@ -73,7 +73,7 @@ export default function ShareReward() {
                 <dd>被分享者提取收益即可获得</dd>
               </dl>
             </div>
-            <div className="rates row no-gutters">
+            <div className="rates row no-gutters  mb-5 mb-lg-0">
               <RateItemWrap className="col-4">
                 <div className="value">
                   <b>8</b>
@@ -98,7 +98,7 @@ export default function ShareReward() {
             </div>
           </div>
           {/*我的分润收益*/}
-          <div className="col-lg-6 col-xs-12">
+          <div className="col-lg-6 col-xs-12 pl-lg-0  pl-2 pl-sm-4">
             <ProfitWrap className="bgwrap">
               <div className="title flex-between align-items-center">
                 <div>
