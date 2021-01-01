@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect'
 import { Text } from 'rebass'
 
 import styled from 'styled-components'
-import Row  from '../Row'
+import Row from '../Row'
 
 import Logo from '../../assets/images/logo.png'
 import LogoDark from '../../assets/images/logo.png'
@@ -16,10 +16,10 @@ import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
 
 import { YellowCard } from '../Card'
-import Settings from '../Settings'
+// import Settings from '../Settings'
 //import Menu from '../Menu'
 import Lan from '../Lan'
-import  { RowBetween } from '../Row'
+import { RowBetween } from '../Row'
 import Web3Status from '../Web3Status'
 //import VersionSwitch from './VersionSwitch'
 import { useTranslation } from 'react-i18next'
@@ -66,21 +66,21 @@ const NavElements = styled.nav`
 // `
 
 const StyledNavLink = styled(NavLink)`
-    font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
-    &.active {
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: #808080;
+  &.active {
     color: rgb(209, 108, 0);
-}
+  }
 `
-const NavTitle=styled.a`
-   font-weight: 700;
-    padding-left: 16px;
-    padding-right: 16px;
-    text-decoration: none;
-    color: rgb(170, 149, 133);
+const NavTitle = styled.a`
+  font-weight: 700;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-decoration: none;
+  color: rgb(170, 149, 133);
 `
 
 const HeaderElementWrap = styled.div`
@@ -100,7 +100,6 @@ const Title = styled.a`
   :hover {
     cursor: pointer;
   }
-  
 `
 
 const TitleText = styled(Row)`
@@ -191,8 +190,6 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
   [ChainId.KOVAN]: 'Kovan'
 }
 
-
-
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
@@ -202,66 +199,74 @@ export default function Header() {
 
   return (
     <HeaderFrame>
+      <div className="container">
+        <RowBetween padding="1rem 1rem 0 1rem">
+          <NavElements>
+            {isMobile ? (
+              ''
+            ) : (
+              <HeaderElement>
+                <Title href=".">
+                  <UniIcon>
+                    <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
+                  </UniIcon>
+                  <TitleText className='ml-2'>
+                    <img
+                      height={30}
+                      src={isDark ? WordmarkDark : Wordmark}
+                      alt="logo"
+                    />
+                  </TitleText>
+                </Title>
+              </HeaderElement>
+            )}
 
-      <RowBetween  padding="1rem 1rem 0 1rem">
-
-        <NavElements>
-          {
-            isMobile?'':<HeaderElement>
-              <Title href=".">
-                <UniIcon>
-                  <img src={isDark ? LogoDark : Logo} alt="logo" height={30} />
-                </UniIcon>
-                <TitleText>
-                  <img style={{ marginLeft: '4px', marginTop: '4px' }} height={30} src={isDark ? WordmarkDark : Wordmark} alt="logo" />
-                </TitleText>
-              </Title>
-            </HeaderElement>
-          }
-
-          <StyledNavLink  to={'/home'} >{t('home')}</StyledNavLink>
-          <StyledNavLink to={'/menu'}>{t('pizza')}</StyledNavLink>
-          <StyledNavLink  to={'/swap'} >{t('swap')}</StyledNavLink>
-          {/*<StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>*/}
-          <NavTitle  href={"javascript:void(0)"} onClick={()=>{alert(t('wait'))}}>NFT</NavTitle>
-          {/*认购*/}
-          {/*<StyledNavLink  to={'/subscription'} >{t('subscription')}</StyledNavLink>*/}
-
-        </NavElements>
-        {/*<LogoElements>*/}
+            <StyledNavLink to={'/home'}>{t('home')}</StyledNavLink>
+            <StyledNavLink to={'/menu'}>{t('pizza')}</StyledNavLink>
+            <StyledNavLink to={'/swap'}>{t('swap')}</StyledNavLink>
+            {/*<StyledNavLink  to={'/about'} >{t('about')}</StyledNavLink>*/}
+            <NavTitle
+              href={'javascript:void(0)'}
+              onClick={() => {
+                alert(t('wait'))
+              }}
+            >
+              NFT
+            </NavTitle>
+            {/*认购*/}
+            {/*<StyledNavLink  to={'/subscription'} >{t('subscription')}</StyledNavLink>*/}
+          </NavElements>
+          {/*<LogoElements>*/}
           {/*<UniIconMobile style={{display:isMobile?'block':'none'}}>*/}
-            {/*<img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />*/}
+          {/*<img src={isDark ? LogoDark : Logo} alt="logo" height={55} width={40} />*/}
           {/*</UniIconMobile>*/}
-        {/*</LogoElements>*/}
+          {/*</LogoElements>*/}
 
-
-
-
-        <HeaderControls>
-
-          <HeaderElement>
-            <TestnetWrapper>
-              {!isMobile && chainId && NETWORK_LABELS[chainId] && <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>}
-            </TestnetWrapper>
-            <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-              {account && userEthBalance ? (
-                <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                  {userEthBalance?.toSignificant(4)} ETH
-                </BalanceText>
-              ) : null}
-              <Web3Status />
-            </AccountElement>
-          </HeaderElement>
-          <HeaderElementWrap>
-            <Lan />
-            {/*<VersionSwitch />*/}
-            <Settings />
-            {/*<Menu />*/}
-          </HeaderElementWrap>
-        </HeaderControls>
-
-      </RowBetween>
-      {/*{
+          <HeaderControls>
+            <HeaderElement>
+              <TestnetWrapper>
+                {!isMobile && chainId && NETWORK_LABELS[chainId] && (
+                  <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>
+                )}
+              </TestnetWrapper>
+              <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
+                {account && userEthBalance ? (
+                  <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+                    {userEthBalance?.toSignificant(4)} ETH
+                  </BalanceText>
+                ) : null}
+                <Web3Status />
+              </AccountElement>
+            </HeaderElement>
+            <HeaderElementWrap>
+              <Lan />
+              {/*<VersionSwitch />*/}
+              {/*<Settings />*/}
+              {/*<Menu />*/}
+            </HeaderElementWrap>
+          </HeaderControls>
+        </RowBetween>
+        {/*{
         isMobile?<HeaderElement>
           <Title href=".">
             <UniIcon>
@@ -273,7 +278,7 @@ export default function Header() {
           </Title>
         </HeaderElement>:null
       }*/}
-
+      </div>
     </HeaderFrame>
   )
 }
