@@ -659,3 +659,7 @@ export const NoticeWrap = styled.div`
     line-height: 30px;
   }
 `
+export const SubscriptionWrap=styled.div`
+.middle{
+}
+`
