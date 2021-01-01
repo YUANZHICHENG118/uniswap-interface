@@ -56,9 +56,9 @@ export default function Home(props: RouteComponentProps<{}>) {
         <TeamReward />
         <ShareReward/>
         <MyProfit/>
+        <About/>
         {/*<HomeSection/>*/}
         <XpoolSection refAddress={ref||sessionStorage.getItem("ref")}/>
-        <About></About>
       </div>
     </BodyWrapper>
   )

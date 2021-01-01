@@ -41,7 +41,7 @@ export default function ShareReward() {
             </div>
           </div>
           {/*我的分享收益*/}
-          <div className="col-6">
+          <div className="col-lg-6 col-xs-12">
             <ProfitWrap className="bgwrap">
               <div className="title">
                 <img src={smallDevice} alt="" />
@@ -65,7 +65,7 @@ export default function ShareReward() {
           </div>
         </ShareItem>
         <ShareItem className="flex-between row no-gutters">
-          <div className="left col-6">
+          <div className="left col-lg-6 col-xs-12">
             <div className="tag">
               <b className="themeColor">2</b>
               <dl>
@@ -98,7 +98,7 @@ export default function ShareReward() {
             </div>
           </div>
           {/*我的分润收益*/}
-          <div className="col-6">
+          <div className="col-lg-6 col-xs-12">
             <ProfitWrap className="bgwrap">
               <div className="title flex-between align-items-center">
                 <div>

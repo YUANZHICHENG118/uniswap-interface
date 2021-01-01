@@ -607,3 +607,33 @@ export const MyProfitItemWrap = styled.div`
     background-size: 100% 100%;
   }
 `
+export const NoticeWrap = styled.div`
+  background: linear-gradient(90deg, #f5f6f6 0%, #fcfcfc 100%);
+  box-shadow: 0px 2px 14px 0px rgba(83, 86, 157, 0.29);
+  border-radius: 16px;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  margin-right: -2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  height: 325px;
+  .content {
+    font-size: 14px;
+    font-family: PingFang-SC-Bold, PingFang-SC;
+    font-weight: bold;
+    color: #5455a0;
+    line-height: 26px;
+    height: 57%;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  .partner {
+    font-size: 14px;
+    font-family: PingFang-SC-Bold, PingFang-SC;
+    font-weight: bold;
+    color: #393b7b;
+    line-height:30px;
+  }
+`

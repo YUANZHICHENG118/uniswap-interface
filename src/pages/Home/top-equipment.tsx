@@ -26,8 +26,8 @@ export default function AppBody() {
               <img src={copyImg} alt="" />
             </div>
             <div className="joinTeam row">
-              <div className="col-6 remark">复制地址加入团队，开始获得Super Mario ETH2.0 高额收益</div>
-              <button className="col-5 button">
+              <div className="col-lg-6 col-xs-12 remark">复制地址加入团队，开始获得Super Mario ETH2.0 高额收益</div>
+              <button className=" col-lg-5 col-xs-12 button">
                 连接钱包
               </button>
             </div>

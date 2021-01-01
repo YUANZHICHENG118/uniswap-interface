@@ -57,7 +57,7 @@ export default function TeamData() {
         </div>
         <div className="col-lg-4 col-xs-6">
           <TeamDataItem className="item3">
-            <ButtonWhite className="item-button" style={{ width: '60%', margin: 'auto' }}>
+            <ButtonWhite className="item-button" style={{ width: '60%', margin: 'auto',borderRadius:'24px' }}>
               激活组员
             </ButtonWhite>
           </TeamDataItem>
