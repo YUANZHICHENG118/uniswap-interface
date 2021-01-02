@@ -13,7 +13,7 @@ import EquipmentContent from './modules/equipment_content'
 export default function AppBody() {
   return (
     <MarioWrapper>
-      <div className="text-lg-right">
+      <div className="text-lg-right text-center">
         <img src={marioTextImg} className="marioTextImg" alt="" />
         <img src={marioImg} className="marioImg" alt="" />
       </div>
