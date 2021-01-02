@@ -6,7 +6,7 @@ import smallDevice from '../../../assets/images/mario/small-device.png'
 //style
 import { ChooseItemWrap } from '../styles'
 export default function HomeChoose() {
-  const [buyModalOpen,setbuyModalOpen]=useState(true)
+  const [buyModalOpen,setbuyModalOpen]=useState(false)
   const setBuyModal=()=>{
     setbuyModalOpen(!buyModalOpen)
   }

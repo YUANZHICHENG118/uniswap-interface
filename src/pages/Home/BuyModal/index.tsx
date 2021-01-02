@@ -10,7 +10,7 @@ import Modal from '../../../components/Modal'
 import { RowBetween } from '../../../components/Row'
 import { CloseIcon } from '../../../theme/components'
 //styles
-import { LineTitle, SubTitle } from '../styles'
+import { LineTitle, SubTitle, AmountWrap } from '../styles'
 
 export default function BuyModal({ onDismiss, isOpen }: { isOpen: boolean; onDismiss: () => void }) {
   return (
@@ -25,6 +25,11 @@ export default function BuyModal({ onDismiss, isOpen }: { isOpen: boolean; onDis
             <LineTitle>购买 LV 3 设备</LineTitle>
             <SubTitle className="text-center mt-3">购买该设备需支付 </SubTitle>
           </div>
+          <AmountWrap className='py-4'>
+            <b>16333</b>
+            <span className="unit ml-1">USDT</span>
+          </AmountWrap>
+          <button className='btn btn-default w-75'>确认</button>
         </div>
       </div>
     </Modal>
