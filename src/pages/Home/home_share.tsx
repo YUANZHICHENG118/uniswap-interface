@@ -2,7 +2,7 @@
  *@desc 分享奖励
  *@date 2021/1/1 10:17 AM
  */
-import React from 'react'
+import React, { useState } from 'react'
 //images
 import smallDevice from '../../assets/images/mario/small-device.png'
 //components
@@ -11,6 +11,13 @@ import UpgradeModal from './UpgradeModal'
 // /styles
 import { ShareWrap, ShareItem, RateItemWrap, ProfitWrap } from './styles'
 export default function ShareReward() {
+  const [upgradeModalOpen, toggleUpgradeModal] = useState(false)
+  const onDismiss = () => {
+    toggleUpgradeModal(false)
+  }
+  const upgradeMethod=()=>{
+    toggleUpgradeModal(true)
+  }
   return (
     <ShareWrap>
       <Title1 imgType="1" title="分享奖励" subTitle="显示你的收益，并可将利润提取到钱包" />
@@ -114,14 +121,16 @@ export default function ShareReward() {
               </div>
               <div className='bottom flex-between'>
                 <p className='tip'>当被分享者获得收益时，您也将获得不同比例收益</p>
-                <button className="btn btn-default">升级设备</button>
+                <button className="btn btn-default" onClick={upgradeMethod}>升级设备</button>
               </div>
             </ProfitWrap>
           </div>
         </ShareItem>
       </div>
       {/*升级设备的弹窗*/}
-      <UpgradeModal/>
+      <UpgradeModal
+        isOpen={upgradeModalOpen}
+        onDismiss={onDismiss}/>
     </ShareWrap>
   )
 }
