@@ -6,15 +6,20 @@ import React, { useState } from 'react'
 //components
 import Title1 from './modules/title1'
 import WithdrawalModal from './WithdrawalModal'
+import WithdrawalDetail from './WithdrawalDetails'
 //style
 import { MyProfitWrap, MyProfitItemWrap } from './styles'
 export default function MyProfit() {
   const [withdrawalModalOpen, toggleWithdrawalModal] = useState(false)
+  const [withdrawalDetailOpen, toggleWithdrawalDetailModal] = useState(false)
   const onDismiss = () => {
     toggleWithdrawalModal(false)
   }
   const withdrawalMethod=()=>{
     toggleWithdrawalModal(true)
+  }
+  const toggleDetailModal=()=>{
+    toggleWithdrawalDetailModal(!withdrawalDetailOpen)
   }
   return (
     <MyProfitWrap>
@@ -50,7 +55,7 @@ export default function MyProfit() {
               <div className='extract-btn' >
                 <button onClick={withdrawalMethod} className='btn btn-default' style={{width:'100%'}}><b>提取收益</b></button>
               </div>
-              <div className='themeColor text-right'>
+              <div className='themeColor text-right' style={{cursor:'pointer'}} onClick={toggleDetailModal}>
                 <b>取款明细 <span style={{fontSize:'12px'}}>►</span></b>
               </div>
             </div>
@@ -61,6 +66,11 @@ export default function MyProfit() {
       <WithdrawalModal
         isOpen={withdrawalModalOpen}
         onDismiss={onDismiss}
+      />
+      {/**/}
+      <WithdrawalDetail
+        isOpen={withdrawalDetailOpen}
+        onDismiss={toggleDetailModal}
       />
     </MyProfitWrap>
   )

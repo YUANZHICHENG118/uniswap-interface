@@ -41,11 +41,11 @@ export default function UpgradeModal({
             <LineTitle>升级你的设备</LineTitle>
             <SubTitle className="text-center mt-3">复投获取更多收益</SubTitle>
           </div>
-          <Earnings className="earnings mt-3">
+          <Earnings className="mt-3 w-75">
             <b>16633</b>
-            <span>USDT</span>
+            <span className="unit ml-1">USDT</span>
           </Earnings>
-          <button className="btn btn-default mt-4">复投</button>
+          <button className="btn btn-default mt-4 w-75">复投</button>
         </div>
         <LevelListWrap className="levels mt-5">
           <RowBetween className="head">

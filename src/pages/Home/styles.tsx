@@ -725,8 +725,22 @@ export const Earnings = styled.div`
   height: 52px;
   display: flex;
   align-items: center;
-  width: 100%;
   justify-content: center;
+  b {
+    font-size: 24px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #1a1c5c;
+    line-height: 28px;
+  }
+  .unit {
+    font-size: 18px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #323232;
+    line-height: 25px;
+    opacity: 50%;
+  }
 `
 export const LineTitle = styled.div`
   font-size: 24px;

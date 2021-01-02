@@ -26,7 +26,7 @@ export default function WithdrawalModal({ onDismiss, isOpen }: { isOpen: boolean
           </div>
           <Earnings className="earnings mt-5 w-75">
             <b>16633</b>
-            <span>USDT</span>
+            <span className='unit ml-1'>USDT</span>
           </Earnings>
           <button className="btn btn-default mt-4 w-75">升级设备</button>
         </div>
