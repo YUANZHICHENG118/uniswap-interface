@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 //components
 import TeamDataItem from './TeamDataItem'
 import { ButtonWhite } from '../../../components/Button'
+import ActivationModal from '../ActivationModal'
 //style
 import { TeamDataWrap } from '../styles'
 
 export default function TeamData() {
+  const [activeModalOpen, toggleActiveModal] = useState(false)
+  const onDismiss = () => {
+    toggleActiveModal(false)
+  }
+  const activeMethod=()=>{
+    toggleActiveModal(true)
+  }
   return (
     <TeamDataWrap className="bgwrap team-item">
       <header className="text-center text-white">我的团队数据</header>
@@ -57,12 +65,17 @@ export default function TeamData() {
         </div>
         <div className="col-lg-4 col-xs-6">
           <TeamDataItem className="item3">
-            <ButtonWhite className="item-button" style={{ width: '60%', margin: 'auto',borderRadius:'24px' }}>
+            <ButtonWhite onClick={activeMethod} className="item-button" style={{ width: '60%', margin: 'auto',borderRadius:'24px' }}>
               激活组员
             </ButtonWhite>
           </TeamDataItem>
         </div>
       </div>
+      {/*激活组员-modal*/}
+      <ActivationModal
+        isOpen={activeModalOpen}
+        onDismiss={onDismiss}
+      />
     </TeamDataWrap>
   )
 }

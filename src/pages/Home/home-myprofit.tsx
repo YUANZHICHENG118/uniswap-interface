@@ -9,7 +9,7 @@ import WithdrawalModal from './WithdrawalModal'
 //style
 import { MyProfitWrap, MyProfitItemWrap } from './styles'
 export default function MyProfit() {
-  const [withdrawalModalOpen, toggleWithdrawalModal] = useState(true)
+  const [withdrawalModalOpen, toggleWithdrawalModal] = useState(false)
   const onDismiss = () => {
     toggleWithdrawalModal(false)
   }
