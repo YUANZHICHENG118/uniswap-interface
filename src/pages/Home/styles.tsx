@@ -294,12 +294,11 @@ export const TeamRuleWrap = styled.div`
           content: '';
           position: absolute;
           display: inline-block;
-          width: 19px;
-          height: 19px;
+          width: 1rem;
+          height: 1rem;
           left: 0;
           border-radius: 50%;
-          top: 50%;
-          transform: translateY(-50%);
+          top: 0.3rem;
           background-color: ${({ theme }) => theme.primary1};
         }
         ${({ theme }) => theme.mediaWidth.upToSmall`
