@@ -7,6 +7,7 @@ import React from 'react'
 import smallDevice from '../../assets/images/mario/small-device.png'
 //components
 import Title1 from './modules/title1'
+import UpgradeModal from './UpgradeModal'
 // /styles
 import { ShareWrap, ShareItem, RateItemWrap, ProfitWrap } from './styles'
 export default function ShareReward() {
@@ -119,6 +120,8 @@ export default function ShareReward() {
           </div>
         </ShareItem>
       </div>
+      {/*升级设备的弹窗*/}
+      <UpgradeModal/>
     </ShareWrap>
   )
 }

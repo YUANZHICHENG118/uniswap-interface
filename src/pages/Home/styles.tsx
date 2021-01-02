@@ -667,16 +667,16 @@ export const ProgressIdentify = styled.div`
   top: 50%;
   transform: translateY(-50%);
   justify-content: space-around;
-  width:100%;
+  width: 100%;
   .item {
     b {
-    font-family: DINAlternate-Bold, DINAlternate;
-    font-size:2rem;
+      font-family: DINAlternate-Bold, DINAlternate;
+      font-size: 2rem;
     }
     .line {
       width: 2px;
       height: 40px;
-      margin:1.5rem 0;
+      margin: 1.5rem 0;
     }
     .unit {
       font-size: 14px;
@@ -684,4 +684,75 @@ export const ProgressIdentify = styled.div`
       opacity: 70%;
     }
   }
+`
+export const LevelListWrap = styled.div`
+  .head {
+    font-size: 18px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #333647;
+    line-height: 25px;
+    opacity: 70%;
+  }
+  .level-list-item {
+    border-bottom: 1px solid #e6e6e6;
+    line-height: 43px;
+    :last-child {
+      border-bottom: none;
+    }
+    .tagBox {
+      .tag {
+        background: #393b7b;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+    }
+    .amount {
+      font-weight: 600;
+      color: #393b7b;
+    }
+    .unit {
+      font-size: 12px;
+      margin-left: 0.5rem;
+    }
+  }
+`
+export const Earnings = styled.div`
+  background: #ffffff;
+  box-shadow: 0px 4px 8px 0px rgba(255, 207, 7, 0.35);
+  border-radius: 16px;
+  border: 2px solid ${({ theme }) => theme.primary1};
+  height: 52px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+`
+export const LineTitle = styled.div`
+  font-size: 24px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #333647;
+  line-height: 33px;
+  position: relative;
+  padding-left: 1rem;
+  z-index: 2;
+  :after {
+    content: ' ';
+    width: 63px;
+    height: 0.65rem;
+    position: absolute;
+    background: ${({ theme }) => theme.primary1};
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+`
+export const SubTitle = styled.div`
+  font-size: 14px;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #333647;
+  line-height: 20px;
+  opacity: 80%;
 `
