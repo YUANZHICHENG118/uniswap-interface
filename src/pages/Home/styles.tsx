@@ -183,7 +183,7 @@ export const Title1Wrap = styled.div`
     width: auto;
   }
   .title-top {
-    font-size: 36px;
+    font-size: 2rem;
     font-family: PingFangSC-Semibold, PingFang SC;
     font-weight: 600;
     color: #333647;
