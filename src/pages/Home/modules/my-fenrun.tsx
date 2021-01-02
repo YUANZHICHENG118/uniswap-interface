@@ -14,7 +14,7 @@ import {ProfitWrap } from '../styles'
 export default function MyFenRunProfit(){
 
   const [upgradeModalOpen, toggleUpgradeModal] = useState(false)
-  const [descModalOpen, toggleDescModal] = useState(true)
+  const [descModalOpen, toggleDescModal] = useState(false)
   const upgradeMethod=()=>{
     toggleUpgradeModal(true)
   }
