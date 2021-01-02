@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+//components
+import BuyModal from '../BuyModal'
 //images
 import smallDevice from '../../../assets/images/mario/small-device.png'
 //style
 import { ChooseItemWrap } from '../styles'
 export default function HomeChoose() {
+  const [buyModalOpen,setbuyModalOpen]=useState(true)
+  const setBuyModal=()=>{
+    setbuyModalOpen(!buyModalOpen)
+  }
   return (
     <ChooseItemWrap className="col-lg-3 col-sm-4 col-xs-6  ">
       <div className="item text-center">
@@ -24,8 +30,10 @@ export default function HomeChoose() {
           </div>
           <div className="time">10 months</div>
         </div>
-        <button className="btn btn-default">购买</button>
+        <button className="btn btn-default" onClick={setBuyModal} >购买</button>
       </div>
+      {/*购买-弹窗*/}
+      <BuyModal isOpen={buyModalOpen} onDismiss={setBuyModal} />
     </ChooseItemWrap>
   )
 }

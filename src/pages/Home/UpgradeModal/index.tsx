@@ -54,7 +54,7 @@ export default function UpgradeModal({
           </RowBetween>
           <div className="level-list">
             {levelLists.map(item => (
-              <RowBetween className="level-list-item">
+              <RowBetween className="level-list-item" key={item.name}>
                 <div className="tagBox">
                   <img src={smallDeviceImg} alt="" />
                   <span className="tag ml-1 themeColor  px-2">{item.name}</span>

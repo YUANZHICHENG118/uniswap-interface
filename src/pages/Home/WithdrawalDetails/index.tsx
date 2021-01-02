@@ -32,8 +32,8 @@ export default function WithdrawalDetail({ onDismiss, isOpen }: { isOpen: boolea
               <div className="col-6 text-center">转出地址</div>
               <div className="col-3 text-right">转出时间</div>
             </div>
-            {detalData.map(item => {
-              return <div className="row mb-3 listItem">
+            {detalData.map((item,index) => {
+              return <div className="row mb-3 listItem" key={index}>
                 <AmountWrap className="col-3"><b>{item.amount}</b> <span className='unit'>USDT</span></AmountWrap>
                 <div className="col-6 text-center">{item.address}</div>
                 <div className="col-3 text-right">{item.time}</div>
