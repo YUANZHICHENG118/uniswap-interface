@@ -770,3 +770,38 @@ export const SubTitle = styled.div`
   line-height: 20px;
   opacity: 80%;
 `
+export const WithdrawalListWrap = styled.div`
+  .title {
+    font-size: 16px;
+    font-family: PingFangSC-Semibold, PingFang SC;
+    font-weight: 600;
+    color: #323232;
+    line-height: 22px;
+    opacity: 70%;
+  }
+  .listItem {
+    font-size: 21px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #323232;
+    line-height: 25px;
+  }
+`
+
+export const AmountWrap = styled.div`
+  b {
+    font-size: 24px;
+    font-family: DINAlternate-Bold, DINAlternate;
+    font-weight: bold;
+    color: #1a1c5c;
+    line-height: 28px;
+  }
+  .unit {
+    font-size: 18px;
+    font-family: PingFangSC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #323232;
+    line-height: 25px;
+    opacity: 50%;
+  }
+`
