@@ -2,22 +2,15 @@
  *@desc 分享奖励
  *@date 2021/1/1 10:17 AM
  */
-import React, { useState } from 'react'
+import React from 'react'
 //images
 import smallDevice from '../../assets/images/mario/small-device.png'
 //components
 import Title1 from './modules/title1'
-import UpgradeModal from './UpgradeModal'
+import MyFenRunProfit from './modules/my-fenrun'
 // /styles
 import { ShareWrap, ShareItem, RateItemWrap, ProfitWrap } from './styles'
 export default function ShareReward() {
-  const [upgradeModalOpen, toggleUpgradeModal] = useState(false)
-  const onDismiss = () => {
-    toggleUpgradeModal(false)
-  }
-  const upgradeMethod=()=>{
-    toggleUpgradeModal(true)
-  }
   return (
     <ShareWrap>
       <Title1 imgType="1" title="分享奖励" subTitle="显示你的收益，并可将利润提取到钱包" />
@@ -107,30 +100,10 @@ export default function ShareReward() {
           </div>
           {/*我的分润收益*/}
           <div className="col-lg-6 col-xs-12 pl-lg-0  pl-2 pl-sm-4">
-            <ProfitWrap className="bgwrap">
-              <div className="title flex-between align-items-center">
-                <div>
-                  <img src={smallDevice} alt="" />
-                  我的分润收益
-                </div>
-                <div className="themeColor">LV .1</div>
-              </div>
-              <div className="middle">
-                <b className="themeColor">16633</b>
-                <span>USDT</span>
-              </div>
-              <div className='bottom flex-between'>
-                <p className='tip'>当被分享者获得收益时，您也将获得不同比例收益</p>
-                <button className="btn btn-default" onClick={upgradeMethod}>升级设备</button>
-              </div>
-            </ProfitWrap>
+            <MyFenRunProfit/>
           </div>
         </ShareItem>
       </div>
-      {/*升级设备的弹窗*/}
-      <UpgradeModal
-        isOpen={upgradeModalOpen}
-        onDismiss={onDismiss}/>
     </ShareWrap>
   )
 }

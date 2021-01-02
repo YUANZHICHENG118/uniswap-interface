@@ -788,8 +788,8 @@ export const WithdrawalListWrap = styled.div`
   }
 `
 
-export const AmountWrap = styled.div<{ size ?: number }>`
-  b { 
+export const AmountWrap = styled.div<{ size?: number }>`
+  b {
     font-size: ${({ size }) => (size ? size + 'px' : '24px')};
     font-family: DINAlternate-Bold, DINAlternate;
     font-weight: bold;
@@ -804,4 +804,11 @@ export const AmountWrap = styled.div<{ size ?: number }>`
     line-height: 25px;
     opacity: 50%;
   }
+`
+export const Tag = styled.span`
+  background: #393b7b;
+  border-radius: 6px;
+  font-size: 14px;
+  color:${({ theme }) => theme.primary1};
+  padding:0.15rem 0.4rem;
 `
