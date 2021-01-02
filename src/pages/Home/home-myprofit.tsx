@@ -2,12 +2,20 @@
  *@desc  我的收益
  *@date 2021/1/1 1:27 PM
  */
-import React from 'react'
+import React, { useState } from 'react'
 //components
 import Title1 from './modules/title1'
+import WithdrawalModal from './WithdrawalModal'
 //style
 import { MyProfitWrap, MyProfitItemWrap } from './styles'
 export default function MyProfit() {
+  const [withdrawalModalOpen, toggleWithdrawalModal] = useState(true)
+  const onDismiss = () => {
+    toggleWithdrawalModal(false)
+  }
+  const withdrawalMethod=()=>{
+    toggleWithdrawalModal(true)
+  }
   return (
     <MyProfitWrap>
       <Title1 imgType="2" title="我的收益" subTitle="显示你的收益，并可将利润提取到钱包" />
@@ -40,7 +48,7 @@ export default function MyProfit() {
                 <span className="grey">USDT</span>
               </div>
               <div className='extract-btn' >
-                <button className='btn btn-default' style={{width:'100%'}}><b>提取收益</b></button>
+                <button onClick={withdrawalMethod} className='btn btn-default' style={{width:'100%'}}><b>提取收益</b></button>
               </div>
               <div className='themeColor text-right'>
                 <b>取款明细 <span style={{fontSize:'12px'}}>►</span></b>
@@ -49,6 +57,11 @@ export default function MyProfit() {
           </MyProfitItemWrap>
         </div>
       </div>
+      {/*提取收益的弹窗*/}
+      <WithdrawalModal
+        isOpen={withdrawalModalOpen}
+        onDismiss={onDismiss}
+      />
     </MyProfitWrap>
   )
 }
