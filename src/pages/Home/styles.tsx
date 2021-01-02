@@ -788,9 +788,9 @@ export const WithdrawalListWrap = styled.div`
   }
 `
 
-export const AmountWrap = styled.div`
-  b {
-    font-size: 24px;
+export const AmountWrap = styled.div<{ size ?: number }>`
+  b { 
+    font-size: ${({ size }) => (size ? size + 'px' : '24px')};
     font-family: DINAlternate-Bold, DINAlternate;
     font-weight: bold;
     color: #1a1c5c;

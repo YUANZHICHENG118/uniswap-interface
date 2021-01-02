@@ -25,7 +25,7 @@ export default function BuyModal({ onDismiss, isOpen }: { isOpen: boolean; onDis
             <LineTitle>购买 LV 3 设备</LineTitle>
             <SubTitle className="text-center mt-3">购买该设备需支付 </SubTitle>
           </div>
-          <AmountWrap className='py-4'>
+          <AmountWrap className='py-5' size={36}>
             <b>16333</b>
             <span className="unit ml-1">USDT</span>
           </AmountWrap>
