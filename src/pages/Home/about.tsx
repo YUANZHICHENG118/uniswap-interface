@@ -59,7 +59,7 @@ export default function About() {
     <BodyWrapper className='mb-5'>
       <Title1 imgType="3" title="关于我们" subTitle="激活您的组员，可获得团队收益奖励" />
       <div className="row no-gutters">
-        <div className="col-lg-5 col-12">
+        <div className="col-lg-5 col-12 ">
           <NoticeWrap className="notice p-lg-5 p-4">
             <h5>公告栏</h5>
             <div className="content">

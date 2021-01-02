@@ -18,10 +18,10 @@ export default function AppBody() {
         <img src={marioImg} className="marioImg" alt="" />
       </div>
       <div className="content-box row no-gutters">
-        <div className="col-xs-12 col-lg-5">
+        <div className="col-12 col-lg-5">
           <EquipmentContent />
         </div>
-        <div className="col-xs-6 mt-3">
+        <div className="mt-3">
           <div className="address">
             <AddressContent>
               {/*地址*/}

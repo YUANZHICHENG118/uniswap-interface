@@ -31,7 +31,7 @@ export const MarioWrapper = styled.div`
       transform: translateY(-50%);
       width: 100%;
     }
-    ${({ theme }) => theme.mediaWidth.upToSmall`
+    ${({ theme }) => theme.mediaWidth.upToLarge`
      height:auto;
      margin-top:0;
      .address{
@@ -636,7 +636,7 @@ export const NoticeWrap = styled.div`
   transform: translateY(-50%);
   z-index: 2;
   height: 325px;
-  ${({ theme }) => theme.mediaWidth.upToSmall`
+  ${({ theme }) => theme.mediaWidth.upToLarge`
      position:relative;
      margin-right:0;
    `}
