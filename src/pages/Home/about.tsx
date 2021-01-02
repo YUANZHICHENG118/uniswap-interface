@@ -56,7 +56,7 @@ export default function About() {
   //const { t } = useTranslation()
 
   return (
-    <BodyWrapper>
+    <BodyWrapper className='mb-5'>
       <Title1 imgType="3" title="关于我们" subTitle="激活您的组员，可获得团队收益奖励" />
       <div className="row no-gutters">
         <div className="col-lg-5 col-12">
