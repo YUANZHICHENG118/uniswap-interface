@@ -25,15 +25,15 @@ export default function FenrunDescModal({ onDismiss, isOpen }: { isOpen: boolean
           <SubTitle className="text-center mt-3">挖矿分润收益=分享者收益*挖矿分润收益率 </SubTitle>
           <DescContent>
             <DescContent.item>
-              <div><img src={smallDevice} alt=""/><Tag>LV 1</Tag></div>
+              <div><img className='smallImg' src={smallDevice} alt=""/><Tag>LV 1</Tag></div>
               <div>无分润收益</div>
             </DescContent.item>
             <DescContent.item>
-              <div><img src={smallDevice} alt=""/><Tag>LV 2</Tag></div>
+              <div><img className='smallImg' src={smallDevice} alt=""/><Tag>LV 2</Tag></div>
               <div>1级收益8%，2级收益4%</div>
             </DescContent.item>
             <DescContent.item>
-              <div><img src={smallDevice} alt=""/><Tag>LV 3</Tag> - <Tag>LV 8</Tag></div>
+              <div><img className='smallImg' src={smallDevice} alt=""/><Tag>LV 3</Tag> - <Tag>LV 8</Tag></div>
               <div>1级收益8%，2级收益4%，3级收益1%</div>
             </DescContent.item>
           </DescContent>

@@ -29,7 +29,7 @@ export default function MyFenRunProfit(){
      <ProfitWrap className="bgwrap">
        <div className="title flex-between align-items-center">
          <div>
-           <img src={smallDevice} alt="" />
+           <img className='smallImg' src={smallDevice} alt="" />
            我的分润收益
            {/*挖矿分润描述*/}
            <img onClick={toggleDesc} src={questionImg} alt=""/>

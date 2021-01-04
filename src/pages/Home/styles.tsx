@@ -179,15 +179,13 @@ export const Title1Wrap = styled.div`
   margin: 80px 0 60px;
   img {
     margin-right: 10px;
-    height: 65px;
     width: auto;
   }
   .title-top {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: PingFangSC-Semibold, PingFang SC;
     font-weight: 600;
     color: #333647;
-    line-height: 50px;
   }
   span {
     font-size: 16px;
@@ -274,7 +272,7 @@ export const ChooseItemWrap = styled.div`
 export const TeamRuleWrap = styled.div`
   .header {
     h3 {
-      font-size: 36px;
+      font-size: 1.8rem;
       font-family: PingFangSC-Semibold, PingFang SC;
       font-weight: 600;
       color: #ffffff;

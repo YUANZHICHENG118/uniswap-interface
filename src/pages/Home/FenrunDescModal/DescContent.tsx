@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   }
 `
 const ItemWrap = styled.div`
-  margin:2rem 0;
+  margin: 2rem 0;
   div {
     :last-child {
       font-size: 14px;
@@ -25,10 +25,15 @@ const ItemWrap = styled.div`
       color: #393b7b;
       line-height: 20px;
     }
+    .smallImg {
+      margin: 0 -1rem;
+    }
   }
 `
 
-const Item = ({ children }: { children: React.ReactNode }) => <ItemWrap className="flex-between align-items-center">{children}</ItemWrap>
+const Item = ({ children }: { children: React.ReactNode }) => (
+  <ItemWrap className="flex-between align-items-center">{children}</ItemWrap>
+)
 const DescContent = function({ children }: { children: React.ReactNode }) {
   return (
     <Wrapper className="w-100 mt-4">

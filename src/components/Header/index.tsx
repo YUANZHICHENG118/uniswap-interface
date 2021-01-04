@@ -200,7 +200,7 @@ export default function Header() {
   return (
     <HeaderFrame>
       <div className="container">
-        <RowBetween padding="1rem 1rem 0 1rem">
+        <RowBetween padding="1rem 1rem 0 1rem" className='row'>
           <NavElements>
             {isMobile ? (
               ''
@@ -242,8 +242,8 @@ export default function Header() {
           {/*</UniIconMobile>*/}
           {/*</LogoElements>*/}
 
-          <HeaderControls>
-            <HeaderElement>
+          <HeaderControls className='row p-0'>
+            <HeaderElement className='col-5'>
               <TestnetWrapper>
                 {!isMobile && chainId && NETWORK_LABELS[chainId] && (
                   <NetworkCard>{NETWORK_LABELS[chainId]}</NetworkCard>
@@ -258,7 +258,7 @@ export default function Header() {
                 <Web3Status />
               </AccountElement>
             </HeaderElement>
-            <HeaderElementWrap>
+            <HeaderElementWrap className='col-7'>
               <Lan />
               {/*<VersionSwitch />*/}
               <Settings />

@@ -16,6 +16,9 @@ import MyProfit from './home-myprofit'
 export const BodyWrapper = styled.div`
   width: 100%;
   height: 100%;
+  .smallImg{
+    margin:0 -1rem;
+  }
   .bgwrap {
     background: linear-gradient(90deg, #5b5f76 0%, #2e3141 100%);
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.5);

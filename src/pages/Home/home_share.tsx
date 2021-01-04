@@ -45,7 +45,7 @@ export default function ShareReward() {
           <div className="col-lg-6 col-12 pl-lg-0  pl-2 pl-sm-4">
             <ProfitWrap className="bgwrap">
               <div className="title">
-                <img src={smallDevice} alt="" />
+                <img className='smallImg' src={smallDevice} alt="" />
                 我的分享收益
               </div>
               <div className="middle">
