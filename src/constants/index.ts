@@ -21,6 +21,66 @@ export const SUB_ADDRESS='0x66B1012F689305aBf28577d5300740f6117ca30C'
 // export const ethApi="https://api-ropsten.etherscan.io/api";
 // export const SUB_ADDRESS='0x102dae99cbe3253a8229d11feac9b096668eee6d'
 
+
+
+const UNI_ADDRESS = '0xaa037Fd61cBC515f70C8ae68CC5f34Eb3A2e10fD'
+export const UNI: { [chainId in ChainId]: Token } = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
+  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
+  [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, UNI_ADDRESS, 6, 'UNI', 'Uniswap'),
+  [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, UNI_ADDRESS, 18, 'PIPE', 'Uniswap'),
+  [ChainId.KOVAN]: new Token(ChainId.KOVAN, UNI_ADDRESS, 18, 'PIPE', 'Uniswap'),
+
+}
+export const LPCONTRACT="0x17301bc5EbB46513128e2aa285FF9a427aE64062"
+export const TOKENCONTRACT="0x7A2100F562dd3cE2abc94129519b3065bC3553e3"
+export const STAKE_TOKEN = [
+  {
+    id: 1,
+    symbol: 'pipe',
+    type:'TK',
+    title: 'PIPE for MDEX',
+    desc: 'Stake PIPE Earn PIPE',
+    earn:'PIPE',
+    lpToken:'',
+    pid:0,
+    decimals:6,
+    address:'0xaa037fd61cbc515f70c8ae68cc5f34eb3a2e10fd'
+  },
+  {
+    id: 2,
+    symbol: 'pipe_ht',
+    type:'LP',
+    title: 'PIPE-HT for MDEX',
+    desc: 'Stake PIPE-HT Earn PIPE',
+    earn:'PIPE',
+    lpToken:'HT',
+    pid:3,
+    decimals:18,
+    address:'0xC93FfA72626f9d37fab0830bb708279Ae27B5d25'
+  }, {
+    id: 3,
+    symbol: 'pipe_usdt',
+    type:'LP',
+    title: 'PIPE-USDT for MDEX',
+    desc: 'Stake PIPE-USDT Earn PIPE',
+    earn:'PIPE',
+    lpToken:'USDT',
+    pid:1,
+    decimals:18,
+    address:'0x589254625d8d1b64AD76407265d3E5b68E805253'
+  }, {
+    id: 4,
+    symbol: 'pipe_husdt',
+    type:'LP',
+    title: 'PIPE-HUSD for MDEX',
+    desc: 'Stake PIPE-HUSD Earn PIPE',
+    earn:'PIPE',
+    lpToken:'HUSD',
+    pid:2,
+    decimals:18,
+    address:'0xEeFB713FA3c02C969E8539eE7F2b4a5115086089'
+  }]
 export const POOL_ADDRESS = '0xC1C83369f3F7662bC72370ac98Bd93644EDcf92C'
 export const PZS_ADDRESS='0x10334122EF6DDb3c0Cf84639d881b442c00Ab2e8'
 export const PZSS_ADDRESS='0x42669036fA54e8355D5C2a8b7313f81A1e0cd83d'

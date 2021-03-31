@@ -28,7 +28,9 @@ import Farm from './Farm'
 import FarmToken from './Farm/token'
 import FarmTokenPzs from './Farm/pzs'
 import FarmTokenPzss from './Farm/pzss'
-
+import Stake from './Stake'
+import StakeInfo from './Stake/earn'
+import StakeTokenInfo from './Stake/earntoken'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
 
 const AppWrapper = styled.div`
@@ -80,6 +82,14 @@ export default function App() {
             <Popups />
             <Web3ReactManager>
               <Switch>
+
+                <Route exact strict path="/Stake" component={Stake} />
+
+                <Route exact path="/earn/:symbol/:type" component={StakeInfo} />
+                <Route exact path="/earntoken/:symbol/:type" component={StakeTokenInfo} />
+
+
+
                 <Route exact strict path="/home" component={Home} />
                 <Route exact strict path="/Menu" component={Menu} />
                 <Route exact strict path="/about" component={About} />

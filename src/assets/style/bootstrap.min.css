@@ -4984,7 +4984,7 @@ a.badge-dark:focus {
   line-height: 0;
   font-size: 0.75rem;
   background-color: #e9ecef;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 .progress-bar {
   display: -ms-flexbox;
@@ -4997,8 +4997,9 @@ a.badge-dark:focus {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #007bff;
+  background: linear-gradient(180deg, #FFAA1B 0%, #FFCF07 100%);
   transition: width 0.6s ease;
+  border-radius: inherit;
 }
 @media (prefers-reduced-motion: reduce) {
   .progress-bar {
@@ -6123,6 +6124,9 @@ a.close.disabled {
 }
 .align-middle {
   vertical-align: middle !important;
+}
+.row.align-middle {
+  align-items: center;
 }
 .align-bottom {
   vertical-align: bottom !important;
