@@ -38,7 +38,7 @@ export default function Earn({
   const [showModel, setShowModel] = useState<boolean>(false)
   const [form] = Form.useForm()
 
-  const min=0.0001;
+  const min=0.000001;
   // 代币合约
   const tokenContract = useTokenContract(data?.address, true)
   // 代币合约
